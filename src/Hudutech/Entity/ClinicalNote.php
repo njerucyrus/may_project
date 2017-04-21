@@ -14,6 +14,11 @@ class ClinicalNote
     /**
      * @var string
      */
+    private $patientId;
+
+    /**
+     * @var string
+     */
     private $complaint;
     /**
      * @var string
@@ -31,6 +36,23 @@ class ClinicalNote
      * @var \DateTime
      */
     private $date;
+
+    /**
+     * @return string
+     */
+    public function getPatientId()
+    {
+        return $this->patientId;
+    }
+
+    /**
+     * @param string $patientId
+     */
+    public function setPatientId($patientId)
+    {
+        $this->patientId = $patientId;
+    }
+
 
     /**
      * @return string
