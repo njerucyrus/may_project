@@ -58,16 +58,16 @@ class PatientController implements PatientInterface
                                                             :patient_type,
                                                             :sex 
                                                         ) ");
-            $stmt->bindParam(":patient_no",$patientNo);
-            $stmt->bindParam(":id_no",$idNo);
-            $stmt->bindParam(":sir_name",$sirName);
-            $stmt->bindParam(":first_name",$firstName);
-            $stmt->bindParam(":other_name",$otherName);
-            $stmt->bindParam(":marital_status",$maritalStatus);
-            $stmt->bindParam(":phone_number",$phoneNumber);
-            $stmt->bindParam(":occupation",$occupation);
-            $stmt->bindParam(":patient_type",$patientType);
-            $stmt->bindParam(":sex",$sex);
+            $stmt->bindParam(":patient_no", $patientNo);
+            $stmt->bindParam(":id_no", $idNo);
+            $stmt->bindParam(":sir_name", $sirName);
+            $stmt->bindParam(":first_name", $firstName);
+            $stmt->bindParam(":other_name", $otherName);
+            $stmt->bindParam(":marital_status", $maritalStatus);
+            $stmt->bindParam(":phone_number", $phoneNumber);
+            $stmt->bindParam(":occupation", $occupation);
+            $stmt->bindParam(":patient_type", $patientType);
+            $stmt->bindParam(":sex", $sex);
             return $stmt->execute() ? true : false;
 
         } catch (\PDOException $exception) {
@@ -94,7 +94,7 @@ class PatientController implements PatientInterface
         $patientType = $patient->getPatientType();
         $sex = $patient->getSex();
 
-        try{
+        try {
 
             $stmt = $conn->prepare("UPDATE patients SET
                                                         patient_no=:patient_no,
@@ -110,26 +110,37 @@ class PatientController implements PatientInterface
                                                      WHERE id=:id
                                                      ");
 
-            $stmt->bindParam(":id",$id);
-            $stmt->bindParam(":patient_no",$patientNo);
-            $stmt->bindParam(":id_no",$idNo);
-            $stmt->bindParam(":sir_name",$sirName);
-            $stmt->bindParam(":first_name",$firstName);
-            $stmt->bindParam(":other_name",$otherName);
-            $stmt->bindParam(":marital_status",$maritalStatus);
-            $stmt->bindParam(":phone_number",$phoneNumber);
-            $stmt->bindParam(":occupation",$occupation);
-            $stmt->bindParam(":patient_type",$patientType);
-            $stmt->bindParam(":sex",$sex);
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":patient_no", $patientNo);
+            $stmt->bindParam(":id_no", $idNo);
+            $stmt->bindParam(":sir_name", $sirName);
+            $stmt->bindParam(":first_name", $firstName);
+            $stmt->bindParam(":other_name", $otherName);
+            $stmt->bindParam(":marital_status", $maritalStatus);
+            $stmt->bindParam(":phone_number", $phoneNumber);
+            $stmt->bindParam(":occupation", $occupation);
+            $stmt->bindParam(":patient_type", $patientType);
+            $stmt->bindParam(":sex", $sex);
             return $stmt->execute() ? true : false;
-        } catch (\PDOException $exception){
+        } catch (\PDOException $exception) {
             return false;
         }
     }
 
     public static function delete($id)
     {
-        // TODO: Implement delete() method.
+
+        $db = new DB();
+        $conn = $db->connect();
+
+        try {
+            $stmt = $conn->prepare("DELETE FROM patients WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
     }
 
     public static function destroy()
