@@ -160,7 +160,38 @@ class PatientController implements PatientInterface
 
     public static function getId($id)
     {
-        // TODO: Implement getId() method.
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM patients WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $patient = array();
+            if ($stmt->rowCount() == 1) {
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    array_push($patient, array(
+                        "id" => $row['id'],
+                        "patient_no" => $row['patient_no'],
+                        "id_no" => $row['id_no'],
+                        "sir_name" => $row['sir_name'],
+                        "first_name" => $row['first_name'],
+                        "other_name" => $row['other_name'],
+                        "marital_status" => $row['marital_status'],
+                        "phone_number" => $row['phone_number'],
+                        "occupation" => $row['occupation'],
+                        "patient_type" => $row['patient_type'],
+                        "sex" => $row['sex']
+                    ));
+                }
+            }
+
+            $db->closeConnection();
+            return $patient;
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
     }
 
     public static function all()
