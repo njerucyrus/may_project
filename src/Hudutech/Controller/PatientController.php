@@ -39,12 +39,12 @@ class PatientController implements PatientInterface
                                                             id_no,
                                                             sir_name,
                                                             first_name, 
+                                                            other_name,
                                                             marital_status,
                                                             phone_number,
                                                             occupation,
                                                             patient_type,
-                                                            sex, 
-                                                            other_name
+                                                            sex    
                                                         )  
                                                 VALUES (
                                                             :patient_no,
@@ -56,7 +56,9 @@ class PatientController implements PatientInterface
                                                             :phone_number,
                                                             :occupation,
                                                             :patient_type,
-                                                            :sex 
+                                                            :sex
+                                                            
+                                                             
                                                         ) ");
             $stmt->bindParam(":patient_no", $patientNo);
             $stmt->bindParam(":id_no", $idNo);
@@ -169,7 +171,7 @@ class PatientController implements PatientInterface
             $patient = array();
             if ($stmt->rowCount() == 1) {
                 while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                    array_push($patient, array(
+                    $patient = array(
                         "id" => $row['id'],
                         "patient_no" => $row['patient_no'],
                         "id_no" => $row['id_no'],
@@ -181,7 +183,7 @@ class PatientController implements PatientInterface
                         "occupation" => $row['occupation'],
                         "patient_type" => $row['patient_type'],
                         "sex" => $row['sex']
-                    ));
+                    );
                 }
             }
 
@@ -196,7 +198,39 @@ class PatientController implements PatientInterface
 
     public static function all()
     {
-        // TODO: Implement all() method.
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM patients WHERE 1");
+
+            $stmt->execute();
+            $patients = array();
+            if ($stmt->rowCount() > 0 ) {
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    $patient = array(
+                        "id" => $row['id'],
+                        "patient_no" => $row['patient_no'],
+                        "id_no" => $row['id_no'],
+                        "sir_name" => $row['sir_name'],
+                        "first_name" => $row['first_name'],
+                        "other_name" => $row['other_name'],
+                        "marital_status" => $row['marital_status'],
+                        "phone_number" => $row['phone_number'],
+                        "occupation" => $row['occupation'],
+                        "patient_type" => $row['patient_type'],
+                        "sex" => $row['sex']
+                    );
+                    $patients[] = $patient;
+                }
+            }
+
+            $db->closeConnection();
+            return $patients;
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
     }
 
 }
