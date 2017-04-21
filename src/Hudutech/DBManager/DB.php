@@ -13,7 +13,7 @@ class DB
     /**
      * @var string
      */
-    private $databaseName = 'hudutech_next';
+    private $databaseName = 'clinic_db';
     /**
      * @var string
      */

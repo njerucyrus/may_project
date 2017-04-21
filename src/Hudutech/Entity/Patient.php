@@ -39,6 +39,12 @@ class Patient
      * @var string
      */
     private $maritalStatus;
+
+    /**
+     * @var string
+     */
+    private $occupation;
+
     /**
      * @var string
      */
@@ -159,6 +165,24 @@ class Patient
     {
         $this->maritalStatus = $maritalStatus;
     }
+
+    /**
+     * @return string
+     */
+    public function getOccupation()
+    {
+        return $this->occupation;
+    }
+
+    /**
+     * @param string $occupation
+     */
+    public function setOccupation($occupation)
+    {
+        $this->occupation = $occupation;
+    }
+
+
 
     /**
      * @return string
