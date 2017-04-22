@@ -11,6 +11,7 @@ namespace Hudutech\Entity;
 
 class ClinicalNote
 {
+
     /**
      * @var string
      */

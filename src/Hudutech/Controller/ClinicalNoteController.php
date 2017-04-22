@@ -15,6 +15,10 @@ use Hudutech\Entity\ClinicalNote;
 
 class ClinicalNoteController implements ClinicalNoteInterface
 {
+    /**
+     * @param ClinicalNote $clinicalNote
+     * @return bool
+     */
     public function create(ClinicalNote $clinicalNote)
     {
         $db = new DB();
@@ -65,6 +69,11 @@ class ClinicalNoteController implements ClinicalNoteInterface
 
     }
 
+    /**
+     * @param ClinicalNote $clinicalNote
+     * @param $id
+     * @return bool
+     */
     public function update(ClinicalNote $clinicalNote, $id)
     {
         $db = new DB();
@@ -98,6 +107,10 @@ class ClinicalNoteController implements ClinicalNoteInterface
 
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public static function delete($id)
     {
         $db = new DB();
@@ -113,6 +126,9 @@ class ClinicalNoteController implements ClinicalNoteInterface
         }
     }
 
+    /**
+     * @return bool
+     */
     public static function destroy()
     {
         $db = new DB();
@@ -127,6 +143,10 @@ class ClinicalNoteController implements ClinicalNoteInterface
         }
     }
 
+    /**
+     * @param $patientId
+     * @return array
+     */
     public static function getAllClinicalNoteByPatientId($patientId)
     {
        $db = new DB();
@@ -158,5 +178,84 @@ class ClinicalNoteController implements ClinicalNoteInterface
            return [];
        }
     }
+
+    /**
+     * @param $patientId
+     * @param $date
+     * @return array
+     */
+    public static function getClinicalNoteByDate($patientId, $date)
+    {
+
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT * FROM clinical_notes WHERE patient_id=:patient_id AND date=:date");
+            $stmt->bindParam(":patient_id", $patientId);
+            $stmt->bindParam(":date", $date);
+            $stmt->execute();
+            $notes = array();
+            if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    $notes = array(
+                        "id"=>$row['id'],
+                        "patient_id" =>$row['patient_id'],
+                        "complaint" => $row['complaint'],
+                        "complaint_history"=>$row['complaint_history'],
+                        "family_social_history"=>$row['family_social_history'],
+                        "physical_examination"=>$row['physical_examination'],
+                        "date"=>$row['date']
+                    );
+
+                }
+            }
+            return $notes;
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
+    /**
+     * @param $patientId
+     * @param $date
+     * @return ClinicalNote|null
+     * use this method to get the instance of the ClinicalNote entity that
+     * has the current values set for the database. set new attributes
+     * which you want to update.
+     * this makes work easier when updating.
+     */
+    public static function getClinicalNoteObject($patientId, $date)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT * FROM clinical_notes WHERE patient_id=:patient_id AND date=:date");
+            $stmt->bindParam(":patient_id", $patientId);
+            $stmt->bindParam(":date", $date);
+            $stmt->execute();
+
+            $clinicalNote = new ClinicalNote();
+            if ($stmt->rowCount() == 1) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+                $clinicalNote->setPatientId($row['patient_id']);
+                $clinicalNote->setComplaint($row['complaint']);
+                $clinicalNote->setComplaintHistory($row['complaint_history']);
+                $clinicalNote->setFamilySocialHistory($row['family_social_history']);
+                $clinicalNote->setPhysicalExamination($row['physical_examination']);
+                $clinicalNote->setDate($row['date']);
+            }
+            return $clinicalNote;
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return null;
+        }
+    }
+
 
 }
