@@ -17,5 +17,5 @@ interface ClinicalNoteInterface
  public function update(ClinicalNote $clinicalNote, $id);
  public static function delete($id);
  public static function destroy();
- public static function getByPatientId($patientId);
+ public static function getAllClinicalNoteByPatientId($patientId);
 }

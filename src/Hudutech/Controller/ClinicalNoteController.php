@@ -67,22 +67,96 @@ class ClinicalNoteController implements ClinicalNoteInterface
 
     public function update(ClinicalNote $clinicalNote, $id)
     {
-        // TODO: Implement update() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        $patientId = $clinicalNote->getPatientId();
+        $complaint = $clinicalNote->getComplaint();
+        $complaintHistory = $clinicalNote->getComplaintHistory();
+        $familySocialHistory = $clinicalNote->getFamilySocialHistory();
+        $physicalExamination = $clinicalNote->getPhysicalExamination();
+
+        try {
+            $sql = "UPDATE clinical_notes SET
+                                         patient_id=:patient_id,
+                                         complaint=:complaint,
+                                         complaint_history=:complaint_history,
+                                         family_social_history=:family_social_history,
+                                         physical_examination=:physical_examination";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":patient_id", $patientId);
+            $stmt->bindParam(":complaint", $complaint);
+            $stmt->bindParam(":complaint_history", $complaintHistory);
+            $stmt->bindParam(":family_social_history", $familySocialHistory);
+            $stmt->bindParam(":physical_examination", $physicalExamination);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+
     }
 
     public static function delete($id)
     {
-        // TODO: Implement delete() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        try {
+            $stmt = $conn->prepare("DELETE FROM clinical_notes WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        }  catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
     }
 
     public static function destroy()
     {
-        // TODO: Implement destroy() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("DELETE FROM clinical_notes");
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
     }
 
-    public static function getByPatientId($patientId)
+    public static function getAllClinicalNoteByPatientId($patientId)
     {
-        // TODO: Implement getByPatientId() method.
+       $db = new DB();
+       $conn = $db->connect();
+
+       try{
+           $stmt = $conn->prepare("SELECT * FROM clinical_notes WHERE patient_id=:patient_id");
+           $stmt->bindParam(":patient_id", $patientId);
+           $stmt->execute();
+           $notes = array();
+           if ($stmt->rowCount() > 0) {
+               while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                   $note = array(
+                      "id"=>$row['id'],
+                       "patient_id" =>$row['patient_id'],
+                       "complaint" => $row['complaint'],
+                       "complaint_history"=>$row['complaint_history'],
+                       "family_social_history"=>$row['family_social_history'],
+                       "physical_examination"=>$row['physical_examination'],
+                       "date"=>$row['date']
+                   );
+                   $notes[] = $note;
+               }
+           }
+           return $notes;
+
+       } catch (\PDOException $exception) {
+           echo $exception->getMessage();
+           return [];
+       }
     }
 
 }
