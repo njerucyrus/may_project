@@ -89,7 +89,29 @@ class ClinicalTestController implements ClinicalTestInterface
 
     public static function getId($id)
     {
-        // TODO: Implement getId() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+
+            $stmt = $conn->prepare("SELECT * FROM clinical_tests WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $clinicalTest = array();
+            if ($stmt->rowCount() == 0) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                $clinicalTest = array(
+                    "id"=>$row['id'],
+                    "test_name"=>$row['test_name'],
+                    "cost"=>$row['cost']
+                );
+            }
+            return $clinicalTest;
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
     }
 
     public static function getClinicalTestObject($id)
