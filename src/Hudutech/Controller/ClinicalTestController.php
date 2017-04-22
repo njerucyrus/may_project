@@ -116,12 +116,55 @@ class ClinicalTestController implements ClinicalTestInterface
 
     public static function getClinicalTestObject($id)
     {
-        // TODO: Implement getClinicalTestObject() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+
+            $stmt = $conn->prepare("SELECT * FROM clinical_tests WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $clinicalTest = new ClinicalTest();
+            if ($stmt->rowCount() == 0) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                $clinicalTest->setTestName($row['test_name']);
+                $clinicalTest->setCost($row['cost']);
+            }
+            return $clinicalTest;
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
     }
 
     public static function all()
     {
-        // TODO: Implement all() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+
+            $stmt = $conn->prepare("SELECT * FROM clinical_tests WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            $clinicalTests = array();
+            if ($stmt->rowCount() == 0) {
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    $clinicalTest = array(
+                        "id" => $row['id'],
+                        "test_name" => $row['test_name'],
+                        "cost" => $row['cost']
+                    );
+                    $clinicalTests[] =$clinicalTest;
+                }
+            }
+            return $clinicalTests;
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
     }
 
 }
