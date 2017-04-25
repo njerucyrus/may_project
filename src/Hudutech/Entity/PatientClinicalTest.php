@@ -37,6 +37,11 @@ class PatientClinicalTest
     private $date;
 
     /**
+     * @var boolean
+     */
+    private $performed;
+
+    /**
      * @return int
      */
     public function getClinicianId()
@@ -131,4 +136,22 @@ class PatientClinicalTest
     {
         $this->date = $date;
     }
+
+    /**
+     * @return bool
+     */
+    public function isPerformed()
+    {
+        return $this->performed;
+    }
+
+    /**
+     * @param bool $performed
+     */
+    public function setPerformed($performed)
+    {
+        $this->performed = $performed;
+    }
+
+
 }
