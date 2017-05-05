@@ -6,9 +6,18 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Hudutech\\AppInterface\\ClinicalNoteInterface' => $baseDir . '/src/Hudutech/AppInterface/ClinicalNoteInterface.php',
+    'Hudutech\\AppInterface\\ClinicalTestInterface' => $baseDir . '/src/Hudutech/AppInterface/ClinicalTestInterface.php',
+    'Hudutech\\AppInterface\\PatientClinicalTestInterface' => $baseDir . '/src/Hudutech/AppInterface/PatientClinicalTestInterface.php',
     'Hudutech\\AppInterface\\PatientInterface' => $baseDir . '/src/Hudutech/AppInterface/PatientInterface.php',
+    'Hudutech\\Controller\\ClinicalNoteController' => $baseDir . '/src/Hudutech/Controller/ClinicalNoteController.php',
+    'Hudutech\\Controller\\ClinicalTestController' => $baseDir . '/src/Hudutech/Controller/ClinicalTestController.php',
+    'Hudutech\\Controller\\PatientClinicalTestController' => $baseDir . '/src/Hudutech/Controller/PatientClinicalTestController.php',
     'Hudutech\\Controller\\PatientController' => $baseDir . '/src/Hudutech/Controller/PatientController.php',
     'Hudutech\\DBManager\\ComplexQuery' => $baseDir . '/src/Hudutech/DBManager/ComplexQuery.php',
     'Hudutech\\DBManager\\DB' => $baseDir . '/src/Hudutech/DBManager/DB.php',
+    'Hudutech\\Entity\\ClinicalNote' => $baseDir . '/src/Hudutech/Entity/ClinicalNote.php',
+    'Hudutech\\Entity\\ClinicalTest' => $baseDir . '/src/Hudutech/Entity/ClinicalTest.php',
     'Hudutech\\Entity\\Patient' => $baseDir . '/src/Hudutech/Entity/Patient.php',
+    'Hudutech\\Entity\\PatientClinicalTest' => $baseDir . '/src/Hudutech/Entity/PatientClinicalTest.php',
 );

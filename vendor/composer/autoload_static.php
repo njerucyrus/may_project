@@ -21,11 +21,20 @@ class ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331
     );
 
     public static $classMap = array (
+        'Hudutech\\AppInterface\\ClinicalNoteInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/ClinicalNoteInterface.php',
+        'Hudutech\\AppInterface\\ClinicalTestInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/ClinicalTestInterface.php',
+        'Hudutech\\AppInterface\\PatientClinicalTestInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/PatientClinicalTestInterface.php',
         'Hudutech\\AppInterface\\PatientInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/PatientInterface.php',
+        'Hudutech\\Controller\\ClinicalNoteController' => __DIR__ . '/../..' . '/src/Hudutech/Controller/ClinicalNoteController.php',
+        'Hudutech\\Controller\\ClinicalTestController' => __DIR__ . '/../..' . '/src/Hudutech/Controller/ClinicalTestController.php',
+        'Hudutech\\Controller\\PatientClinicalTestController' => __DIR__ . '/../..' . '/src/Hudutech/Controller/PatientClinicalTestController.php',
         'Hudutech\\Controller\\PatientController' => __DIR__ . '/../..' . '/src/Hudutech/Controller/PatientController.php',
         'Hudutech\\DBManager\\ComplexQuery' => __DIR__ . '/../..' . '/src/Hudutech/DBManager/ComplexQuery.php',
         'Hudutech\\DBManager\\DB' => __DIR__ . '/../..' . '/src/Hudutech/DBManager/DB.php',
+        'Hudutech\\Entity\\ClinicalNote' => __DIR__ . '/../..' . '/src/Hudutech/Entity/ClinicalNote.php',
+        'Hudutech\\Entity\\ClinicalTest' => __DIR__ . '/../..' . '/src/Hudutech/Entity/ClinicalTest.php',
         'Hudutech\\Entity\\Patient' => __DIR__ . '/../..' . '/src/Hudutech/Entity/Patient.php',
+        'Hudutech\\Entity\\PatientClinicalTest' => __DIR__ . '/../..' . '/src/Hudutech/Entity/PatientClinicalTest.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
