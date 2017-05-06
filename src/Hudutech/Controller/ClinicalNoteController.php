@@ -227,7 +227,7 @@ class ClinicalNoteController implements ClinicalNoteInterface
      * which you want to update.
      * this makes work easier when updating.
      */
-    public static function getClinicalNoteObject($patientId, $date)
+    public static function getObject($patientId, $date)
     {
         $db = new DB();
         $conn = $db->connect();

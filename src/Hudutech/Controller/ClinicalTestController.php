@@ -114,7 +114,7 @@ class ClinicalTestController implements ClinicalTestInterface
         }
     }
 
-    public static function getClinicalTestObject($id)
+    public static function getObject($id)
     {
         $db = new DB();
         $conn = $db->connect();

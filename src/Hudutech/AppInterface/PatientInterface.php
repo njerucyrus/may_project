@@ -46,6 +46,12 @@ interface PatientInterface
     public static function getId($id);
 
     /**
+     * @param $id
+     * @return object|null
+     */
+    public static function getObject($id);
+
+    /**
      * @return array
      */
     public static function all();

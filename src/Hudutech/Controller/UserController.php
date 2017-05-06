@@ -138,7 +138,7 @@ class UserController implements UserInterface
         }
     }
 
-    public static function getUserObject($id)
+    public static function getObject($id)
     {
         $db = new DB();
         $conn = $db->connect();

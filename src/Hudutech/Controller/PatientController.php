@@ -167,28 +167,7 @@ class PatientController implements PatientInterface
         try {
             $stmt = $conn->prepare("SELECT * FROM patients WHERE id=:id");
             $stmt->bindParam(":id", $id);
-            $stmt->execute();
-            $patient = array();
-            if ($stmt->rowCount() == 1) {
-                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                    $patient = array(
-                        "id" => $row['id'],
-                        "patientNo" => $row['patientNo'],
-                        "idNo" => $row['idNo'],
-                        "sirName" => $row['sirName'],
-                        "firstName" => $row['firstName'],
-                        "otherName" => $row['otherName'],
-                        "maritalStatus" => $row['maritalStatus'],
-                        "phoneNumber" => $row['phoneNumber'],
-                        "occupation" => $row['occupation'],
-                        "patientType" => $row['patientType'],
-                        "sex" => $row['sex']
-                    );
-                }
-            }
-
-            $db->closeConnection();
-            return $patient;
+            return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
 
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
@@ -202,30 +181,7 @@ class PatientController implements PatientInterface
         $conn = $db->connect();
         try {
             $stmt = $conn->prepare("SELECT * FROM patients WHERE 1");
-
-            $stmt->execute();
-            $patients = array();
-            if ($stmt->rowCount() > 0 ) {
-                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                    $patient = array(
-                        "id" => $row['id'],
-                        "patientNo" => $row['patientNo'],
-                        "idNo" => $row['idNo'],
-                        "sirName" => $row['sirName'],
-                        "firstName" => $row['firstName'],
-                        "otherName" => $row['otherName'],
-                        "maritalStatus" => $row['maritalStatus'],
-                        "phoneNumber" => $row['phoneNumber'],
-                        "occupation" => $row['occupation'],
-                        "patientType" => $row['patientType'],
-                        "sex" => $row['sex']
-                    );
-                    $patients[] = $patient;
-                }
-            }
-
-            $db->closeConnection();
-            return $patients;
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
 
         } catch (\PDOException $exception) {
             echo $exception->getMessage();

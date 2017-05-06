@@ -17,7 +17,7 @@ interface ClinicalTestInterface
    public static function delete($id);
    public static function destroy();
    public static function getId($id);
-   public static function getClinicalTestObject($id);
+   public static function getObject($id);
    public static function all();
 
 
