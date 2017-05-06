@@ -175,6 +175,23 @@ class PatientController implements PatientInterface
         }
     }
 
+    public static function getObject($id)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM patients WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Patient::class);
+            return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch() : null;
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return null;
+        }
+    }
+
+
     public static function all()
     {
         $db = new DB();
