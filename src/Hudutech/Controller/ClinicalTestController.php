@@ -23,9 +23,9 @@ class ClinicalTestController implements ClinicalTestInterface
         $cost = $clinicalTest->getCost();
 
         try{
-            $sql = "INSERT INTO clinical_tests (test_name, cost) VALUES (:test_name, :cost)";
+            $sql = "INSERT INTO clinical_tests (testName, cost) VALUES (:testName, :cost)";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":test_name", $testName);
+            $stmt->bindParam(":testName", $testName);
             $stmt->bindParam(":cost", $cost);
             return $stmt->execute() ? true : false;
 
@@ -45,11 +45,11 @@ class ClinicalTestController implements ClinicalTestInterface
         $cost = $clinicalTest->getCost();
 
         try{
-            $sql = "UPDATE clinical_tests SET test_name=:test_name, cost=:cost WHERE id=:id";
+            $sql = "UPDATE clinical_tests SET testName=:testName, cost=:cost WHERE id=:id";
 
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":id", $id);
-            $stmt->bindParam(":test_name", $testName);
+            $stmt->bindParam(":testName", $testName);
             $stmt->bindParam(":cost", $cost);
             return $stmt->execute() ? true : false;
 
@@ -102,7 +102,7 @@ class ClinicalTestController implements ClinicalTestInterface
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);
                 $clinicalTest = array(
                     "id"=>$row['id'],
-                    "test_name"=>$row['test_name'],
+                    "testName"=>$row['testName'],
                     "cost"=>$row['cost']
                 );
             }
@@ -127,7 +127,7 @@ class ClinicalTestController implements ClinicalTestInterface
             $clinicalTest = new ClinicalTest();
             if ($stmt->rowCount() == 0) {
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-                $clinicalTest->setTestName($row['test_name']);
+                $clinicalTest->setTestName($row['testName']);
                 $clinicalTest->setCost($row['cost']);
             }
             return $clinicalTest;
@@ -153,7 +153,7 @@ class ClinicalTestController implements ClinicalTestInterface
                 while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
                     $clinicalTest = array(
                         "id" => $row['id'],
-                        "test_name" => $row['test_name'],
+                        "testName" => $row['testName'],
                         "cost" => $row['cost']
                     );
                     $clinicalTests[] =$clinicalTest;
