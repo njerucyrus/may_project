@@ -59,7 +59,39 @@ class UserController implements UserInterface
 
     public function update(User $user, $id)
     {
+        $db = new DB();
+        $conn = $db->connect();
 
+        $firstName = $user->getFirstName();
+        $lastName = $user->getLastName();
+        $email = $user->getEmail();
+        $username = $user->getUsername();
+        $userLevel = $user->getUserLevel();
+        $password = $user->getPassword();
+
+        try{
+            $stmt = $conn->prepare("UPDATE clinic_db.users SET
+                                                            firstName=:firstName,
+                                                            lastName=:lastLogin,
+                                                            email=:email,
+                                                            username=:username,
+                                                            userLevel=:userLevel,
+                                                            password=:password
+                                                        WHERE
+                                                            id=:id
+                                                        ");
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":firstName", $firstName);
+            $stmt->bindParam(":lastName", $lastName);
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":userLevel", $userLevel);
+            $stmt->bindParam(":password",$password);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
     }
 
     public static function getId($id)
