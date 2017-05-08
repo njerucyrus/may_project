@@ -10,14 +10,29 @@ namespace Hudutech\Controller;
 
 
 use Hudutech\AppInterface\PatientVisitInterface;
+use Hudutech\DBManager\DB;
 use Hudutech\Entity\PatientVisit;
 
 class PatientVisitController implements PatientVisitInterface
 {
     public function create(PatientVisit $patientVisit)
     {
-        // TODO: Implement create() method.
-    }
+        $db = new DB();
+        $conn = $db->connect();
+        $patientId = $patientVisit->getPatientId();
+        $status = $patientVisit->getStatus();
+
+        try {
+            $stmt = $conn->prepare("INSERT INTO patient_visits(patientId, status)
+                                    VALUES (:patientId, :status)");
+            $stmt->bindParam(":patientId", $patientId);
+            $stmt->bindParam(":status", $status);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception){
+            echo $exception->getMessage();
+            return false;
+        }
+     }
 
     public function update(PatientVisit $patientVisit, $id)
     {
