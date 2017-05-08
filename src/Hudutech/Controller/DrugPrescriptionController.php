@@ -99,12 +99,29 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
 
     public static function delete($id)
     {
-        // TODO: Implement delete() method.
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $stmt = $conn->prepare("DELETE FROM drug_prescriptions WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        }catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
     }
 
     public static function destroy()
     {
-        // TODO: Implement destroy() method.
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $stmt = $conn->prepare("DELETE FROM drug_prescriptions");
+            return $stmt->execute() ? true : false;
+        }catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
     }
 
     public static function getAllPrescriptions($patientId)
