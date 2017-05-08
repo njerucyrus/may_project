@@ -10,18 +10,91 @@ namespace Hudutech\Controller;
 
 
 use Hudutech\AppInterface\DrugPrescriptionInterface;
+use Hudutech\DBManager\DB;
 use Hudutech\Entity\DrugPrescription;
 
 class DrugPrescriptionController implements DrugPrescriptionInterface
 {
     public function create(DrugPrescription $drugPrescription)
     {
-        // TODO: Implement create() method.
+        $db = new DB();
+        $conn = $db->connect();
+        $patientId = $drugPrescription->getPatientId();
+        $drugName = $drugPrescription->getDrugName();
+        $drugType = $drugPrescription->getDrugType();
+        $quantity = $drugPrescription->getQuantity();
+        $prescription = $drugPrescription->getPrescription();
+        $status = $drugPrescription->getStatus();
+
+        try{
+            $sql = "INSERT INTO drug_prescriptions(
+                                                        patientId,
+                                                        drugName, 
+                                                        drugType,
+                                                        quantity,
+                                                        prescription,
+                                                        status
+                                                  ) 
+                                                  VALUES
+                                                   (
+                                                        :patientId,
+                                                        :drugName,
+                                                        :drugType,
+                                                        :quantity,
+                                                        :prescription,
+                                                        :status
+                                                  )";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":patientId", $patientId);
+            $stmt->bindParam(":drugName",$drugName);
+            $stmt->bindParam(":drugType",$drugType);
+            $stmt->bindParam(":quantity", $quantity);
+            $stmt->bindParam(":prescription", $prescription);
+            $stmt->bindParam(":status", $status);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
     }
 
     public function update(DrugPrescription $drugPrescription, $id)
     {
-        // TODO: Implement update() method.
+
+        $db = new DB();
+        $conn = $db->connect();
+        $patientId = $drugPrescription->getPatientId();
+        $drugName = $drugPrescription->getDrugName();
+        $drugType = $drugPrescription->getDrugType();
+        $quantity = $drugPrescription->getQuantity();
+        $prescription = $drugPrescription->getPrescription();
+        $status = $drugPrescription->getStatus();
+
+        try{
+            $sql = "UPDATE drug_prescriptions SET 
+                                                patientId=:patientId,
+                                                drugName=:drugName, 
+                                                drugType=:drugType,
+                                                quantity=:quantity,
+                                                prescription=:prescription,
+                                                status=:status
+                                                WHERE id=:id
+                                                  ";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":patientId", $patientId);
+            $stmt->bindParam(":drugName",$drugName);
+            $stmt->bindParam(":drugType",$drugType);
+            $stmt->bindParam(":quantity", $quantity);
+            $stmt->bindParam(":prescription", $prescription);
+            $stmt->bindParam(":status", $status);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+
     }
 
     public static function delete($id)
