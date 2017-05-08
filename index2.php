@@ -26,6 +26,9 @@ require_once __DIR__.'/vendor/autoload.php';
 
 //print_r(\Hudutech\Controller\PatientController::all());
 
-$ctrl = \Hudutech\Controller\PatientClinicalTestController::destroy();
+//$ctrl = \Hudutech\Controller\PatientClinicalTestController::destroy();
+//
+//print_r($ctrl);
 
+$ctrl = \Hudutech\Controller\PatientVisitController::all();
 print_r($ctrl);
