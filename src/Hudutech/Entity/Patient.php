@@ -22,7 +22,7 @@ class Patient
     /**
      * @var string
      */
-    private $sirName;
+    private $surName;
     /**
      * @var string
      */
@@ -89,17 +89,17 @@ class Patient
     /**
      * @return string
      */
-    public function getSirName()
+    public function getSurName()
     {
-        return $this->sirName;
+        return $this->surName;
     }
 
     /**
-     * @param string $sirName
+     * @param string $surName
      */
-    public function setSirName($sirName)
+    public function setSurName($surName)
     {
-        $this->sirName = $sirName;
+        $this->surName = $surName;
     }
 
     /**

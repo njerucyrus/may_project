@@ -70,15 +70,20 @@
         <ul id="main-menu" class="main-menu">
             <!-- add class "multiple-expanded" to allow multiple submenus to open -->
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-            <li class="opened active has-sub">
-                <a href="index.html">
+            <li class="opened active has-sub multiple-expanded">
+                <a href="#l">
                     <i class="entypo-gauge"></i>
                     <span class="title">Registration</span>
                 </a>
                 <ul class="visible">
                     <li>
-                        <a href="index.html">
+                        <a href="register_user.php">
                             <span class="title">Register User</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="register_patient.php">
+                            <span class="title">Register Patient</span>
                         </a>
                     </li>
 

@@ -16,6 +16,8 @@ include  __DIR__.'/includes/register_user.inc.php';
 
     <?php include 'right_menu_views.php' ?>
     <div class="main-content">
+<?php include 'header_menu_views.php'?>
+
     <div class="row">
         <div class="col-md-12">
 
