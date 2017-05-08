@@ -5,41 +5,61 @@
  * Date: 06/05/2017
  * Time: 22:22
  */
+require_once __DIR__.'/../vendor/autoload.php';
+include  __DIR__.'/includes/register_user.inc.php';
 ?>
 <!DOCTYPE>
 <html>
 <?php include 'head_views.php' ?>
-<body class="page-body skin-facebook" data-url="http://neon.dev">
+<body class="page-body skin-facebook" >
 <div class="page-container">
-    <?php include 'right_menu_views.php' ?>
 
+    <?php include 'right_menu_views.php' ?>
+    <div class="main-content">
     <div class="row">
         <div class="col-md-12">
 
             <div class="panel panel-primary" data-collapsed="0">
 
                 <div class="panel-heading">
-                    <div class="panel-title">
-                        Default Form Inputs
+                    <div class="panel-title col-md-offset-3">
+                      <h1>Register User</h1>
                     </div>
 
-                    <div class="panel-options">
-                        <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
-                        <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
-                        <a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
-                        <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
-                    </div>
+                    <?php
+                    if(empty($success_msg) && !empty($error_msg)){
+                        ?>
+                        <div class="alert alert-danger alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <?php echo $error_msg ?>
+                        </div>
+                        <?php
+                    }
+                    elseif(empty($error_msg) and !empty($success_msg)){
+                        ?>
+                        <div class="alert alert-success alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <?php echo $success_msg  ?>
+                        </div>
+
+                        <?php
+                    }
+                    else
+                    {
+                        echo "";
+                    }
+                    ?>
                 </div>
 
                 <div class="panel-body">
 
-                    <form role="form" class="form-horizontal form-groups-bordered">
+                    <form role="form" class="form-horizontal form-groups-bordered" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>">
 
                         <div class="form-group">
                             <label for="firstName" class="col-sm-3 control-label">First Name</label>
 
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="firstName" placeholder="firstName">
+                                <input type="text" class="form-control" name="firstName" placeholder="firstName">
                             </div>
                         </div>
 
@@ -47,7 +67,7 @@
                             <label for="lastName" class="col-sm-3 control-label">Last Name</label>
 
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="lastName" placeholder="lastName">
+                                <input type="text" class="form-control" name="lastName" placeholder="lastName">
                             </div>
                         </div>
 
@@ -55,7 +75,7 @@
                             <label for="email" class="col-sm-3 control-label">Email</label>
 
                             <div class="col-sm-5">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <input type="email" class="form-control" name="email" placeholder="Email">
                             </div>
                         </div>
 
@@ -63,7 +83,7 @@
                             <label for="userName" class="col-sm-3 control-label">UserName</label>
 
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="userName" placeholder="Username">
+                                <input type="text" class="form-control" name="username" placeholder="Username">
                             </div>
                         </div>
 
@@ -71,7 +91,7 @@
                             <label class="col-sm-3 control-label">Select User Level</label>
 
                             <div class="col-sm-5">
-                                <select id="userLevel" class="form-control">
+                                <select name="userLevel" class="form-control">
                                     <option>admin</option>
                                     <option>manager</option>
                                     <option>receptionist</option>
@@ -86,7 +106,7 @@
                             <label for="password" class="col-sm-3 control-label">Password</label>
 
                             <div class="col-sm-5">
-                                <input type="password" class="form-control" id="password" placeholder="Password">
+                                <input type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                         </div>
 
@@ -94,7 +114,7 @@
                             <label for="confirmpassword" class="col-sm-3 control-label">Confirm Password</label>
 
                             <div class="col-sm-5">
-                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                                <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
                             </div>
                         </div>
 
@@ -106,7 +126,8 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-5">
-                                <button type="submit" class="btn btn-default">save</button>
+
+                                <input type="submit" name="submit " value="Register User" class="btn btn-primary btn-lg btn-block "/>
                             </div>
                         </div>
 
@@ -120,51 +141,11 @@
     </div>
 
 
+</div>
 
-<!--    <div class="row">-->
-<!--        <div class="col-md-12">-->
-<!---->
-<!--            <div class="panel panel-primary" data-collapsed="0">-->
-<!---->
-<!--                <div class="panel-heading">-->
-<!--                    <div class="panel-title">-->
-<!--                        Default Form Inputs-->
-<!--                    </div>-->
-<!---->
-<!---->
-<!--                </div>-->
-<!---->
-<!--                <div class="panel-body">-->
-<!---->
-<!--                    <form role="form" class="form-horizontal form-groups-bordered">-->
-<!---->
-<!---->
-<!--                        <div class="panel-body">-->
-<!--                            <form role="form" class="form-horizontal  form-groups-bordered">-->
-<!--                                <div class="form-group col-sm-5">-->
-<!--                                    <label for="field-1" class="col-sm-3 control-label">First Name</label>-->
-<!---->
-<!--                                    <div class="col-sm-5">-->
-<!--                                        <input type="text" class="form-control" id="firstName" placeholder="firstName">-->
-<!--                                    </div>-->
-<!---->
-<!--                                    <div class="form-group">-->
-<!--                                        <label for="field-2" class="col-sm-3 control-label">Last Name</label>-->
-<!---->
-<!--                                        <div class="col-sm-5">-->
-<!--                                            <input type="text" class="form-control" id="lastName" placeholder="lastName">-->
-<!--                                        </div>-->
-<!--                                </div>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!---->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--                        --><?php
-//                        include 'footer_views.php';
-//                        ?>
-<!--                </div>-->
+
+    <?php
+                      include 'footer_views.php';
+                         ?>
 </body>
 </html>

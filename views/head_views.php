@@ -16,7 +16,7 @@
 
     <link rel="icon" href="../public/assets/images/favicon.ico">
 
-    <title>Neon | Dashboard 2</title>
+    <title>I Clinic</title>
 
 
     <link rel="stylesheet" href="../public/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
