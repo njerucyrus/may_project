@@ -23,32 +23,34 @@ include  __DIR__.'/includes/register_user.inc.php';
 
                 <div class="panel-heading">
                     <div class="panel-title col-md-offset-3">
-                      <h1>Register User</h1>
+
+                        <?php
+                        if(empty($success_msg) && !empty($error_msg)){
+                            ?>
+                            <div class="alert alert-danger alert-dismissable">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <?php echo $error_msg ?>
+                            </div>
+                            <?php
+                        }
+                        elseif(empty($error_msg) and !empty($success_msg)){
+                            ?>
+                            <div class="alert alert-success alert-dismissable">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <?php echo $success_msg  ?>
+                            </div>
+
+                            <?php
+                        }
+                        else
+                        {
+                            echo "";
+                        }
+                        ?>
+                        <h1>Register User</h1>
                     </div>
 
-                    <?php
-                    if(empty($success_msg) && !empty($error_msg)){
-                        ?>
-                        <div class="alert alert-danger alert-dismissable">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <?php echo $error_msg ?>
-                        </div>
-                        <?php
-                    }
-                    elseif(empty($error_msg) and !empty($success_msg)){
-                        ?>
-                        <div class="alert alert-success alert-dismissable">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <?php echo $success_msg  ?>
-                        </div>
 
-                        <?php
-                    }
-                    else
-                    {
-                        echo "";
-                    }
-                    ?>
                 </div>
 
                 <div class="panel-body">
@@ -83,7 +85,7 @@ include  __DIR__.'/includes/register_user.inc.php';
                             <label for="userName" class="col-sm-3 control-label">UserName</label>
 
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" name="username" placeholder="Username">
+                                <input type="text" class="form-control" name="username" placeholder="Username" required>
                             </div>
                         </div>
 
@@ -106,7 +108,7 @@ include  __DIR__.'/includes/register_user.inc.php';
                             <label for="password" class="col-sm-3 control-label">Password</label>
 
                             <div class="col-sm-5">
-                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                <input type="password" class="form-control" name="password" placeholder="Password" required>
                             </div>
                         </div>
 
@@ -114,7 +116,7 @@ include  __DIR__.'/includes/register_user.inc.php';
                             <label for="confirmpassword" class="col-sm-3 control-label">Confirm Password</label>
 
                             <div class="col-sm-5">
-                                <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
+                                <input type="password" class="form-control" name="confirm" placeholder="Confirm Password" required>
                             </div>
                         </div>
 

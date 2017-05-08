@@ -8,11 +8,11 @@
 $success_msg= "";
 $error_msg= "";
 
-if(isset($_POST['submit']))
-{
+
+
     if(isset($_POST['username'])&& isset($_POST['email']) && isset($_POST['userLevel']) && isset($_POST['password']) && isset($_POST['confirm']))
     {
-        echo 'amm here';
+
         if( $_POST['password']== $_POST['confirm']) {
             $user = new \Hudutech\Entity\User();
 
@@ -39,4 +39,3 @@ if(isset($_POST['submit']))
 
         $error_msg .='All fields required';
     }
-}
