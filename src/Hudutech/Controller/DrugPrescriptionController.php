@@ -102,7 +102,8 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
         $db = new DB();
         $conn = $db->connect();
         try{
-            $stmt = $conn->prepare("DELETE FROM drug_prescriptions WHERE id=:id");
+            $today = date('Y-m-d');
+            $stmt = $conn->prepare("DELETE FROM drug_prescriptions WHERE id=:id AND date(dateIssued)='{$today}'");
             $stmt->bindParam(":id", $id);
             return $stmt->execute() ? true : false;
         }catch (\PDOException $exception) {
@@ -130,7 +131,8 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
         $conn = $db->connect();
 
         try{
-            $stmt = $conn->prepare("SELECT * FROM drug_prescriptions WHERE patientId=:patientId");
+            $today = date('Y-m-d');
+            $stmt = $conn->prepare("SELECT * FROM drug_prescriptions WHERE patientId=:patientId and date(dateIssued)='{$today}'");
             $stmt->bindParam(":patientId", $patientId);
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
@@ -139,9 +141,34 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
         }
     }
 
-    public static function markIssued($id)
+    public static function markDrugIssued($id)
     {
-        // TODO: Implement markIssued() method.
+       $db = new DB();
+       $conn = $db->connect();
+
+       try{
+           $stmt = $conn->prepare("UPDATE drug_prescriptions SET `status`='issued' WHERE id=:id");
+           $stmt->bindParam(":id", $id);
+           return $stmt->execute() ? true : false;
+       } catch (\PDOException $exception) {
+           echo $exception->getMessage();
+           return false;
+       }
+    }
+
+    public static function markDrugUnavailable($id)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("UPDATE drug_prescriptions SET `status`='unavailable' WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
     }
 
 
