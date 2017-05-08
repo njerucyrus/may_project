@@ -124,7 +124,7 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
         }
     }
 
-    public static function getAllPrescriptions($patientId)
+    public static function getPrescriptions($patientId)
     {
         $db = new DB();
         $conn = $db->connect();

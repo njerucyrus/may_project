@@ -17,6 +17,6 @@ interface DrugPrescriptionInterface
     public function update(DrugPrescription $drugPrescription, $id);
     public static function delete($id);
     public static function destroy();
-    public static function getAllPrescriptions($patientId);
+    public static function getPrescriptions($patientId);
     public static function markIssued($id);
 }
