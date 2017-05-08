@@ -41,12 +41,31 @@ class PatientVisitController implements PatientVisitInterface
 
     public static function delete($patientId)
     {
-        // TODO: Implement delete() method.
+       $db = new DB();
+       $conn = $db->connect();
+       try{
+           $stmt = $conn->prepare("DELETE FROM patient_visits WHERE patientId=:patientId");
+           $stmt->bindParam(":patientId", $patientId);
+           return $stmt->execute() ? true : false;
+       } catch (\PDOException $exception){
+           echo $exception->getMessage();
+           return false;
+
+       }
     }
 
     public static function destroy()
     {
-        // TODO: Implement destroy() method.
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $stmt = $conn->prepare("DELETE FROM patient_visits");
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception){
+            echo $exception->getMessage();
+            return false;
+
+        }
     }
 
     public static function getId($patientId)
