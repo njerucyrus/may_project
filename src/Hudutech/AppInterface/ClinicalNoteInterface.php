@@ -19,5 +19,5 @@ interface ClinicalNoteInterface
  public static function destroy();
  public static function getAllClinicalNoteByPatientId($patientId);
  public static function getClinicalNoteByDate($patientId, $date);
- public static function getClinicalNoteObject($patientId, $date);
+ public static function getObject($patientId, $date);
 }

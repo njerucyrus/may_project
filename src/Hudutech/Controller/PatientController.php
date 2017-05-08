@@ -35,40 +35,40 @@ class PatientController implements PatientInterface
         try {
 
             $stmt = $conn->prepare("INSERT INTO patients(
-                                                            patient_no,
-                                                            id_no,
-                                                            sir_name,
-                                                            first_name, 
-                                                            other_name,
-                                                            marital_status,
-                                                            phone_number,
+                                                            patientNo,
+                                                            idNo,
+                                                            sirName,
+                                                            firstName, 
+                                                            otherName,
+                                                            maritalStatus,
+                                                            phoneNumber,
                                                             occupation,
-                                                            patient_type,
+                                                            patientType,
                                                             sex    
                                                         )  
                                                 VALUES (
-                                                            :patient_no,
-                                                            :id_no,
-                                                            :sir_name,
-                                                            :first_name,
-                                                            :other_name,
-                                                            :marital_status,
-                                                            :phone_number,
+                                                            :patientNo,
+                                                            :idNo,
+                                                            :sirName,
+                                                            :firstName,
+                                                            :otherName,
+                                                            :maritalStatus,
+                                                            :phoneNumber,
                                                             :occupation,
-                                                            :patient_type,
+                                                            :patientType,
                                                             :sex
                                                             
                                                              
                                                         ) ");
-            $stmt->bindParam(":patient_no", $patientNo);
-            $stmt->bindParam(":id_no", $idNo);
-            $stmt->bindParam(":sir_name", $sirName);
-            $stmt->bindParam(":first_name", $firstName);
-            $stmt->bindParam(":other_name", $otherName);
-            $stmt->bindParam(":marital_status", $maritalStatus);
-            $stmt->bindParam(":phone_number", $phoneNumber);
+            $stmt->bindParam(":patientNo", $patientNo);
+            $stmt->bindParam(":idNo", $idNo);
+            $stmt->bindParam(":sirName", $sirName);
+            $stmt->bindParam(":firstName", $firstName);
+            $stmt->bindParam(":otherName", $otherName);
+            $stmt->bindParam(":maritalStatus", $maritalStatus);
+            $stmt->bindParam(":phoneNumber", $phoneNumber);
             $stmt->bindParam(":occupation", $occupation);
-            $stmt->bindParam(":patient_type", $patientType);
+            $stmt->bindParam(":patientType", $patientType);
             $stmt->bindParam(":sex", $sex);
             return $stmt->execute() ? true : false;
 
@@ -99,29 +99,29 @@ class PatientController implements PatientInterface
         try {
 
             $stmt = $conn->prepare("UPDATE patients SET
-                                                        patient_no=:patient_no,
-                                                        id_no=:id_no,
-                                                        sir_name=:sir_name,
-                                                        first_name=:first_name, 
-                                                        marital_status=:marital_status,
-                                                        phone_number=:phone_number,
+                                                        patientNo=:patientNo,
+                                                        idNo=:idNo,
+                                                        sirName=:sirName,
+                                                        firstName=:firstName, 
+                                                        maritalStatus=:maritalStatus,
+                                                        phoneNumber=:phoneNumber,
                                                         occupation=:occupation,
-                                                        patient_type=:patient_type,
+                                                        patientType=:patientType,
                                                         sex=:sex, 
-                                                        other_name=:other_name
+                                                        otherName=:otherName
                                                      WHERE id=:id
                                                      ");
 
             $stmt->bindParam(":id", $id);
-            $stmt->bindParam(":patient_no", $patientNo);
-            $stmt->bindParam(":id_no", $idNo);
-            $stmt->bindParam(":sir_name", $sirName);
-            $stmt->bindParam(":first_name", $firstName);
-            $stmt->bindParam(":other_name", $otherName);
-            $stmt->bindParam(":marital_status", $maritalStatus);
-            $stmt->bindParam(":phone_number", $phoneNumber);
+            $stmt->bindParam(":patientNo", $patientNo);
+            $stmt->bindParam(":idNo", $idNo);
+            $stmt->bindParam(":sirName", $sirName);
+            $stmt->bindParam(":firstName", $firstName);
+            $stmt->bindParam(":otherName", $otherName);
+            $stmt->bindParam(":maritalStatus", $maritalStatus);
+            $stmt->bindParam(":phoneNumber", $phoneNumber);
             $stmt->bindParam(":occupation", $occupation);
-            $stmt->bindParam(":patient_type", $patientType);
+            $stmt->bindParam(":patientType", $patientType);
             $stmt->bindParam(":sex", $sex);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
@@ -167,28 +167,7 @@ class PatientController implements PatientInterface
         try {
             $stmt = $conn->prepare("SELECT * FROM patients WHERE id=:id");
             $stmt->bindParam(":id", $id);
-            $stmt->execute();
-            $patient = array();
-            if ($stmt->rowCount() == 1) {
-                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                    $patient = array(
-                        "id" => $row['id'],
-                        "patient_no" => $row['patient_no'],
-                        "id_no" => $row['id_no'],
-                        "sir_name" => $row['sir_name'],
-                        "first_name" => $row['first_name'],
-                        "other_name" => $row['other_name'],
-                        "marital_status" => $row['marital_status'],
-                        "phone_number" => $row['phone_number'],
-                        "occupation" => $row['occupation'],
-                        "patient_type" => $row['patient_type'],
-                        "sex" => $row['sex']
-                    );
-                }
-            }
-
-            $db->closeConnection();
-            return $patient;
+            return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
 
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
@@ -196,36 +175,30 @@ class PatientController implements PatientInterface
         }
     }
 
+    public static function getObject($id)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM patients WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Patient::class);
+            return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch() : null;
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return null;
+        }
+    }
+
+
     public static function all()
     {
         $db = new DB();
         $conn = $db->connect();
         try {
             $stmt = $conn->prepare("SELECT * FROM patients WHERE 1");
-
-            $stmt->execute();
-            $patients = array();
-            if ($stmt->rowCount() > 0 ) {
-                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                    $patient = array(
-                        "id" => $row['id'],
-                        "patient_no" => $row['patient_no'],
-                        "id_no" => $row['id_no'],
-                        "sir_name" => $row['sir_name'],
-                        "first_name" => $row['first_name'],
-                        "other_name" => $row['other_name'],
-                        "marital_status" => $row['marital_status'],
-                        "phone_number" => $row['phone_number'],
-                        "occupation" => $row['occupation'],
-                        "patient_type" => $row['patient_type'],
-                        "sex" => $row['sex']
-                    );
-                    $patients[] = $patient;
-                }
-            }
-
-            $db->closeConnection();
-            return $patients;
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
 
         } catch (\PDOException $exception) {
             echo $exception->getMessage();

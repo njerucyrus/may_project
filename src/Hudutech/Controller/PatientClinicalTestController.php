@@ -30,29 +30,29 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         try {
 
             $sql = "INSERT INTO patient_clinical_tests(
-                                                        clinician_id,
-                                                        patient_id,
-                                                        test_id,
-                                                        test_result,
+                                                        clinicianId,
+                                                        patientId,
+                                                        testId,
+                                                        testResult,
                                                         description,
-                                                        is_performed)
+                                                        isPerformed)
                                                   VALUES
                                                    (
-                                                        :clinician_id,
-                                                        :patient_id,
-                                                        :test_id,
-                                                        :test_result,
+                                                        :clinicianId,
+                                                        :patientId,
+                                                        :testId,
+                                                        :testResult,
                                                         :description,
                                                         :is_perfomed
                                                     )";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":clinician_id", $clinicianId);
-            $stmt->bindParam(":patient_id", $patientId);
-            $stmt->bindParam(":test_id", $testId);
-            $stmt->bindParam(":test_result", $testResult);
+            $stmt->bindParam(":clinicianId", $clinicianId);
+            $stmt->bindParam(":patientId", $patientId);
+            $stmt->bindParam(":testId", $testId);
+            $stmt->bindParam(":testResult", $testResult);
             $stmt->bindParam(":description", $description);
-            $stmt->bindParam(":is_performed", $isPerformed);
+            $stmt->bindParam(":isPerformed", $isPerformed);
             return $stmt->execute() ? true : false;
 
         } catch (\PDOException $exception) {
@@ -73,18 +73,18 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         $isPerformed = $patientClinicalTest->isPerformed();
 
         try {
-            $sql = "UPDATE patient_clinical_tests SET clinician_id=:clinician_id,
+            $sql = "UPDATE patient_clinical_tests SET clinicianId=:clinicianId,
                                                       description=:description,
-                                                      test_result=:test_result,
+                                                      testResult=:testResult,
                                                       date=:date,
-                                                      is_performed=:is_parfomed
+                                                      isPerformed=:is_parfomed
                                                       ";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":clinician_id", $clinicianId);
+            $stmt->bindParam(":clinicianId", $clinicianId);
             $stmt->bindParam(":description", $description);
-            $stmt->bindParam(":test_result", $testResult);
+            $stmt->bindParam(":testResult", $testResult);
             $stmt->bindParam(":date", $date);
-            $stmt->bindParam(":is_performed", $isPerformed);
+            $stmt->bindParam(":isPerformed", $isPerformed);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
@@ -133,9 +133,9 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         $conn = $db->connect();
 
         try{
-            $sql = "SELECT * FROM patient_clinical_tests WHERE patient_id=:patient_id AND DATE(`date`)=:date";
+            $sql = "SELECT * FROM patient_clinical_tests WHERE patientId=:patientId AND DATE(`date`)=:date";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":patient_id", $patientId);
+            $stmt->bindParam(":patientId", $patientId);
             $stmt->bindParam(":date", $date);
             $tests = array();
             if($stmt->execute()){
