@@ -34,29 +34,29 @@ class ClinicalNoteController implements ClinicalNoteInterface
         try{
 
             $sql = "INSERT INTO clinical_notes(
-                                                patient_id,
+                                                patientId,
                                                 complaint,
-                                                complaint_history,
-                                                family_social_history,
-                                                physical_examination,
+                                                complaintHistory,
+                                                familySocialHistory,
+                                                physicalExamination,
                                                 date
                                               )
                                      VALUES
                                             (
-                                                :patient_id,
+                                                :patientId,
                                                 :complaint,
-                                                :complaint_history,
-                                                :family_social_history,
-                                                :physical_examination,
+                                                :complaintHistory,
+                                                :familySocialHistory,
+                                                :physicalExamination,
                                                 :date
                                             )";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":patient_id", $patientId);
+            $stmt->bindParam(":patientId", $patientId);
             $stmt->bindParam(":complaint", $complaint);
-            $stmt->bindParam(":complaint_history", $complaintHistory);
-            $stmt->bindParam(":family_social_history", $familySocialHistory);
-            $stmt->bindParam(":physical_examination", $physicalExamination);
+            $stmt->bindParam(":complaintHistory", $complaintHistory);
+            $stmt->bindParam(":familySocialHistory", $familySocialHistory);
+            $stmt->bindParam(":physicalExamination", $physicalExamination);
             $stmt->bindParam(":date", $date);
 
             return $stmt->execute() ? true : false;
@@ -87,18 +87,18 @@ class ClinicalNoteController implements ClinicalNoteInterface
 
         try {
             $sql = "UPDATE clinical_notes SET
-                                         patient_id=:patient_id,
+                                         patientId=:patientId,
                                          complaint=:complaint,
-                                         complaint_history=:complaint_history,
-                                         family_social_history=:family_social_history,
-                                         physical_examination=:physical_examination";
+                                         complaintHistory=:complaintHistory,
+                                         familySocialHistory=:familySocialHistory,
+                                         physicalExamination=:physicalExamination";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":id", $id);
-            $stmt->bindParam(":patient_id", $patientId);
+            $stmt->bindParam(":patientId", $patientId);
             $stmt->bindParam(":complaint", $complaint);
-            $stmt->bindParam(":complaint_history", $complaintHistory);
-            $stmt->bindParam(":family_social_history", $familySocialHistory);
-            $stmt->bindParam(":physical_examination", $physicalExamination);
+            $stmt->bindParam(":complaintHistory", $complaintHistory);
+            $stmt->bindParam(":familySocialHistory", $familySocialHistory);
+            $stmt->bindParam(":physicalExamination", $physicalExamination);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
@@ -153,19 +153,19 @@ class ClinicalNoteController implements ClinicalNoteInterface
        $conn = $db->connect();
 
        try{
-           $stmt = $conn->prepare("SELECT * FROM clinical_notes WHERE patient_id=:patient_id");
-           $stmt->bindParam(":patient_id", $patientId);
+           $stmt = $conn->prepare("SELECT * FROM clinical_notes WHERE patientId=:patientId");
+           $stmt->bindParam(":patientId", $patientId);
            $stmt->execute();
            $notes = array();
            if ($stmt->rowCount() > 0) {
                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
                    $note = array(
                       "id"=>$row['id'],
-                       "patient_id" =>$row['patient_id'],
+                       "patientId" =>$row['patientId'],
                        "complaint" => $row['complaint'],
-                       "complaint_history"=>$row['complaint_history'],
-                       "family_social_history"=>$row['family_social_history'],
-                       "physical_examination"=>$row['physical_examination'],
+                       "complaintHistory"=>$row['complaintHistory'],
+                       "familySocialHistory"=>$row['familySocialHistory'],
+                       "physicalExamination"=>$row['physicalExamination'],
                        "date"=>$row['date']
                    );
                    $notes[] = $note;
@@ -191,8 +191,8 @@ class ClinicalNoteController implements ClinicalNoteInterface
         $conn = $db->connect();
 
         try{
-            $stmt = $conn->prepare("SELECT * FROM clinical_notes WHERE patient_id=:patient_id AND date=:date");
-            $stmt->bindParam(":patient_id", $patientId);
+            $stmt = $conn->prepare("SELECT * FROM clinical_notes WHERE patientId=:patientId AND date=:date");
+            $stmt->bindParam(":patientId", $patientId);
             $stmt->bindParam(":date", $date);
             $stmt->execute();
             $notes = array();
@@ -200,11 +200,11 @@ class ClinicalNoteController implements ClinicalNoteInterface
                 while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
                     $notes = array(
                         "id"=>$row['id'],
-                        "patient_id" =>$row['patient_id'],
+                        "patientId" =>$row['patientId'],
                         "complaint" => $row['complaint'],
-                        "complaint_history"=>$row['complaint_history'],
-                        "family_social_history"=>$row['family_social_history'],
-                        "physical_examination"=>$row['physical_examination'],
+                        "complaintHistory"=>$row['complaintHistory'],
+                        "familySocialHistory"=>$row['familySocialHistory'],
+                        "physicalExamination"=>$row['physicalExamination'],
                         "date"=>$row['date']
                     );
 
@@ -227,30 +227,17 @@ class ClinicalNoteController implements ClinicalNoteInterface
      * which you want to update.
      * this makes work easier when updating.
      */
-    public static function getClinicalNoteObject($patientId, $date)
+    public static function getObject($patientId, $date)
     {
         $db = new DB();
         $conn = $db->connect();
 
         try{
-            $stmt = $conn->prepare("SELECT * FROM clinical_notes WHERE patient_id=:patient_id AND date=:date");
-            $stmt->bindParam(":patient_id", $patientId);
+            $stmt = $conn->prepare("SELECT * FROM clinical_notes WHERE patientId=:patientId AND date=:date");
+            $stmt->bindParam(":patientId", $patientId);
             $stmt->bindParam(":date", $date);
-            $stmt->execute();
-
-            $clinicalNote = new ClinicalNote();
-            if ($stmt->rowCount() == 1) {
-                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-                $clinicalNote->setPatientId($row['patient_id']);
-                $clinicalNote->setComplaint($row['complaint']);
-                $clinicalNote->setComplaintHistory($row['complaint_history']);
-                $clinicalNote->setFamilySocialHistory($row['family_social_history']);
-                $clinicalNote->setPhysicalExamination($row['physical_examination']);
-                $clinicalNote->setDate($row['date']);
-            }
-            return $clinicalNote;
-
+            $stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, ClinicalNote::class);
+            return $stmt->execute() && $stmt->rowCount() == 0 ? $stmt->fetch() : null;
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return null;
