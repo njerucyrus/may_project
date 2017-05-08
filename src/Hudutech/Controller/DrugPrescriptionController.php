@@ -126,7 +126,17 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
 
     public static function getAllPrescriptions($patientId)
     {
-        // TODO: Implement getAllPrescriptions() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT * FROM drug_prescriptions WHERE patientId=:patientId");
+            $stmt->bindParam(":patientId", $patientId);
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
     }
 
     public static function markIssued($id)
