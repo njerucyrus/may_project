@@ -206,4 +206,34 @@ class PatientController implements PatientInterface
         }
     }
 
+    public static function addToQueue($id)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+       try{
+           $stmt = $conn->prepare("UPDATE patients SET inQueue=1 WHERE id=:id
+                                  ");
+           $stmt->bindParam(":id", $id);
+           return $stmt->execute() ? true : false;
+       } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+       }
+    }
+
+    public static function showNotInQueue()
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM patients WHERE inQueue=0");
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
+
 }
