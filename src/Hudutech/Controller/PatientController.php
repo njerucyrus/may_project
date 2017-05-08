@@ -21,7 +21,7 @@ class PatientController implements PatientInterface
         $conn = $db->connect();
 
         $patientNo = $patient->getPatientNo();
-        $sirName = $patient->getSirName();
+        $surName = $patient->getSurName();
         $idNo = $patient->getIdNo();
         $firstName = $patient->getFirstName();
         $otherName = $patient->getOtherName();
@@ -37,7 +37,7 @@ class PatientController implements PatientInterface
             $stmt = $conn->prepare("INSERT INTO patients(
                                                             patientNo,
                                                             idNo,
-                                                            sirName,
+                                                            surName,
                                                             firstName, 
                                                             otherName,
                                                             maritalStatus,
@@ -49,7 +49,7 @@ class PatientController implements PatientInterface
                                                 VALUES (
                                                             :patientNo,
                                                             :idNo,
-                                                            :sirName,
+                                                            :surName,
                                                             :firstName,
                                                             :otherName,
                                                             :maritalStatus,
@@ -62,7 +62,7 @@ class PatientController implements PatientInterface
                                                         ) ");
             $stmt->bindParam(":patientNo", $patientNo);
             $stmt->bindParam(":idNo", $idNo);
-            $stmt->bindParam(":sirName", $sirName);
+            $stmt->bindParam(":surName", $surName);
             $stmt->bindParam(":firstName", $firstName);
             $stmt->bindParam(":otherName", $otherName);
             $stmt->bindParam(":maritalStatus", $maritalStatus);
@@ -101,7 +101,7 @@ class PatientController implements PatientInterface
             $stmt = $conn->prepare("UPDATE patients SET
                                                         patientNo=:patientNo,
                                                         idNo=:idNo,
-                                                        sirName=:sirName,
+                                                        surName=:surName,
                                                         firstName=:firstName, 
                                                         maritalStatus=:maritalStatus,
                                                         phoneNumber=:phoneNumber,
@@ -115,7 +115,7 @@ class PatientController implements PatientInterface
             $stmt->bindParam(":id", $id);
             $stmt->bindParam(":patientNo", $patientNo);
             $stmt->bindParam(":idNo", $idNo);
-            $stmt->bindParam(":sirName", $sirName);
+            $stmt->bindParam(":surName", $sirName);
             $stmt->bindParam(":firstName", $firstName);
             $stmt->bindParam(":otherName", $otherName);
             $stmt->bindParam(":maritalStatus", $maritalStatus);
