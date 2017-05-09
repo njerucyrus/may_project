@@ -31,7 +31,7 @@ $counter = 1;
                 </div>
                 <div class="table-responsive">
                     <div id="addNew" style="margin-bottom: 15px;" class="clearfix pull-left">
-                        <button class="btn btn-primary">Add New </button>
+                        <button class="btn btn-primary" onclick="showAddNewModal()">Add New </button>
                     </div>
                     <table class="table table-stripped" id="visitTable">
                         <thead>
@@ -44,16 +44,18 @@ $counter = 1;
                             <th colspan="1">Action</th>
                         </tr>
                         </thead>
-                        <tr>
+
                             <?php foreach ($patients as $patient): ?>
-                            <td><?php echo $counter++ ?></td>
-                            <td><?php echo $patient['patientNo']?></td>
-                            <td><?php echo $patient['sirName']." ". $patient['firstName']. " ".$patient['otherName']; ?></td>
-                            <td><?php echo $patient['phoneNumber']?></td>
-                            <td><?php echo $patient['sex']?></td>
-                            <td>
-                                <button class="btn btn-primary">Add To VisitList</button>
-                            </td>
+                            <tr>
+                                <td><?php echo $counter++ ?></td>
+                                <td><?php echo $patient['patientNo']?></td>
+                                <td><?php echo $patient['surName']." ". $patient['firstName']. " ".$patient['otherName']; ?></td>
+                                <td><?php echo $patient['phoneNumber']?></td>
+                                <td><?php echo $patient['sex']?></td>
+                                <td>
+                                    <button class="btn btn-primary">Add To VisitList</button>
+                                </td>
+                            </tr>
                             <?php endforeach;?>
                         </tr>
 
@@ -64,11 +66,140 @@ $counter = 1;
     </div>
     </div>
 </div>
+
+<!--- modal here-->
+
+<div id="patientModal" class="modal fade modal-lg col-md-offset-2" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Register Patient Here</h4>
+                <div id="feedback">
+
+                </div>
+            </div>
+            <div class="modal-body">
+                    <form role="form" class="form-horizontal form-groups-bordered">
+
+                        <div class="form-group">
+                            <label for="patientNumber" class="col-sm-3 control-label">Patient Number</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="patientNumber" name="patientNumber" placeholder="Patient Number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idNo" class="col-sm-3 control-label">ID Number</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="idNo" name="idNo" placeholder="ID number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="surName" class="col-sm-3 control-label">SurName</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="surName" name="surName" placeholder="surname">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="otherName" class="col-sm-3 control-label">Other Name</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="otherName" name="otherName" placeholder="Other Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber" class="col-sm-3 control-label">phoneNumber</label>
+
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="occupation" class="col-sm-3 control-label">Occupation</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Occupation" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="sex">Select Sex</label>
+
+                            <div class="col-sm-5">
+                                <select name="sex" id="sex" class="form-control">
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Select Marital Status</label>
+
+                            <div class="col-sm-5">
+                                <select name="maritalStatus"  id='maritalStatus' class="form-control">
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Select Patient Type</label>
+
+                            <div class="col-sm-5">
+                                <select name="patientType" id="patientType" class="form-control">
+                                    <option value="in_patient">In-Patient</option>
+                                    <option value="out_patient">Out-Patient</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-5">
+
+                                <input type="submit" name="submit" id='btn-add'value="Register Patient" class="btn btn-primary btn-lg btn-block "/>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--modal end-->
+
+
 <?php include 'footer_views.php'; ?>
 <script type="text/javascript">
     $(document).ready(function (e) {
-        e.preventDefault;
-        $('#addNew').hide();
+        e.preventDefault();
+        $('#AddNewModal').hide();
+        filterTable();
+
     })
 </script>
 
@@ -94,6 +225,57 @@ $counter = 1;
                 }
             }
         }
+    }
+
+    function getModalData() {
+        return {
+            idNo:$('#idNo').val(),
+            surName:$('#surName').val(),
+            firstName: $('#firstName').val(),
+            otherName: $('#otherName').val(),
+            maritalStatus:$('#maritalStatus').val(),
+            phoneNumber: $('#phoneNumber').val(),
+            occupation: $('#occupation').val(),
+            patientType: $('#patientType').val(),
+            sex: $('#sex').val(),
+            patientNo: $('#patientNumber').val()
+        }
+
+    }
+    function showAddNewModal() {
+        $('#patientModal').modal('show');
+        $('#btn-add').on('click', function (e) {
+            e.preventDefault();
+            var url = 'add_patient_endpoint.php';
+            var data = getModalData();
+            //console.log(data);
+            $.ajax(
+                {
+                    type: 'POST',
+                    url: url,
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        console.log(response);
+                        if(response.statusCode == 200){
+                            $('#feedback').removeClass('alert alert-danger')
+                                .addClass('alert alert-success')
+                                .text(response.message);
+                            setTimeout(function () {
+                               location.reload();
+                            }, 1000);
+                        }
+                        if (response.statusCode == 500){
+                            $('#feedback').removeClass('alert alert-success')
+                                .addClass('alert alert-danger')
+                                .text(response.message);
+                        }
+                    }
+
+                }
+            )
+        })
     }
 </script>
 </body>

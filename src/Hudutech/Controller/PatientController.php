@@ -86,7 +86,7 @@ class PatientController implements PatientInterface
         $conn = $db->connect();
 
         $patientNo = $patient->getPatientNo();
-        $sirName = $patient->getSirName();
+        $sirName = $patient->gitSurName();
         $idNo = $patient->getIdNo();
         $firstName = $patient->getFirstName();
         $otherName = $patient->getOtherName();
@@ -230,6 +230,21 @@ class PatientController implements PatientInterface
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
 
         } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
+    public static function getPatientId($patientNo)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT id FROM patients WHERE patientNo=:patientNo");
+            $stmt->bindParam(":patientNo", $patientNo);
+            return $stmt->execute() && $stmt->rowCount() ==1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
+        }catch (\PDOException $exception) {
             echo $exception->getMessage();
             return [];
         }

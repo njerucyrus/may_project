@@ -8,6 +8,7 @@
 ?>
 <!-- Bottom scripts (common) -->
 <script src="../public/assets/js/gsap/TweenMax.min.js"></script>
+<script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
 <script src="../public/assets/js/bootstrap.js"></script>
 <script src="../public/assets/js/joinable.js"></script>

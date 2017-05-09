@@ -66,4 +66,10 @@ interface PatientInterface
      * @return array
      */
     public static function showNotInQueue();
+
+    /**
+     * @param $patientNo
+     * @return mixed
+     */
+    public static function getPatientId($patientNo);
 }

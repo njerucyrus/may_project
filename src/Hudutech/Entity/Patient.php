@@ -53,10 +53,14 @@ class Patient
      * @var string
      */
     private $patientType;
-
+    /**
+     * @var boolean
+     */
+    private $inQueue;
     /**
      * @return string
      */
+
     public function getPatientNo()
     {
         return $this->patientNo;
@@ -216,5 +220,20 @@ class Patient
         $this->patientType = $patientType;
     }
 
+    /**
+     * @return bool
+     */
+    public function isInQueue()
+    {
+        return $this->inQueue;
+    }
+
+    /**
+     * @param bool $inQueue
+     */
+    public function setInQueue($inQueue)
+    {
+        $this->inQueue = $inQueue;
+    }
 
 }
