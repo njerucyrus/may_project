@@ -55,4 +55,21 @@ interface PatientInterface
      * @return array
      */
     public static function all();
+
+    /**
+     * @param $id
+     * @return boolean
+     */
+    public static function addToQueue($id);
+
+    /**
+     * @return array
+     */
+    public static function showNotInQueue();
+
+    /**
+     * @param $patientNo
+     * @return mixed
+     */
+    public static function getPatientId($patientNo);
 }

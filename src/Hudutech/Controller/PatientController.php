@@ -86,7 +86,7 @@ class PatientController implements PatientInterface
         $conn = $db->connect();
 
         $patientNo = $patient->getPatientNo();
-        $sirName = $patient->getSirName();
+        $sirName = $patient->gitSurName();
         $idNo = $patient->getIdNo();
         $firstName = $patient->getFirstName();
         $otherName = $patient->getOtherName();
@@ -205,5 +205,50 @@ class PatientController implements PatientInterface
             return [];
         }
     }
+
+    public static function addToQueue($id)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+       try{
+           $stmt = $conn->prepare("UPDATE patients SET inQueue=1 WHERE id=:id
+                                  ");
+           $stmt->bindParam(":id", $id);
+           return $stmt->execute() ? true : false;
+       } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+       }
+    }
+
+    public static function showNotInQueue()
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM patients WHERE inQueue=0");
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
+    public static function getPatientId($patientNo)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT id FROM patients WHERE patientNo=:patientNo");
+            $stmt->bindParam(":patientNo", $patientNo);
+            return $stmt->execute() && $stmt->rowCount() ==1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
+        }catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
 
 }

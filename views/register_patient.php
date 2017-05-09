@@ -139,7 +139,6 @@ include  __DIR__.'/includes/register_patient.inc.php';
                                         <option>married</option>
                                         <option>complicated</option>
 
-
                                     </select>
                                 </div>
                             </div>
@@ -158,11 +157,6 @@ include  __DIR__.'/includes/register_patient.inc.php';
                                 </div>
                             </div>
 
-
-
-
-
-
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-5">
 
@@ -175,16 +169,9 @@ include  __DIR__.'/includes/register_patient.inc.php';
                     </div>
 
                 </div>
-
             </div>
         </div>
-
-
     </div>
-
-
-    <?php
-    include 'footer_views.php';
-    ?>
+    <?php include 'footer_views.php';?>
 </body>
 </html>
