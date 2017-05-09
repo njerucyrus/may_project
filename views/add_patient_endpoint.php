@@ -41,11 +41,11 @@ if(!empty($data)) {
             $patientVisit = new \Hudutech\Entity\PatientVisit();
             $patientVisit->setPatientId(\Hudutech\Controller\PatientController::getPatientId($data['patientNo'])['id']);
             $patientVisit->setStatus("active");
-            $patientVisitCtrl = new \Hudutech\Controller\PatientVisitController();
 
+            $patientVisitCtrl = new \Hudutech\Controller\PatientVisitController();
             $patientVisitCtrl->create($patientVisit);
             //add the patient to the queue
-            \Hudutech\Controller\PatientController::addToQueue(\Hudutech\Controller\PatientController::getPatientId($data['patientNo']['id']));
+            \Hudutech\Controller\PatientController::addToQueue(\Hudutech\Controller\PatientController::getPatientId($data['patientNo'])['id']);
 
             print_r(json_encode(array(
                 "statusCode"=>200,

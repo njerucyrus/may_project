@@ -31,4 +31,6 @@ require_once __DIR__.'/vendor/autoload.php';
 //print_r($ctrl);
 
 $ctrl = \Hudutech\Controller\PatientVisitController::all();
-print_r($ctrl);
+//print_r($ctrl);
+
+echo \Hudutech\Controller\PatientController::getPatientId(48494)['id'];
