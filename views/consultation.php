@@ -8,7 +8,7 @@
 
 ?>
 <!DOCTYPE>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <?php include 'head_views.php' ?>
 <body class="page-body skin-facebook" >
 <div class="page-container">
@@ -168,7 +168,7 @@
 
 
                             <div class="col-sm-12">
-                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients current complaints"></textarea>
+                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients current history"></textarea>
                             </div>
                         </div>
 
@@ -203,7 +203,7 @@
 
 
                             <div class="col-sm-12">
-                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients current complaints"></textarea>
+                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients family social history"></textarea>
                             </div>
                         </div>
 
@@ -235,7 +235,7 @@
 
 
                             <div class="col-sm-12">
-                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients current complaints"></textarea>
+                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients physical Examination"></textarea>
                             </div>
                         </div>
 
@@ -247,6 +247,39 @@
 
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-primary" data-collapsed="0">
+
+
+
+                    <div class="panel-body ">
+
+                        <!--                   body content will start here-->
+
+                        <div class="col-md-3 col-md-offset-2">
+                            <!--    buttons-->
+                            <input value="Submit and recommend Drugs" class="btn btn-green  btn-lg"type="button" >
+
+                        </div>
+                        <div  class="col-md-3 col-md-offset-2">
+                            <!--    buttons-->
+
+                            <input value="Submit and recommend Lab Test" class="btn btn-blue   btn-lg" type="button" />
+                        </div>
+
+                        <!--                        body content will stop here-->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 
