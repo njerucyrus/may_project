@@ -8,10 +8,11 @@
 require_once __DIR__.'/../vendor/autoload.php';
 $patients = \Hudutech\Controller\PatientController::showNotInQueue();
 $counter = 1;
-
 ?>
 <!DOCTYPE html>
-<?php include 'head_views.php' ?>
+<head>
+    <?php include 'head_views.php' ?>
+</head>
 <body class="page-body skin-facebook">
 <div class="page-container">
     <?php include 'right_menu_views.php' ?>
@@ -53,7 +54,7 @@ $counter = 1;
                                 <td><?php echo $patient['phoneNumber']?></td>
                                 <td><?php echo $patient['sex']?></td>
                                 <td>
-                                    <button class="btn btn-primary">Add To VisitList</button>
+                                    <button class="btn btn-primary" onclick="addToVisitList('<?php echo $patient['id']?>')">Add To VisitList</button>
                                 </td>
                             </tr>
                             <?php endforeach;?>
@@ -66,132 +67,151 @@ $counter = 1;
     </div>
     </div>
 </div>
-
-<!--- modal here-->
-
-<div id="patientModal" class="modal fade modal-lg col-md-offset-2" role="dialog">
+<!-- Add new patient Modal-->
+<div class="modal fade" id="patientModal">
     <div class="modal-dialog">
-
-        <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Register Patient Here</h4>
-                <div id="feedback">
 
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Register New Patient Here</h4>
+                <div id="feedback">
+                    
                 </div>
             </div>
+
             <div class="modal-body">
-                    <form role="form" class="form-horizontal form-groups-bordered">
+
+                <div class="row">
+                    <div class="col-md-6">
 
                         <div class="form-group">
-                            <label for="patientNumber" class="col-sm-3 control-label">Patient Number</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="patientNumber" name="patientNumber" placeholder="Patient Number">
-                            </div>
+                            <label for="surName" class="control-label">Surname</label>
+
+                            <input type="text" class="form-control" id="surName" placeholder="Your Surname">
                         </div>
+
+                    </div>
+
+                    <div class="col-md-6">
 
                         <div class="form-group">
-                            <label for="idNo" class="col-sm-3 control-label">ID Number</label>
+                            <label for="firstName" class="control-label">First Name</label>
 
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="idNo" name="idNo" placeholder="ID number">
-                            </div>
+                            <input type="text" class="form-control" id="firstName" placeholder="Your first name">
                         </div>
 
-                        <div class="form-group">
-                            <label for="surName" class="col-sm-3 control-label">SurName</label>
-
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="surName" name="surName" placeholder="surname">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="firstName" class="col-sm-3 control-label">First Name</label>
-
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label for="otherName" class="col-sm-3 control-label">Other Name</label>
-
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="otherName" name="otherName" placeholder="Other Name">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phoneNumber" class="col-sm-3 control-label">phoneNumber</label>
-
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="occupation" class="col-sm-3 control-label">Occupation</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Occupation" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label" for="sex">Select Sex</label>
-
-                            <div class="col-sm-5">
-                                <select name="sex" id="sex" class="form-control">
-                                    <option value="M">M</option>
-                                    <option value="F">F</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Select Marital Status</label>
-
-                            <div class="col-sm-5">
-                                <select name="maritalStatus"  id='maritalStatus' class="form-control">
-                                    <option value="single">Single</option>
-                                    <option value="married">Married</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">Select Patient Type</label>
-
-                            <div class="col-sm-5">
-                                <select name="patientType" id="patientType" class="form-control">
-                                    <option value="in_patient">In-Patient</option>
-                                    <option value="out_patient">Out-Patient</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-5">
-
-                                <input type="submit" name="submit" id='btn-add'value="Register Patient" class="btn btn-primary btn-lg btn-block "/>
-                            </div>
-                        </div>
-
-                    </form>
-
+                    </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label for="otherName" class="control-label">Other Names</label>
+
+                            <input type="text" class="form-control" id="otherName" placeholder="Other Names">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="patientNo" class="control-label">Patient Number</label>
+
+                            <input type="text" class="form-control" id="patientNo" placeholder="Patient Number">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="phoneNumber" class="control-label">PhoneNumber</label>
+
+                            <input type="text" class="form-control" id="phoneNumber" placeholder="Your Mobile PhoneNumber">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="maritalStatus" class="control-label">Marital Status</label>
+                            <select id="maritalStatus" class="form-control">
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="occupation" class="control-label">Occupation</label>
+                            <input type="text" id="occupation" class="form-control" placeholder="Your occupation">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="sex" class="control-label">Sex</label>
+                            <select id="sex" class="form-control">
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="patientType" class="control-label">Patient Type</label>
+                            <select id="patientType" class="form-control">
+                                <option value="in_patient">IN-PATIENT</option>
+                                <option value="out_patient">OUT-PATIENT</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" id="btn-add" class="btn btn-info">Submit Details</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
             </div>
         </div>
-
     </div>
 </div>
-<!--modal end-->
 
+<!--add to visit list modal-->
+<!-- Modal 4 (Confirm)-->
+<div class="modal fade" id="confirm-addVisit" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Confirm Action</h4>
+                <div id="confirmFeedback">
+
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <p style="font-size: 16px;"> Click Continue to add the patient to visit list.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id='btn-confirmAdd' class="btn btn-info" data-dismiss="modal">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end-->
 
 <?php include 'footer_views.php'; ?>
 <script type="text/javascript">
@@ -268,11 +288,47 @@ $counter = 1;
                         }
                         if (response.statusCode == 500){
                             $('#feedback').removeClass('alert alert-success')
-                                .addClass('alert alert-danger')
-                                .text(response.message);
+                                .html('<div class="alert alert-danger alert-dismissable">'+
+                            '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>'+
+                            '<strong>Error! </strong> '+response.message+'</div>')
+
                         }
                     }
 
+                }
+            )
+        })
+    }
+
+    function addToVisitList(id) {
+        $('#confirm-addVisit').modal('show');
+        $('#btn-confirmAdd').on('click', function (e) {
+            e.preventDefault();
+            var url = 'patient_visit_endpoint.php';
+            $.ajax(
+                {
+                    type: 'POST',
+                    url: url,
+                    data: JSON.stringify({'id':id}),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        if(response.statusCode == 200){
+                            $('#confirmFeedback').removeClass('alert alert-danger')
+                                .addClass('alert alert-success')
+                                .text(response.message);
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        }
+                        if (response.statusCode == 500){
+                            $('#confirmFeedback').removeClass('alert alert-success')
+                                .html('<div class="alert alert-danger alert-dismissable">'+
+                                    '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>'+
+                                    '<strong>Error! </strong> '+response.message+'</div>')
+
+                        }
+                    }
                 }
             )
         })

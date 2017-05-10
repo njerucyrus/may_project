@@ -15,13 +15,9 @@ include __DIR__ . '/includes/register_user.inc.php';
 <div class="page-container">
     <?php include 'right_menu_views.php' ?>
     <div class="main-content">
-
-<?php include 'header_menu_views.php'?>
-
-    <div class="row">
-        <div class="col-md-12">
-
-
+        <div class="row">
+            <div class="col-md-12">
+                <?php include 'header_menu_views.php' ?>
                 <div class="panel panel-primary" data-collapsed="0">
 
                     <div class="panel-heading">

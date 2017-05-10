@@ -60,8 +60,6 @@ if(!empty($data)) {
               )
           ));
         }
-
-
     } else{
         print_r(json_encode(
             array(
@@ -70,7 +68,6 @@ if(!empty($data)) {
             )
         ));
     }
-
 }
 else{
     print_r(json_encode(

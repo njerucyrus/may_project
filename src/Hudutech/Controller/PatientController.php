@@ -86,7 +86,7 @@ class PatientController implements PatientInterface
         $conn = $db->connect();
 
         $patientNo = $patient->getPatientNo();
-        $sirName = $patient->gitSurName();
+        $sirName = $patient->getSurName();
         $idNo = $patient->getIdNo();
         $firstName = $patient->getFirstName();
         $otherName = $patient->getOtherName();
@@ -210,15 +210,15 @@ class PatientController implements PatientInterface
     {
         $db = new DB();
         $conn = $db->connect();
-       try{
-           $stmt = $conn->prepare("UPDATE patients SET inQueue=1 WHERE id=:id
+        try {
+            $stmt = $conn->prepare("UPDATE patients SET inQueue=1 WHERE id=:id
                                   ");
-           $stmt->bindParam(":id", $id);
-           return $stmt->execute() ? true : false;
-       } catch (\PDOException $exception) {
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return false;
-       }
+        }
     }
 
     public static function showNotInQueue()
@@ -240,11 +240,29 @@ class PatientController implements PatientInterface
         $db = new DB();
         $conn = $db->connect();
 
-        try{
+        try {
             $stmt = $conn->prepare("SELECT id FROM patients WHERE patientNo=:patientNo");
             $stmt->bindParam(":patientNo", $patientNo);
-            return $stmt->execute() && $stmt->rowCount() ==1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
-        }catch (\PDOException $exception) {
+            return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
+    public static function showInQueue()
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $today = date('Y-m-d');
+            $sql = "SELECT DISTINCT p.* FROM patients p, patient_visits pv INNER JOIN patients t ON t.id=pv.patientId
+                    WHERE  pv.status='active' AND
+                    date(pv.visitDate)='{$today}' AND
+                    p.id = pv.patientId";
+            $stmt = $conn->prepare($sql);
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
+        } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return [];
         }
