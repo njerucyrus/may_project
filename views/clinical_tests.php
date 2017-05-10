@@ -27,13 +27,13 @@ $counter = 1;
                 <div class="container-fluid" style="margin-top: 15px;">
                     <h5 class="center" style="font-size: 1.2em">Available Clinical Tests</h5>
                     <hr/>
-                    <div class="col-md-10 table-responsive">
+                    <div class="col-md-12 table-responsive">
                         <div id="addNew" style="margin-bottom: 15px;" class="clearfix pull-left">
                             <button class="btn btn-primary btn-blue" onclick="showModal()">Add New</button>
                         </div>
-                        <table class="table" id="visitTable">
+                        <table class="table table-condensed table-bordered" id="visitTable">
                             <thead>
-                            <tr class="bg-info">
+                            <tr class="bg-success">
                                 <th>#</th>
                                 <th>Test Name</th>
                                 <th>Cost(Ksh)</th>
@@ -47,12 +47,14 @@ $counter = 1;
                                     <td><?php echo $clinicalTest['testName'] ?></td>
                                     <td><?php echo $clinicalTest['cost'] ?></td>
                                     <td colspan="2">
-                                        <button class="btn btn-default btn-sm btn-icon icon-left">
+                                        <button class="btn btn-default btn-sm btn-icon icon-left"
+                                                onclick="updateTest('<?php echo $clinicalTest['id'] ?>', '<?php echo $clinicalTest['testName'] ?>', '<?php echo $clinicalTest['cost']?>')">
                                             <i class="entypo-pencil"></i>
                                             Edit
                                         </button>
 
-                                        <button class="btn btn-danger btn-sm btn-icon icon-left ">
+                                        <button class="btn btn-danger btn-sm btn-icon icon-left"
+                                                onclick="deleteTest('<?php echo $clinicalTest['id'] ?>')">
                                             <i class="entypo-cancel"></i>
                                             Delete
                                         </button>
@@ -75,15 +77,12 @@ $counter = 1;
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Add NEW TESTS</h4>
-                <div id="#feedbackMessage"></div>
+                <h4 class="modal-title" id="addTestTitle">Add NEW TESTS</h4>
+                <div id="feedbackMessage"></div>
             </div>
-
             <div class="modal-body">
-
                 <div class="row">
                     <div class="col-md-6">
-
                         <div class="form-group">
                             <label for="testName" class="control-label">Test Name</label>
 
@@ -96,7 +95,7 @@ $counter = 1;
 
                         <div class="form-group">
                             <label for="testCost" class="control-label">Test Cost</label>
-
+                            <input type="hidden" id="testId">
                             <input type="number" class="form-control" id="testCost"
                                    placeholder="Cost of the test in Ksh ..." required>
                         </div>
@@ -111,38 +110,103 @@ $counter = 1;
             </div>
         </div>
     </div>
+</div>
 
-    <?php include 'footer_views.php' ?>
-    <script>
-        $(document).ready(function (e) {
-            e.preventDefault;
-        })
-    </script>
-    <script>
-        function getModalData() {
-            return {
-                testName: $('#testName').val(),
-                cost: $('#testCost').val()
+<!-- Modal 4 (Confirm)-->
+<div class="modal fade" id="confirmDeleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Confirm Action</h4>
+            </div>
+            <div id="confirmFeedback">
+            </div>
+            <div class="modal-body">
+
+                <p style="font-size: 16px;">Click Continue to delete</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id='btnConfirmDelete' class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include 'footer_views.php' ?>
+<script>
+    jQuery(document).ready(function (e) {
+        e.preventDefault;
+    })
+</script>
+<script>
+    function getModalData() {
+        return {
+            testName: $('#testName').val(),
+            cost: $('#testCost').val()
+        }
+    }
+    function showModal() {
+        jQuery('#testModal').modal('show');
+    }
+    function addNewTest() {
+        var url = 'clinical_test_endpoint.php';
+        var data = getModalData();
+        jQuery.ajax(
+            {
+                type: 'POST',
+                url: url,
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+
+                    console.log(response.statusCode);
+
+                    if (response['statusCode'] == 200) {
+                        console.log(response);
+                        jQuery('#feedbackMessage').removeClass('alert alert-danger')
+                            .addClass('alert alert-success')
+                            .text(response.message);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000)
+                    }
+                    else if (response.statusCode == 500) {
+                        jQuery('#feedbackMessage').removeClass('alert alert-success')
+                            .html('<div class="alert alert-danger alert-dismissable">' +
+                                '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                '<strong>Error! </strong> ' + response.message + '</div>');
+                    }
+                }
+
             }
-        }
-        function showModal() {
-            $('#testModal').modal('show');
-        }
-        function addNewTest() {
+        )
+    }
+
+    function updateTest(id, testName, cost) {
+        jQuery('#testModal').modal('show');
+        $('#btn-add').text('Save changes');
+        jQuery('#addTestTitle').text('Update Clinical Test');
+        jQuery('#testName').val(testName);
+        jQuery('#testCost').val(cost);
+
+        jQuery('#btn-add').on('click', function (e) {
+            e.preventDefault;
             var url = 'clinical_test_endpoint.php';
             var data = getModalData();
-            console.log(data);
-            console.log(url);
-            $.ajax(
+            data['id'] = id;
+            jQuery.ajax(
                 {
-                    type: 'POST',
+                    type: 'PUT',
                     url: url,
                     data: JSON.stringify(data),
-                    contentType: 'application/json',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
                     success: function (response) {
-                        if (response.status.toLowerCase() == "success") {
+                        if (response.statusCode == 201) {
                             console.log(response);
-                            $('#feedbackMessage').removeClass('alert alert-danger')
+                            jQuery('#feedbackMessage').removeClass('alert alert-danger')
                                 .addClass('alert alert-success')
                                 .text(response.message);
                             setTimeout(function () {
@@ -150,17 +214,56 @@ $counter = 1;
                             }, 1000)
                         }
                         else if (response.statusCode == 500) {
-                            $('#feedbackMessage').removeClass('alert alert-success')
+                            jQuery('#feedbackMessage').removeClass('alert alert-success')
+                                .html('<div class="alert alert-danger alert-dismissable">' +
+                                    '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                    '<strong>Error! </strong> ' + response.message + '</div>');
+                        }
+                    }
+                }
+            )
+        })
+
+    }
+
+
+    function deleteTest(id) {
+        jQuery('#confirmDeleteModal').modal('show');
+        var url = 'clinical_test_endpoint.php';
+        jQuery('#btnConfirmDelete').on('click', function (e) {
+            e.preventDefault();
+
+            jQuery.ajax(
+                {
+                    type: 'DELETE',
+                    url: url,
+                    data: JSON.stringify({'id': id}),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8;',
+                    success: function (response) {
+                        if (response.statusCode == 204) {
+                            console.log(response);
+                            $('#confirmFeedback').removeClass('alert alert-danger')
+                                .addClass('alert alert-success')
+                                .text(response.message);
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1200)
+                        }
+                        else if (response.statusCode == 500) {
+                            $('#confirmFeedback').removeClass('alert alert-success')
                                 .html('<div class="alert alert-danger alert-dismissable">' +
                                     '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
                                     '<strong>Error! </strong> ' + response.message + '</div>');
                         }
                     }
 
+
                 }
             )
-        }
-    </script>
+        });
+    }
+</script>
 </body>
 </html>
 

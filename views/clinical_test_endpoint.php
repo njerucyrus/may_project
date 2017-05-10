@@ -23,7 +23,6 @@ if ($requestMethod == 'POST' && !empty($data)) {
         if ($created) {
             print_r(json_encode(array(
                 "statusCode" => 200,
-                "status"=>"success",
                 "message" => "Clinical Test Added Successfully"
             )));
         } else {

@@ -277,7 +277,7 @@ $counter = 1;
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
                     success: function (response) {
-                        console.log(response);
+                        console.log(response.statusCode);
                         if(response.statusCode == 200){
                             $('#feedback').removeClass('alert alert-danger')
                                 .addClass('alert alert-success')
