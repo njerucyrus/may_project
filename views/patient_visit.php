@@ -8,10 +8,11 @@
 require_once __DIR__.'/../vendor/autoload.php';
 $patients = \Hudutech\Controller\PatientController::showNotInQueue();
 $counter = 1;
-
 ?>
 <!DOCTYPE html>
-<?php include 'head_views.php' ?>
+<head>
+    <?php include 'head_views.php' ?>
+</head>
 <body class="page-body skin-facebook">
 <div class="page-container">
     <?php include 'right_menu_views.php' ?>

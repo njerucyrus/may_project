@@ -11,6 +11,10 @@ namespace Hudutech\AppInterface;
 
 use Hudutech\Entity\Patient;
 
+/**
+ * Interface PatientInterface
+ * @package Hudutech\AppInterface
+ */
 interface PatientInterface
 {
     /**
@@ -72,4 +76,9 @@ interface PatientInterface
      * @return mixed
      */
     public static function getPatientId($patientNo);
+
+    /**
+     * @return array
+     */
+    public static function showInQueue();
 }
