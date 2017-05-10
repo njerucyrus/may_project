@@ -8,14 +8,14 @@
 
 ?>
 <!DOCTYPE>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <?php include 'head_views.php' ?>
-<body class="page-body skin-facebook" >
+<body class="page-body skin-facebook">
 <div class="page-container">
 
     <?php include 'right_menu_views.php' ?>
     <div class="main-content">
-        <?php include 'header_menu_views.php'?>
+        <?php include 'header_menu_views.php' ?>
 
         <div class="row">
             <div class="col-md-12">
@@ -25,30 +25,11 @@
                     <div class="panel-heading">
                         <div class="panel-title col-md-offset-3">
 
-                            <?php
-                            if(empty($success_msg) && !empty($error_msg)){
-                                ?>
-                                <div class="alert alert-danger alert-dismissable">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <?php echo $error_msg ?>
-                                </div>
-                                <?php
-                            }
-                            elseif(empty($error_msg) and !empty($success_msg)){
-                                ?>
-                                <div class="alert alert-success alert-dismissable">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <?php echo $success_msg  ?>
-                                </div>
 
-                                <?php
-                            }
-                            else
-                            {
-                                echo "";
-                            }
-                            ?>
                             <h1>Consultation Panel</h1>
+                            <div id="feedback">
+
+                            </div>
                         </div>
 
 
@@ -56,16 +37,16 @@
 
                     <div class="panel-body">
 
-<!--                   body content will start here-->
+                        <!--                   body content will start here-->
                         <form role="form" class="form-horizontal form-groups-bordered">
                             <div class="col-sm-5">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Patient Number">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Patient Number">
 
-                                <span class="input-group-btn">
+                                    <span class="input-group-btn">
 											<button class="btn btn-primary" type="button">Search</button>
 										</span>
-                            </div>
+                                </div>
                             </div>
 
                             <div class="col-md-10">
@@ -76,7 +57,7 @@
                                     <thead>
                                     <tr>
 
-                                       <th>Patient Number</th>
+                                        <th>Patient Number</th>
                                         <th>Name</th>
                                         <th>Age</th>
                                         <th>Occupation</th>
@@ -94,7 +75,8 @@
                                         <td>Arlind</td>
                                         <td>Nushi</td>
                                         <td>Arlind</td>
-                                        <td><input type="button" value="Add Clinical Notes" class="btn-primary form-controls"/></td>
+                                        <td><input type="button" value="Add Clinical Notes"
+                                                   class="btn-primary form-controls"/></td>
 
                                     </tr>
 
@@ -106,7 +88,7 @@
 
                         </form>
 
-<!--                        body content will stop here-->
+                        <!--                        body content will stop here-->
                     </div>
 
                 </div>
@@ -136,7 +118,8 @@
 
 
                             <div class="col-sm-12">
-                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients current complaints"></textarea>
+                                <textarea class="form-control autogrow" id="complaint" name="complaint"
+                                          placeholder="Enter patients current complaints"></textarea>
                             </div>
                         </div>
 
@@ -168,7 +151,8 @@
 
 
                             <div class="col-sm-12">
-                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients current history"></textarea>
+                                <textarea class="form-control autogrow" id="complaintHistory" name="complaintHistory"
+                                          placeholder="Enter patients complaint history"></textarea>
                             </div>
                         </div>
 
@@ -203,7 +187,9 @@
 
 
                             <div class="col-sm-12">
-                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients family social history"></textarea>
+                                <textarea class="form-control autogrow" id="familySocialHistory"
+                                          name="familySocialHistory"
+                                          placeholder="Enter patients family social history"></textarea>
                             </div>
                         </div>
 
@@ -235,7 +221,9 @@
 
 
                             <div class="col-sm-12">
-                                <textarea class="form-control autogrow" id="field-ta" placeholder="Enter patients physical Examination"></textarea>
+                                <textarea class="form-control autogrow" id="physicalExamination"
+                                          name="physicalExamination"
+                                          placeholder="Enter patients physical Examination"></textarea>
                             </div>
                         </div>
 
@@ -255,20 +243,21 @@
                 <div class="panel panel-primary" data-collapsed="0">
 
 
-
                     <div class="panel-body ">
 
                         <!--                   body content will start here-->
 
                         <div class="col-md-3 col-md-offset-2">
                             <!--    buttons-->
-                            <input value="Submit and recommend Drugs" class="btn btn-green  btn-lg"type="button" >
+                            <input value="Submit and recommend Drugs" id="btn-add-recommend" onclick="submitFormData()"
+                                   class="btn btn-green  btn-lg" type="button">
 
                         </div>
-                        <div  class="col-md-3 col-md-offset-2">
+                        <div class="col-md-3 col-md-offset-2">
                             <!--    buttons-->
 
-                            <input value="Submit and recommend Lab Test" class="btn btn-blue   btn-lg" type="button" />
+                            <input value="Submit and recommend Lab Test" id="btn-add-test" class="btn btn-blue   btn-lg"
+                                   type="button"/>
                         </div>
 
                         <!--                        body content will stop here-->
@@ -286,5 +275,56 @@
     <?php
     include 'footer_views.php';
     ?>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            e.preventDefault();
+
+        })
+    </script>
+    <script>
+        function getFormData() {
+            return {
+//    patientId:$('#patientId').val(),
+                patientId: 2883,
+                complaint: $('#complaint').val(),
+                complaintHistory: $('#complaintHistory').val(),
+                familySocialHistory: $('#familySocialHistory').val(),
+                physicalExamination: $('#physicalExamination').val(),
+            }
+
+        }
+        function submitFormData() {
+                var url = 'consultation_endpoint.php';
+                var data = getFormData();
+                console.log(data);
+                $.ajax(
+                    {
+                        type: 'POST',
+                        url: url,
+                        data: JSON.stringify(data),
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (response) {
+                            console.log(response);
+                            if (response.statusCode == 200) {
+                                $('#feedback').removeClass('alert alert-danger')
+                                    .addClass('alert alert-success')
+                                    .text(response.message);
+                                setTimeout(function () {
+                                    location.reload();
+                                }, 1000);
+                            }
+                            if (response.statusCode == 500) {
+                                $('#feedback').removeClass('alert alert-success')
+                                    .addClass('alert alert-danger')
+                                    .text(response.message);
+                            }
+                        }
+
+                    }
+                )
+
+        }
+    </script>
 </body>
 </html>
