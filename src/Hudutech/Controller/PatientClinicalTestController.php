@@ -133,7 +133,11 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         $conn = $db->connect();
 
         try{
-            $sql = "SELECT * FROM patient_clinical_tests WHERE patientId=:patientId AND DATE(`date`)=:date";
+            $sql = "SELECT DISTINCT ct.* FROM patient_clinical_tests pt, clinical_tests ct
+                    INNER JOIN patient_clinical_tests pct ON pct.testId = ct.id
+                    WHERE pt.patientId=:patientId AND 
+                    date(`pt`.`date`)=:date AND
+                    pct.id=ct.id ";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
             $stmt->bindParam(":date", $date);
