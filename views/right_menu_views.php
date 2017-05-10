@@ -72,7 +72,7 @@
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
             <li class="opened active has-sub multiple-expanded">
                 <a href="#l">
-                    <i class="entypo-gauge"></i>
+                    <i class="entypo-plus-circled"></i>
                     <span class="title">Registration</span>
                 </a>
                 <ul class="visible">
@@ -91,9 +91,9 @@
                 </ul>
             </li>
 
-            <li class="opened active has-sub">
+            <li class="has-sub">
                 <a href="index.html">
-                    <i class="entypo-gauge"></i>
+                    <i class="entypo-search"></i>
                     <span class="title">View</span>
                 </a>
                 <ul class="visible">
@@ -106,6 +106,8 @@
 
                 </ul>
             </li>
+
+
 
 
 

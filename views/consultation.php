@@ -5,6 +5,9 @@
  * Date: 06/05/2017
  * Time: 22:22
  */
+require __DIR__.'/../vendor/autoload.php';
+$queuePatients= \Hudutech\Controller\PatientController::showInQueue();
+$counter=1;
 
 ?>
 <!DOCTYPE>
@@ -41,10 +44,10 @@
                         <form role="form" class="form-horizontal form-groups-bordered">
                             <div class="col-sm-5">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Patient Number">
+                                    <input type="text" class="form-control" id="patientNo" onkeyup="filterTable()" placeholder="Patient Number">
 
                                     <span class="input-group-btn">
-											<button class="btn btn-primary" type="button">Search</button>
+											<button class="btn btn-primary" onclick="filterTable()" type="button">Search</button>
 										</span>
                                 </div>
                             </div>
@@ -53,13 +56,13 @@
 
                                 <h4>Patient Details</h4>
 
-                                <table class="table table-condensed table-bordered ">
+                                <table class="table table-condensed table-bordered " id="queueTable">
                                     <thead>
                                     <tr>
 
+                                        <th>#</th>
                                         <th>Patient Number</th>
                                         <th>Name</th>
-                                        <th>Age</th>
                                         <th>Occupation</th>
                                         <th>Marital Status</th>
                                         <th>Action</th>
@@ -68,17 +71,19 @@
                                     </thead>
 
                                     <tbody>
+                                    <?php foreach ($queuePatients as $queuePatient ): ?>
                                     <tr>
 
-                                        <td>Arlind</td>
-                                        <td>Nushi</td>
-                                        <td>Arlind</td>
-                                        <td>Nushi</td>
-                                        <td>Arlind</td>
-                                        <td><input type="button" value="Add Clinical Notes"
-                                                   class="btn-primary form-controls"/></td>
+                                        <td><?php echo $counter++?></td>
+                                        <td><?php echo $queuePatient['patientNo'] ?></td>
+                                        <td><?php echo $queuePatient['surName']." ".$queuePatient['firstName']." ".$queuePatient['otherName'] ;  ?></td>
+                                        <td><?php echo $queuePatient['occupation'] ?></td>
+                                        <td><?php echo $queuePatient['maritalStatus'] ?></td>
+                                        <td><input type="button" value="Add Clinical Notes" onclick="showClinicalNotesForms('<?php echo $queuePatient['id']?>', '<?php echo $queuePatient['patientNo']?>')"
+                                                   class="form-controls btn btn-blue  btn-md"/></td>
 
                                     </tr>
+                                    <?php endforeach; ?>
 
 
                                     </tbody>
@@ -95,7 +100,7 @@
 
             </div>
         </div>
-
+<div id="clinicalNotesForms">
         <div class="row">
             <div class="col-md-6">
 
@@ -118,6 +123,7 @@
 
 
                             <div class="col-sm-12">
+                                <input type="hidden" id="patientNoHidden">
                                 <textarea class="form-control autogrow" id="complaint" name="complaint"
                                           placeholder="Enter patients current complaints"></textarea>
                             </div>
@@ -268,24 +274,88 @@
             </div>
 
         </div>
-
+</div>
     </div>
 
 
     <?php
     include 'footer_views.php';
     ?>
-    <script type="text/javascript">
-        $(document).ready(function (e) {
-            e.preventDefault();
+    <script>
+        jQuery(document).ready(function (e) {
+            e.preventDefault;
+           hideClinicalNotesForms();
 
         })
     </script>
     <script>
+        function hideClinicalNotesForms ()
+        {
+            jQuery('#clinicalNotesForms').hide();
+        }
+
+        function showClinicalNotesForms (patientId,patientNo) {
+
+            jQuery('#clinicalNotesForms').show();
+            jQuery('#patientNoHidden').val(patientId) ;
+            showFilterTable(patientNo);
+
+
+        }
+
+
+        function showFilterTable(patientNo) {
+            // Declare variables
+            var input, filter, table, tr, td, i;
+
+            filter = patientNo.toUpperCase();
+            table = document.getElementById("queueTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+
+                    } else {
+                        tr[i].style.display = "none";
+
+                    }
+                }
+            }
+        }
+
+        function filterTable() {
+            // Declare variables
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("patientNo");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("queueTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        hideClinicalNotesForms();
+                    } else {
+                        tr[i].style.display = "none";
+                        hideClinicalNotesForms();
+                    }
+                }
+            }
+        }
+
+
+
+
         function getFormData() {
             return {
-//    patientId:$('#patientId').val(),
-                patientId: 2883,
+                 patientId:$('#patientNoHidden').val(),
                 complaint: $('#complaint').val(),
                 complaintHistory: $('#complaintHistory').val(),
                 familySocialHistory: $('#familySocialHistory').val(),
@@ -313,11 +383,13 @@
                                 setTimeout(function () {
                                     location.reload();
                                 }, 1000);
+                                jQuery('#patientNoHidden').val('') ;
                             }
                             if (response.statusCode == 500) {
                                 $('#feedback').removeClass('alert alert-success')
                                     .addClass('alert alert-danger')
                                     .text(response.message);
+                                jQuery('#patientNoHidden').val('') ;
                             }
                         }
 
