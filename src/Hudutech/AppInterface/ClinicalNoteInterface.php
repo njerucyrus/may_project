@@ -20,4 +20,5 @@ interface ClinicalNoteInterface
  public static function getAllClinicalNoteByPatientId($patientId);
  public static function getClinicalNoteByDate($patientId, $date);
  public static function getObject($patientId, $date);
+    public static function getPatientFromClinicalNotes($patientId);
 }

@@ -24,6 +24,7 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
     <?php include 'right_menu_views.php' ?>
     <div class="main-content">
         <?php include 'header_menu_views.php' ?>
+        <hr>
         <div class="row">
             <div class="col col-md-10">
                 <div class="panel-body">
@@ -32,16 +33,16 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
                     <table class="table table-bordered">
                         <thead>
                         <tr class="bg-success">
-                            <th>PatientNo</th>
-                            <th>Patient Name</th>
-                            <th>Sex</th>
+                            <th style="color: #000000;">PatientNo</th>
+                            <th style="color: #000000;">Patient Name</th>
+                            <th style="color: #000000;">Sex</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td><?php echo $patient['patientNo'] ?></td>
-                            <td><?php echo $patient['surName']." ".$patient['firstName']." ".$patient['otherName']?></td>
-                            <td><?php echo $patient['sex'] ?></td>
+                            <td style="color: #000000;"><?php echo $patient['patientNo'] ?></td>
+                            <td style="color: #000000;"><?php echo $patient['surName']." ".$patient['firstName']." ".$patient['otherName']?></td>
+                            <td style="color: #000000;"><?php echo $patient['sex'] ?></td>
                         </tr>
                         </tbody>
                     </table>
@@ -61,7 +62,7 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
                                  <option value="<?php echo $test['id']?>"><?php echo $test['testName']." @Ksh ". $test['cost']?></option>
                                  <?php endforeach; ?>
                              </select>
-                                <button class="btn btn-primary btn-blue"><i class="entypo-plus-circled"></i> AddTo Patient's Test</button>
+                                <button class="btn btn-primary btn-blue" onclick="addTest('<?php echo $patient['id']?>')"><i class="entypo-plus-circled"></i> AddTo Patient's Test</button>
                             </div>
 
                         </form>
@@ -69,12 +70,13 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
                     <hr>
                     <div class="table-responsive">
                         <h3>Recommended Clinical Tests</h3>
-                        <table class="table table-stripped" id="visitTable">
+                        <div id="feedback"></div>
+                        <table class="table table-bordered" id="visitTable">
                             <thead>
                             <tr class="bg-success">
-                                <th>Test Name</th>
-                                <th>Cost (Ksh)</th>
-                                <th>Action</th>
+                                <th style="color: #000000;">Test Name</th>
+                                <th style="color: #000000;">Cost (Ksh)</th>
+                                <th style="color: #000000;">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -88,6 +90,42 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
         </div>
     </div>
 </div>
+
+<?php include 'footer_views.php'?>
+<script>
+    jQuery(document).ready(function (e) {
+       e.preventDefault();
+    })
+</script>
+<script>
+    function addTest(patientId) {
+        var testId = jQuery('#testName').val();
+        var url = 'recommend_test_endpoint.php';
+        jQuery.ajax(
+            {
+                type: 'POST',
+                url: url,
+                data: JSON.stringify({'testId': testId, 'patientId': patientId}),
+                contentType: 'application/json; charset=utf-8;',
+                success : function (response) {
+                    if (response.statusCode == 200){
+                        jQuery('#feedback').removeClass('alert alert-danger')
+                            .addClass('alert alert-success')
+                            .text(response.message);
+                        location.reload();
+                    }
+                    else if (response.statusCode == 500) {
+                        jQuery('#feedback').removeClass('alert alert-success')
+                            .html('<div class="alert alert-danger alert-dismissable">' +
+                                '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                '<strong>Error! </strong> ' + response.message + '</div>');
+
+                    }
+                }
+            }
+        )
+    }
+</script>
 </body>
 </html>
 
