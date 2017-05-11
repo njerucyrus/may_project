@@ -30,7 +30,11 @@ require_once __DIR__.'/vendor/autoload.php';
 //
 //print_r($ctrl);
 
-$ctrl = \Hudutech\Controller\PatientVisitController::all();
+//$ctrl = \Hudutech\Controller\PatientVisitController::all();
 //print_r($ctrl);
 
-echo \Hudutech\Controller\PatientController::getPatientId(48494)['id'];
+//echo \Hudutech\Controller\PatientController::getPatientId(48494)['id'];
+
+$today = date('Y-m-d');
+$patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests(5, $today);
+print_r($patientTests);

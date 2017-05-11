@@ -935,7 +935,7 @@ $('link[rel=stylesheet]').eq(0).before(cssHtml);
 
 	var updateAndTriggerWatchersI;
 	function updateAndTriggerWatchers() {
-		// update all watchers then trigger the events so one can rely on another being up to date.
+		// update all watchers then trigger the events so one can rely on another being up to updatedAt.
 		updateAndTriggerWatchersI = watchers.length;
 		while( updateAndTriggerWatchersI-- ) {
 			watchers[updateAndTriggerWatchersI].update();

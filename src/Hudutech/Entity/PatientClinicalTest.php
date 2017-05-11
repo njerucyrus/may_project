@@ -34,7 +34,12 @@ class PatientClinicalTest
     /**
      * @var \DateTime
      */
-    private $date;
+    private $updatedAt;
+
+    /**
+     * @var
+     */
+    private $createdAt;
 
     /**
      * @var boolean
@@ -124,18 +129,36 @@ class PatientClinicalTest
     /**
      * @return \DateTime
      */
-    public function getDate()
+    public function getUpdatedAt()
     {
-        return $this->date;
+        return $this->updatedAt;
     }
 
     /**
-     * @param \DateTime $date
+     * @param \DateTime $updatedAt
      */
-    public function setDate($date)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->date = $date;
+        $this->updatedAt = $updatedAt;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+
 
     /**
      * @return bool

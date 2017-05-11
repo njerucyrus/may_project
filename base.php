@@ -5,19 +5,15 @@
  * Date: 06/05/2017
  * Time: 17:28
  */
- ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
-<?php
-include 'views/head.php';
-?>
+<?php include 'views/head.php';?>
 <body class="page-body skin-facebook" data-url="http://neon.dev">
 
-<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
-
-    <?php
-    include 'views/right_menu.php';
-    ?>
+<div class="page-container">
+    <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+    <?php include 'views/right_menu.php'; ?>
 
     <div class="main-content">
 
@@ -34,7 +30,8 @@ include 'views/head.php';
                         <!-- Raw Notifications -->
                         <li class="notifications dropdown">
 
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                               data-close-others="true">
                                 <i class="entypo-attention"></i>
                                 <span class="badge badge-info">6</span>
                             </a>
@@ -145,7 +142,8 @@ include 'views/head.php';
                         <!-- Message Notifications -->
                         <li class="notifications dropdown">
 
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                               data-close-others="true">
                                 <i class="entypo-mail"></i>
                                 <span class="badge badge-secondary">10</span>
                             </a>
@@ -155,7 +153,8 @@ include 'views/head.php';
                                     <form class="top-dropdown-search">
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Search anything..." name="s" />
+                                            <input type="text" class="form-control" placeholder="Search anything..."
+                                                   name="s"/>
                                         </div>
 
                                     </form>
@@ -164,7 +163,8 @@ include 'views/head.php';
                                         <li class="active">
                                             <a href="#">
 											<span class="image pull-right">
-												<img src="public/assets/images/thumb-1@2x.png" width="44" alt="" class="img-circle" />
+												<img src="public/assets/images/thumb-1@2x.png" width="44" alt=""
+                                                     class="img-circle"/>
 											</span>
 
                                                 <span class="line">
@@ -181,7 +181,8 @@ include 'views/head.php';
                                         <li class="active">
                                             <a href="#">
 											<span class="image pull-right">
-												<img src="public/assets/images/thumb-2@2x.png" width="44" alt="" class="img-circle" />
+												<img src="public/assets/images/thumb-2@2x.png" width="44" alt=""
+                                                     class="img-circle"/>
 											</span>
 
                                                 <span class="line">
@@ -198,7 +199,8 @@ include 'views/head.php';
                                         <li>
                                             <a href="#">
 											<span class="image pull-right">
-												<img src="public/assets/images/thumb-3@2x.png" width="44" alt="" class="img-circle" />
+												<img src="public/assets/images/thumb-3@2x.png" width="44" alt=""
+                                                     class="img-circle"/>
 											</span>
 
                                                 <span class="line">
@@ -215,7 +217,8 @@ include 'views/head.php';
                                         <li>
                                             <a href="#">
 											<span class="image pull-right">
-												<img src="public/assets/images/thumb-4@2x.png" width="44" alt="" class="img-circle" />
+												<img src="public/assets/images/thumb-4@2x.png" width="44" alt=""
+                                                     class="img-circle"/>
 											</span>
 
                                                 <span class="line">
@@ -240,7 +243,6 @@ include 'views/head.php';
 
                         <!-- Task Notifications -->
 
-
                     </ul>
 
             </div>
@@ -256,37 +258,37 @@ include 'views/head.php';
 
                         Language: &nbsp;
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
-                            <img src="public/assets/images/flags/flag-uk.png" width="16" height="16" />
+                            <img src="public/assets/images/flags/flag-uk.png" width="16" height="16"/>
                         </a>
 
                         <ul class="dropdown-menu pull-right">
                             <li>
                                 <a href="#">
-                                    <img src="public/assets/images/flags/flag-de.png" width="16" height="16" />
+                                    <img src="public/assets/images/flags/flag-de.png" width="16" height="16"/>
                                     <span>Deutsch</span>
                                 </a>
                             </li>
                             <li class="active">
                                 <a href="#">
-                                    <img src="public/assets/images/flags/flag-uk.png" width="16" height="16" />
+                                    <img src="public/assets/images/flags/flag-uk.png" width="16" height="16"/>
                                     <span>English</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="public/assets/images/flags/flag-fr.png" width="16" height="16" />
+                                    <img src="public/assets/images/flags/flag-fr.png" width="16" height="16"/>
                                     <span>François</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="public/assets/images/flags/flag-al.png" width="16" height="16" />
+                                    <img src="public/assets/images/flags/flag-al.png" width="16" height="16"/>
                                     <span>Shqip</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <img src="public/assets/images/flags/flag-es.png" width="16" height="16" />
+                                    <img src="public/assets/images/flags/flag-es.png" width="16" height="16"/>
                                     <span>Español</span>
                                 </a>
                             </li>
@@ -319,15 +321,13 @@ include 'views/head.php';
 
         </div>
 
-        <hr />
+        <hr/>
 
 
         <script type="text/javascript">
-            jQuery(document).ready(function($)
-            {
+            jQuery(document).ready(function ($) {
                 // Sample Toastr Notification
-                setTimeout(function()
-                {
+                setTimeout(function () {
                     var opts = {
                         "closeButton": true,
                         "debug": false,
@@ -349,17 +349,21 @@ include 'views/head.php';
 
 
                 // Sparkline Charts
-                $('.inlinebar').sparkline('html', {type: 'bar', barColor: '#ff6264'} );
-                $('.inlinebar-2').sparkline('html', {type: 'bar', barColor: '#445982'} );
-                $('.inlinebar-3').sparkline('html', {type: 'bar', barColor: '#00b19d'} );
-                $('.bar').sparkline([ [1,4], [2, 3], [3, 2], [4, 1] ], { type: 'bar' });
-                $('.pie').sparkline('html', {type: 'pie',borderWidth: 0, sliceColors: ['#3d4554', '#ee4749','#00b19d']});
+                $('.inlinebar').sparkline('html', {type: 'bar', barColor: '#ff6264'});
+                $('.inlinebar-2').sparkline('html', {type: 'bar', barColor: '#445982'});
+                $('.inlinebar-3').sparkline('html', {type: 'bar', barColor: '#00b19d'});
+                $('.bar').sparkline([[1, 4], [2, 3], [3, 2], [4, 1]], {type: 'bar'});
+                $('.pie').sparkline('html', {
+                    type: 'pie',
+                    borderWidth: 0,
+                    sliceColors: ['#3d4554', '#ee4749', '#00b19d']
+                });
                 $('.linechart').sparkline();
-                $('.pageviews').sparkline('html', {type: 'bar', height: '30px', barColor: '#ff6264'} );
-                $('.uniquevisitors').sparkline('html', {type: 'bar', height: '30px', barColor: '#00b19d'} );
+                $('.pageviews').sparkline('html', {type: 'bar', height: '30px', barColor: '#ff6264'});
+                $('.uniquevisitors').sparkline('html', {type: 'bar', height: '30px', barColor: '#00b19d'});
 
 
-                $(".monthly-sales").sparkline([1,2,3,5,6,7,2,3,3,4,3,5,7,2,4,3,5,4,5,6,3,2], {
+                $(".monthly-sales").sparkline([1, 2, 3, 5, 6, 7, 2, 3, 3, 4, 3, 5, 7, 2, 4, 3, 5, 4, 5, 6, 3, 2], {
                     type: 'bar',
                     barColor: '#485671',
                     height: '80px',
@@ -375,9 +379,8 @@ include 'views/head.php';
                     map: 'europe_merc_en',
                     zoomMin: '3',
                     backgroundColor: '#383f47',
-                    focusOn: { x: 0.5, y: 0.8, scale: 3 }
+                    focusOn: {x: 0.5, y: 0.8, scale: 3}
                 });
-
 
 
                 // Line Charts
@@ -386,13 +389,13 @@ include 'views/head.php';
                 var line_chart = Morris.Line({
                     element: 'line-chart-demo',
                     data: [
-                        { y: '2006', a: 100, b: 90 },
-                        { y: '2007', a: 75,  b: 65 },
-                        { y: '2008', a: 50,  b: 40 },
-                        { y: '2009', a: 75,  b: 65 },
-                        { y: '2010', a: 50,  b: 40 },
-                        { y: '2011', a: 75,  b: 65 },
-                        { y: '2012', a: 100, b: 90 }
+                        {y: '2006', a: 100, b: 90},
+                        {y: '2007', a: 75, b: 65},
+                        {y: '2008', a: 50, b: 40},
+                        {y: '2009', a: 75, b: 65},
+                        {y: '2010', a: 50, b: 40},
+                        {y: '2011', a: 75, b: 65},
+                        {y: '2012', a: 100, b: 90}
                     ],
                     xkey: 'y',
                     ykeys: ['a', 'b'],
@@ -411,9 +414,9 @@ include 'views/head.php';
                 var donut_chart = Morris.Donut({
                     element: 'donut-chart-demo',
                     data: [
-                        {label: "Download Sales", value: getRandomInt(10,50)},
-                        {label: "In-Store Sales", value: getRandomInt(10,50)},
-                        {label: "Mail-Order Sales", value: getRandomInt(10,50)}
+                        {label: "Download Sales", value: getRandomInt(10, 50)},
+                        {label: "In-Store Sales", value: getRandomInt(10, 50)},
+                        {label: "Mail-Order Sales", value: getRandomInt(10, 50)}
                     ],
                     colors: ['#707f9b', '#455064', '#242d3c']
                 });
@@ -429,13 +432,13 @@ include 'views/head.php';
                 var area_chart = Morris.Area({
                     element: 'area-chart-demo',
                     data: [
-                        { y: '2006', a: 100, b: 90 },
-                        { y: '2007', a: 75,  b: 65 },
-                        { y: '2008', a: 50,  b: 40 },
-                        { y: '2009', a: 75,  b: 65 },
-                        { y: '2010', a: 50,  b: 40 },
-                        { y: '2011', a: 75,  b: 65 },
-                        { y: '2012', a: 100, b: 90 }
+                        {y: '2006', a: 100, b: 90},
+                        {y: '2007', a: 75, b: 65},
+                        {y: '2008', a: 50, b: 40},
+                        {y: '2009', a: 75, b: 65},
+                        {y: '2010', a: 50, b: 40},
+                        {y: '2011', a: 75, b: 65},
+                        {y: '2012', a: 100, b: 90}
                     ],
                     xkey: 'y',
                     ykeys: ['a', 'b'],
@@ -446,19 +449,16 @@ include 'views/head.php';
                 area_chart_demo.parent().attr('style', '');
 
 
-
-
                 // Rickshaw
-                var seriesData = [ [], [] ];
+                var seriesData = [[], []];
 
                 var random = new Rickshaw.Fixtures.RandomData(50);
 
-                for (var i = 0; i < 50; i++)
-                {
+                for (var i = 0; i < 50; i++) {
                     random.addData(seriesData);
                 }
 
-                var graph = new Rickshaw.Graph( {
+                var graph = new Rickshaw.Graph({
                     element: document.getElementById("rickshaw-chart-demo"),
                     height: 193,
                     renderer: 'area',
@@ -474,38 +474,37 @@ include 'views/head.php';
                         name: 'Download'
                     }
                     ]
-                } );
+                });
 
                 graph.render();
 
-                var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+                var hoverDetail = new Rickshaw.Graph.HoverDetail({
                     graph: graph,
-                    xFormatter: function(x) {
+                    xFormatter: function (x) {
                         return new Date(x * 1000).toString();
                     }
-                } );
+                });
 
-                var legend = new Rickshaw.Graph.Legend( {
+                var legend = new Rickshaw.Graph.Legend({
                     graph: graph,
                     element: document.getElementById('rickshaw-legend')
-                } );
+                });
 
-                var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
+                var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight({
                     graph: graph,
                     legend: legend
-                } );
+                });
 
-                setInterval( function() {
+                setInterval(function () {
                     random.removeData(seriesData);
                     random.addData(seriesData);
                     graph.update();
 
-                }, 500 );
+                }, 500);
             });
 
 
-            function getRandomInt(min, max)
-            {
+            function getRandomInt(min, max) {
                 return Math.floor(Math.random() * (max - min + 1)) + min;
             }
         </script>
@@ -516,7 +515,9 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-red">
                     <div class="icon"><i class="entypo-users"></i></div>
-                    <div class="num" data-start="0" data-end="83" data-postfix="" data-duration="1500" data-delay="0">0</div>
+                    <div class="num" data-start="0" data-end="83" data-postfix="" data-duration="1500" data-delay="0">
+                        0
+                    </div>
 
                     <h3>Registered users</h3>
                     <p>so far in our blog, and our website.</p>
@@ -528,7 +529,9 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-green">
                     <div class="icon"><i class="entypo-chart-bar"></i></div>
-                    <div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
+                    <div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500"
+                         data-delay="600">0
+                    </div>
 
                     <h3>Daily Visitors</h3>
                     <p>this is the average value.</p>
@@ -542,7 +545,9 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-aqua">
                     <div class="icon"><i class="entypo-mail"></i></div>
-                    <div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+                    <div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500"
+                         data-delay="1200">0
+                    </div>
 
                     <h3>New Messages</h3>
                     <p>messages per day.</p>
@@ -554,7 +559,9 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-blue">
                     <div class="icon"><i class="entypo-rss"></i></div>
-                    <div class="num" data-start="0" data-end="52" data-postfix="" data-duration="1500" data-delay="1800">0</div>
+                    <div class="num" data-start="0" data-end="52" data-postfix="" data-duration="1500"
+                         data-delay="1800">0
+                    </div>
 
                     <h3>Subscribers</h3>
                     <p>on our site right now.</p>
@@ -563,7 +570,7 @@ include 'views/head.php';
             </div>
         </div>
 
-        <br />
+        <br/>
 
         <div class="row">
             <div class="col-sm-8">
@@ -637,13 +644,14 @@ include 'views/head.php';
                         <div class="panel-title">
                             <h4>
                                 Real Time Stats
-                                <br />
+                                <br/>
                                 <small>current server uptime</small>
                             </h4>
                         </div>
 
                         <div class="panel-options">
-                            <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
+                            <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i
+                                        class="entypo-cog"></i></a>
                             <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
                             <a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
                             <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
@@ -661,28 +669,23 @@ include 'views/head.php';
         </div>
 
 
-        <br />
+        <br/>
 
 
-
-        <br />
+        <br/>
 
 
         <script type="text/javascript">
             // Code used to add Todo Tasks
-            jQuery(document).ready(function($)
-            {
+            jQuery(document).ready(function ($) {
                 var $todo_tasks = $("#todo_tasks");
 
-                $todo_tasks.find('input[type="text"]').on('keydown', function(ev)
-                {
-                    if(ev.keyCode == 13)
-                    {
+                $todo_tasks.find('input[type="text"]').on('keydown', function (ev) {
+                    if (ev.keyCode == 13) {
                         ev.preventDefault();
 
-                        if($.trim($(this).val()).length)
-                        {
-                            var $todo_entry = $('<li><div class="checkbox checkbox-replace color-white"><input type="checkbox" /><label>'+$(this).val()+'</label></div></li>');
+                        if ($.trim($(this).val()).length) {
+                            var $todo_entry = $('<li><div class="checkbox checkbox-replace color-white"><input type="checkbox" /><label>' + $(this).val() + '</label></div></li>');
                             $(this).val('');
 
                             $todo_entry.appendTo($todo_tasks.find('.todo-list'));
@@ -721,7 +724,8 @@ include 'views/head.php';
             <div class="chat-group" id="group-1">
                 <strong>Favorites</strong>
 
-                <a href="#" id="sample-user-123" data-conversation-history="#sample_history"><span class="user-status is-online"></span> <em>Catherine J. Watkins</em></a>
+                <a href="#" id="sample-user-123" data-conversation-history="#sample_history"><span
+                            class="user-status is-online"></span> <em>Catherine J. Watkins</em></a>
                 <a href="#"><span class="user-status is-online"></span> <em>Nicholas R. Walker</em></a>
                 <a href="#"><span class="user-status is-busy"></span> <em>Susan J. Best</em></a>
                 <a href="#"><span class="user-status is-offline"></span> <em>Brandon S. Young</em></a>
@@ -733,7 +737,8 @@ include 'views/head.php';
                 <strong>Work</strong>
 
                 <a href="#"><span class="user-status is-offline"></span> <em>Robert J. Garcia</em></a>
-                <a href="#" data-conversation-history="#sample_history_2"><span class="user-status is-offline"></span> <em>Daniel A. Pena</em></a>
+                <a href="#" data-conversation-history="#sample_history_2"><span class="user-status is-offline"></span>
+                    <em>Daniel A. Pena</em></a>
                 <a href="#"><span class="user-status is-busy"></span> <em>Rodrigo E. Lozano</em></a>
             </div>
 
@@ -772,11 +777,7 @@ include 'views/head.php';
     </div>
 
 
-
-
-
 </div>
-
 
 
 <!-- Imported styles on this page -->
