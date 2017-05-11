@@ -155,5 +155,27 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
             return [];
         }
     }
+    public static function getClinicalTestTotalCost($patientId, $date){
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $sql = "SELECT SUM(c.cost) as totalCost FROM clinical_tests c
+                    INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
+                    WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":patientId", $patientId);
+            $stmt->bindParam(":dateRecorded", $date);
+            if($stmt->execute()){
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                return (float)$row['totalCost'];
+            }else{
+                return 0;
+            }
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return 0;
+        }
+    }
 
 }

@@ -15,6 +15,8 @@ $tests = \Hudutech\Controller\ClinicalTestController::all();
 $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($_SESSION['patientId']);
 $today = date('Y-m-d');
 $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests($_SESSION['patientId'], $today);
+$totalCost = \Hudutech\Controller\PatientClinicalTestController::getClinicalTestTotalCost($_SESSION['patientId'], $today);
+$counter = 1;
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +33,7 @@ $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinical
 <div class="page-container">
     <?php include 'right_menu_views.php' ?>
     <div class="main-content">
-        <?php //include 'header_menu_views.php' ?>
+        <?php include 'header_menu_views.php' ?>
         <hr>
         <div class="row">
             <div class="col col-md-10">
@@ -82,6 +84,7 @@ $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinical
                         <table class="table table-bordered" id="visitTable">
                             <thead>
                             <tr class="bg-success">
+                                <th style="color: #000000;">#No</th>
                                 <th style="color: #000000;">Test Name</th>
                                 <th style="color: #000000;">Cost (Ksh)</th>
                                 <th style="color: #000000;">Action</th>
@@ -90,6 +93,7 @@ $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinical
                             <tbody>
                              <?php foreach ($patientTests as $patientTest): ?>
                               <tr>
+                                  <td><?php echo $counter++ ?></td>
                                   <td><?php echo $patientTest['testName'] ?></td>
                                   <td><?php echo $patientTest['cost'] ?></td>
                                   <td colspan="1">
@@ -100,6 +104,13 @@ $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinical
                                   </td>
                               </tr>
                             <?php endforeach;?>
+
+                            <tr>
+                                <hr/>
+                                <td colspan="3"><p class="pull-right" style="border-bottom: double 3px; margin-left: 50px;">Total: <?php echo "KSh ".$totalCost.".00" ?></p></td>
+
+                                <td><button class="btn btn-primary btn-blue">Submit Tests</button></td>
+                            </tr>
 
                             </tbody>
 
