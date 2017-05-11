@@ -12,7 +12,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 if(!empty($data)) {
     $clinical_notes= new \Hudutech\Entity\ClinicalNote();
 
-    if( !empty($data['patientId']) ){
+    if( !empty($data['patientId']) && !empty($data['complaint']) ){
 
         $clinical_notes->setPatientId($data['patientId']);
         $clinical_notes->setComplaint($data['complaint']);
@@ -43,7 +43,7 @@ if(!empty($data)) {
         print_r(json_encode(
             array(
                 "statusCode"=>500,
-                "message"=>"Error. all fields required"
+                "message"=>"Current Complaints cannot be blank."
             )
         ));
     }
