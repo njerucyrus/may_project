@@ -54,7 +54,7 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
             $stmt->bindParam(":status", $status);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
-            echo $exception->getMessage();
+            print_r(json_encode(array("error " => $exception->getMessage())));
             return false;
         }
     }

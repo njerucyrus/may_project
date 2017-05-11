@@ -149,7 +149,7 @@
                                 <li class="active">
                                     <a href="#">
 											<span class="image pull-right">
-												<img src="/../public/assets/images/thumb-1@2x.png" width="44" alt="" class="img-circle" />
+												<img src="../public/assets/images/thumb-1@2x.png" width="44" alt="" class="img-circle" />
 											</span>
 
                                         <span class="line">
@@ -166,7 +166,7 @@
                                 <li class="active">
                                     <a href="#">
 											<span class="image pull-right">
-												<img src="/../public/assets/images/thumb-2@2x.png" width="44" alt="" class="img-circle" />
+												<img src="../public/assets/images/thumb-2@2x.png" width="44" alt="" class="img-circle" />
 											</span>
 
                                         <span class="line">
@@ -183,7 +183,7 @@
                                 <li>
                                     <a href="#">
 											<span class="image pull-right">
-												<img src="/../public/assets/images/thumb-3@2x.png" width="44" alt="" class="img-circle" />
+												<img src="../public/assets/images/thumb-3@2x.png" width="44" alt="" class="img-circle" />
 											</span>
 
                                         <span class="line">
@@ -200,7 +200,7 @@
                                 <li>
                                     <a href="#">
 											<span class="image pull-right">
-												<img src="/../public/assets//images/thumb-4@2x.png" width="44" alt="" class="img-circle" />
+												<img src="../public/assets/images/thumb-4@2x.png" width="44" alt="" class="img-circle" />
 											</span>
 
                                         <span class="line">
@@ -347,37 +347,37 @@
 
                 Language: &nbsp;
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
-                    <img src="/../public/assets/images/flags/flag-uk.png" width="16" height="16" />
+                    <img src="../public/assets/images/flags/flag-uk.png" width="16" height="16" />
                 </a>
 
                 <ul class="dropdown-menu pull-right">
                     <li>
                         <a href="#">
-                            <img src="/../public/assets/images/flags/flag-de.png" width="16" height="16" />
+                            <img src="../public/assets/images/flags/flag-de.png" width="16" height="16" />
                             <span>Deutsch</span>
                         </a>
                     </li>
                     <li class="active">
                         <a href="#">
-                            <img src="/../public/assets/images/flags/flag-uk.png" width="16" height="16" />
+                            <img src="../public/assets/images/flags/flag-uk.png" width="16" height="16" />
                             <span>English</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="/../public/assets/images/flags/flag-fr.png" width="16" height="16" />
+                            <img src="../public/assets/images/flags/flag-fr.png" width="16" height="16" />
                             <span>François</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="/../public/assets/images/flags/flag-al.png" width="16" height="16" />
+                            <img src="../public/assets/images/flags/flag-al.png" width="16" height="16" />
                             <span>Shqip</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <img src="/../public/assets/images/flags/flag-es.png" width="16" height="16" />
+                            <img src="../public/assets/images/flags/flag-es.png" width="16" height="16" />
                             <span>Español</span>
                         </a>
                     </li>
