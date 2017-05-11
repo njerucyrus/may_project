@@ -359,7 +359,7 @@ include 'views/head.php';
                     <div class="num" data-start="0" data-end="1023" data-postfix="" data-duration="1500" data-delay="1200">0</div>
 
                     <h3>Registered Patients</h3>
-                    <p>patients registered in the system.</p>
+                    <p>Patients registered in the system</p>
                 </div>
 
             </div>
