@@ -109,7 +109,7 @@ $counter = 1;
                                 <hr/>
                                 <td colspan="3"><p class="pull-right" style="border-bottom: double 3px; margin-left: 50px;">Total: <?php echo "KSh ".$totalCost.".00" ?></p></td>
 
-                                <td><button class="btn btn-primary btn-blue">Submit Tests</button></td>
+                                <td><button class="btn btn-primary btn-blue" id="btnSubmitTest" onclick="submitTests()">Send Tests To LAB.</button></td>
                             </tr>
 
                             </tbody>
@@ -210,6 +210,14 @@ $counter = 1;
              }
          })
      })
+    }
+    
+    function submitTests() {
+        <?php unset($_SESSION['patientId']);?>
+        setTimeout(function () {
+            window.location.href = 'consultation.php';
+        },800);
+
     }
 
 
