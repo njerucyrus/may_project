@@ -121,8 +121,8 @@ include  __DIR__.'/includes/register_patient.inc.php';
 
                                 <div class="col-sm-5">
                                     <select name="sex" class="form-control">
-                                        <option>Ms</option>
-                                        <option>F</option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
 
 
 

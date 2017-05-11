@@ -26,6 +26,7 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         $testResult = $patientClinicalTest->getTestResult();
         $description = $patientClinicalTest->getDescription();
         $isPerformed = $patientClinicalTest->isPerformed();
+        $createdAt = $patientClinicalTest->getCreatedAt();
 
         try {
 
@@ -35,7 +36,9 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
                                                         testId,
                                                         testResult,
                                                         description,
-                                                        isPerformed)
+                                                        isPerformed,
+                                                        createdAt
+                                                        )
                                                   VALUES
                                                    (
                                                         :clinicianId,
@@ -43,7 +46,8 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
                                                         :testId,
                                                         :testResult,
                                                         :description,
-                                                        :is_perfomed
+                                                        :isPerformed,
+                                                        :createdAt
                                                     )";
 
             $stmt = $conn->prepare($sql);
@@ -53,6 +57,7 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
             $stmt->bindParam(":testResult", $testResult);
             $stmt->bindParam(":description", $description);
             $stmt->bindParam(":isPerformed", $isPerformed);
+            $stmt->bindParam(":createdAt", $createdAt);
             return $stmt->execute() ? true : false;
 
         } catch (\PDOException $exception) {
@@ -69,21 +74,21 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         $clinicianId = $patientClinicalTest->getClinicianId();
         $description = $patientClinicalTest->getDescription();
         $testResult = $patientClinicalTest->getTestResult();
-        $date = $patientClinicalTest->getDate();
+        $date = $patientClinicalTest->getUpdatedAt();
         $isPerformed = $patientClinicalTest->isPerformed();
 
         try {
             $sql = "UPDATE patient_clinical_tests SET clinicianId=:clinicianId,
                                                       description=:description,
                                                       testResult=:testResult,
-                                                      date=:date,
-                                                      isPerformed=:is_parfomed
+                                                      updatedAt=:updatedAt,
+                                                      isPerformed=:isPerformed
                                                       ";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":clinicianId", $clinicianId);
             $stmt->bindParam(":description", $description);
             $stmt->bindParam(":testResult", $testResult);
-            $stmt->bindParam(":date", $date);
+            $stmt->bindParam(":updatedAt", $date);
             $stmt->bindParam(":isPerformed", $isPerformed);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
@@ -133,14 +138,12 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         $conn = $db->connect();
 
         try{
-            $sql = "SELECT DISTINCT ct.* FROM patient_clinical_tests pt, clinical_tests ct
-                    INNER JOIN patient_clinical_tests pct ON pct.testId = ct.id
-                    WHERE pt.patientId=:patientId AND 
-                    date(`pt`.`date`)=:date AND
-                    pct.id=ct.id ";
+            $sql = "SELECT c.*, pt.id as patientTestId, pt.testResult, pt.description, pt.isPerformed FROM clinical_tests c
+                    INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
+                    WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
-            $stmt->bindParam(":date", $date);
+            $stmt->bindParam(":dateRecorded", $date);
             $tests = array();
             if($stmt->execute()){
                 $tests = $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -150,6 +153,28 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return [];
+        }
+    }
+    public static function getClinicalTestTotalCost($patientId, $date){
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $sql = "SELECT SUM(c.cost) as totalCost FROM clinical_tests c
+                    INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
+                    WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":patientId", $patientId);
+            $stmt->bindParam(":dateRecorded", $date);
+            if($stmt->execute()){
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                return (float)$row['totalCost'];
+            }else{
+                return 0;
+            }
+
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return 0;
         }
     }
 

@@ -10688,8 +10688,8 @@ DataReader.prototype = {
         // see implementations
     },
     /**
-     * Get the next date.
-     * @return {Date} the date.
+     * Get the next updatedAt.
+     * @return {Date} the updatedAt.
      */
     readDate: function() {
         var dostime = this.readInt(4);
@@ -10852,7 +10852,7 @@ Usage:
    zip = new JSZip();
    zip.file("hello.txt", "Hello, World!").file("tempfile", "nothing");
    zip.folder("images").file("smile.gif", base64Data, {base64: true});
-   zip.file("Xmas.txt", "Ho ho ho !", {date : new Date("December 25, 2007 00:00:01")});
+   zip.file("Xmas.txt", "Ho ho ho !", {updatedAt : new Date("December 25, 2007 00:00:01")});
    zip.remove("tempfile");
 
    base64zip = zip.generate();
@@ -11098,7 +11098,7 @@ var ZipObject = function(name, data, options) {
     this.options = options;
 
     /*
-     * This object contains initial values for dir and date.
+     * This object contains initial values for dir and updatedAt.
      * With them, we can check if the user changed the deprecated metadata in
      * `ZipObject#options` or not.
      */
@@ -11455,7 +11455,7 @@ var generateZipParts = function(name, file, compressedObject, offset, platform) 
         dir = o.dir;
     }
 
-    // handle the deprecated options.date
+    // handle the deprecated options.updatedAt
     if(file._initialMetadata.date !== file.date) {
         date = file.date;
     } else {
@@ -11476,7 +11476,7 @@ var generateZipParts = function(name, file, compressedObject, offset, platform) 
         extFileAttr |= generateDosExternalFileAttr(file.dosPermissions, dir);
     }
 
-    // date
+    // updatedAt
     // @see http://www.delorie.com/djgpp/doc/rbinter/it/52/13.html
     // @see http://www.delorie.com/djgpp/doc/rbinter/it/65/16.html
     // @see http://www.delorie.com/djgpp/doc/rbinter/it/66/16.html
@@ -11550,7 +11550,7 @@ var generateZipParts = function(name, file, compressedObject, offset, platform) 
     header += compressedObject.compressionMethod;
     // last mod file time
     header += decToHex(dosTime, 2);
-    // last mod file date
+    // last mod file updatedAt
     header += decToHex(dosDate, 2);
     // crc-32
     header += decToHex(compressedObject.crc32, 4);
@@ -13114,7 +13114,7 @@ ZipEntry.prototype = {
                 return null;
             }
 
-            // the crc of the filename changed, this field is out of date.
+            // the crc of the filename changed, this field is out of updatedAt.
             if (jszipProto.crc32(this.fileName) !== extraReader.readInt(4)) {
                 return null;
             }
@@ -13138,7 +13138,7 @@ ZipEntry.prototype = {
                 return null;
             }
 
-            // the crc of the comment changed, this field is out of date.
+            // the crc of the comment changed, this field is out of updatedAt.
             if (jszipProto.crc32(this.fileComment) !== extraReader.readInt(4)) {
                 return null;
             }
@@ -42794,7 +42794,7 @@ module.exports = ZStream;
 	    base = ' ' + RegExp.prototype.toString.call(value);
 	  }
 
-	  // Make dates with properties first say the date
+	  // Make dates with properties first say the updatedAt
 	  if (isDate(value)) {
 	    base = ' ' + Date.prototype.toUTCString.call(value);
 	  }
@@ -98548,11 +98548,11 @@ window.pdfMake = window.pdfMake || {}; window.pdfMake.vfs = {"LICENSE.txt":"DQog
 	
 		/**
 		 * The type allows you to specify how the data for this column will be
-		 * ordered. Four types (string, numeric, date and html (which will strip
-		 * HTML tags before ordering)) are currently available. Note that only date
+		 * ordered. Four types (string, numeric, updatedAt and html (which will strip
+		 * HTML tags before ordering)) are currently available. Note that only updatedAt
 		 * formats understood by Javascript's Date() object will be accepted as type
-		 * date. For example: "Mar 26, 2008 5:03 PM". May take the values: 'string',
-		 * 'numeric', 'date' or 'html' (by default). Further types can be adding
+		 * updatedAt. For example: "Mar 26, 2008 5:03 PM". May take the values: 'string',
+		 * 'numeric', 'updatedAt' or 'html' (by default). Further types can be adding
 		 * through plug-ins.
 		 *  @type string
 		 *  @default null <i>Auto-detected from raw data</i>
@@ -100396,7 +100396,7 @@ window.pdfMake = window.pdfMake || {}; window.pdfMake.vfs = {"LICENSE.txt":"DQog
 		{
 			// V8 will remove any unknown characters at the start and end of the
 			// expression, leading to false matches such as `$245.12` or `10%` being
-			// a valid date. See forum thread 18941 for detail.
+			// a valid updatedAt. See forum thread 18941 for detail.
 			if ( d && !(d instanceof Date) && ( ! _re_date_start.test(d) || ! _re_date_end.test(d) ) ) {
 				return null;
 			}
@@ -104647,7 +104647,7 @@ FixedColumns.prototype = /** @lends FixedColumns.prototype */{
 	 *      // this allows the redraw performed by DataTables fnUpdate to recalculate the row
 	 *      // height
 	 *      fc.fnRecalculateHeight();
-	 *      table.fnUpdate( $('#example tbody tr:eq(0)')[0], ["insert date", 1, 2, 3 ... ]);
+	 *      table.fnUpdate( $('#example tbody tr:eq(0)')[0], ["insert updatedAt", 1, 2, 3 ... ]);
 	 */
 	"fnRecalculateHeight": function ( nTr )
 	{

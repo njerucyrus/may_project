@@ -6816,8 +6816,8 @@ var PROP_NAME = "datepicker",
 	instActive;
 
 /* Date picker manager.
-   Use the singleton instance of this class, $.datepicker, to interact with the date picker.
-   Settings for (groups of) date pickers are maintained in an instance object,
+   Use the singleton instance of this class, $.datepicker, to interact with the updatedAt picker.
+   Settings for (groups of) updatedAt pickers are maintained in an instance object,
    allowing multiple different settings on the same page. */
 
 function Datepicker() {
@@ -6929,9 +6929,9 @@ $.extend(Datepicker.prototype, {
 		return this;
 	},
 
-	/* Attach the date picker to a jQuery selection.
+	/* Attach the updatedAt picker to a jQuery selection.
 	 * @param  target	element - the target input field or division or span
-	 * @param  settings  object - the new settings to use for this date picker instance (anonymous)
+	 * @param  settings  object - the new settings to use for this updatedAt picker instance (anonymous)
 	 */
 	_attachDatepicker: function(target, settings) {
 		var nodeName, inline, inst;
@@ -7076,11 +7076,11 @@ $.extend(Datepicker.prototype, {
 		inst.dpDiv.css( "display", "block" );
 	},
 
-	/* Pop-up the date picker in a "dialog" box.
+	/* Pop-up the updatedAt picker in a "dialog" box.
 	 * @param  input element - ignored
-	 * @param  date	string or Date - the initial date to display
-	 * @param  onSelect  function - the function to call when a date is selected
-	 * @param  settings  object - update the dialog date picker instance's settings (anonymous object)
+	 * @param  updatedAt	string or Date - the initial updatedAt to display
+	 * @param  onSelect  function - the function to call when a updatedAt is selected
+	 * @param  settings  object - update the dialog updatedAt picker instance's settings (anonymous object)
 	 * @param  pos int[2] - coordinates for the dialog's position within the screen or
 	 *					event - with x/y coordinates or
 	 *					leave empty for default (screen centre)
@@ -7315,7 +7315,7 @@ $.extend(Datepicker.prototype, {
 
 	/* Set the dates for a jQuery selection.
 	 * @param  target element - the target input field or division or span
-	 * @param  date	Date - the new date
+	 * @param  updatedAt	Date - the new updatedAt
 	 */
 	_setDateDatepicker: function(target, date) {
 		var inst = this._getInst(target);
@@ -7326,10 +7326,10 @@ $.extend(Datepicker.prototype, {
 		}
 	},
 
-	/* Get the date(s) for the first entry in a jQuery selection.
+	/* Get the updatedAt(s) for the first entry in a jQuery selection.
 	 * @param  target element - the target input field or division or span
-	 * @param  noDefault boolean - true if no default date is to be used
-	 * @return Date - the current date
+	 * @param  noDefault boolean - true if no default updatedAt is to be used
+	 * @return Date - the current updatedAt
 	 */
 	_getDateDatepicker: function(target, noDefault) {
 		var inst = this._getInst(target);
@@ -7472,9 +7472,9 @@ $.extend(Datepicker.prototype, {
 		return true;
 	},
 
-	/* Pop-up the date picker for a given input field.
+	/* Pop-up the updatedAt picker for a given input field.
 	 * If false returned from beforeShow event handler do not show.
-	 * @param  input  element - the input field attached to the date picker or
+	 * @param  input  element - the input field attached to the updatedAt picker or
 	 *					event - if triggered by focus
 	 */
 	_showDatepicker: function(input) {
@@ -7639,8 +7639,8 @@ $.extend(Datepicker.prototype, {
 		return [position.left, position.top];
 	},
 
-	/* Hide the date picker from view.
-	 * @param  input  element - the input field attached to the date picker
+	/* Hide the updatedAt picker from view.
+	 * @param  input  element - the input field attached to the updatedAt picker
 	 */
 	_hideDatepicker: function(input) {
 		var showAnim, duration, postProcess, onClose,
@@ -7826,8 +7826,8 @@ $.extend(Datepicker.prototype, {
 	},
 
 	/* Set as beforeShowDay function to prevent selection of weekends.
-	 * @param  date  Date - the date to customise
-	 * @return [boolean, string] - is this date selectable?, what is its CSS class?
+	 * @param  updatedAt  Date - the updatedAt to customise
+	 * @return [boolean, string] - is this updatedAt selectable?, what is its CSS class?
 	 */
 	noWeekends: function(date) {
 		var day = date.getDay();
@@ -7835,8 +7835,8 @@ $.extend(Datepicker.prototype, {
 	},
 
 	/* Set as calculateWeek to determine the week of the year based on the ISO 8601 definition.
-	 * @param  date  Date - the date to get the week for
-	 * @return  number - the number of the week within the year that contains this date
+	 * @param  updatedAt  Date - the updatedAt to get the week for
+	 * @return  number - the number of the week within the year that contains this updatedAt
 	 */
 	iso8601Week: function(date) {
 		var time,
@@ -7851,18 +7851,18 @@ $.extend(Datepicker.prototype, {
 		return Math.floor(Math.round((time - checkDate) / 86400000) / 7) + 1;
 	},
 
-	/* Parse a string value into a date object.
+	/* Parse a string value into a updatedAt object.
 	 * See formatDate below for the possible formats.
 	 *
-	 * @param  format string - the expected format of the date
-	 * @param  value string - the date in the above format
+	 * @param  format string - the expected format of the updatedAt
+	 * @param  value string - the updatedAt in the above format
 	 * @param  settings Object - attributes include:
 	 *					shortYearCutoff  number - the cutoff year for determining the century (optional)
 	 *					dayNamesShort	string[7] - abbreviated names of the days from Sunday (optional)
 	 *					dayNames		string[7] - names of the days from Sunday (optional)
 	 *					monthNamesShort string[12] - abbreviated names of the months (optional)
 	 *					monthNames		string[12] - names of the months (optional)
-	 * @return  Date - the extracted date value or null if value is blank
+	 * @return  Date - the extracted updatedAt value or null if value is blank
 	 */
 	parseDate: function (format, value, settings) {
 		if (format == null || value == null) {
@@ -8044,7 +8044,7 @@ $.extend(Datepicker.prototype, {
 	_ticksTo1970: (((1970 - 1) * 365 + Math.floor(1970 / 4) - Math.floor(1970 / 100) +
 		Math.floor(1970 / 400)) * 24 * 60 * 60 * 10000000),
 
-	/* Format a date object into a string value.
+	/* Format a updatedAt object into a string value.
 	 * The format can be combinations of the following:
 	 * d  - day of month (no leading zero)
 	 * dd - day of month (two digit)
@@ -8063,14 +8063,14 @@ $.extend(Datepicker.prototype, {
 	 * "..." - literal text
 	 * '' - single quote
 	 *
-	 * @param  format string - the desired format of the date
-	 * @param  date Date - the date value to format
+	 * @param  format string - the desired format of the updatedAt
+	 * @param  updatedAt Date - the updatedAt value to format
 	 * @param  settings Object - attributes include:
 	 *					dayNamesShort	string[7] - abbreviated names of the days from Sunday (optional)
 	 *					dayNames		string[7] - names of the days from Sunday (optional)
 	 *					monthNamesShort string[12] - abbreviated names of the months (optional)
 	 *					monthNames		string[12] - names of the months (optional)
-	 * @return  string - the date in the above format
+	 * @return  string - the updatedAt in the above format
 	 */
 	formatDate: function (format, date, settings) {
 		if (!date) {
@@ -8208,7 +8208,7 @@ $.extend(Datepicker.prototype, {
 			inst.settings[name] : this._defaults[name];
 	},
 
-	/* Parse existing date and initialise date picker. */
+	/* Parse existing updatedAt and initialise updatedAt picker. */
 	_setDateFromField: function(inst, noDefault) {
 		if (inst.input.val() === inst.lastVal) {
 			return;
@@ -8300,8 +8300,8 @@ $.extend(Datepicker.prototype, {
 	 * Hours may be non-zero on daylight saving cut-over:
 	 * > 12 when midnight changeover, but then cannot generate
 	 * midnight datetime, so jump to 1AM, otherwise reset.
-	 * @param  date  (Date) the date to check
-	 * @return  (Date) the corrected date
+	 * @param  updatedAt  (Date) the updatedAt to check
+	 * @return  (Date) the corrected updatedAt
 	 */
 	_daylightSavingAdjust: function(date) {
 		if (!date) {

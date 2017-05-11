@@ -8,7 +8,6 @@
 
 namespace Hudutech\AppInterface;
 
-
 use Hudutech\Entity\PatientClinicalTest;
 
 interface PatientClinicalTestInterface
@@ -18,4 +17,5 @@ interface PatientClinicalTestInterface
     public static function delete($id);
     public static function destroy();
     public static function showClinicalTests($patientId, $date);
+    public static function getClinicalTestTotalCost($patientId, $date);
 }
