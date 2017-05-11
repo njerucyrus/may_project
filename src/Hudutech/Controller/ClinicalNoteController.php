@@ -244,5 +244,24 @@ class ClinicalNoteController implements ClinicalNoteInterface
         }
     }
 
+    public static function getPatientFromClinicalNotes($patientId){
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $today = date('Y-m-d');
+            $sql = "SELECT DISTINCT pt.* FROM patients pt, clinical_notes c 
+                    INNER JOIN patients p ON p.id = c.patientId
+                    WHERE c.patientId =:patientId AND
+                     c.patientId = pt.id AND date(c.date)='{$today}'";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":patientId", $patientId);
+            return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
+        }catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
 
 }

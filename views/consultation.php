@@ -262,8 +262,7 @@ $counter=1;
                         <div class="col-md-3 col-md-offset-2">
                             <!--    buttons-->
 
-                            <input value="Submit and recommend Lab Test" id="btn-add-test" class="btn btn-blue   btn-lg"
-                                   type="button"/>
+                            <button id="btn-add-test" class="btn btn-blue   btn-lg" onclick="submitRecommendTest()">Submit and recommend Lab Test</button>
                         </div>
 
                         <!--                        body content will stop here-->
@@ -306,7 +305,7 @@ $counter=1;
 
         function showFilterTable(patientNo) {
             // Declare variables
-            var input, filter, table, tr, td, i;
+            var  filter, table, tr, td, i;
 
             filter = patientNo.toUpperCase();
             table = document.getElementById("queueTable");
@@ -364,6 +363,7 @@ $counter=1;
 
         }
         function submitFormData() {
+
                 var url = 'consultation_endpoint.php';
                 var data = getFormData();
                 console.log(data);
@@ -396,6 +396,42 @@ $counter=1;
                     }
                 )
 
+        }
+
+        function submitRecommendTest() {
+            var url = 'consultation_endpoint.php';
+            var data = getFormData();
+            console.log(data);
+            $.ajax(
+                {
+                    type: 'POST',
+                    url: url,
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        console.log(response);
+                        if (response.statusCode == 200) {
+                            $('#feedback').removeClass('alert alert-danger')
+                                .addClass('alert alert-success')
+                                .text(response.message);
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                            var  patientId = jQuery('#patientNoHidden').val();
+                            window.location.href = 'recommend_test.php?id='+patientId;
+                        }
+                        if (response.statusCode == 500) {
+                            $('#feedback').removeClass('alert alert-success')
+                                .html('<div class="alert alert-danger alert-dismissable">' +
+                                    '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                    '<strong>Error! </strong> ' + response.message + '</div>');
+
+                        }
+                    }
+
+                }
+            )
         }
     </script>
 </body>
