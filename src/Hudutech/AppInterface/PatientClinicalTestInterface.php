@@ -8,7 +8,6 @@
 
 namespace Hudutech\AppInterface;
 
-
 use Hudutech\Entity\PatientClinicalTest;
 
 interface PatientClinicalTestInterface

@@ -35,6 +35,9 @@ require_once __DIR__.'/vendor/autoload.php';
 
 //echo \Hudutech\Controller\PatientController::getPatientId(48494)['id'];
 
-$today = date('Y-m-d');
-$patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests(5, $today);
-print_r($patientTests);
+//$today = date('Y-m-d');
+//$patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests(5, $today);
+//print_r($patientTests);
+
+$patientId = \Hudutech\Controller\PatientController::getPatientId('4844')['id'];
+print_r($patientId);

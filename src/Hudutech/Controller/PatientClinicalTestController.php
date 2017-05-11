@@ -138,7 +138,7 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         $conn = $db->connect();
 
         try{
-            $sql = "SELECT c.*, pt.id as patientTestId FROM clinical_tests c
+            $sql = "SELECT c.*, pt.id as patientTestId, pt.testResult, pt.description, pt.isPerformed FROM clinical_tests c
                     INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
                     WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded";
             $stmt = $conn->prepare($sql);
