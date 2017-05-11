@@ -42,15 +42,7 @@ $counter=1;
 
                         <!--                   body content will start here-->
                         <form role="form" class="form-horizontal form-groups-bordered">
-                            <div class="col-sm-5">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="patientNo" onkeyup="filterTable()" placeholder="Patient Number">
 
-                                    <span class="input-group-btn">
-											<button class="btn btn-primary" onclick="filterTable()" type="button">Search</button>
-										</span>
-                                </div>
-                            </div>
 
                             <div class="col-md-10">
 
@@ -255,8 +247,9 @@ $counter=1;
 
                         <div class="col-md-3 col-md-offset-2">
                             <!--    buttons-->
-                            <input value="Submit and recommend Drugs" id="btn-add-recommend" onclick="submitFormData()"
-                                   class="btn btn-green  btn-lg" type="button">
+
+                            <button id="btn-add-test" class="btn btn-green   btn-lg" onclick="submitRecommendDrug()">Submit and recommend Drugs</button>
+
 
                         </div>
                         <div class="col-md-3 col-md-offset-2">
@@ -420,6 +413,41 @@ $counter=1;
                             }, 1000);
                             var  patientId = jQuery('#patientNoHidden').val();
                             window.location.href = 'recommend_test.php?id='+patientId;
+                        }
+                        if (response.statusCode == 500) {
+                            $('#feedback').removeClass('alert alert-success')
+                                .html('<div class="alert alert-danger alert-dismissable">' +
+                                    '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                    '<strong>Error! </strong> ' + response.message + '</div>');
+
+                        }
+                    }
+
+                }
+            )
+        }
+        function submitRecommendDrug() {
+            var url = 'consultation_endpoint.php';
+            var data = getFormData();
+            console.log(data);
+            $.ajax(
+                {
+                    type: 'POST',
+                    url: url,
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        console.log(response);
+                        if (response.statusCode == 200) {
+                            $('#feedback').removeClass('alert alert-danger')
+                                .addClass('alert alert-success')
+                                .text(response.message);
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                            var  patientId = jQuery('#patientNoHidden').val();
+                            window.location.href = 'recommend_drug.php?id='+patientId;
                         }
                         if (response.statusCode == 500) {
                             $('#feedback').removeClass('alert alert-success')
