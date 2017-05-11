@@ -72,22 +72,25 @@
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
             <li class="opened active has-sub multiple-expanded">
                 <a href="#">
-                    <i class="entypo-plus-circled" style="font-size: 1.8em;"></i>
+                    <i class="fa fa-plus-square" style="font-size: 1.8em;"></i>
                     <span class="title" style="font-size: 1.8em;">Registration</span>
                 </a>
                 <ul class="visible">
                     <li>
                         <a href="register_user.php">
+                            <i class="fa fa-user-plus" style="font-size: 1.5em;"></i>
                             <span class="title" style="font-size: 1.5em;">Register User</span>
                         </a>
                     </li>
                     <li>
                         <a href="register_patient.php">
+                            <i class="fa fa-user-md" style="font-size: 1.5em;"></i>
                             <span class="title" style="font-size: 1.5em;">Register Patient</span>
                         </a>
                     </li>
                     <li>
                         <a href="clinical_tests.php">
+                            <i class="fa fa-medkit" style="font-size: 1.5em;"></i>
                             <span class="title" style="font-size: 1.5em;">Add Clinical Test</span>
                         </a>
                     </li>

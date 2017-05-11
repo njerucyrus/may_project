@@ -70,41 +70,42 @@
         <ul id="main-menu" class="main-menu">
             <!-- add class "multiple-expanded" to allow multiple submenus to open -->
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-            <li class="opened active has-sub">
-                <a href="#l">
-                    <i class="entypo-gauge"></i>
-                    <span class="title">Registration</span>
+            <li class="opened active has-sub multiple-expanded">
+                <a href="#">
+                    <i class="fa fa-plus-square" style="font-size: 1.8em;"></i>
+                    <span class="title" style="font-size: 1.8em;">Registration</span>
                 </a>
                 <ul class="visible">
                     <li>
                         <a href="views/register_user.php">
-                            <span class="title">Register User</span>
+                            <i class="fa fa-user-plus" style="font-size: 1.5em;"></i>
+                            <span class="title" style="font-size: 1.5em;">Register User</span>
                         </a>
                     </li>
                     <li>
                         <a href="views/register_patient.php">
-                            <span class="title">Register Patient</span>
+                            <i class="fa fa-user-md" style="font-size: 1.5em;"></i>
+                            <span class="title" style="font-size: 1.5em;">Register Patient</span>
                         </a>
                     </li>
-
+                    <li>
+                        <a href="views/clinical_tests.php">
+                            <i class="fa fa-medkit" style="font-size: 1.5em;"></i>
+                            <span class="title" style="font-size: 1.5em;">Add Clinical Test</span>
+                        </a>
+                    </li>
 
                 </ul>
             </li>
 
-            <li class="opened  has-sub">
-                <a href="#">
-                    <i class="entypo-gauge"></i>
-                    <span class="title">View</span>
-                </a>
-                <ul class="visible">
-                    <li>
-                        <a href="index.html">
-                            <span class="title">Registered Users</span>
-                        </a>
-                    </li>
 
 
-                </ul>
+            <li class="has-sub" ">
+            <a href="views/consultation.php">
+                <i class="fa fa-stethoscope" style="font-size: 1.8em;"></i>
+                <span class="title" style="font-size: 2em;" > Consultation</span>
+            </a>
+
             </li>
 
 
@@ -115,3 +116,4 @@
     </div>
 
 </div>
+views/
