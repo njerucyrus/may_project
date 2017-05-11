@@ -71,43 +71,39 @@
             <!-- add class "multiple-expanded" to allow multiple submenus to open -->
             <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
             <li class="opened active has-sub multiple-expanded">
-                <a href="#l">
-                    <i class="entypo-plus-circled"></i>
-                    <span class="title">Registration</span>
+                <a href="#">
+                    <i class="entypo-plus-circled" style="font-size: 1.8em;"></i>
+                    <span class="title" style="font-size: 1.8em;">Registration</span>
                 </a>
                 <ul class="visible">
                     <li>
                         <a href="register_user.php">
-                            <span class="title">Register User</span>
+                            <span class="title" style="font-size: 1.5em;">Register User</span>
                         </a>
                     </li>
                     <li>
                         <a href="register_patient.php">
-                            <span class="title">Register Patient</span>
+                            <span class="title" style="font-size: 1.5em;">Register Patient</span>
                         </a>
                     </li>
-
-
-                </ul>
-            </li>
-
-            <li class="has-sub">
-                <a href="index.html">
-                    <i class="entypo-search"></i>
-                    <span class="title">View</span>
-                </a>
-                <ul class="visible">
                     <li>
-                        <a href="index.html">
-                            <span class="title">Registered Users</span>
+                        <a href="clinical_tests.php">
+                            <span class="title" style="font-size: 1.5em;">Add Clinical Test</span>
                         </a>
                     </li>
-
 
                 </ul>
             </li>
 
 
+
+            <li class="has-sub" ">
+                <a href="consultation.php">
+                    <i class="fa fa-stethoscope" style="font-size: 1.8em;"></i>
+                    <span class="title" style="font-size: 2em;" > Consultation</span>
+                </a>
+
+            </li>
 
 
 

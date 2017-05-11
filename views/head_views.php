@@ -27,8 +27,12 @@
     <link rel="stylesheet" href="../public/assets/css/neon-core.css">
     <link rel="stylesheet" href="../public/assets/css/neon-theme.css">
     <link rel="stylesheet" href="../public/assets/css/neon-forms.css">
+    <link rel="stylesheet" href="../public/assets/css/font-icons/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../public/assets/css/font-icons/glyphicons/glyphicons-halflings-regular.woff">
     <link rel="stylesheet" href="../public/assets/css/custom.css">
     <link rel="stylesheet" href="../public/assets/css/skins/facebook.css">
+
+
 
     <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 

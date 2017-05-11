@@ -12,11 +12,25 @@ if (isset($_GET['id'])){
 }
 require_once __DIR__.'/../vendor/autoload.php';
 $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($_SESSION['patientId']);
-
+$recommendedDrugs=\Hudutech\Controller\DrugPrescriptionController::getPrescriptions($_SESSION['patientId']);
+$counter=1;
 ?>
 <!DOCTYPE html>
 <html>
+<head>
 <?php include 'head_views.php'?>
+    <title>Recommend Drugs</title>
+    <style>
+        th{
+            color: #000000;
+            font-size: 1.6em;
+        }
+        td{
+            color: #000000;
+            font-size: 1.4em;
+        }
+    </style>
+</head>
 <body class="page-body skin-facebook">
 <div class="page-container">
     <?php include 'right_menu_views.php' ?>
@@ -77,7 +91,7 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
                             <form role="form" class="form-groups-bordered">
                                 <div class="row  container-fluid">
 
-                                    <input type="hidden" id="patientNoHidden" value="<?php echo $patient['patientNo']; ?>">
+                                    <input type="hidden" id="patientNoHidden" value="<?php echo $_SESSION['patientId']; ?>">
                                 <div class="form-group col-xs-3 col-md-3" style="padding: 5px; margin: 5px;">
                                     <label for="drugName"style="padding-left: 10px;" class="control-label">Drug Name</label>
 
@@ -89,8 +103,18 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
                                     <label for="type"style="padding-left: 10px;" class="control-label">Administration Type</label>
 
 
-                                    <input type="text" class="form-control" name="drugType" id="drugType" placeholder="type">
-
+                                   <select  name="drugType" id="drugType" class="form-control form-horizontal " >
+                                        <option>Tablet</option>
+                                        <option>Liquid</option>
+                                        <option>Capsules</option>
+                                        <option>Injections</option>
+                                        <option>Topical medicines</option>
+                                        <option>Drops</option>
+                                        <option>Inhalers</option>
+                                        <option>Suppositories</option>
+                                        <option>Implants</option>
+                                        <option>Buccal</option>
+                                    </select>
                                 </div>
                                 <div class="form-group col-xs-1 col-md-1" style="padding: 5px; margin: 5px;">
                                     <label for="dosage"style="padding-left: 10px;" class="control-label">Dosage</label>
@@ -100,9 +124,9 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
 
                                 </div>
                                 <div class="form-group col-xs-3 col-md-3" style=" display:table;padding: 5px; margin: 5px;">
-                                   <label for="prescription"style=" width:100%; padding-right: 50%" class="control-label">Drug Prescription</label>
+                                   <label for="prescription1"style=" width:100%; padding-right: 50%" class="control-label">Drug Prescription</label>
 
-                                    <select style="width:40%" id="prescription1" class="form-control form-horizontal col-md-1" >
+                                    <select style="width:65px;" id="prescription1" class="form-control form-horizontal col-md-1" >
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -115,10 +139,11 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
                                         <option>10</option>
                                     </select>
 
-                                    <input type="text"  style="padding-top:10px; width:20%; font-size: xx-large;"class="form-control form-horizontal col-md-1" id="prescription2" placeholder=" * " disabled>
+                                   <label for="*" style=" width:20px; font-size: xx-large;" class="control-label form-horizontal col-md-1">*</label>
 
 
-                                    <select style="width:40%" id="prescription3" class="form-control form-horizontal col-md-1" >
+
+                                    <select style="width:65px" id="prescription3" class="form-control form-horizontal col-md-1" >
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -176,7 +201,48 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
 
                         <!--                   body content will start here-->
 
+                        <form role="form" class="form-horizontal form-groups-bordered">
 
+
+                            <div class="col-md-10">
+
+                                <h4>Patient Details</h4>
+
+                                <table class="table table-condensed table-bordered " id="queueTable">
+                                    <thead>
+                                    <tr>
+
+                                        <th>#</th>
+                                        <th>Drug Name</th>
+                                        <th>Drug Type</th>
+                                        <th>Quantity</th>
+                                        <th>Prescription</th>
+
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <?php foreach ($recommendedDrugs as $recommendedDrug ): ?>
+                                        <tr>
+
+                                            <td><?php echo $counter++?></td>
+                                            <td><?php echo $recommendedDrug['drugName'] ?></td>
+                                            <td><?php echo $recommendedDrug['drugType'] ?></td>
+                                            <td><?php echo $recommendedDrug['quantity'] ?></td>
+                                            <td><?php echo $recommendedDrug['prescription'] ?></td>
+
+
+
+                                        </tr>
+                                    <?php endforeach; ?>
+
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </form>
 
 
 
@@ -188,19 +254,42 @@ $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNo
 
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-primary" data-collapsed="0">
+
+                    <div class="panel-heading">
+                        <div class="panel-title col-md-offset-3">
+
+
+                            <div class="col-md-3 col-md-offset-2">
+                                <!--    buttons-->
+
+                                <button id="btn-add-test"  onclick="window.location.href='recommend_drug.php'" class="btn btn-green   btn-lg" >Finish Treatment</button>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 
 <?php
 include 'footer_views.php';
 ?>
-<script>
-    jQuery(document).ready(function (e) {
-        e.preventDefault;
 
-
-    })
-</script>
 <script>
 
     function getFormData() {
@@ -245,6 +334,7 @@ include 'footer_views.php';
                             .addClass('alert alert-danger')
                             .text(response.message);
                         jQuery('#patientNoHidden').val('') ;
+                        location.reload();
                     }
                 }
 
