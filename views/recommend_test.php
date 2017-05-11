@@ -21,7 +21,7 @@ $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinical
 <head>
     <?php include 'head_views.php' ?>
     <style>
-        td, label, input, option{
+        td, th, label, input, option{
             color: #000000;
             font-size: 1.4em;
         }
@@ -160,7 +160,7 @@ $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinical
                     }
                     else if (response.statusCode == 500) {
                         jQuery('#feedback').removeClass('alert alert-success')
-                            .html('<div class="alert alert-danger alert-dismissable">' +
+                            .html('<div class="col-md-6 alert alert-danger alert-dismissable">' +
                                 '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
                                 '<strong>Error! </strong> ' + response.message + '</div>');
                     }
