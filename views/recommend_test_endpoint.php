@@ -33,7 +33,7 @@ if($requestMethod == 'POST') {
             } else {
                 print_r(json_encode(array(
                     "statusCode" => 500,
-                    "message" => " Internal Server Error occurred. Failed to add test ."
+                    "message" => "Test Already added."
                 )));
             }
         } else {

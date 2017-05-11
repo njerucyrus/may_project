@@ -20,6 +20,12 @@ $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinical
 <html>
 <head>
     <?php include 'head_views.php' ?>
+    <style>
+        td, label, input, option{
+            color: #000000;
+            font-size: 1.4em;
+        }
+    </style>
 </head>
 <body class="page-body skin-facebook">
 <div class="page-container">
