@@ -42,15 +42,7 @@ $counter=1;
 
                         <!--                   body content will start here-->
                         <form role="form" class="form-horizontal form-groups-bordered">
-                            <div class="col-sm-5">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="patientNo" onkeyup="filterTable()" placeholder="Patient Number">
 
-                                    <span class="input-group-btn">
-											<button class="btn btn-primary" onclick="filterTable()" type="button">Search</button>
-										</span>
-                                </div>
-                            </div>
 
                             <div class="col-md-10">
 
