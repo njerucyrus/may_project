@@ -83,8 +83,10 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
                                                       testResult=:testResult,
                                                       updatedAt=:updatedAt,
                                                       isPerformed=:isPerformed
+                                                      WHERE id=:id
                                                       ";
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":id", $id);
             $stmt->bindParam(":clinicianId", $clinicianId);
             $stmt->bindParam(":description", $description);
             $stmt->bindParam(":testResult", $testResult);
@@ -177,5 +179,22 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
             return 0;
         }
     }
+
+    public static function getObject($id)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT t.* FROM patient_clinical_tests t WHERE t.id=:id");
+            $stmt->bindParam(":id", $id);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS |\PDO::FETCH_PROPS_LATE, PatientClinicalTest::class);
+            return $stmt->execute() && $stmt->rowCount()==1 ? $stmt->fetch() : null;
+        } catch (\PDOException $exception) {
+            $exception->getMessage();
+            return null;
+        }
+    }
+
 
 }

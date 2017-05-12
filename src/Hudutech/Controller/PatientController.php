@@ -241,7 +241,7 @@ class PatientController implements PatientInterface
         $conn = $db->connect();
 
         try {
-            $stmt = $conn->prepare("SELECT id FROM patients WHERE patientNo=:patientNo");
+            $stmt = $conn->prepare("SELECT * FROM patients WHERE patientNo=:patientNo");
             $stmt->bindParam(":patientNo", $patientNo);
             return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
