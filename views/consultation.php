@@ -275,7 +275,7 @@ $counter=1;
 
     <script>
         jQuery(document).ready(function (e) {
-            e.preventDefault;
+            e.preventDefault();
            hideClinicalNotesForms();
 
         })
@@ -347,47 +347,12 @@ $counter=1;
 
         function getFormData() {
             return {
-                 patientId:$('#patientNoHidden').val(),
+                patientId:$('#patientNoHidden').val(),
                 complaint: $('#complaint').val(),
                 complaintHistory: $('#complaintHistory').val(),
                 familySocialHistory: $('#familySocialHistory').val(),
                 physicalExamination: $('#physicalExamination').val(),
             }
-
-        }
-        function submitFormData() {
-
-                var url = 'consultation_endpoint.php';
-                var data = getFormData();
-                console.log(data);
-                $.ajax(
-                    {
-                        type: 'POST',
-                        url: url,
-                        data: JSON.stringify(data),
-                        dataType: 'json',
-                        contentType: 'application/json; charset=utf-8',
-                        success: function (response) {
-                            console.log(response);
-                            if (response.statusCode == 200) {
-                                $('#feedback').removeClass('alert alert-danger')
-                                    .addClass('alert alert-success')
-                                    .text(response.message);
-                                setTimeout(function () {
-                                    location.reload();
-                                }, 1000);
-                                jQuery('#patientNoHidden').val('') ;
-                            }
-                            if (response.statusCode == 500) {
-                                $('#feedback').removeClass('alert alert-success')
-                                    .addClass('alert alert-danger')
-                                    .text(response.message);
-                                jQuery('#patientNoHidden').val('') ;
-                            }
-                        }
-
-                    }
-                )
 
         }
 

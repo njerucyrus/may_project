@@ -322,8 +322,7 @@ $counter = 1;
 
     function addToVisitList(id) {
         $('#confirm-addVisit').modal('show');
-        $('#btn-confirmAdd').on('click', function (e) {
-            e.preventDefault();
+        $('#btn-confirmAdd').on('click', function () {
             var url = 'patient_visit_endpoint.php';
             $.ajax(
                 {

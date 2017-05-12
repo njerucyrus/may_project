@@ -256,11 +256,14 @@ class PatientController implements PatientInterface
         $conn = $db->connect();
         try {
             $today = date('Y-m-d');
+            $status = 'active';
             $sql = "SELECT DISTINCT p.* FROM patients p, patient_visits pv INNER JOIN patients t ON t.id=pv.patientId
-                    WHERE  pv.status='active' AND
-                    date(pv.visitDate)='{$today}' AND
+                    WHERE `pv`.`status`=:status AND 
+                    DATE_FORMAT(pv.visitDate, '%Y-%m-%d')=:visitDate AND
                     p.id = pv.patientId";
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":visitDate", $today);
+            $stmt->bindParam(":status", $status);
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
