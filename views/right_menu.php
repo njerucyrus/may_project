@@ -101,6 +101,14 @@
 
 
             <li class="has-sub" ">
+            <a href="views/patient_visit.php">
+                <i class="fa fa-wheelchair" style="font-size: 1.8em;"></i>
+                <span class="title" style="font-size: 2em;" > Patient Visit</span>
+            </a>
+
+            </li>
+
+            <li class="has-sub" ">
             <a href="views/consultation.php">
                 <i class="fa fa-stethoscope" style="font-size: 1.8em;"></i>
                 <span class="title" style="font-size: 2em;" > Consultation</span>

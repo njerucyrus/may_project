@@ -14,7 +14,7 @@
 <script src="../public/assets/js/joinable.js"></script>
 <script src="../public/assets/js/resizeable.js"></script>
 <script src="../public/assets/js/neon-api.js"></script>
-
+<script src="../public/assets/js/neon-login.js"></script>
 
 <!-- Imported scripts on this page -->
 <script src="../public/assets/js/bootstrap-switch.min.js"></script>

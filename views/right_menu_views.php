@@ -98,7 +98,13 @@
                 </ul>
             </li>
 
+            <li class="has-sub" ">
+            <a href="patient_visit.php">
+                <i class="fa fa-wheelchair" style="font-size: 1.8em;"></i>
+                <span class="title" style="font-size: 2em;" > Patient Visit</span>
+            </a>
 
+            </li>
 
             <li class="has-sub" ">
                 <a href="consultation.php">
