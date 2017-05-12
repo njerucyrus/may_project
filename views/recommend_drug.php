@@ -274,7 +274,7 @@ $counter = 1;
                             <div class="col-md-3 col-md-offset-2">
                                 <!--    buttons-->
 
-                                <button id="btn-add-test" onclick="window.location.href='recommend_drug.php'"
+                                <button id="btn-add-test" onclick="redirectToConsultation()"
                                         class="btn btn-green   btn-lg">Finish Treatment
                                 </button>
 
@@ -351,7 +351,15 @@ $counter = 1;
         )
 
     }
+function redirectToConsultation() {
+    <?php
+    \Hudutech\Controller\PatientVisitController::markAsLeft($patientId);
+    ?>
+    setTimeout(function () {
+        window.location.href = 'consultation.php';
+    },1000);
 
+}
 
 </script>
 </body>
