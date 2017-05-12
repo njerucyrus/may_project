@@ -7,25 +7,26 @@ session_start();
  * Time: 8:13 PM
  */
 $id = '';
-if (isset($_GET['id'])){
+if (isset($_GET['id'])) {
     $_SESSION['patientId'] = $_GET['id'];
 }
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($_SESSION['patientId']);
-$recommendedDrugs=\Hudutech\Controller\DrugPrescriptionController::getPrescriptions($_SESSION['patientId']);
-$counter=1;
+$recommendedDrugs = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($_SESSION['patientId']);
+$counter = 1;
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<?php include 'head_views.php'?>
+    <?php include 'head_views.php' ?>
     <title>Recommend Drugs</title>
     <style>
-        th{
+        th {
             color: #000000;
             font-size: 1.6em;
         }
-        td{
+
+        td {
             color: #000000;
             font-size: 1.4em;
         }
@@ -54,7 +55,7 @@ $counter=1;
                             <tbody>
                             <tr>
                                 <td><?php echo $patient['patientNo'] ?></td>
-                                <td><?php echo $patient['surName']." ".$patient['firstName']." ".$patient['otherName']?></td>
+                                <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
                                 <td><?php echo $patient['sex'] ?></td>
                             </tr>
                             </tbody>
@@ -87,23 +88,25 @@ $counter=1;
                         <!--                   body content will start here-->
 
 
+                        <form role="form" class="form-groups-bordered">
+                            <div class="row  container-fluid">
 
-                            <form role="form" class="form-groups-bordered">
-                                <div class="row  container-fluid">
-
-                                    <input type="hidden" id="patientNoHidden" value="<?php echo $_SESSION['patientId']; ?>">
+                                <input type="hidden" id="patientNoHidden" value="<?php echo $_SESSION['patientId']; ?>">
                                 <div class="form-group col-xs-3 col-md-3" style="padding: 5px; margin: 5px;">
-                                    <label for="drugName"style="padding-left: 10px;" class="control-label">Drug Name</label>
+                                    <label for="drugName" style="padding-left: 10px;" class="control-label">Drug
+                                        Name</label>
 
 
-                                        <input type="text" class="form-control" id="drugName"  name="drugName" placeholder="Drug Name">
+                                    <input type="text" class="form-control" id="drugName" name="drugName"
+                                           placeholder="Drug Name">
 
                                 </div>
                                 <div class="form-group col-xs-2 col-md-2" style="padding: 5px; margin: 5px;">
-                                    <label for="type"style="padding-left: 10px;" class="control-label">Administration Type</label>
+                                    <label for="type" style="padding-left: 10px;" class="control-label">Administration
+                                        Type</label>
 
 
-                                   <select  name="drugType" id="drugType" class="form-control form-horizontal " >
+                                    <select name="drugType" id="drugType" class="form-control form-horizontal ">
                                         <option>Tablet</option>
                                         <option>Liquid</option>
                                         <option>Capsules</option>
@@ -117,16 +120,20 @@ $counter=1;
                                     </select>
                                 </div>
                                 <div class="form-group col-xs-1 col-md-1" style="padding: 5px; margin: 5px;">
-                                    <label for="dosage"style="padding-left: 10px;" class="control-label">Dosage</label>
+                                    <label for="dosage" style="padding-left: 10px;" class="control-label">Dosage</label>
 
 
-                                    <input type="text" class="form-control" name="quantity"id="quantity" placeholder="Dosage">
+                                    <input type="text" class="form-control" name="quantity" id="quantity"
+                                           placeholder="Dosage">
 
                                 </div>
-                                <div class="form-group col-xs-3 col-md-3" style=" display:table;padding: 5px; margin: 5px;">
-                                   <label for="prescription1"style=" width:100%; padding-right: 50%" class="control-label">Drug Prescription</label>
+                                <div class="form-group col-xs-3 col-md-3"
+                                     style=" display:table;padding: 5px; margin: 5px;">
+                                    <label for="prescription1" style=" width:100%; padding-right: 50%"
+                                           class="control-label">Drug Prescription</label>
 
-                                    <select style="width:65px;" id="prescription1" class="form-control form-horizontal col-md-1" >
+                                    <select style="width:65px;" id="prescription1"
+                                            class="form-control form-horizontal col-md-1">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -139,11 +146,12 @@ $counter=1;
                                         <option>10</option>
                                     </select>
 
-                                   <label for="*" style=" width:20px; font-size: xx-large;" class="control-label form-horizontal col-md-1">*</label>
+                                    <label for="*" style=" width:20px; font-size: xx-large;"
+                                           class="control-label form-horizontal col-md-1">*</label>
 
 
-
-                                    <select style="width:65px" id="prescription3" class="form-control form-horizontal col-md-1" >
+                                    <select style="width:65px" id="prescription3"
+                                            class="form-control form-horizontal col-md-1">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -158,19 +166,19 @@ $counter=1;
 
                                 </div>
 
-                                    <div class="form-group col-xs-1 col-md-1" style="margin-top:30px; ">
-                                        <!--    buttons-->
+                                <div class="form-group col-xs-1 col-md-1" style="margin-top:30px; ">
+                                    <!--    buttons-->
 
-                                        <input value="Add" id="add" onclick="submitFormData()"  class="btn btn-green  btn-md" type="button">
-
-                                    </div>
-
+                                    <input value="Add" id="add" onclick="submitFormData()" class="btn btn-green  btn-md"
+                                           type="button">
 
                                 </div>
 
 
+                            </div>
 
-                            </form>
+
+                        </form>
 
 
                         <!--                        body content will stop here-->
@@ -222,15 +230,14 @@ $counter=1;
                                     </thead>
 
                                     <tbody>
-                                    <?php foreach ($recommendedDrugs as $recommendedDrug ): ?>
+                                    <?php foreach ($recommendedDrugs as $recommendedDrug): ?>
                                         <tr>
 
-                                            <td><?php echo $counter++?></td>
+                                            <td><?php echo $counter++ ?></td>
                                             <td><?php echo $recommendedDrug['drugName'] ?></td>
                                             <td><?php echo $recommendedDrug['drugType'] ?></td>
                                             <td><?php echo $recommendedDrug['quantity'] ?></td>
                                             <td><?php echo $recommendedDrug['prescription'] ?></td>
-
 
 
                                         </tr>
@@ -243,8 +250,6 @@ $counter=1;
                             </div>
 
                         </form>
-
-
 
 
                         <!--                        body content will stop here-->
@@ -267,7 +272,9 @@ $counter=1;
                             <div class="col-md-3 col-md-offset-2">
                                 <!--    buttons-->
 
-                                <button id="btn-add-test"  onclick="window.location.href='recommend_drug.php'" class="btn btn-green   btn-lg" >Finish Treatment</button>
+                                <button id="btn-add-test" onclick="window.location.href='recommend_drug.php'"
+                                        class="btn btn-green   btn-lg">Finish Treatment
+                                </button>
 
 
                             </div>
@@ -278,7 +285,6 @@ $counter=1;
                     </div>
 
 
-
                 </div>
 
             </div>
@@ -286,7 +292,7 @@ $counter=1;
     </div>
 </div>
 
-<?php include 'footer_views.php'?>
+<?php include 'footer_views.php' ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
 
@@ -294,14 +300,13 @@ $counter=1;
 
     function getFormData() {
         return {
+            patientId: $("#patientNoHidden").val(),
+            drugName: $("#drugName").val(),
+            drugType: $("#drugType").val(),
+            quantity: $("#quantity").val(),
+            prescription1: $("#prescription1").val(),
 
-            patientId : $("#patientNoHidden").val(),
-         drugName : $("#drugName").val(),
-         drugType : $("#drugType").val(),
-         quantity : $("#quantity").val(),
-         prescription1 : $("#prescription1").val(),
-
-         prescription3 : $("#prescription3").val(),
+            prescription3: $("#prescription3").val(),
 
         }
 
@@ -327,14 +332,16 @@ $counter=1;
                         setTimeout(function () {
                             location.reload();
                         }, 1000);
-                        jQuery('#patientNoHidden').val('') ;
+                        jQuery('#patientNoHidden').val('');
                     }
                     if (response.statusCode == 500) {
                         $('#feedback').removeClass('alert alert-success')
                             .addClass('alert alert-danger')
                             .text(response.message);
-                        jQuery('#patientNoHidden').val('') ;
-                        location.reload();
+                        jQuery('#patientNoHidden').val('');
+//                        setTimeout(function () {
+//                           location.reload();
+//                        }, 1000);
                     }
                 }
 
@@ -342,8 +349,6 @@ $counter=1;
         )
 
     }
-
-
 
 
 </script>
