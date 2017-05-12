@@ -274,7 +274,7 @@ $counter=1;
     <script src="../public/assets/js/bootstrap.min.js"></script>
 
     <script>
-        jQuery(document).ready(function (e) {
+        $(document).ready(function (e) {
             e.preventDefault;
            hideClinicalNotesForms();
 
@@ -283,13 +283,13 @@ $counter=1;
     <script>
         function hideClinicalNotesForms ()
         {
-            jQuery('#clinicalNotesForms').hide();
+            $('#clinicalNotesForms').hide();
         }
 
         function showClinicalNotesForms (patientId,patientNo) {
 
-            jQuery('#clinicalNotesForms').show();
-            jQuery('#patientNoHidden').val(patientId) ;
+            $('#clinicalNotesForms').show();
+            $('#patientNoHidden').val(patientId) ;
             showFilterTable(patientNo);
 
 
@@ -376,7 +376,7 @@ $counter=1;
                             setTimeout(function () {
                                 location.reload();
                             }, 1000);
-                            var  patientId = jQuery('#patientNoHidden').val();
+                            var  patientId = $('#patientNoHidden').val();
                             window.location.href = 'recommend_test.php?id='+patientId;
                         }
                         if (response.statusCode == 500) {
@@ -411,7 +411,7 @@ $counter=1;
                             setTimeout(function () {
                                 location.reload();
                             }, 1000);
-                            var  patientId = jQuery('#patientNoHidden').val();
+                            var  patientId = $('#patientNoHidden').val();
                             window.location.href = 'recommend_drug.php?id='+patientId;
                         }
                         if (response.statusCode == 500) {
