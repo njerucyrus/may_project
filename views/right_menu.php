@@ -126,7 +126,7 @@ if (isset($_SESSION['username'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="views/register_patient.php">
+                    <a href="views/test_results.php">
                         <i class="fa fa-user-md" style="font-size: 1.5em;"></i>
                         <span class="title" style="font-size: 1.5em;">View Lab Test</span>
                     </a>

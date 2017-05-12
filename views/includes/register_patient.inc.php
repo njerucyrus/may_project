@@ -9,7 +9,7 @@ $success_msg= "";
 $error_msg= "";
 
 
-if(isset($_POST['submit'])) {
+
     if (!empty($_POST['sex'])) {
 
         $patient = new \Hudutech\Entity\Patient();
@@ -35,4 +35,3 @@ if(isset($_POST['submit'])) {
 
         $error_msg .= 'All fields required';
     }
-}
