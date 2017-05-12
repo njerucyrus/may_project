@@ -101,8 +101,8 @@ if (isset($_SESSION['username'])) {
 
             </li>
 
-            <li class="has-sub"
-            ">
+            <li class="has-sub">
+
             <a href="views/consultation.php">
                 <i class="fa fa-stethoscope" style="font-size: 1.8em;"></i>
                 <span class="title" style="font-size: 2em;"> Consultation</span>
@@ -111,14 +111,14 @@ if (isset($_SESSION['username'])) {
             </li>
 
 
-            <li class="has-sub"
-            ">
+            <li class="has-sub">
+
             <a href="#">
                 <i class="fa fa-medkit" style="font-size: 1.8em;"></i>
                 <span class="title" style="font-size: 2em;"> Lab Test</span>
             </a>
 
-            <ul class="visible">
+            <ul >
                 <li>
                     <a href="views/perform_tests.php">
                         <i class="fa fa-search" style="font-size: 1.5em;"></i>

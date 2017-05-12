@@ -88,7 +88,7 @@ if(isset($_SESSION['username'])){
                 </ul>
             </li>
 
-            <li class="has-sub" ">
+            <li class="has-sub" >
             <a href="patient_visit.php">
                 <i class="fa fa-wheelchair" style="font-size: 1.8em;"></i>
                 <span class="title" style="font-size: 2em;" > Patient Visit</span>
@@ -110,7 +110,7 @@ if(isset($_SESSION['username'])){
                 <span class="title" style="font-size: 2em;" > LabTest</span>
             </a>
 
-            <ul class="visible">
+            <ul >
                 <li>
                     <a href="perform_tests.php">
                         <i class="fa fa-search" style="font-size: 1.5em;"></i>

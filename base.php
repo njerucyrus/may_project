@@ -98,7 +98,7 @@ include 'views/head.php';
 
 
         <!-- Footer -->
-        <footer class="main">
+        <footer class="main" style="position: absolute; bottom: 0; " >
 
             &copy; 2017 <strong>Developed by</strong>  <a href="http://hudutech.com" target="_blank">Hudutech Solutions</a>
 
