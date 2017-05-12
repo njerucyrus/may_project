@@ -267,7 +267,7 @@ $counter=1;
                             <div class="col-md-3 col-md-offset-2">
                                 <!--    buttons-->
 
-                                <button id="btn-add-test"  onclick="window.location.href='recommend_drug.php'" class="btn btn-green   btn-lg" >Finish Treatment</button>
+                                <button id="btn-add-test"  onclick="window.location.href='recommend_drug.php'" class="btn btn-green   btn-lg" >Send to Pharmacy</button>
 
 
                             </div>

@@ -113,10 +113,27 @@ if (isset($_SESSION['username'])) {
 
             <li class="has-sub"
             ">
-            <a href="views/perform_tests.php">
+            <a href="#">
                 <i class="fa fa-medkit" style="font-size: 1.8em;"></i>
-                <span class="title" style="font-size: 2em;"> LabTest</span>
+                <span class="title" style="font-size: 2em;"> Lab Test</span>
             </a>
+
+            <ul class="visible">
+                <li>
+                    <a href="views/perform_tests.php">
+                        <i class="fa fa-search" style="font-size: 1.5em;"></i>
+                        <span class="title" style="font-size: 1.5em;">Perform Test</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="views/register_patient.php">
+                        <i class="fa fa-user-md" style="font-size: 1.5em;"></i>
+                        <span class="title" style="font-size: 1.5em;">View Lab Test</span>
+                    </a>
+                </li>
+
+
+            </ul>
 
             </li>
 
