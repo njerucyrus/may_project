@@ -275,7 +275,7 @@ $counter=1;
 
     <script>
         jQuery(document).ready(function (e) {
-            e.preventDefault();
+            e.preventDefault;
            hideClinicalNotesForms();
 
         })
