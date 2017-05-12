@@ -8,6 +8,9 @@
 
 require_once __DIR__.'/vendor/autoload.php';
 
+
+$loggedInAs = \Hudutech\Controller\UserController::getLoggedInUser('admin');
+echo $loggedInAs;
 //$ctrl = new \Hudutech\Controller\PatientController();
 //$patient  = new \Hudutech\Entity\Patient();
 //
@@ -39,5 +42,5 @@ require_once __DIR__.'/vendor/autoload.php';
 //$patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests(5, $today);
 //print_r($patientTests);
 
-$patientId = \Hudutech\Controller\PatientController::getPatientId('4844')['id'];
-print_r($patientId);
+//$patientId = \Hudutech\Controller\PatientController::getPatientId('4844')['id'];
+//print_r($patientId);
