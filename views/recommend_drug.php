@@ -39,13 +39,18 @@ $counter = 1;
     <?php include 'right_menu_views.php' ?>
     <div class="main-content">
         <?php include 'header_menu_views.php' ?>
+        <div class="panel panel-primary" data-collapsed="0">
 
-
-        <div class="row">
+            <div class="panel-heading">
+                <div class="panel-title col-md-offset-3">
+                    <h1>Recommend Drugs</h1>
+                </div>
+            </div>
+        <div class="row" style="margin: 5px;">
             <div class="col col-md-10">
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <h3>Patient Info</h3>
+                        <h3>Patient Information</h3>
                         <table class="table table-bordered">
                             <thead>
                             <tr class="bg-success">
@@ -67,7 +72,7 @@ $counter = 1;
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin: 5px;">
             <div class="col-md-12">
 
                 <div class="panel panel-primary" data-collapsed="0">
@@ -152,7 +157,7 @@ $counter = 1;
                                            class="control-label form-horizontal col-md-1">*</label>
 
 
-                                    <select style="width:65px" id="prescription3"
+                                    <select style="width:65px; margin-left: 10px;" id="prescription3"
                                             class="form-control form-horizontal col-md-1">
                                         <option>1</option>
                                         <option>2</option>
@@ -191,7 +196,7 @@ $counter = 1;
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin: 5px;">
             <div class="col-md-12">
 
                 <div class="panel panel-primary" data-collapsed="0">
@@ -216,7 +221,7 @@ $counter = 1;
 
                             <div class="col-md-10">
 
-                                <h4>Patient Details</h4>
+                                <h4>Prescription Details</h4>
 
                                 <table class="table table-condensed table-bordered " id="queueTable">
                                     <thead>
@@ -262,7 +267,7 @@ $counter = 1;
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin: 5px;">
             <div class="col-md-12">
 
                 <div class="panel panel-primary" data-collapsed="0">
@@ -275,7 +280,7 @@ $counter = 1;
                                 <!--    buttons-->
 
                                 <button id="btn-add-test" onclick="redirectToConsultation()"
-                                        class="btn btn-green   btn-lg">Finish Treatment
+                                        class="btn btn-green   btn-lg">Send To Pharmacy
                                 </button>
 
 
@@ -290,6 +295,9 @@ $counter = 1;
                 </div>
 
             </div>
+        </div>
+
+
         </div>
     </div>
 </div>
