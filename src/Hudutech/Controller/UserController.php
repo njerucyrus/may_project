@@ -10,10 +10,11 @@ namespace Hudutech\Controller;
 
 
 use Hudutech\AppInterface\UserInterface;
+use Hudutech\Auth\Auth;
 use Hudutech\DBManager\DB;
 use Hudutech\Entity\User;
 
-class UserController implements UserInterface
+class UserController extends Auth implements UserInterface
 {
     public function create(User $user)
     {
@@ -166,6 +167,8 @@ class UserController implements UserInterface
             return [];
         }
     }
+
+
 
 
 }

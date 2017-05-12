@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__.'/../vendor/autoload.php';
+include __DIR__.'/includes/login.inc.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,13 +57,38 @@
     <div class=" login-form ">
 
         <div class="login-content">
+
+            <div>
+                <?php
+                if(empty($success_msg) && !empty($error_msg)){
+                    ?>
+                    <div class="alert alert-danger alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <?php echo $error_msg ?>
+                    </div>
+                    <?php
+                }
+                elseif(empty($error_msg) and !empty($success_msg)){
+                    ?>
+                    <div class="alert alert-success alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <?php echo $success_msg  ?>
+                    </div>
+
+                    <?php
+                }
+
+                ?>
+            </div>
+
             <p class="description" style="color: white; ">Dear user, log in to access the admin area!</p>
             <div class="form-login-error">
                 <h3>Invalid login</h3>
-                <p>Enter <strong>demo</strong>/<strong>demo</strong> as login and password.</p>
+
             </div>
 
-            <form class="diva" method="post" role="form" id="form_login">
+
+                <form class="diva" role="form" id="form_login" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" METHOD="post">
 
                 <div class="form-group ">
 
@@ -87,10 +117,9 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block btn-login">
-                        <i class="entypo-login"></i>
-                        Login In
-                    </button>
+                    <input type="submit" name="submit" value="Login" class="btn btn-primary btn-lg btn-block login-button"/>
+
+
                 </div>
 
 

@@ -7,6 +7,7 @@
  */
 
 namespace Hudutech\Auth;
+
 use Hudutech\DBManager\DB;
 
 /**
@@ -26,7 +27,7 @@ class Auth
      * @param $password
      * @return bool
      */
-    public  static function authenticate($username, $password)
+    public static function authenticate($username, $password)
     {
         $db = new DB();
         $conn = $db->connect();
@@ -66,10 +67,33 @@ class Auth
      * Unset the session on successful form submission
      * @return string
      */
-   public function generateCSRFToken()
+    public function generateCSRFToken()
     {
         $this->token = md5(uniqid('auth', true));
         return $this->token;
+    }
+
+    /**
+     * @param $username
+     * @return null
+     */
+    public static function getLoggedInUser($username)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT username, userLevel FROM clinic_db.users WHERE username=:username");
+            $stmt->bindParam(":username", $username);
+            if ($stmt->execute() && $stmt->rowCount() == 1) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                return $row;
+            } else {
+                return null;
+            }
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return null;
+        }
     }
 
 

@@ -1,10 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: New LAptop
- * Date: 06/05/2017
- * Time: 18:07
- */
+session_start();
+require_once '../vendor/autoload.php';
+$username = '';
+$level  = '';
+if(isset($_SESSION['username'])){
+    $user  = \Hudutech\Controller\UserController::getLoggedInUser($_SESSION['username']);
+    $username=$user['username'];
+    $level = $user['userLevel'];
+
+}
+
 ?>
 <div class="sidebar-menu">
 
@@ -40,10 +45,11 @@
 
             <div class="sui-normal">
                 <a href="#" class="user-link">
-                    <img src="../public/assets/images/thumb-1@2x.png" width="55" alt="" class="img-circle" />
+                    <i style="color: white; font-size: 3em;" class="fa fa-user-md "></i>
 
                     <span>Welcome,</span>
-                    <strong>Art Ramadani</strong>
+                    <strong><?php echo $username ?></strong>
+                    <span>logged in as <?php echo $level; ?></span>
                 </a>
             </div>
 
