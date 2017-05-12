@@ -20,7 +20,7 @@ if(isset($_SESSION['username'])){
             <!-- logo -->
             <div class="logo">
                 <a href="../base.php">
-                    <img src="../public/assets/images/logo@2x.png" width="120" alt="" />
+                    <img src="../public/assets/images/iclinic.png" width="120" alt="" />
                 </a>
             </div>
 
@@ -44,32 +44,16 @@ if(isset($_SESSION['username'])){
         <div class="sidebar-user-info">
 
             <div class="sui-normal">
-                <a href="#" class="user-link">
-                    <i style="color: white; font-size: 3em;" class="fa fa-user-md "></i>
+                <div class="user-link" >
 
-                    <span>Welcome,</span>
-                    <strong><?php echo $username ?></strong>
-                    <span>logged in as <?php echo $level; ?></span>
-                </a>
+                    <i style="color: white; font-size: 3em; display: inline-block;width: 100%;text-align: center;"
+                       class="fa fa-user-md "></i>
+
+                    <h2 style="font-size: 1.5em; color: white; text-align: center;">Welcome,<?php echo $username ?></h2>
+                    <p style="font-size: 1.2em; color: white; text-align: center;"> Logged in as (<?php echo $level; ?>
+                        )</p>
+                </div>
             </div>
-
-            <div class="sui-hover inline-links animate-in"><!-- You can remove "inline-links" class to make links appear vertically, class "animate-in" will make A elements animateable when click on user profile -->
-                <a href="#">
-                    <i class="entypo-pencil"></i>
-                    New Page
-                </a>
-
-                <a href="mailbox.html">
-                    <i class="entypo-mail"></i>
-                    Inbox
-                </a>
-
-                <a href="extra-lockscreen.html">
-                    <i class="entypo-lock"></i>
-                    Log Off
-                </a>
-
-                <span class="close-sui-popup">&times;</span><!-- this is mandatory -->				</div>
         </div>
 
 
@@ -117,6 +101,14 @@ if(isset($_SESSION['username'])){
                     <i class="fa fa-stethoscope" style="font-size: 1.8em;"></i>
                     <span class="title" style="font-size: 2em;" > Consultation</span>
                 </a>
+
+            </li>
+
+            <li class="has-sub" ">
+            <a href="perform_tests.php">
+                <i class="fa fa-medkit" style="font-size: 1.8em;"></i>
+                <span class="title" style="font-size: 2em;" > LabTest</span>
+            </a>
 
             </li>
 
