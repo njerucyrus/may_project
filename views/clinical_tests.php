@@ -17,6 +17,12 @@ $counter = 1;
 <head>
     <?php include 'head_views.php' ?>
     <title>Clinical Tests</title>
+    <style>
+        th,thead, td{
+            font-size: 1.2em;
+            color: black;
+        }
+    </style>
 </head>
 <body class="page-body skin-facebook">
 <div class="page-container">

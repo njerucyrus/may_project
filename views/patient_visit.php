@@ -79,7 +79,6 @@ $counter = 1;
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Register New Patient Here</h4>
                 <div id="feedback">
-                    
                 </div>
             </div>
 
@@ -108,12 +107,22 @@ $counter = 1;
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
 
                         <div class="form-group">
                             <label for="otherName" class="control-label">Other Names</label>
 
-                            <input type="text" class="form-control" id="otherName" placeholder="Other Names">
+                            <input type="text" class="form-control" id="otherName" placeholder="Other Names ...">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="idNo" class="control-label">ID Number</label>
+
+                            <input type="text" class="form-control" id="idNo" placeholder="Your National id Number...">
                         </div>
 
                     </div>
@@ -123,9 +132,9 @@ $counter = 1;
                     <div class="col-md-4">
 
                         <div class="form-group">
-                            <label for="patientNo" class="control-label">Patient Number</label>
+                            <label for="patientNumber" class="control-label">Patient Number</label>
 
-                            <input type="text" class="form-control" id="patientNo" placeholder="Patient Number">
+                            <input type="text" class="form-control" id="patientNumber" placeholder="Patient Number ...">
                         </div>
 
                     </div>
@@ -135,7 +144,7 @@ $counter = 1;
                         <div class="form-group">
                             <label for="phoneNumber" class="control-label">PhoneNumber</label>
 
-                            <input type="text" class="form-control" id="phoneNumber" placeholder="Your Mobile PhoneNumber">
+                            <input type="text" class="form-control" id="phoneNumber" placeholder="Your Mobile PhoneNumber ...">
                         </div>
 
                     </div>
@@ -157,7 +166,7 @@ $counter = 1;
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="occupation" class="control-label">Occupation</label>
-                            <input type="text" id="occupation" class="form-control" placeholder="Your occupation">
+                            <input type="text" id="occupation" class="form-control" placeholder="Your occupation ...">
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -274,7 +283,7 @@ $counter = 1;
             e.preventDefault();
             var url = 'add_patient_endpoint.php';
             var data = getModalData();
-            //console.log(data);
+            console.log(data);
             $.ajax(
                 {
                     type: 'POST',
@@ -320,6 +329,7 @@ $counter = 1;
                     contentType: 'application/json; charset=utf-8',
                     success: function (response) {
                         if(response.statusCode == 200){
+                            console.log(response);
                             $('#confirmFeedback').removeClass('alert alert-danger')
                                 .addClass('alert alert-success')
                                 .text(response.message);
