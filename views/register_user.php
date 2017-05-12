@@ -124,7 +124,7 @@ include __DIR__ . '/includes/register_user.inc.php';
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-5">
 
-                                    <input type="submit" name="submit " value="Register User"
+                                    <input type="submit" name="submit" value="Register User"
                                            class="btn btn-primary btn-lg btn-block "/>
                                 </div>
                             </div>

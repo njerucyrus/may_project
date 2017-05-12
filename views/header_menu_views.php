@@ -9,9 +9,9 @@
 <div class="row">
 
     <!-- Profile Info and Notifications -->
-    <div class="col-offset-3 col-md-6 col-sm-8 clearfix ">
+    <div class="col-offset-3 col-md-6 col-sm-8 clearfix " style="text-align: center;">
 
-      <H1>Clinic</H1>
+      <H1>SugarBaker Clinic</H1>
 
     </div>
 

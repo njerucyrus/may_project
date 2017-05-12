@@ -22,8 +22,10 @@ $counter = 1;
 <div class="page-container">
     <?php include 'right_menu_views.php' ?>
     <div class="main-content">
+        <?php include 'header_menu_views.php'?>
         <div class="row">
             <div class="col col-md-12">
+                <div class="panel panel-primary" data-collapsed="0">
                 <div class="container-fluid" style="margin-top: 15px;">
                     <h5 class="center" style="font-size: 1.2em">Available Clinical Tests</h5>
                     <hr/>
@@ -65,6 +67,7 @@ $counter = 1;
 
                         </table>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
