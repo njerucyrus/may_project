@@ -144,14 +144,15 @@ $counter = 1;
 </div>
 
 <?php include 'footer_views.php'?>
-
+<script src="../public/assets/js/jquery-1.11.3.min.js"></script>
+<script src="../public/assets/js/bootstrap.min.js"></script>
 <script>
     function addTest(patientId, event) {
-        var testId = jQuery('#testName').val();
+        var testId = $('#testName').val();
         var url = 'recommend_test_endpoint.php';
         var data = {testId: testId, patientId: patientId};
         event.preventDefault();
-        jQuery.ajax(
+        $.ajax(
             {
                 type: 'POST',
                 url: url,
@@ -161,7 +162,7 @@ $counter = 1;
                 success: function (response) {
                     console.log(response);
                     if (response.statusCode == 200) {
-                        jQuery('#feedback').removeClass('alert alert-danger')
+                        $('#feedback').removeClass('alert alert-danger')
                             .addClass('alert alert-success')
                             .text(response.message);
                         console.log(response);
@@ -170,7 +171,7 @@ $counter = 1;
                         }, 1000);
                     }
                     else if (response.statusCode == 500) {
-                        jQuery('#feedback').removeClass('alert alert-success')
+                        $('#feedback').removeClass('alert alert-success')
                             .html('<div class="col-md-6 alert alert-danger alert-dismissable">' +
                                 '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
                                 '<strong>Error! </strong> ' + response.message + '</div>');
@@ -180,10 +181,10 @@ $counter = 1;
         )
     }
     function deleteRecommendedTest(id) {
-     jQuery('#confirmDeleteModal').modal('show');
+     $('#confirmDeleteModal').modal('show');
      var url = 'recommend_test_endpoint.php';
-     jQuery('#btnConfirmDelete').on('click', function () {
-         jQuery.ajax({
+     $('#btnConfirmDelete').on('click', function () {
+         $.ajax({
              type: 'DELETE',
              url: url,
              data: JSON.stringify({id:id}),
@@ -192,7 +193,7 @@ $counter = 1;
              success: function (response) {
                  console.log(response);
                  if (response.statusCode == 204) {
-                     jQuery('#feedback').removeClass('alert alert-danger')
+                     $('#feedback').removeClass('alert alert-danger')
                          .addClass('alert alert-success')
                          .text(response.message);
                      console.log(response);
@@ -201,7 +202,7 @@ $counter = 1;
                      }, 1000);
                  }
                  else if (response.statusCode == 500) {
-                     jQuery('#feedback').removeClass('alert alert-success')
+                     $('#feedback').removeClass('alert alert-success')
                          .html('<div class="alert alert-danger alert-dismissable">' +
                              '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
                              '<strong>Error! </strong> ' + response.message + '</div>');

@@ -269,11 +269,10 @@ $counter=1;
         </div>
 </div>
     </div>
+    <?php include 'footer_views.php'?>
+    <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
+    <script src="../public/assets/js/bootstrap.min.js"></script>
 
-
-    <?php
-    include 'footer_views.php';
-    ?>
     <script>
         jQuery(document).ready(function (e) {
             e.preventDefault;

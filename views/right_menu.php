@@ -131,6 +131,4 @@ $level = $user['userLevel'];
         </ul>
 
     </div>
-
 </div>
-views/
