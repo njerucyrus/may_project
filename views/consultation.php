@@ -137,7 +137,7 @@ $counter=1;
                         <div class="panel-title col-md-offset-3">
 
 
-                            <h3>Current History</h3>
+                            <h3>Complaints History</h3>
                         </div>
 
 

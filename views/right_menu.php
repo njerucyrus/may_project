@@ -20,7 +20,7 @@ if (isset($_SESSION['username'])) {
             <!-- logo -->
             <div class="logo">
                 <a href="base.php">
-                    <img src="public/assets/images/iclinic.png" width="120" alt=""/>
+                    <img src="public/assets/images/clinic.png" width="120" alt=""/>
                 </a>
             </div>
 
@@ -127,7 +127,7 @@ if (isset($_SESSION['username'])) {
                 </li>
                 <li>
                     <a href="views/test_results.php">
-                        <i class="fa fa-user-md" style="font-size: 1.5em;"></i>
+                        <i class="fa fa-eye" style="font-size: 1.5em;"></i>
                         <span class="title" style="font-size: 1.5em;">View Lab Test</span>
                     </a>
                 </li>
