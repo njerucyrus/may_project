@@ -17,6 +17,7 @@
 <script src="../public/assets/js/neon-api.js"></script>
 <script src="../public/assets/js/neon-login.js"></script>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
+<script src="../public/assets/js/bootstrap.min.js"></script>
 
 <!-- Imported scripts on this page -->
 <script src="../public/assets/js/bootstrap-switch.min.js"></script>
