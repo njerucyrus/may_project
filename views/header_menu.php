@@ -9,9 +9,9 @@
 <div class="row">
 
     <!-- Profile Info and Notifications -->
-    <div class="col-offset-3 col-md-6 col-sm-8 clearfix " style="text-align: center;">
+    <div class="col-offset-3 col-md-6 col-sm-8  ">
 
-      <H1>SugarBaker Clinic</H1>
+        <H1>SugarBaker Clinic</H1>
 
     </div>
 
@@ -25,7 +25,7 @@
 
 
             <li>
-                <a href="logout.php">
+                <a href="views/logout.php">
                     Log Out <i class="entypo-logout right"></i>
                 </a>
             </li>

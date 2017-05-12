@@ -15,12 +15,14 @@ $counter = 1;
 </head>
 <body class="page-body skin-facebook">
 <div class="page-container">
-    <?php include 'right_menu_views.php' ?>
+    <?php include 'right_menu_views.php'; ?>
     <div class="main-content">
+        <?php include 'header_menu_views.php'?>
         <div class="row">
             <div class="col col-md-12">
+                <div class="panel panel-primary" data-collapsed="0">
             <div class="container-fluid">
-                <div class="form-horizontal" style="margin-bottom: 15px;">
+                <div class="form-horizontal" style="margin-bottom: 15px; padding: 10px;">
                     <form>
                         <div class="form-inline">
                             <label for="patientNo">PatientNo</label>
@@ -63,6 +65,7 @@ $counter = 1;
                     </table>
                 </div>
             </div>
+                </div>
         </div>
     </div>
     </div>
