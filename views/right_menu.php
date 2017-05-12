@@ -19,7 +19,7 @@ $level = $user['userLevel'];
 
             <!-- logo -->
             <div class="logo">
-                <a href="index.html">
+                <a href="base.php">
                     <img src="public/assets/images/logo@2x.png" width="120" alt="" />
                 </a>
             </div>
