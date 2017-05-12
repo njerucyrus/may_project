@@ -18,4 +18,5 @@ interface PatientClinicalTestInterface
     public static function destroy();
     public static function showClinicalTests($patientId, $date);
     public static function getClinicalTestTotalCost($patientId, $date);
+    public static function getObject($id);
 }

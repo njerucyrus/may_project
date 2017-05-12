@@ -46,7 +46,8 @@ $counter=1;
 
                             <div class="col-md-10">
 
-                                <h4>Patient Details</h4>
+                                <h4 style="color: red; font-weight: bold; font-size: 1.2em;">Unattended Patient Details (Patient In Doctor's Visit Queue)</h4>
+                                <hr/>
 
                                 <table class="table table-condensed table-bordered " id="queueTable">
                                     <thead>

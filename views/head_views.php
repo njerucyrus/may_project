@@ -6,7 +6,7 @@
  * Time: 16:40
  */
 ?>
-<head>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta charset="utf-8">
@@ -44,5 +44,3 @@
     <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     <![endif]-->
 
-
-</head>
