@@ -7,15 +7,21 @@ session_start();
  * Time: 8:13 PM
  */
 $id = '';
+$patient = null;
+$patientTests = null;
+$tests = null;
+$totalCost = 0;
+require_once __DIR__.'/../vendor/autoload.php';
 if (isset($_GET['id'])){
    $_SESSION['patientId'] = $_GET['id'];
+    $tests = \Hudutech\Controller\ClinicalTestController::all();
+    $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($_SESSION['patientId']);
+    $today = date('Y-m-d');
+    $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests($_SESSION['patientId'], $today);
+    $totalCost = \Hudutech\Controller\PatientClinicalTestController::getClinicalTestTotalCost($_SESSION['patientId'], $today);
 }
-require_once __DIR__.'/../vendor/autoload.php';
-$tests = \Hudutech\Controller\ClinicalTestController::all();
-$patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($_SESSION['patientId']);
-$today = date('Y-m-d');
-$patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests($_SESSION['patientId'], $today);
-$totalCost = \Hudutech\Controller\PatientClinicalTestController::getClinicalTestTotalCost($_SESSION['patientId'], $today);
+
+
 $counter = 1;
 ?>
 <!DOCTYPE html>
@@ -38,25 +44,34 @@ $counter = 1;
         <div class="row">
             <div class="col col-md-10">
                 <div class="panel-body">
-                <div class="table-responsive">
-                    <h3>Patient Info</h3>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr class="bg-success">
-                            <th style="color: #000000;">PatientNo</th>
-                            <th style="color: #000000;">Patient Name</th>
-                            <th style="color: #000000;">Sex</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td style="color: #000000;"><?php echo $patient['patientNo'] ?></td>
-                            <td style="color: #000000;"><?php echo $patient['surName']." ".$patient['firstName']." ".$patient['otherName']?></td>
-                            <td style="color: #000000;"><?php echo $patient['sex'] ?></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <?php
+                    if (!empty($patient) || !is_null($patient)) {
+                        ?>
+                        <div class="table-responsive">
+                            <h3>Patient Info</h3>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="bg-success">
+                                    <th style="color: #000000;">PatientNo</th>
+                                    <th style="color: #000000;">Patient Name</th>
+                                    <th style="color: #000000;">Sex</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="color: #000000;"><?php echo $patient['patientNo'] ?></td>
+                                    <td style="color: #000000;"><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
+                                    <td style="color: #000000;"><?php echo $patient['sex'] ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <?php
+                    }
+                    else{
+                        echo "No Patient Info Found.";
+                    }
+                    ?>
             </div>
             </div>
         </div>
@@ -78,7 +93,11 @@ $counter = 1;
                         </form>
                     </div>
                     <hr>
+                    <?php
+                    if (!empty($tests) || !is_null($tests)){
+                    ?>
                     <div class="table-responsive" id="recommendedTests">
+
                         <h3>Recommended Clinical Tests</h3>
                         <div id="feedback"></div>
                         <table class="table table-bordered" id="visitTable">
@@ -91,25 +110,32 @@ $counter = 1;
                             </tr>
                             </thead>
                             <tbody>
-                             <?php foreach ($patientTests as $patientTest): ?>
-                              <tr>
-                                  <td><?php echo $counter++ ?></td>
-                                  <td><?php echo $patientTest['testName'] ?></td>
-                                  <td><?php echo $patientTest['cost'] ?></td>
-                                  <td colspan="1">
-                                      <button class="btn btn-danger btn-sm btn-icon icon-left" onclick="deleteRecommendedTest('<?php echo $patientTest['patientTestId']?>')">
-                                          <i class="entypo-cancel"></i>
-                                          Delete
-                                      </button>
-                                  </td>
-                              </tr>
-                            <?php endforeach;?>
+                            <?php foreach ($patientTests as $patientTest): ?>
+                                <tr>
+                                    <td><?php echo $counter++ ?></td>
+                                    <td><?php echo $patientTest['testName'] ?></td>
+                                    <td><?php echo $patientTest['cost'] ?></td>
+                                    <td colspan="1">
+                                        <button class="btn btn-danger btn-sm btn-icon icon-left"
+                                                onclick="deleteRecommendedTest('<?php echo $patientTest['patientTestId'] ?>')">
+                                            <i class="entypo-cancel"></i>
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
 
                             <tr>
                                 <hr/>
-                                <td colspan="3"><p class="pull-right" style="border-bottom: double 3px; margin-left: 50px;">Total: <?php echo "KSh ".$totalCost.".00" ?></p></td>
+                                <td colspan="3"><p class="pull-right"
+                                                   style="border-bottom: double 3px; margin-left: 50px;">
+                                        Total: <?php echo "KSh " . $totalCost . ".00" ?></p></td>
 
-                                <td><button class="btn btn-primary btn-blue" id="btnSubmitTest" onclick="submitTests()">Send Tests To LAB.</button></td>
+                                <td>
+                                    <button class="btn btn-primary btn-blue" id="btnSubmitTest" onclick="submitTests()">
+                                        Send Tests To LAB.
+                                    </button>
+                                </td>
                             </tr>
 
                             </tbody>
@@ -117,6 +143,9 @@ $counter = 1;
                         </table>
                     </div>
                 </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>

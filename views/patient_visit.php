@@ -19,6 +19,7 @@ $counter = 1;
     <div class="main-content">
         <?php include 'header_menu_views.php'?>
         <div class="row">
+
             <div class="col col-md-12">
                 <div class="panel panel-primary" data-collapsed="0">
             <div class="container-fluid">
@@ -27,15 +28,19 @@ $counter = 1;
                         <div class="form-inline">
                             <label for="patientNo">PatientNo</label>
                             <input type="text" id="patientNo" class="form-control" placeholder="Enter Patient Number" onkeyup="filterTable()">
-                            <button class="btn btn-primary" onclick="filterTable()">Go</button>
+                            <button class="btn btn-primary" onclick="filterTable()" style="margin: 5px;">Go</button>
                         </div>
 
                     </form>
                 </div>
+                <h3 style="margin-top: 15px;">Patient Visit List (Showing Patients Not Added to Doctor's List) </h3>
+                <hr/>
                 <div class="table-responsive">
                     <div id="addNew" style="margin-bottom: 15px;" class="clearfix pull-left">
                         <button class="btn btn-primary" onclick="showAddNewModal()">Add New </button>
                     </div>
+
+
                     <table class="table table-stripped" id="visitTable">
                         <thead>
                         <tr class="bg-success">
