@@ -202,8 +202,9 @@ $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patie
     </div>
 </div>
 <!--END -->
-
-<?php include 'footer_views.php' ?>
+<?php include 'footer_views.php'?>
+<script src="../public/assets/js/jquery-1.11.3.min.js"></script>
+<script src="../public/assets/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 
