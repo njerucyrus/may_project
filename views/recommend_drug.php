@@ -7,12 +7,14 @@ session_start();
  * Time: 8:13 PM
  */
 $id = '';
+$patientId = '';
 if (isset($_GET['id'])) {
     $_SESSION['patientId'] = $_GET['id'];
+    $patientId = $_SESSION['patientId'];
 }
 require_once __DIR__ . '/../vendor/autoload.php';
-$patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($_SESSION['patientId']);
-$recommendedDrugs = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($_SESSION['patientId']);
+$patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($patientId);
+$recommendedDrugs = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($patientId);
 $counter = 1;
 ?>
 <!DOCTYPE html>
