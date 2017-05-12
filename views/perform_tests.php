@@ -8,18 +8,28 @@ session_start();
  */
 require_once __DIR__ . '/../vendor/autoload.php';
 $patientId = '';
-if (isset($_POST['submit'])) {
+$patientTest = null;
+$counter = 1;
+$patient = null;
+if (isset($_POST['patientNo'])) {
     if (!empty($_POST['patientNo'])) {
         $_SESSION['patientNo'] = $_POST['patientNo'];
+        $idObj = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
+        if (!empty($idObj)){
+            $patientId = $idObj['id'];
+        }
+        $today = date('Y-m-d');
+        $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests($patientId, $today);
+        $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
 
+        unset($_POST);
+    }else{
+        unset($_POST);
     }
-}
-$patientId = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo'])['id'];
-$today = date('Y-m-d');
-$patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests($patientId, $today);
-$counter = 1;
-$patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
+}else{
+    unset($_POST);
 
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,11 +45,13 @@ $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patie
 </head>
 <body class="page-body skin-facebook">
 <div class="page-container">
+
     <?php include 'right_menu_views.php' ?>
     <div class="main-content">
         <?php include 'header_menu_views.php' ?>
         <hr>
         <div class="row">
+            <div id="mainFeedback"></div>
             <div class="col col-md-10">
                 <div class="panel-body">
                     <form class="form-inline" method="post"
@@ -48,7 +60,7 @@ $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patie
                             <label for="patientNo" class="control-label">PatientNo</label>
                             <input type="text" id="patientNo" name="patientNo" class="form-control" required>
                         </div>
-                        <input type="submit" name="submit" value="Show Tests" class="btn btn-primary btn-blue">
+                        <input type="submit"  value="Show Tests" class="btn btn-primary btn-blue">
 
                     </form>
                 </div>
@@ -61,22 +73,32 @@ $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patie
                 <div class="panel-body">
                     <div class="table-responsive">
                         <h3>Patient Info</h3>
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr class="bg-success">
-                                <th style="color: #000000;">PatientNo</th>
-                                <th style="color: #000000;">Patient Name</th>
-                                <th style="color: #000000;">Sex</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td style="color: #000000;"><?php echo $patient['patientNo'] ?></td>
-                                <td style="color: #000000;"><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
-                                <td style="color: #000000;"><?php echo $patient['sex'] ?></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <?php if(!empty($patient)) {
+                            ?>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="bg-success">
+                                    <th style="color: #000000;">PatientNo</th>
+                                    <th style="color: #000000;">Patient Name</th>
+                                    <th style="color: #000000;">Sex</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+
+                                <tr>
+                                    <td style="color: #000000;"><?php echo $patient['patientNo'] ?></td>
+                                    <td style="color: #000000;"><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
+                                    <td style="color: #000000;"><?php echo $patient['sex'] ?></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <?php
+                        }else{
+                            echo "No Patient Test Detail Found";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -125,12 +147,31 @@ $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patie
                                         </th>
                                         <th>
                                             <button class="btn btn-success"
-                                                    onclick="showModal('<?php echo $patientTest['patientTestId'] ?>', '<?php echo $patientTest['testName'] ?>')">
-                                                <i class="entypo-pencil"></i>Fill In Results
+                                                    onclick="showModal(
+                                                            '<?php echo $patientTest['patientTestId'] ?>',
+                                                            '<?php echo $patientTest['testName'] ?>',
+                                                            '<?php echo $patientTest['isPerformed'] ?>',
+                                                            '<?php echo $patientTest['testResult'] ?>',
+                                                            '<?php echo $patientTest['description'] ?>')
+                                                            ">
+                                                <i class="entypo-pencil"></i>
+                                                <?php
+                                                if ($patientTest['isPerformed']==0){
+                                                    echo "Fill In Results";
+                                                }
+                                                elseif ($patientTest['isPerformed'] == 1){
+                                                    echo 'Edit Results';
+                                                }
+                                                ?>
                                             </button>
                                         </th>
                                     </tr>
                                 <?php endforeach; ?>
+                                <tr>
+                                    <td colspan="6">
+                                        <button class="btn btn-primary btn-blue pull-right" onclick="submitBackToDoctor()">Submit Test Results</button>
+                                    </td>
+                                </tr>
                                 </tbody>
 
                             </table>
@@ -202,9 +243,14 @@ $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patie
     </div>
 </div>
 <!--END -->
-<?php include 'footer_views.php'?>
+<?php include 'footer_views.php' ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function (e) {
+        e.preventDefault;
+    })
+</script>
 
 <script type="text/javascript">
 
@@ -216,7 +262,13 @@ $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patie
         };
     }
 
-    function showModal(id, testName) {
+    function showModal(id, testName, performed, result, desc) {
+        if (performed == 1) {
+            jQuery('#txtTestResult').val(result);
+            jQuery('#txtDescription').val(desc);
+            jQuery('#btnSubmitResult').text('Save Changes');
+
+        }
         jQuery('#testResultModal').modal('show');
         jQuery('#testName').val(testName);
         jQuery('#testId').val(id);
@@ -252,6 +304,17 @@ $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patie
                 }
             }
         )
+    }
+
+    function submitBackToDoctor() {
+        <?php unset($_POST); unset($_SESSION['patientNo'])?>
+        $('#mainFeedback')
+            .addClass('alert alert-success')
+            .text('Test Results Submitted successfully');
+        setTimeout(function () {
+            location.reload();
+        }, 800)
+
     }
 </script>
 </body>

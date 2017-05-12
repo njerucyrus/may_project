@@ -117,7 +117,8 @@ class PatientVisitController implements PatientVisitInterface
         $conn = $db->connect();
         $today = date('Y-m-d');
         try {
-            $stmt = $conn->prepare("UPDATE patient_visits SET `status`='left' WHERE patientId=:patientId AND date(visitDate)='{$today}'");
+            $stmt = $conn->prepare("UPDATE patient_visits SET `status`='left' WHERE patientId=:patientId AND date(visitDate)='{$today}'
+                                    ;UPDATE patients SET inQueue=0 WHERE id=:patientId");
             $stmt->bindParam(":patientId", $patientId);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {

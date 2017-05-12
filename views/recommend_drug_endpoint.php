@@ -21,6 +21,7 @@ if (!empty($data)) {
         $drug_prescriptions->setDrugType($data['drugType']);
         $drug_prescriptions->setQuantity($data['quantity']);
         $drug_prescriptions->setPrescription($prescription);
+        $drug_prescriptions->setStatus(null);
 
         $drug_prescriptionsCtrl = new \Hudutech\Controller\DrugPrescriptionController();
 
