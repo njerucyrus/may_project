@@ -9,7 +9,6 @@ $success_msg= "";
 $error_msg= "";
 
 
-
     if (!empty($_POST['sex'])) {
 
         $patient = new \Hudutech\Entity\Patient();
@@ -23,7 +22,6 @@ $error_msg= "";
         $patient->setOccupation($_POST['occupation']);
         $patient->setPatientType($_POST['patientType']);
         $patient->setSex($_POST['sex']);
-
 
         $patientController = new \Hudutech\Controller\PatientController();
         if ($patientController->create($patient)) {
