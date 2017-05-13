@@ -6,15 +6,19 @@ session_start();
  * Date: 5/10/17
  * Time: 8:13 PM
  */
+require_once __DIR__ . '/../vendor/autoload.php';
 $id = '';
 $patientId = '';
+$patient = null;
+$recommendedDrugs = null;
 if (isset($_GET['id'])) {
     $_SESSION['patientId'] = $_GET['id'];
     $patientId = $_SESSION['patientId'];
+    $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($patientId);
+    $recommendedDrugs = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($patientId);
 }
-require_once __DIR__ . '/../vendor/autoload.php';
-$patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($patientId);
-$recommendedDrugs = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($patientId);
+
+
 $counter = 1;
 ?>
 <!DOCTYPE html>
@@ -43,31 +47,42 @@ $counter = 1;
 
             <div class="panel-heading">
                 <div class="panel-title col-md-offset-3">
+                    <div id="feedback"></div>
                     <h1>Recommend Drugs</h1>
                 </div>
             </div>
         <div class="row" style="margin: 5px;">
             <div class="col col-md-10">
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <h3>Patient Information</h3>
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr class="bg-success">
-                                <th>PatientNo</th>
-                                <th>Patient Name</th>
-                                <th>Sex</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><?php echo $patient['patientNo'] ?></td>
-                                <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
-                                <td><?php echo $patient['sex'] ?></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <?php
+                    if(!empty($patient) && !is_null($patient)) {
+                        ?>
+
+                        <div class="table-responsive">
+                            <h3>Patient Information</h3>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr class="bg-success">
+                                    <th>PatientNo</th>
+                                    <th>Patient Name</th>
+                                    <th>Sex</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><?php echo $patient['patientNo'] ?></td>
+                                    <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
+                                    <td><?php echo $patient['sex'] ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <?php
+                    }
+                    else {
+                        echo "No patient Data found!";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -98,7 +113,7 @@ $counter = 1;
                         <form role="form" class="form-groups-bordered">
                             <div class="row  container-fluid">
 
-                                <input type="hidden" id="patientNoHidden" value="<?php echo $_SESSION['patientId']; ?>">
+                                <input type="hidden" id="patientNoHidden" value="<?php echo $patientId ; ?>">
                                 <div class="form-group col-xs-3 col-md-3" style="padding: 5px; margin: 5px;">
                                     <label for="drugName" style="padding-left: 10px;" class="control-label">Drug
                                         Name</label>
@@ -220,41 +235,53 @@ $counter = 1;
 
 
                             <div class="col-md-10">
+                                <?php
+                                if (!empty($recommendedDrugs) and !is_null($recommendedDrugs)) {
+                                    ?>
 
-                                <h4>Prescription Details</h4>
+                                    <h4>Prescription Details</h4>
 
-                                <table class="table table-condensed table-bordered " id="queueTable">
-                                    <thead>
-                                    <tr>
+                                    <div class="table-responsive">
+                                        <table class="table table-condensed table-bordered " id="queueTable">
+                                            <thead>
+                                            <tr>
 
-                                        <th>#</th>
-                                        <th>Drug Name</th>
-                                        <th>Drug Type</th>
-                                        <th>Quantity</th>
-                                        <th>Prescription</th>
-
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    <?php foreach ($recommendedDrugs as $recommendedDrug): ?>
-                                        <tr>
-
-                                            <td><?php echo $counter++ ?></td>
-                                            <td><?php echo $recommendedDrug['drugName'] ?></td>
-                                            <td><?php echo $recommendedDrug['drugType'] ?></td>
-                                            <td><?php echo $recommendedDrug['quantity'] ?></td>
-                                            <td><?php echo $recommendedDrug['prescription'] ?></td>
+                                                <th>#</th>
+                                                <th>Drug Name</th>
+                                                <th>Drug Type</th>
+                                                <th>Quantity</th>
+                                                <th>Prescription</th>
 
 
-                                        </tr>
-                                    <?php endforeach; ?>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <?php foreach ($recommendedDrugs as $recommendedDrug): ?>
+                                                <tr>
+
+                                                    <td><?php echo $counter++ ?></td>
+                                                    <td><?php echo $recommendedDrug['drugName'] ?></td>
+                                                    <td><?php echo $recommendedDrug['drugType'] ?></td>
+                                                    <td><?php echo $recommendedDrug['quantity'] ?></td>
+                                                    <td><?php echo $recommendedDrug['prescription'] ?></td>
 
 
-                                    </tbody>
-                                </table>
+
+
+                                                </tr>
+                                            <?php endforeach; ?>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
 
                             </div>
+
 
                         </form>
 
@@ -300,14 +327,38 @@ $counter = 1;
 
         </div>
     </div>
+
+
+
+
 </div>
 
+<!-- Modal 4 (Confirm)-->
+<div class="modal fade" id="confirmDeleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Confirm Action</h4>
+            </div>
+            <div id="confirmFeedback">
+            </div>
+            <div class="modal-body">
+
+                <p style="font-size: 16px;">Click Continue to delete</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id='btnConfirmDelete' class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?php include 'footer_views.php' ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
 
 <script>
-
+    
     function getFormData() {
         return {
             patientId: $("#patientNoHidden").val(),
@@ -368,6 +419,41 @@ function redirectToConsultation() {
     },1000);
 
 }
+
+
+    function deleteRecommendedDrug(id) {
+        $('#confirmDeleteModal').modal('show');
+        var url = 'recommend_drug_endpoint.php';
+        $('#btnConfirmDelete').on('click', function (e) {
+            e.preventDefault;
+            $.ajax({
+                type: 'DELETE',
+                url: url,
+                data: JSON.stringify({id:id}),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    console.log(response);
+                    if (response.statusCode == 204) {
+                        $('#feedback').removeClass('alert alert-danger')
+                            .addClass('alert alert-success')
+                            .text(response.message);
+                        console.log(response);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                    else if (response.statusCode == 500) {
+                        $('#feedback').removeClass('alert alert-success')
+                            .html('<div class="alert alert-danger alert-dismissable">' +
+                                '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                '<strong>Error! </strong> ' + response.message + '</div>');
+                    }
+
+                }
+            })
+        })
+    }
 
 </script>
 </body>
