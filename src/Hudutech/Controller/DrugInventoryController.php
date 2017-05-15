@@ -150,17 +150,54 @@ class DrugInventoryController implements DrugInventoryInterface
 
     public static function getObject($id)
     {
-        // TODO: Implement getObject() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT t.* FROM drug_inventory t WHERE t.id=:id");
+            $stmt->bindParam(":id", $id);
+            $stmt->setFetchMode(\PDO::FETCH_CLASS |\PDO::FETCH_PROPS_LATE, DrugInventory::class);
+            return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(): null;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return null;
+        }
     }
 
     public static function all()
     {
-        // TODO: Implement all() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT t.* FROM drug_inventory t WHERE 1");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC): [];
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
     }
 
     public static function getPrice($id, $qty)
     {
-        // TODO: Implement getPrice() method.
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT t.* FROM drug_inventory t WHERE t.id=:id");
+            $stmt->bindParam(":id", $id);
+            $price = 0;
+            if ($stmt->execute()) {
+                $row = $stmt->fetch(\PDO::FETCH_CLASS);
+                $price = (float)(($qty/$row['doseQty']) * $row['dosePrice']);
+            }
+            $db->closeConnection();
+            return $price;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return 0;
+        }
     }
 
 }
