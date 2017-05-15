@@ -135,7 +135,17 @@ class DrugInventoryController implements DrugInventoryInterface
 
     public static function getId($id)
     {
-        //$db = new DB();
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT t.* FROM drug_inventory t WHERE t.id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(\PDO::FETCH_ASSOC): [];
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
     }
 
     public static function getObject($id)
