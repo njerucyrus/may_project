@@ -20,7 +20,7 @@ if($requestMethod == 'POST') {
             $patientClinicalTest->setDescription(null);
             $patientClinicalTest->setPerformed(false);
             $patientClinicalTest->setTestResult(null);
-            $today = date('Y-m-d');
+            $today = date("Y-m-d");
             $patientClinicalTest->setCreatedAt($today);
             $patientClinicalTestCtrl = new \Hudutech\Controller\PatientClinicalTestController();
 

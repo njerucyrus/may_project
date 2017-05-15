@@ -2,77 +2,103 @@
 /**
  * Created by PhpStorm.
  * User: hudutech
- * Date: 5/8/17
- * Time: 7:23 PM
+ * Date: 5/14/17
+ * Time: 9:03 PM
  */
 require_once __DIR__ . '/../vendor/autoload.php';
-$patients = \Hudutech\Controller\PatientController::showNotInQueue();
+
+$patients = \Hudutech\Controller\PatientController::all();
 $counter = 1;
 ?>
+
 <!DOCTYPE html>
+<html>
 <head>
     <?php include 'head_views.php' ?>
+    <title>iClinic | Patients List</title>
+    <style>
+        th, td, label, thead {
+            color: #000000;
+        }
+    </style>
 </head>
 <body class="page-body skin-facebook">
 <div class="page-container">
     <?php include 'right_menu_views.php'; ?>
     <div class="main-content">
         <?php include 'header_menu_views.php' ?>
-        <div class="row">
-
-            <div class="col col-md-12">
-                <div class="panel panel-primary" data-collapsed="0">
-                    <div class="container-fluid">
-                        <div class="form-horizontal" style="margin-bottom: 15px; padding: 10px;">
-                            <form>
-                                <div class="form-inline">
-                                    <label for="patientNo">PatientNo</label>
-                                    <input type="text" id="patientNo" class="form-control"
-                                           placeholder="Enter Patient Number" onkeyup="filterTable()">
-                                    <button class="btn btn-primary" onclick="filterTable()" style="margin: 5px;">Go
-                                    </button>
-                                </div>
-
+        <div class="panel panel-primary" data-collapsed="0">
+            <div class="container-fluid">
+                <div class="row" style="margin-top: 15px;">
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <form class="form-inline">
+                                <label for="search" class="control-label">Search</label>
+                                <input type="text" class="form-control" id="search" name="search" placeholder="search">
+                                <input type="submit" class="btn btn-default" style="padding: 10px; color: black;"
+                                       value="Search Patient">
                             </form>
                         </div>
-                        <h3 style="margin-top: 15px;">Patient Visit List (Showing Patients Not Added to Doctor's
-                            List) </h3>
-                        <hr/>
-                        <div class="table-responsive">
-                            <div id="addNew" style="margin-bottom: 15px;" class="clearfix pull-left">
-                                <button class="btn btn-primary" onclick="showAddNewModal()">Add New</button>
-                            </div>
-
-
-                            <table class="table table-stripped" id="visitTable">
+                        <div class="col col-md-6">
+                            <button class="btn btn-default" onclick="showAddNewModal()" style="padding: 10px;">Register
+                                Single Patients
+                            </button>
+                            <button class="btn btn-success" style="padding: 10px;"><i class="entypo-attach"></i>Upload
+                                From Excel
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col col-md-12">
+                        <div class="table-responsive" style="margin-top: 15px;">
+                            <table class="table table-bordered">
+                                <h3>Showing Registered Patients</h3>
+                                <hr/>
                                 <thead>
-                                <tr class="bg-success">
+                                <tr class="bg-info">
                                     <th>#</th>
-                                    <th>PatientNo</th>
-                                    <th>FullName</th>
-                                    <th>Phone Number</th>
-                                    <th>Sex</th>
-                                    <th colspan="1">Action</th>
+                                    <th style="color: black">PatientNumber</th>
+                                    <th style="color: black">FullName</th>
+                                    <th style="color: black">ID Number</th>
+                                    <th style="color: black">Sex</th>
+                                    <th style="color: black">Phone Number</th>
+                                    <th style="color: black">Date Registered</th>
+                                    <th style="color: black">Timestamp</th>
+                                    <th style="color: black">Action</th>
                                 </tr>
                                 </thead>
-
+                                <tbody>
                                 <?php foreach ($patients as $patient): ?>
                                     <tr>
                                         <td><?php echo $counter++ ?></td>
                                         <td><?php echo $patient['patientNo'] ?></td>
                                         <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName']; ?></td>
-                                        <td><?php echo $patient['phoneNumber'] ?></td>
+                                        <td><?php echo $patient['idNo'] ?></td>
                                         <td><?php echo $patient['sex'] ?></td>
+                                        <td><?php echo $patient['phoneNumber'] ?></td>
+                                        <td><?php echo date('d-m-Y', strtotime($patient['dateRegistered'])); ?></td>
+                                        <td><?php echo $patient['dateRegistered']; ?></td>
                                         <td>
-                                            <button class="btn btn-primary"
-                                                    onclick="addToVisitList('<?php echo $patient['id'] ?>')">Add To
-                                                VisitList
+                                            <button class="btn btn-primary btn-blue"
+                                                    onclick="updatePatient(
+                                                    '<?php echo $patient['id'] ?>',
+                                                    '<?php echo $patient['idNo'] ?>',
+                                                    '<?php echo $patient['surName'] ?>',
+                                                    '<?php echo $patient['firstName'] ?>',
+                                                    '<?php echo $patient['otherName'] ?>',
+                                                    '<?php echo $patient['maritalStatus'] ?>',
+                                                    '<?php echo $patient['phoneNumber'] ?>',
+                                                    '<?php echo $patient['occupation'] ?>',
+                                                    '<?php echo $patient['patientType'] ?>',
+                                                    '<?php echo $patient['sex'] ?>',
+                                                    '<?php echo $patient['patientNo'] ?>'
+                                                    )"><i class="entypo-pencil"></i>Edit
+                                            </button>
+                                            <button class="btn btn-danger  btn-red" onclick="deletePatient('<?php echo $patient['id']?>')"><i class="entypo-cancel"></i>Delete
                                             </button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                                </tr>
-
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -81,14 +107,13 @@ $counter = 1;
         </div>
     </div>
 </div>
-<!-- Add new patient Modal-->
 <div class="modal fade" id="patientModal">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Register New Patient Here</h4>
+                <h4 class="modal-title" id="title">Register New Patient Here</h4>
                 <div id="feedback">
                 </div>
             </div>
@@ -215,22 +240,22 @@ $counter = 1;
 
 <!--add to visit list modal-->
 <!-- Modal 4 (Confirm)-->
-<div class="modal fade" id="confirm-addVisit" data-backdrop="static">
+<div class="modal fade" id="confirmDeleteModal" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title">Confirm Action</h4>
+                <h4 class="modal-title" id="confirmTitle">Confirm Action</h4>
                 <div id="confirmFeedback">
 
                 </div>
             </div>
 
             <div class="modal-body">
-                <p style="font-size: 16px;"> Click Continue to add the patient to visit list.</p>
+                <p style="font-size: 16px;"> Are you sure you want to delete patient?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" id='btn-confirmAdd' class="btn btn-info">Continue</button>
+                <button type="button" id='btnConfirmDelete' class="btn btn-info">Continue</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -238,43 +263,10 @@ $counter = 1;
 </div>
 <!--end-->
 
-<?php include 'footer_views.php' ?>
+<?php include "footer_views.php"; ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function (e) {
-        e.preventDefault();
-        $('#AddNewModal').hide();
-        filterTable();
-
-    })
-</script>
-
-<script type="text/javascript">
-    function filterTable() {
-        // Declare variables
-        var input, filter, table, tr, td, i;
-        input = document.getElementById("patientNo");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("visitTable");
-        tr = table.getElementsByTagName("tr");
-
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                    $('#addNew').hide();
-                } else {
-                    tr[i].style.display = "none";
-                    $('#addNew').show()
-                }
-            }
-        }
-    }
-
+<script>
     function getModalData() {
         return {
             idNo: $('#idNo').val(),
@@ -288,7 +280,6 @@ $counter = 1;
             sex: $('#sex').val(),
             patientNo: $('#patientNumber').val()
         }
-
     }
     function showAddNewModal() {
         $('#patientModal').modal('show');
@@ -328,21 +319,47 @@ $counter = 1;
         })
     }
 
-    function addToVisitList(id) {
-        $('#confirm-addVisit').modal('show');
-        $('#btn-confirmAdd').on('click', function () {
-            var url = 'patient_visit_endpoint.php';
+    function updatePatient(id,
+                           idNo,
+                           surName,
+                           firstName,
+                           otherName,
+                           maritalStatus,
+                           phoneNumber,
+                           occupation,
+                           patientType,
+                           sex,
+                           patientNo) {
+
+        $('#idNo').val(idNo);
+        $('#surName').val(surName);
+        $('#firstName').val(firstName);
+        $('#otherName').val(otherName);
+        $('#maritalStatus').val(maritalStatus);
+        $('#phoneNumber').val(phoneNumber);
+        $('#occupation').val(occupation);
+        $('#patientType').val(patientType);
+        $('#sex').val(sex);
+        jQuery('#patientModal').modal('show');
+        jQuery('#btn-add').text('Save Changes');
+        jQuery('#title').text('UPDATE Patient Details');
+        $('#patientNumber').val(patientNo);
+        $('#btn-add').on('click', function (e) {
+            e.preventDefault;
+            var url = 'add_patient_endpoint.php';
+            var data = getModalData();
+            data['id'] = id;
             $.ajax(
                 {
-                    type: 'POST',
+                    type: 'PUT',
                     url: url,
-                    data: JSON.stringify({'id': id}),
+                    data: JSON.stringify(data),
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
                     success: function (response) {
-                        if (response.statusCode == 200) {
-                            console.log(response);
-                            $('#confirmFeedback').removeClass('alert alert-danger')
+                        console.log(response.statusCode);
+                        if (response.statusCode == 201) {
+                            $('#feedback').removeClass('alert alert-danger')
                                 .addClass('alert alert-success')
                                 .text(response.message);
                             setTimeout(function () {
@@ -350,16 +367,55 @@ $counter = 1;
                             }, 1000);
                         }
                         if (response.statusCode == 500) {
-                            $('#confirmFeedback').removeClass('alert alert-success')
+                            $('#feedback').removeClass('alert alert-success')
                                 .html('<div class="alert alert-danger alert-dismissable">' +
                                     '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
                                     '<strong>Error! </strong> ' + response.message + '</div>')
 
                         }
                     }
+
                 }
             )
         })
+    }
+
+    function deletePatient(id) {
+        $('#confirmTitle').text('Delete Patient');
+        $('#confirmDeleteModal').modal('show');
+        var url = 'add_patient_endpoint.php';
+        $('#btnConfirmDelete').on('click', function (e) {
+           e.preventDefault;
+           $.ajax(
+               {
+                   type: 'DELETE',
+                   url: url,
+                   data: JSON.stringify({'id': id}),
+                   dataType: 'json',
+                   contentType: 'application/json; charset=utf-8',
+                   success: function (response) {
+                       if (response.statusCode == 204) {
+                           $('#confirmfeedback').removeClass('alert alert-danger')
+                               .addClass('alert alert-success')
+                               .text(response.message);
+                           setTimeout(function () {
+                               location.reload();
+                           }, 1000);
+                       }
+                       if (response.statusCode == 500) {
+                           $('#confirmFeedback').removeClass('alert alert-success')
+                               .html('<div class="alert alert-danger alert-dismissable">' +
+                                   '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                   '<strong>Error! </strong> ' + response.message + '</div>')
+
+                       }
+                   }
+               }
+           )
+        });
+
+
+
     }
 </script>
 </body>
