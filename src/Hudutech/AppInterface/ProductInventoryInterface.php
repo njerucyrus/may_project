@@ -13,9 +13,9 @@ use Hudutech\Entity\ProductInventory;
 
 interface ProductInventoryInterface
 {
-    public function create(ProductInventory $drugInventory);
+    public function create(ProductInventory $productInventory);
 
-    public function update(ProductInventory $drugInventory, $id);
+    public function update(ProductInventory $productInventory, $id);
 
     public static function delete($id);
 
