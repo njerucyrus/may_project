@@ -79,7 +79,7 @@ include  __DIR__.'/includes/register_patient.inc.php';
                                 <label for="surName" class="col-sm-3 control-label">SurName</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="surName" placeholder="surName">
+                                    <input type="text" class="form-control" name="surName" placeholder="SurName">
                                 </div>
                             </div>
 
@@ -102,10 +102,10 @@ include  __DIR__.'/includes/register_patient.inc.php';
                             </div>
 
                             <div class="form-group">
-                                <label for="phoneNumber" class="col-sm-3 control-label">phoneNumber</label>
+                                <label for="phoneNumber" class="col-sm-3 control-label">Phone Number</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="phoneNumber" placeholder="phone Number">
+                                    <input type="text" class="form-control" name="phoneNumber" placeholder="Phone Number" required>
                                 </div>
                             </div>
 
@@ -137,7 +137,6 @@ include  __DIR__.'/includes/register_patient.inc.php';
                                     <select name="maritalStatus" class="form-control">
                                         <option>single</option>
                                         <option>married</option>
-                                        <option>complicated</option>
 
                                     </select>
                                 </div>
@@ -148,8 +147,8 @@ include  __DIR__.'/includes/register_patient.inc.php';
 
                                 <div class="col-sm-5">
                                     <select name="patientType" class="form-control">
-                                        <option>in_patient</option>
-                                        <option>out_patient</option>
+                                        <option value="out_patient">Out Patient</option>
+
 
 
 

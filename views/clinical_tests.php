@@ -136,7 +136,8 @@ $counter = 1;
                 <p style="font-size: 16px;">Click Continue to delete</p>
             </div>
             <div class="modal-footer">
-                <button type="button" id='btnConfirmDelete' class="btn btn-danger" data-dismiss="modal">Delete</button>
+                <button type="button" id='btnConfirmDelete' class="btn btn-danger">Delete</button>
+                <button type="button" id='btnConfirmDelete' class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
