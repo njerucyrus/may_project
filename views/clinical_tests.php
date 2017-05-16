@@ -15,7 +15,7 @@ $counter = 1;
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include 'head_views.php' ?>
+    <?php include 'head_views.php' ;?>
     <title>Clinical Tests</title>
     <style>
         th,thead, td{
