@@ -9,7 +9,7 @@
 namespace Hudutech\Entity;
 
 
-class DrugSales
+class Sales
 {
     private $id;
     private $patientNo;
