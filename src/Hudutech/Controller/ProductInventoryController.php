@@ -24,6 +24,7 @@ class ProductInventoryController implements ProductInventoryInterface
         $invoiceNo = $productInventory->getInvoiceNo();
         $productName = $productInventory->getProductName();
         $qtyReceived = $productInventory->getQtyReceived();
+        $supplier = $productInventory->getSupplier();
         $purchasePrice = $productInventory->getPurchasePrice();
         $salePrice = $productInventory->getSalePrice();
         $purchaseDate = $productInventory->getPurchaseDate();
@@ -35,6 +36,7 @@ class ProductInventoryController implements ProductInventoryInterface
                                                                     invoiceNo, 
                                                                     productName,
                                                                     qtyReceived,
+                                                                    supplier,
                                                                     purchasePrice, 
                                                                     salePrice, 
                                                                     purchaseDate, 
@@ -45,6 +47,7 @@ class ProductInventoryController implements ProductInventoryInterface
                                                                     :invoiceNo, 
                                                                     :productName,
                                                                     :qtyReceived,
+                                                                    :supplier,
                                                                     :purchasePrice,
                                                                     :salePrice, 
                                                                     :purchaseDate, 
@@ -54,6 +57,7 @@ class ProductInventoryController implements ProductInventoryInterface
             $stmt->bindParam(":invoiceNo", $invoiceNo);
             $stmt->bindParam(":productName", $productName);
             $stmt->bindParam(":qtyReceived", $qtyReceived);
+            $stmt->bindParam(":supplier", $supplier);
             $stmt->bindParam(":purchasePrice", $purchasePrice);
             $stmt->bindParam(":salePrice", $salePrice);
             $stmt->bindParam(":purchaseDate", $purchaseDate);
