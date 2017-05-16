@@ -9,7 +9,7 @@
 namespace Hudutech\Entity;
 
 
-class Charges
+class Charge
 {
     private $id;
     private $chargeName;

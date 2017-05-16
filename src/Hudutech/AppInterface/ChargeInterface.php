@@ -9,12 +9,12 @@
 namespace Hudutech\AppInterface;
 
 
-use Hudutech\Entity\Charges;
+use Hudutech\Entity\Charge;
 
-interface ChargesInterface
+interface ChargeInterface
 {
-    public function create(Charges $charges);
-    public function update(Charges $charges, $id);
+    public function create(Charge $charges);
+    public function update(Charge $charges, $id);
     public static function delete($id);
     public static function getId($id);
     public static function getObject($id);
