@@ -13,6 +13,7 @@ class Sales
 {
     private $id;
     private $patientNo;
+    private $receiptNo;
     private $inventoryId;
     private $qty;
     private $price;
@@ -50,6 +51,24 @@ class Sales
     {
         $this->patientNo = $patientNo;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getReceiptNo()
+    {
+        return $this->receiptNo;
+    }
+
+    /**
+     * @param mixed $receiptNo
+     */
+    public function setReceiptNo($receiptNo)
+    {
+        $this->receiptNo = $receiptNo;
+    }
+
+
 
     /**
      * @return mixed

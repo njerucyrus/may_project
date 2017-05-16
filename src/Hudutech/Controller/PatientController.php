@@ -30,6 +30,7 @@ class PatientController implements PatientInterface
         $occupation = $patient->getOccupation();
         $patientType = $patient->getPatientType();
         $sex = $patient->getSex();
+        $age = $patient->getAge();
 
 
         try {
@@ -44,7 +45,8 @@ class PatientController implements PatientInterface
                                                             phoneNumber,
                                                             occupation,
                                                             patientType,
-                                                            sex    
+                                                            sex,
+                                                            age
                                                         )  
                                                 VALUES (
                                                             :patientNo,
@@ -56,7 +58,8 @@ class PatientController implements PatientInterface
                                                             :phoneNumber,
                                                             :occupation,
                                                             :patientType,
-                                                            :sex
+                                                            :sex,
+                                                            :age
                                                             
                                                              
                                                         ) ");
@@ -70,6 +73,7 @@ class PatientController implements PatientInterface
             $stmt->bindParam(":occupation", $occupation);
             $stmt->bindParam(":patientType", $patientType);
             $stmt->bindParam(":sex", $sex);
+            $stmt->bindParam(":age", $age);
             return $stmt->execute() ? true : false;
 
         } catch (\PDOException $exception) {
@@ -95,6 +99,7 @@ class PatientController implements PatientInterface
         $occupation = $patient->getOccupation();
         $patientType = $patient->getPatientType();
         $sex = $patient->getSex();
+        $age = $patient->getAge();
 
         try {
 
@@ -107,7 +112,8 @@ class PatientController implements PatientInterface
                                                         phoneNumber=:phoneNumber,
                                                         occupation=:occupation,
                                                         patientType=:patientType,
-                                                        sex=:sex, 
+                                                        sex=:sex,
+                                                        age=:age,
                                                         otherName=:otherName
                                                      WHERE id=:id
                                                      ");
@@ -123,6 +129,8 @@ class PatientController implements PatientInterface
             $stmt->bindParam(":occupation", $occupation);
             $stmt->bindParam(":patientType", $patientType);
             $stmt->bindParam(":sex", $sex);
+            $stmt->bindParam(":age", $age);
+
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
             return false;

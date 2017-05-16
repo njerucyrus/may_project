@@ -17,26 +17,23 @@ if($requestMethod == 'POST') {
         $patient = new \Hudutech\Entity\Patient();
 
         if (!empty($data['patientNo']) and
-            !empty($data['idNo']) and
-            !empty($data['surName']) and
-            !empty($data['firstName']) and
-            !empty($data['maritalStatus']) and
-            !empty($data['phoneNumber']) and
-            !empty($data['occupation']) and
+            !empty($data['fullName']) and
             !empty($data['patientType']) and
-            !empty($data['sex'])
+            !empty($data['sex']) and
+            !empty($data['age'])
         ) {
 
             $patient->setPatientNo($data['patientNo']);
-            $patient->setIdNo($data['idNo']);
-            $patient->setSurName($data['surName']);
-            $patient->setFirstName($data['firstName']);
-            $patient->setOtherName($data['otherName']);
-            $patient->setMaritalStatus($data['maritalStatus']);
+            $patient->setIdNo(null);
+            $patient->setSurName($data['fullName']);
+            $patient->setFirstName(null);
+            $patient->setOtherName(null);
+            $patient->setMaritalStatus(null);
             $patient->setPhoneNumber($data['phoneNumber']);
-            $patient->setOccupation($data['occupation']);
+            $patient->setOccupation(null);
             $patient->setPatientType($data['patientType']);
             $patient->setSex($data['sex']);
+            $patient->setAge($data['age']);
 
             $patientCtrl = new \Hudutech\Controller\PatientController();
             $created = $patientCtrl->create($patient);
@@ -87,26 +84,23 @@ if ($requestMethod == 'PUT') {
         $patient = new \Hudutech\Entity\Patient();
 
         if (!empty($data['patientNo']) and
-            !empty($data['idNo']) and
-            !empty($data['surName']) and
-            !empty($data['firstName']) and
-            !empty($data['maritalStatus']) and
-            !empty($data['phoneNumber']) and
-            !empty($data['occupation']) and
+            !empty($data['fullName']) and
             !empty($data['patientType']) and
-            !empty($data['sex'])
+            !empty($data['sex']) and
+            !empty($data['age'])
         ) {
 
             $patient->setPatientNo($data['patientNo']);
-            $patient->setIdNo($data['idNo']);
-            $patient->setSurName($data['surName']);
-            $patient->setFirstName($data['firstName']);
-            $patient->setOtherName($data['otherName']);
-            $patient->setMaritalStatus($data['maritalStatus']);
+            $patient->setIdNo(null);
+            $patient->setSurName($data['fullName']);
+            $patient->setFirstName(null);
+            $patient->setOtherName(null);
+            $patient->setMaritalStatus(null);
             $patient->setPhoneNumber($data['phoneNumber']);
-            $patient->setOccupation($data['occupation']);
+            $patient->setOccupation(null);
             $patient->setPatientType($data['patientType']);
             $patient->setSex($data['sex']);
+            $patient->setAge($data['age']);
 
             $patientCtrl = new \Hudutech\Controller\PatientController();
             $updated = $patientCtrl->update($patient, $data['id']);
@@ -119,7 +113,7 @@ if ($requestMethod == 'PUT') {
                 print_r(json_encode(
                     array(
                         "statusCode" => 500,
-                        "message" => "error occurred while registering the patient please try again later"
+                        "message" => "error occurred while updating the patient please try again later"
                     )
                 ));
             }

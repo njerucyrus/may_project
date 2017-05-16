@@ -54,6 +54,10 @@ class Patient
      */
     private $patientType;
     /**
+     * @var integer
+     */
+    private $age;
+    /**
      * @var boolean
      */
     private $inQueue;
@@ -219,6 +223,24 @@ class Patient
     {
         $this->patientType = $patientType;
     }
+
+    /**
+     * @return int
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param int $age
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+
+
 
     /**
      * @return bool

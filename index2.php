@@ -45,5 +45,8 @@ require_once __DIR__.'/vendor/autoload.php';
 //$patientId = \Hudutech\Controller\PatientController::getPatientId('4844')['id'];
 //print_r($patientId);
 
-$queuePatients= \Hudutech\Controller\PatientController::showInQueue();
-print_r(json_encode($queuePatients));
+//$queuePatients= \Hudutech\Controller\PatientController::showInQueue();
+//print_r(json_encode($queuePatients));
+
+
+
