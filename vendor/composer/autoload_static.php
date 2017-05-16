@@ -21,6 +21,7 @@ class ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331
     );
 
     public static $classMap = array (
+        'Hudutech\\AppInterface\\ChargeInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/ChargeInterface.php',
         'Hudutech\\AppInterface\\ClinicalNoteInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/ClinicalNoteInterface.php',
         'Hudutech\\AppInterface\\ClinicalTestInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/ClinicalTestInterface.php',
         'Hudutech\\AppInterface\\DrugInventoryInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/DrugInventoryInterface.php',
@@ -32,6 +33,7 @@ class ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331
         'Hudutech\\AppInterface\\SalesInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/SalesInterface.php',
         'Hudutech\\AppInterface\\UserInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/UserInterface.php',
         'Hudutech\\Auth\\Auth' => __DIR__ . '/../..' . '/src/Hudutech/Auth/Auth.php',
+        'Hudutech\\Controller\\ChargeController' => __DIR__ . '/../..' . '/src/Hudutech/Controller/ChargeController.php',
         'Hudutech\\Controller\\ClinicalNoteController' => __DIR__ . '/../..' . '/src/Hudutech/Controller/ClinicalNoteController.php',
         'Hudutech\\Controller\\ClinicalTestController' => __DIR__ . '/../..' . '/src/Hudutech/Controller/ClinicalTestController.php',
         'Hudutech\\Controller\\DrugInventoryController' => __DIR__ . '/../..' . '/src/Hudutech/Controller/DrugInventoryController.php',
@@ -44,6 +46,7 @@ class ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331
         'Hudutech\\Controller\\UserController' => __DIR__ . '/../..' . '/src/Hudutech/Controller/UserController.php',
         'Hudutech\\DBManager\\ComplexQuery' => __DIR__ . '/../..' . '/src/Hudutech/DBManager/ComplexQuery.php',
         'Hudutech\\DBManager\\DB' => __DIR__ . '/../..' . '/src/Hudutech/DBManager/DB.php',
+        'Hudutech\\Entity\\Charge' => __DIR__ . '/../..' . '/src/Hudutech/Entity/Charge.php',
         'Hudutech\\Entity\\ClinicalNote' => __DIR__ . '/../..' . '/src/Hudutech/Entity/ClinicalNote.php',
         'Hudutech\\Entity\\ClinicalTest' => __DIR__ . '/../..' . '/src/Hudutech/Entity/ClinicalTest.php',
         'Hudutech\\Entity\\DrugInventory' => __DIR__ . '/../..' . '/src/Hudutech/Entity/DrugInventory.php',

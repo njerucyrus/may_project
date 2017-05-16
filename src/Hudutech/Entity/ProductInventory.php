@@ -16,6 +16,7 @@ class ProductInventory
     private $invoiceNo;
     private $productName;
     private $qtyReceived;
+    private $supplier;
     private $purchasePrice;
     private $salePrice;
     private $purchaseDate;
@@ -100,6 +101,24 @@ class ProductInventory
     {
         $this->qtyReceived = $qtyReceived;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
+    }
+
+    /**
+     * @param mixed $supplier
+     */
+    public function setSupplier($supplier)
+    {
+        $this->supplier = $supplier;
+    }
+
+
 
     /**
      * @return mixed

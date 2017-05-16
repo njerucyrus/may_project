@@ -88,7 +88,7 @@ $counter = 1;
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Register New Patient Here</h4>
+                <h4 class="modal-title" id="title">Register New Patient Here</h4>
                 <div id="feedback">
                 </div>
             </div>
@@ -96,51 +96,21 @@ $counter = 1;
             <div class="modal-body">
 
                 <div class="row">
-                    <div class="col-md-6">
+
+                    <div class="col-md-12">
 
                         <div class="form-group">
-                            <label for="surName" class="control-label">Surname</label>
+                            <label for="fullName" class="control-label">FullName</label>
 
-                            <input type="text" class="form-control" id="surName" placeholder="Your Surname">
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label for="firstName" class="control-label">First Name</label>
-
-                            <input type="text" class="form-control" id="firstName" placeholder="Your first name">
+                            <input type="text" class="form-control" id="fullName" placeholder="Your first name">
                         </div>
 
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label for="otherName" class="control-label">Other Names</label>
-
-                            <input type="text" class="form-control" id="otherName" placeholder="Other Names ...">
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label for="idNo" class="control-label">ID Number</label>
-
-                            <input type="text" class="form-control" id="idNo" placeholder="Your National id Number...">
-                        </div>
-
-                    </div>
-                </div>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
 
                         <div class="form-group">
                             <label for="patientNumber" class="control-label">Patient Number</label>
@@ -150,7 +120,7 @@ $counter = 1;
 
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
 
                         <div class="form-group">
                             <label for="phoneNumber" class="control-label">PhoneNumber</label>
@@ -160,30 +130,11 @@ $counter = 1;
                         </div>
 
                     </div>
-
-                    <div class="col-md-4">
-
-                        <div class="form-group">
-                            <label for="maritalStatus" class="control-label">Marital Status</label>
-                            <select id="maritalStatus" class="form-control">
-                                <option value="single">Single</option>
-                                <option value="married">Married</option>
-                            </select>
-                        </div>
-
-                    </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="occupation" class="control-label">Occupation</label>
-                            <input type="text" id="occupation" class="form-control" placeholder="Your occupation ...">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="sex" class="control-label">Sex</label>
+                            <label for="sex" class="control-label">Gender</label>
                             <select id="sex" class="form-control">
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
@@ -193,17 +144,21 @@ $counter = 1;
 
                     <div class="col-md-4">
                         <div class="form-group">
+                            <label for="age" class="control-label">Age</label>
+                            <input type="number" max="150" class="form-control" id="age" name="age">
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
                             <label for="patientType" class="control-label">Patient Type</label>
                             <select id="patientType" class="form-control">
                                 <option value="in_patient">IN-PATIENT</option>
-                                <option value="out_patient">OUT-PATIENT</option>
                             </select>
                         </div>
                     </div>
                 </div>
-
             </div>
-
             <div class="modal-footer">
                 <button type="button" id="btn-add" class="btn btn-info">Submit Details</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -289,6 +244,16 @@ $counter = 1;
             patientNo: $('#patientNumber').val()
         }
 
+    }
+    function getModalData() {
+        return {
+            fullName: $('#fullName').val(),
+            phoneNumber: $('#phoneNumber').val(),
+            patientType: $('#patientType').val(),
+            sex: $('#sex').val(),
+            age: $('#age').val(),
+            patientNo: $('#patientNumber').val()
+        }
     }
     function showAddNewModal() {
         $('#patientModal').modal('show');

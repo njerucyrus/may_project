@@ -16,11 +16,6 @@ $counter = 1;
 <head>
     <?php include 'head_views.php' ?>
     <title>iClinic | Patients List</title>
-    <style>
-        th, td, label, thead {
-            color: #000000;
-        }
-    </style>
 </head>
 <body class="page-body skin-facebook">
 <div class="page-container">
@@ -39,11 +34,11 @@ $counter = 1;
                                        value="Search Patient">
                             </form>
                         </div>
-                        <div class="col col-md-6">
-                            <button class="btn btn-default" onclick="showAddNewModal()" style="padding: 10px;">Register
+                        <div class="col col-md-6" style="margin: 15px;">
+                            <button class="btn btn-default" onclick="showAddNewModal()" style="padding: 10px; margin-top: 10px; margin-left: 10px;">Register
                                 Single Patients
                             </button>
-                            <button class="btn btn-success" style="padding: 10px;"><i class="entypo-attach"></i>Upload
+                            <button class="btn btn-success" style="padding: 10px; margin-top: 10px; margin-left: 10px;"><i class="entypo-attach"></i>Upload
                                 From Excel
                             </button>
                         </div>
@@ -58,8 +53,7 @@ $counter = 1;
                                     <th>#</th>
                                     <th style="color: black">PatientNumber</th>
                                     <th style="color: black">FullName</th>
-                                    <th style="color: black">ID Number</th>
-                                    <th style="color: black">Sex</th>
+                                    <th style="color: black">Gender</th>
                                     <th style="color: black">Phone Number</th>
                                     <th style="color: black">Date Registered</th>
                                     <th style="color: black">Timestamp</th>
@@ -72,7 +66,6 @@ $counter = 1;
                                         <td><?php echo $counter++ ?></td>
                                         <td><?php echo $patient['patientNo'] ?></td>
                                         <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName']; ?></td>
-                                        <td><?php echo $patient['idNo'] ?></td>
                                         <td><?php echo $patient['sex'] ?></td>
                                         <td><?php echo $patient['phoneNumber'] ?></td>
                                         <td><?php echo date('d-m-Y', strtotime($patient['dateRegistered'])); ?></td>
@@ -81,15 +74,11 @@ $counter = 1;
                                             <button class="btn btn-primary btn-blue"
                                                     onclick="updatePatient(
                                                     '<?php echo $patient['id'] ?>',
-                                                    '<?php echo $patient['idNo'] ?>',
                                                     '<?php echo $patient['surName'] ?>',
-                                                    '<?php echo $patient['firstName'] ?>',
-                                                    '<?php echo $patient['otherName'] ?>',
-                                                    '<?php echo $patient['maritalStatus'] ?>',
                                                     '<?php echo $patient['phoneNumber'] ?>',
-                                                    '<?php echo $patient['occupation'] ?>',
                                                     '<?php echo $patient['patientType'] ?>',
                                                     '<?php echo $patient['sex'] ?>',
+                                                    '<?php echo $patient['age'] ?>',
                                                     '<?php echo $patient['patientNo'] ?>'
                                                     )"><i class="entypo-pencil"></i>Edit
                                             </button>
@@ -121,51 +110,21 @@ $counter = 1;
             <div class="modal-body">
 
                 <div class="row">
-                    <div class="col-md-6">
+
+                    <div class="col-md-12">
 
                         <div class="form-group">
-                            <label for="surName" class="control-label">Surname</label>
+                            <label for="fullName" class="control-label">FullName</label>
 
-                            <input type="text" class="form-control" id="surName" placeholder="Your Surname">
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label for="firstName" class="control-label">First Name</label>
-
-                            <input type="text" class="form-control" id="firstName" placeholder="Your first name">
+                            <input type="text" class="form-control" id="fullName" placeholder="Your first name">
                         </div>
 
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label for="otherName" class="control-label">Other Names</label>
-
-                            <input type="text" class="form-control" id="otherName" placeholder="Other Names ...">
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label for="idNo" class="control-label">ID Number</label>
-
-                            <input type="text" class="form-control" id="idNo" placeholder="Your National id Number...">
-                        </div>
-
-                    </div>
-                </div>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
 
                         <div class="form-group">
                             <label for="patientNumber" class="control-label">Patient Number</label>
@@ -175,7 +134,7 @@ $counter = 1;
 
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
 
                         <div class="form-group">
                             <label for="phoneNumber" class="control-label">PhoneNumber</label>
@@ -185,50 +144,35 @@ $counter = 1;
                         </div>
 
                     </div>
-
-                    <div class="col-md-4">
-
-                        <div class="form-group">
-                            <label for="maritalStatus" class="control-label">Marital Status</label>
-                            <select id="maritalStatus" class="form-control">
-                                <option value="single">Single</option>
-                                <option value="married">Married</option>
-                            </select>
-                        </div>
-
-                    </div>
                 </div>
-
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="occupation" class="control-label">Occupation</label>
-                            <input type="text" id="occupation" class="form-control" placeholder="Your occupation ...">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="sex" class="control-label">Sex</label>
-                            <select id="sex" class="form-control">
-                                <option value="M">Male</option>
-                                <option value="F">Female</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="patientType" class="control-label">Patient Type</label>
-                            <select id="patientType" class="form-control">
-                                <option value="in_patient">IN-PATIENT</option>
-                                <option value="out_patient">OUT-PATIENT</option>
-                            </select>
-                        </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="sex" class="control-label">Gender</label>
+                        <select id="sex" class="form-control">
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
                     </div>
                 </div>
 
-            </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="age" class="control-label">Age</label>
+                        <input type="number" max="150" class="form-control" id="age" name="age">
 
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="patientType" class="control-label">Patient Type</label>
+                        <select id="patientType" class="form-control">
+                            <option value="in_patient">IN-PATIENT</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" id="btn-add" class="btn btn-info">Submit Details</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -269,15 +213,11 @@ $counter = 1;
 <script>
     function getModalData() {
         return {
-            idNo: $('#idNo').val(),
-            surName: $('#surName').val(),
-            firstName: $('#firstName').val(),
-            otherName: $('#otherName').val(),
-            maritalStatus: $('#maritalStatus').val(),
+            fullName: $('#fullName').val(),
             phoneNumber: $('#phoneNumber').val(),
-            occupation: $('#occupation').val(),
             patientType: $('#patientType').val(),
             sex: $('#sex').val(),
+            age: $('#age').val(),
             patientNo: $('#patientNumber').val()
         }
     }
@@ -320,25 +260,19 @@ $counter = 1;
     }
 
     function updatePatient(id,
-                           idNo,
-                           surName,
-                           firstName,
-                           otherName,
-                           maritalStatus,
+                           fullName,
                            phoneNumber,
-                           occupation,
                            patientType,
                            sex,
-                           patientNo) {
+                           age,
+                           patientNo
+    ) {
 
-        $('#idNo').val(idNo);
-        $('#surName').val(surName);
-        $('#firstName').val(firstName);
-        $('#otherName').val(otherName);
-        $('#maritalStatus').val(maritalStatus);
+
+        $('#fullName').val(fullName);
         $('#phoneNumber').val(phoneNumber);
-        $('#occupation').val(occupation);
-        $('#patientType').val(patientType);
+        $('#age').val(age);
+        $('#patientType').attr('selected', true);
         $('#sex').val(sex);
         jQuery('#patientModal').modal('show');
         jQuery('#btn-add').text('Save Changes');
@@ -349,6 +283,7 @@ $counter = 1;
             var url = 'add_patient_endpoint.php';
             var data = getModalData();
             data['id'] = id;
+            console.log(data);
             $.ajax(
                 {
                     type: 'PUT',
@@ -357,7 +292,7 @@ $counter = 1;
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
                     success: function (response) {
-                        console.log(response.statusCode);
+                        console.log(response);
                         if (response.statusCode == 201) {
                             $('#feedback').removeClass('alert alert-danger')
                                 .addClass('alert alert-success')
@@ -395,7 +330,7 @@ $counter = 1;
                    contentType: 'application/json; charset=utf-8',
                    success: function (response) {
                        if (response.statusCode == 204) {
-                           $('#confirmfeedback').removeClass('alert alert-danger')
+                           $('#confirmFeedback').removeClass('alert alert-danger')
                                .addClass('alert alert-success')
                                .text(response.message);
                            setTimeout(function () {
@@ -413,9 +348,6 @@ $counter = 1;
                }
            )
         });
-
-
-
     }
 </script>
 </body>

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Hudutech\\AppInterface\\ChargeInterface' => $baseDir . '/src/Hudutech/AppInterface/ChargeInterface.php',
     'Hudutech\\AppInterface\\ClinicalNoteInterface' => $baseDir . '/src/Hudutech/AppInterface/ClinicalNoteInterface.php',
     'Hudutech\\AppInterface\\ClinicalTestInterface' => $baseDir . '/src/Hudutech/AppInterface/ClinicalTestInterface.php',
     'Hudutech\\AppInterface\\DrugInventoryInterface' => $baseDir . '/src/Hudutech/AppInterface/DrugInventoryInterface.php',
@@ -17,6 +18,7 @@ return array(
     'Hudutech\\AppInterface\\SalesInterface' => $baseDir . '/src/Hudutech/AppInterface/SalesInterface.php',
     'Hudutech\\AppInterface\\UserInterface' => $baseDir . '/src/Hudutech/AppInterface/UserInterface.php',
     'Hudutech\\Auth\\Auth' => $baseDir . '/src/Hudutech/Auth/Auth.php',
+    'Hudutech\\Controller\\ChargeController' => $baseDir . '/src/Hudutech/Controller/ChargeController.php',
     'Hudutech\\Controller\\ClinicalNoteController' => $baseDir . '/src/Hudutech/Controller/ClinicalNoteController.php',
     'Hudutech\\Controller\\ClinicalTestController' => $baseDir . '/src/Hudutech/Controller/ClinicalTestController.php',
     'Hudutech\\Controller\\DrugInventoryController' => $baseDir . '/src/Hudutech/Controller/DrugInventoryController.php',
@@ -29,6 +31,7 @@ return array(
     'Hudutech\\Controller\\UserController' => $baseDir . '/src/Hudutech/Controller/UserController.php',
     'Hudutech\\DBManager\\ComplexQuery' => $baseDir . '/src/Hudutech/DBManager/ComplexQuery.php',
     'Hudutech\\DBManager\\DB' => $baseDir . '/src/Hudutech/DBManager/DB.php',
+    'Hudutech\\Entity\\Charge' => $baseDir . '/src/Hudutech/Entity/Charge.php',
     'Hudutech\\Entity\\ClinicalNote' => $baseDir . '/src/Hudutech/Entity/ClinicalNote.php',
     'Hudutech\\Entity\\ClinicalTest' => $baseDir . '/src/Hudutech/Entity/ClinicalTest.php',
     'Hudutech\\Entity\\DrugInventory' => $baseDir . '/src/Hudutech/Entity/DrugInventory.php',

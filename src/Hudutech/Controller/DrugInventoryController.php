@@ -22,6 +22,7 @@ class DrugInventoryController implements DrugInventoryInterface
        $invoiceNo = $drugInventory->getInvoiceNo();
        $productName = $drugInventory->getProductName();
        $qtyReceived = $drugInventory->getQtyReceived();
+       $supplier = $drugInventory->getSupplier();
        $purchasePrice = $drugInventory->getPurchasePrice();
        $datePurchased = $drugInventory->getDatePurchased();
        $expiryDate= $drugInventory->getExpiryDate();
@@ -35,6 +36,7 @@ class DrugInventoryController implements DrugInventoryInterface
                                                                 invoiceNo,
                                                                 productName, 
                                                                 qtyReceived, 
+                                                                supplier,
                                                                 purchasePrice,
                                                                 datePurchased,
                                                                 expiryDate, 
@@ -47,6 +49,7 @@ class DrugInventoryController implements DrugInventoryInterface
                                                                 :invoiceNo,
                                                                 :productName,
                                                                 :qtyReceived,
+                                                                :supplier,
                                                                 :purchasePrice,
                                                                 :datePurchased, 
                                                                 :expiryDate,
@@ -59,6 +62,7 @@ class DrugInventoryController implements DrugInventoryInterface
            $stmt->bindParam(":invoiceNo",$invoiceNo);
            $stmt->bindParam(":productName",$productName);
            $stmt->bindParam(":qtyReceived",$qtyReceived);
+           $stmt->bindParam(":supplier",$supplier);
            $stmt->bindParam(":purchasePrice",$purchasePrice);
            $stmt->bindParam(":datePurchased", $datePurchased);
            $stmt->bindParam(":expiryDate",$expiryDate);
@@ -80,6 +84,7 @@ class DrugInventoryController implements DrugInventoryInterface
         $invoiceNo = $drugInventory->getInvoiceNo();
         $productName = $drugInventory->getProductName();
         $qtyReceived = $drugInventory->getQtyReceived();
+        $supplier = $drugInventory->getSupplier();
         $purchasePrice = $drugInventory->getPurchasePrice();
         $datePurchased = $drugInventory->getDatePurchased();
         $expiryDate= $drugInventory->getExpiryDate();
@@ -92,7 +97,8 @@ class DrugInventoryController implements DrugInventoryInterface
                                                                 batchNo=:batchNo,
                                                                 invoiceNo=:invoiceNo,
                                                                 productName=:productName, 
-                                                                qtyReceived=:qtyReceived, 
+                                                                qtyReceived=:qtyReceived,
+                                                                supplier=:supplier,
                                                                 purchasePrice=:purchasePrice,
                                                                 datePurchased=:datePurchased,
                                                                 expiryDate=:expiryDate, 
@@ -107,6 +113,7 @@ class DrugInventoryController implements DrugInventoryInterface
             $stmt->bindParam(":invoiceNo",$invoiceNo);
             $stmt->bindParam(":productName",$productName);
             $stmt->bindParam(":qtyReceived",$qtyReceived);
+            $stmt->bindParam(":supplier",$supplier);
             $stmt->bindParam(":purchasePrice",$purchasePrice);
             $stmt->bindParam(":datePurchased", $datePurchased);
             $stmt->bindParam(":expiryDate",$expiryDate);
