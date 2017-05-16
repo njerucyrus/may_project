@@ -16,6 +16,7 @@ class DrugInventory
     private $invoiceNo;
     private $productName;
     private $qtyReceived;
+    private $supplier;
     private $purchasePrice;
     private $datePurchased;
     private $expiryDate;
@@ -102,6 +103,24 @@ class DrugInventory
     {
         $this->qtyReceived = $qtyReceived;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
+    }
+
+    /**
+     * @param mixed $supplier
+     */
+    public function setSupplier($supplier)
+    {
+        $this->supplier = $supplier;
+    }
+
+
 
     /**
      * @return mixed
