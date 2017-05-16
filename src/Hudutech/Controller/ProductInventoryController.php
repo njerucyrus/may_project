@@ -158,12 +158,17 @@ class ProductInventoryController implements ProductInventoryInterface
 
     public static function all()
     {
+        $db = new DB();
+        $conn = $db->connect();
 
+        try{
+            $stmt = $conn->prepare("SELECT t.* FROM product_inventory t WHERE 1");
+            return $stmt->execute() && $stmt->rowCount() ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
     }
 
-    public static function getPrice($id, $qty)
-    {
-        // TODO: Implement getPrice() method.
-    }
 
 }

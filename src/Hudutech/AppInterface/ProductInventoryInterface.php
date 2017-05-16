@@ -25,5 +25,5 @@ interface ProductInventoryInterface
 
     public static function all();
 
-    public static function getPrice($id, $qty);
+
 }
