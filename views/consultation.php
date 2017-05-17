@@ -77,10 +77,10 @@ $counter=1;
                                     <?php foreach ($queuePatients as $queuePatient ): ?>
                                     <tr>
                                         <td><?php echo $counter++?></td>
-                                        <td><?php echo $queuePatient['patientNo'] ?></td>
+                                        <td><?php echo $queuePatient['patientId'] ?></td>
                                         <td><?php echo $queuePatient['surName']." ".$queuePatient['firstName']." ".$queuePatient['otherName'] ;  ?></td>
                                         <td><?php echo $queuePatient['age'] ?></td>
-                                        <td><input type="button" value="Add Clinical Notes" onclick="showClinicalNotesForms('<?php echo $queuePatient['id']?>', '<?php echo $queuePatient['patientNo']?>')"
+                                        <td><input type="button" value="Add Clinical Notes" onclick="showClinicalNotesForms('<?php echo $queuePatient['id']?>', '<?php echo $queuePatient['patientId']?>')"
                                                    class="form-controls btn btn-blue  btn-md"/></td>
 
                                     </tr>
@@ -413,7 +413,7 @@ $counter=1;
         function filterTable() {
             // Declare variables
             var input, filter, table, tr, td, i;
-            input = document.getElementById("patientNo");
+            input = document.getElementById("patientId");
             filter = input.value.toUpperCase();
             table = document.getElementById("queueTable");
             tr = table.getElementsByTagName("tr");

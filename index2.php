@@ -14,7 +14,7 @@ require_once __DIR__.'/vendor/autoload.php';
 //$ctrl = new \Hudutech\Controller\PatientController();
 //$patient  = new \Hudutech\Entity\Patient();
 //
-//$patient->setPatientNo(rand(0, 1000));
+//$patient->setPatientId(rand(0, 1000));
 //$patient->setIdNo(373833);
 //$patient->setSirName("NJIIRI");
 //$patient->setFirstName("JOHN");

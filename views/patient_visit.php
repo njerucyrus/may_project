@@ -59,7 +59,7 @@ $counter = 1;
                                 <?php foreach ($patients as $patient): ?>
                                     <tr>
                                         <td><?php echo $counter++ ?></td>
-                                        <td><?php echo $patient['patientNo'] ?></td>
+                                        <td><?php echo $patient['patientId'] ?></td>
                                         <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName']; ?></td>
                                         <td><?php echo $patient['phoneNumber'] ?></td>
                                         <td><?php echo $patient['sex'] ?></td>
@@ -231,7 +231,7 @@ $counter = 1;
     function filterTable() {
         // Declare variables
         var input, filter, table, tr, td, i;
-        input = document.getElementById("patientNo");
+        input = document.getElementById("patientId");
         filter = input.value.toUpperCase();
         table = document.getElementById("visitTable");
         tr = table.getElementsByTagName("tr");

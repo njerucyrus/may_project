@@ -12,7 +12,7 @@ namespace Hudutech\Entity;
 class Sales
 {
     private $id;
-    private $patientNo;
+    private $patientId;
     private $receiptNo;
     private $inventoryId;
     private $qty;
@@ -39,17 +39,17 @@ class Sales
     /**
      * @return mixed
      */
-    public function getPatientNo()
+    public function getPatientId()
     {
-        return $this->patientNo;
+        return $this->patientId;
     }
 
     /**
-     * @param mixed $patientNo
+     * @param mixed $patientId
      */
-    public function setPatientNo($patientNo)
+    public function setPatientId($patientId)
     {
-        $this->patientNo = $patientNo;
+        $this->patientId = $patientId;
     }
 
     /**
