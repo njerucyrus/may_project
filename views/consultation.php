@@ -41,7 +41,18 @@ $counter=1;
                     <div class="panel-body">
 
                         <!--                   body content will start here-->
-                        <form role="form" class="form-horizontal form-groups-bordered">
+                        <div class="form-horizontal" style="margin-bottom: 15px; padding: 10px;">
+                            <form>
+                                <div class="form-inline">
+                                    <label for="patientNo">PatientNo</label>
+                                    <input type="text" id="patientNo" class="form-control"
+                                           placeholder="Enter Patient Number" onkeyup="filterTable()">
+                                    <button class="btn btn-primary" onclick="filterTable()" style="margin: 5px;">Go
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
 
 
                             <div class="col-md-10">
@@ -56,6 +67,7 @@ $counter=1;
                                         <th>#</th>
                                         <th>OutPatient Number</th>
                                         <th>FullName</th>
+                                        <th>Age</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -64,10 +76,10 @@ $counter=1;
                                     <tbody>
                                     <?php foreach ($queuePatients as $queuePatient ): ?>
                                     <tr>
-
                                         <td><?php echo $counter++?></td>
                                         <td><?php echo $queuePatient['patientNo'] ?></td>
                                         <td><?php echo $queuePatient['surName']." ".$queuePatient['firstName']." ".$queuePatient['otherName'] ;  ?></td>
+                                        <td><?php echo $queuePatient['age'] ?></td>
                                         <td><input type="button" value="Add Clinical Notes" onclick="showClinicalNotesForms('<?php echo $queuePatient['id']?>', '<?php echo $queuePatient['patientNo']?>')"
                                                    class="form-controls btn btn-blue  btn-md"/></td>
 
@@ -273,6 +285,7 @@ $counter=1;
         $(document).ready(function (e) {
             e.preventDefault;
            hideClinicalNotesForms();
+           //filterTable();
 
         })
     </script>
@@ -314,32 +327,6 @@ $counter=1;
                 }
             }
         }
-
-        function filterTable() {
-            // Declare variables
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("patientNo");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("queueTable");
-            tr = table.getElementsByTagName("tr");
-
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1];
-                if (td) {
-                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                        hideClinicalNotesForms();
-                    } else {
-                        tr[i].style.display = "none";
-                        hideClinicalNotesForms();
-                    }
-                }
-            }
-        }
-
-
-
 
         function getFormData() {
             return {
@@ -421,6 +408,29 @@ $counter=1;
 
                 }
             )
+        }
+
+        function filterTable() {
+            // Declare variables
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("patientNo");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("queueTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        $('#addNew').hide();
+                    } else {
+                        tr[i].style.display = "none";
+                        $('#addNew').show()
+                    }
+                }
+            }
         }
     </script>
 </body>

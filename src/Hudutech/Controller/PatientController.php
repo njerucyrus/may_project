@@ -19,8 +19,8 @@ class PatientController implements PatientInterface
     {
         $db = new DB();
         $conn = $db->connect();
-
-        $patientNo = $patient->getPatientNo();
+        $currentYear = date('Y');
+        $patientNo = $currentYear."-".$patient->getPatientNo();
         $surName = $patient->getSurName();
         $idNo = $patient->getIdNo();
         $firstName = $patient->getFirstName();
@@ -31,6 +31,7 @@ class PatientController implements PatientInterface
         $patientType = $patient->getPatientType();
         $sex = $patient->getSex();
         $age = $patient->getAge();
+        $location = $patient->getLocation();
 
 
         try {
@@ -46,7 +47,8 @@ class PatientController implements PatientInterface
                                                             occupation,
                                                             patientType,
                                                             sex,
-                                                            age
+                                                            age,
+                                                            location
                                                         )  
                                                 VALUES (
                                                             :patientNo,
@@ -59,7 +61,8 @@ class PatientController implements PatientInterface
                                                             :occupation,
                                                             :patientType,
                                                             :sex,
-                                                            :age
+                                                            :age,
+                                                            :location
                                                             
                                                              
                                                         ) ");
@@ -74,6 +77,7 @@ class PatientController implements PatientInterface
             $stmt->bindParam(":patientType", $patientType);
             $stmt->bindParam(":sex", $sex);
             $stmt->bindParam(":age", $age);
+            $stmt->bindParam(":location", $location);
             return $stmt->execute() ? true : false;
 
         } catch (\PDOException $exception) {
@@ -84,11 +88,53 @@ class PatientController implements PatientInterface
 
     }
 
+    public function batchCreate(array $patients)
+    {
+     $db = new DB();
+     $conn = $db->connect();
+
+     try{
+         $stmt = $conn->prepare("INSERT INTO patients(
+                                                        patientNo,
+                                                        surName,
+                                                        phoneNumber,
+                                                        patientType,
+                                                        sex,
+                                                        age,
+                                                        location
+                                                        )  
+                                                VALUES (
+                                                        :patientNo,
+                                                        :surName,
+                                                        :phoneNumber,
+                                                        :patientType,
+                                                        :sex,
+                                                        :age,
+                                                        :location
+                                                        ) ");
+         foreach ($patients as $patient){
+             $stmt->bindParam(":patientNo", $patient['patientNo']);
+             $stmt->bindParam(":surName", $patient['fullName']);
+             $stmt->bindParam(":phoneNumber", $patient['phoneNumber']);
+             $stmt->bindParam(":patientType", $patient['patientType']);
+             $stmt->bindParam(":sex", $patient['sex']);
+             $stmt->bindParam(":age",$patient['age']);
+             $stmt->bindParam(":location",$patient['location']);
+             $stmt->execute();
+         }
+         return true;
+
+     }catch (\PDOException $exception) {
+         echo $exception->getMessage();
+         return false;
+     }
+    }
+
+
     public function update(Patient $patient, $id)
     {
         $db = new DB();
         $conn = $db->connect();
-
         $patientNo = $patient->getPatientNo();
         $sirName = $patient->getSurName();
         $idNo = $patient->getIdNo();
@@ -100,6 +146,7 @@ class PatientController implements PatientInterface
         $patientType = $patient->getPatientType();
         $sex = $patient->getSex();
         $age = $patient->getAge();
+        $location = $patient->getLocation();
 
         try {
 
@@ -114,7 +161,8 @@ class PatientController implements PatientInterface
                                                         patientType=:patientType,
                                                         sex=:sex,
                                                         age=:age,
-                                                        otherName=:otherName
+                                                        otherName=:otherName,
+                                                        location=:location
                                                      WHERE id=:id
                                                      ");
 
@@ -130,6 +178,7 @@ class PatientController implements PatientInterface
             $stmt->bindParam(":patientType", $patientType);
             $stmt->bindParam(":sex", $sex);
             $stmt->bindParam(":age", $age);
+            $stmt->bindParam(":location", $location);
 
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {

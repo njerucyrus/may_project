@@ -21,6 +21,7 @@
 <!-- Imported scripts on this page -->
 <script src="../public/assets/js/bootstrap-switch.min.js"></script>
 <script src="../public/assets/js/neon-chat.js"></script>
+<script src="../public/assets/js/paginator/jquery.paginate.min.js"></script>
 
 
 <!-- JavaScripts initializations and stuff -->

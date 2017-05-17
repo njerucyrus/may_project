@@ -49,4 +49,21 @@ require_once __DIR__.'/vendor/autoload.php';
 //print_r(json_encode($queuePatients));
 
 
-
+//$product = new \Hudutech\Entity\ProductInventory();
+//$product->setBatchNo(1234);
+//$product->setInvoiceNo(345667);
+//$product->setProductName("Sugar");
+//$product->setQtyReceived(42);
+//$product->setPurchaseDate(date('Y-m-d'));
+//$product->setSupplier('hudutech');
+//$product->setSalePrice(56);
+//$product->setPurchasePrice(30);
+//$product->setExpiryDate(date('Y-m-d'));
+//
+//$inventoryCtrl = new \Hudutech\Controller\ProductInventoryController();
+//$created = $inventoryCtrl->create($product);
+//if ($created) {
+//    echo "worked";
+//} else{
+//    echo "didnt work";
+//}

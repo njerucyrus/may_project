@@ -54,9 +54,15 @@ class Patient
      */
     private $patientType;
     /**
-     * @var integer
+     * @var string
      */
     private $age;
+
+    /**
+     * @var string
+     */
+    private $location;
+
     /**
      * @var boolean
      */
@@ -225,7 +231,7 @@ class Patient
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getAge()
     {
@@ -233,14 +239,28 @@ class Patient
     }
 
     /**
-     * @param int $age
+     * @param string $age
      */
     public function setAge($age)
     {
         $this->age = $age;
     }
 
+    /**
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
 
+    /**
+     * @param string $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
 
     /**
      * @return bool
