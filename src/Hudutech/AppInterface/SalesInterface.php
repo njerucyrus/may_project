@@ -13,9 +13,32 @@ use Hudutech\Entity\Sales;
 interface SalesInterface
 {
     public function create(Sales $sales);
+
     public function update(Sales $sales, $id);
+
     public static function delete($id);
+
     public static function getId($id);
+
     public static function getObject($id);
+
     public static function all();
+
+    public static function generateReceiptNo();
+
+    public static function updateInventoryQty($inventoryId, $qty);
+
+    public static function checkout(array $cart);
+
+    public static function paidRegFee($patientId);
+
+    public static function canPayConsultationFee($patientId);
+
+    public static function getTotalDrugCost($patientId);
+
+    public static function getPatientBill($patientId);
+
+    public static function markPaidRegFee($patientId);
+
+    public static function createReceipt($patientId, $receiptNo);
 }

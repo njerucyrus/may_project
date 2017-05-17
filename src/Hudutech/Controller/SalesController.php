@@ -173,6 +173,20 @@ class SalesController implements SalesInterface
         return strtoupper(substr(bin2hex($bytes), 0, $length));
     }
 
+    public static function updateInventoryQty($inventoryId, $qty){
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("UPDATE drug_inventory SET qtyInStock=qtyInStock-'{$qty}'
+                                    WHERE id=:inventoryId");
+            $stmt->bindParam(":inventoryId", $inventoryId);
+            return $stmt->execute() ? true: false;
+        } catch (\PDOException $exception){
+            echo $exception->getMessage();
+            return false;
+        }
+    }
     public static function checkout(array $cart)
     {
         $db = new DB();
@@ -203,7 +217,9 @@ class SalesController implements SalesInterface
                 $stmt->bindParam(":price", $cartItem['price']);
                 $stmt->bindParam(":datePurchased", $cartItem['datePurchased']);
                 $stmt->bindParam(":receiptNo", $cartItem['receiptNo']);
-                $stmt->execute();
+                if ($stmt->execute()){
+                    self::updateInventoryQty($cartItem['inventoryId'], $cartItem['qty']);
+                }
             }
 
             return true;
