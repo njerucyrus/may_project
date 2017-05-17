@@ -8,7 +8,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 include __DIR__ . '/includes/register_user.inc.php';
 ?>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <?php include 'head_views.php' ?>
 <body class="page-body skin-facebook">
@@ -58,7 +58,7 @@ include __DIR__ . '/includes/register_user.inc.php';
                                 <label for="firstName" class="col-sm-3 control-label">First Name</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="firstName" placeholder="firstName">
+                                    <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
                                 </div>
                             </div>
 
@@ -66,7 +66,7 @@ include __DIR__ . '/includes/register_user.inc.php';
                                 <label for="lastName" class="col-sm-3 control-label">Last Name</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="lastName" placeholder="lastName">
+                                    <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
                                 </div>
                             </div>
 
@@ -74,7 +74,7 @@ include __DIR__ . '/includes/register_user.inc.php';
                                 <label for="email" class="col-sm-3 control-label">Email</label>
 
                                 <div class="col-sm-5">
-                                    <input type="email" class="form-control" name="email" placeholder="Email">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
                                 </div>
                             </div>
 

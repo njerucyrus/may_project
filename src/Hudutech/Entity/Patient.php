@@ -54,6 +54,16 @@ class Patient
      */
     private $patientType;
     /**
+     * @var string
+     */
+    private $age;
+
+    /**
+     * @var string
+     */
+    private $location;
+
+    /**
      * @var boolean
      */
     private $inQueue;
@@ -218,6 +228,38 @@ class Patient
     public function setPatientType($patientType)
     {
         $this->patientType = $patientType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param string $age
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param string $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
     }
 
     /**

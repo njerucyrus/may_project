@@ -24,6 +24,12 @@ interface PatientInterface
     public function create(Patient $patient);
 
     /**
+     * @param array $patients
+     * @return boolean
+     */
+    public function batchCreate(array $patients);
+
+    /**
      * @param Patient $patient
      * @param $id
      * @return boolean

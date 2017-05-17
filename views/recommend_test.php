@@ -59,7 +59,7 @@ $counter = 1;
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td style="color: #000000;"><?php echo $patient['patientNo'] ?></td>
+                                    <td style="color: #000000;"><?php echo $patient['patientId'] ?></td>
                                     <td style="color: #000000;"><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
                                     <td style="color: #000000;"><?php echo $patient['sex'] ?></td>
                                 </tr>
@@ -166,7 +166,8 @@ $counter = 1;
                 <p style="font-size: 16px;">Click Continue to delete</p>
             </div>
             <div class="modal-footer">
-                <button type="button" id='btnConfirmDelete' class="btn btn-danger" data-dismiss="modal">Delete</button>
+                <button type="button" id='btnConfirmDelete' class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>

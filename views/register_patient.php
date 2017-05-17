@@ -60,99 +60,54 @@ include  __DIR__.'/includes/register_patient.inc.php';
                         <form role="form" class="form-horizontal form-groups-bordered" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>">
 
                             <div class="form-group">
-                                <label for="patientNo" class="col-sm-3 control-label">Patient Number</label>
+                                <label for="patientNo" class="col-sm-3 control-label">OutPatient Number</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="patientNo" placeholder="patient Number">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="idNo" class="col-sm-3 control-label">ID Number</label>
-
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="idNo" placeholder="ID number">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="surName" class="col-sm-3 control-label">SurName</label>
-
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="surName" placeholder="surName">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="firstName" class="col-sm-3 control-label">First Name</label>
-
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="firstName" placeholder="firstName">
+                                    <input type="text" class="form-control" name="patientNo" placeholder="OutPatient Number ...">
                                 </div>
                             </div>
 
 
-
                             <div class="form-group">
-                                <label for="otherName" class="col-sm-3 control-label">Other Name</label>
+                                <label for="fullName" class="col-sm-3 control-label">FullName</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="otherName" placeholder="otherName">
+                                    <input type="text" class="form-control" name="fullName" placeholder="FullName ...">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="phoneNumber" class="col-sm-3 control-label">phoneNumber</label>
+                                <label for="phoneNumber" class="col-sm-3 control-label">Phone Number</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="phoneNumber" placeholder="phone Number">
+                                    <input type="text" class="form-control" name="phoneNumber" placeholder="Phone Number ..." required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="oc" class="col-sm-3 control-label">Occupation</label>
-
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="occupation" placeholder="Occupation" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Select Sex</label>
-
+                                <label class="col-sm-3 control-label">Select Gender</label>
                                 <div class="col-sm-5">
                                     <select name="sex" class="form-control">
                                         <option value="M">Male</option>
                                         <option value="F">Female</option>
-
-
-
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Select Marital Status</label>
+                                <label for="age" class="col-sm-3 control-label">Age</label>
 
                                 <div class="col-sm-5">
-                                    <select name="maritalStatus" class="form-control">
-                                        <option>single</option>
-                                        <option>married</option>
-                                        <option>complicated</option>
-
-                                    </select>
+                                    <input type="number" class="form-control" name="age" placeholder="Age ..." required>
                                 </div>
                             </div>
+
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Select Patient Type</label>
-
                                 <div class="col-sm-5">
                                     <select name="patientType" class="form-control">
-                                        <option>in_patient</option>
-                                        <option>out_patient</option>
-
-
-
+                                        <option value="out_patient">Out Patient</option>
                                     </select>
                                 </div>
                             </div>

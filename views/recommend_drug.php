@@ -70,7 +70,7 @@ $counter = 1;
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td><?php echo $patient['patientNo'] ?></td>
+                                    <td><?php echo $patient['patientId'] ?></td>
                                     <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
                                     <td><?php echo $patient['sex'] ?></td>
                                 </tr>

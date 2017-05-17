@@ -14,7 +14,7 @@ require_once __DIR__.'/vendor/autoload.php';
 //$ctrl = new \Hudutech\Controller\PatientController();
 //$patient  = new \Hudutech\Entity\Patient();
 //
-//$patient->setPatientNo(rand(0, 1000));
+//$patient->setPatientId(rand(0, 1000));
 //$patient->setIdNo(373833);
 //$patient->setSirName("NJIIRI");
 //$patient->setFirstName("JOHN");
@@ -45,5 +45,25 @@ require_once __DIR__.'/vendor/autoload.php';
 //$patientId = \Hudutech\Controller\PatientController::getPatientId('4844')['id'];
 //print_r($patientId);
 
-$queuePatients= \Hudutech\Controller\PatientController::showInQueue();
-print_r(json_encode($queuePatients));
+//$queuePatients= \Hudutech\Controller\PatientController::showInQueue();
+//print_r(json_encode($queuePatients));
+
+
+//$product = new \Hudutech\Entity\ProductInventory();
+//$product->setBatchNo(1234);
+//$product->setInvoiceNo(345667);
+//$product->setProductName("Sugar");
+//$product->setQtyReceived(42);
+//$product->setPurchaseDate(date('Y-m-d'));
+//$product->setSupplier('hudutech');
+//$product->setSalePrice(56);
+//$product->setPurchasePrice(30);
+//$product->setExpiryDate(date('Y-m-d'));
+//
+//$inventoryCtrl = new \Hudutech\Controller\ProductInventoryController();
+//$created = $inventoryCtrl->create($product);
+//if ($created) {
+//    echo "worked";
+//} else{
+//    echo "didnt work";
+//}
