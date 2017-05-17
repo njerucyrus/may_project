@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="../public/assets/css/font-icons/glyphicons/glyphicons-halflings-regular.woff">
     <link rel="stylesheet" href="../public/assets/css/custom.css">
     <link rel="stylesheet" href="../public/assets/css/skins/facebook.css">
-
+    <link rel="stylesheet" href="../public/assets/css/paginator/jquery.paginate.min.css">
 
 
     <script src="../public/assets/js/jquery-1.11.3.min.js"></script>

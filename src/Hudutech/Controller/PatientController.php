@@ -19,8 +19,8 @@ class PatientController implements PatientInterface
     {
         $db = new DB();
         $conn = $db->connect();
-
-        $patientNo = $patient->getPatientNo();
+        $currentYear = date('Y');
+        $patientNo = $currentYear."-".$patient->getPatientNo();
         $surName = $patient->getSurName();
         $idNo = $patient->getIdNo();
         $firstName = $patient->getFirstName();
@@ -135,7 +135,6 @@ class PatientController implements PatientInterface
     {
         $db = new DB();
         $conn = $db->connect();
-
         $patientNo = $patient->getPatientNo();
         $sirName = $patient->getSurName();
         $idNo = $patient->getIdNo();

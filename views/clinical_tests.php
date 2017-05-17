@@ -39,7 +39,7 @@ $counter = 1;
                         <div id="addNew" style="margin-bottom: 15px;" class="clearfix pull-left">
                             <button class="btn btn-primary btn-blue" onclick="showModal()">Add New</button>
                         </div>
-                        <table class="table table-condensed table-bordered" id="visitTable">
+                        <table class="table table-condensed table-bordered" id="testTable">
                             <thead>
                             <tr class="bg-success">
                                 <th>#</th>
@@ -145,10 +145,29 @@ $counter = 1;
 <?php include 'footer_views.php'?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
+<script src="../public/assets/js/paginator/jquery.paginate.min.js"></script>
 
 <script>
     jQuery(document).ready(function (e) {
         e.preventDefault;
+        var prefix = 'paginate';
+        $('#testTable').paginate({
+            'maxButtons': 10,
+            'elemsPerPage': 10,
+            'disabledClass': prefix + 'Disabled',
+            'activeClass': prefix + 'Active',
+            'containerClass': prefix + 'Container',
+            'listClass': prefix + 'List',
+            'showAllListClass': prefix + 'ShowAllList',
+            'previousClass': prefix + 'Previous',
+            'nextClass': prefix + 'Next',
+            'previousSetClass': prefix + 'PreviousSet',
+            'nextSetClass': prefix + 'NextSet',
+            'showAllClass': prefix + 'ShowAll',
+            'pageClass': prefix + 'Page',
+            'anchorClass': prefix + 'Anchor'
+
+        });
     })
 </script>
 <script>

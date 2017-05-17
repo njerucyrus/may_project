@@ -196,10 +196,31 @@ $counter = 1;
 <?php include 'footer_views.php' ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
+<script src="../public/assets/js/paginator/jquery.paginate.min.js"></script>
 
-<script type="text/javascript">
+<script>
     $(document).ready(function (e) {
-        e.preventDefault();
+        e.preventDefault;
+
+
+        var prefix = 'paginate';
+        $('#visitTable').paginate({
+            'maxButtons': 10,
+            'elemsPerPage': 10,
+            'disabledClass': prefix + 'Disabled',
+            'activeClass': prefix + 'Active',
+            'containerClass': prefix + 'Container',
+            'listClass': prefix + 'List',
+            'showAllListClass': prefix + 'ShowAllList',
+            'previousClass': prefix + 'Previous',
+            'nextClass': prefix + 'Next',
+            'previousSetClass': prefix + 'PreviousSet',
+            'nextSetClass': prefix + 'NextSet',
+            'showAllClass': prefix + 'ShowAll',
+            'pageClass': prefix + 'Page',
+            'anchorClass': prefix + 'Anchor'
+
+        });
         $('#AddNewModal').hide();
         filterTable();
 
@@ -230,21 +251,7 @@ $counter = 1;
         }
     }
 
-    function getModalData() {
-        return {
-            idNo: $('#idNo').val(),
-            surName: $('#surName').val(),
-            firstName: $('#firstName').val(),
-            otherName: $('#otherName').val(),
-            maritalStatus: $('#maritalStatus').val(),
-            phoneNumber: $('#phoneNumber').val(),
-            occupation: $('#occupation').val(),
-            patientType: $('#patientType').val(),
-            sex: $('#sex').val(),
-            patientNo: $('#patientNumber').val()
-        }
 
-    }
     function getModalData() {
         return {
             fullName: $('#fullName').val(),

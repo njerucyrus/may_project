@@ -12,7 +12,7 @@ $counter = 1;
 
 
 if (isset($_POST['importSubmit'])) {
-
+    $qstring = '';
     $patientsArray = array();
     //validate whether uploaded file is a csv file
     $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
@@ -23,29 +23,63 @@ if (isset($_POST['importSubmit'])) {
             $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
 
             fgetcsv($csvFile);
+            $currentYear = date('Y');
 
             //parse data from csv file line by line
             while (($line = fgetcsv($csvFile)) !== FALSE) {
 
+
                 array_push($patientsArray, array(
-                    "patientNo" => $line[0],
+                    "patientNo" => $currentYear."-".$line[0],
                     "fullName" => $line[1],
                     "sex"=>strtoupper($line[2]),
-                    "age"=>$line[3],
-                    "location"=>$line['4'],
+                    "age"=>isset($line[3])? $line[3]: null,
+                    "location"=>$line[4],
+                    "phoneNumber"=>isset($line[5]) ? $line[5] : null,
                     "patientType"=>"out_patient",
                 ));
             }
 
             //close opened csv file
             fclose($csvFile);
+            $patientCtrl = new \Hudutech\Controller\PatientController();
+            $created = $patientCtrl->batchCreate($patientsArray);
+            if ($created){
+                $qstring = '?status=succ';
+            } else{
+                $qstring = '?status=err500';
+            }
 
-            $qstring = '?status=succ';
+
         } else {
             $qstring = '?status=err';
         }
     } else {
         $qstring = '?status=invalid_file';
+    }
+
+    header("Location: patients.php".$qstring);
+}
+
+$statusMsg = '';
+$statusMsgClass = '';
+if(!empty($_GET['status'])){
+    switch($_GET['status']){
+        case 'succ':
+            $statusMsgClass = 'alert-success';
+            $statusMsg = 'Patients Uploaded successfully.';
+            break;
+        case 'err':
+            $statusMsgClass = 'alert-danger';
+            $statusMsg = 'Some problem occurred, please try again.';
+            break;
+        case 'invalid_file':
+            $statusMsgClass = 'alert-danger';
+            $statusMsg = 'Please upload a valid CSV file.';
+            break;
+        default:
+            $statusMsgClass = '';
+            $statusMsg = '';
     }
 }
 
@@ -75,18 +109,26 @@ if (isset($_POST['importSubmit'])) {
                         </div>
                     </div>
                     <div class="col col-md-12" style="margin: 15px;">
+                        <?php if(!empty($statusMsg)){
+                            echo '<div class="alert '.$statusMsgClass.'">'.$statusMsg.'</div>';
+                        } ?>
                         <div class="pull-right">
-                            <form action="" method="post" enctype="multipart/form-data" id="importFrm"
+                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data" id="importFrm"
                                   class="form-inline" style="margin-right: 25px;">
-                                <input type="file" name="file" class="form-control"/>
+                                <input type="file" name="file" id="file" class="form-control"/>
                                 <input type="submit" class="btn btn-success" name="importSubmit"
-                                       value="import from excel">
+                                      id="importSubmit" value="import from CSV">
 
+                                <div id="progress-div">
+                                    <div id="progress-bar" class="progress-bar progress-bar-success" role="progressbar"></div>
+                                </div>
+                                <div id="targetLayer"></div>
                             </form>
+                            <div id="loader-icon" style="display:none;"><img src="../public/assets/img/loader-circle.gif" /></div>
                         </div>
                         <div>
-                            <button class="btn btn-default" onclick="showAddNewModal()">Register
-                                Single Patients
+                            <button class="btn btn-default" onclick="showAddNewModal()">Register a
+                                Single Patient
                             </button>
                         </div>
 
@@ -94,7 +136,7 @@ if (isset($_POST['importSubmit'])) {
                 </div>
                 <div class="col col-md-12">
                     <div class="table-responsive" style="margin-top: 15px;">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="patientTable">
                             <h3>Showing Registered Patients</h3>
                             <hr/>
                             <thead>
@@ -103,9 +145,10 @@ if (isset($_POST['importSubmit'])) {
                                 <th style="color: black">PatientNumber</th>
                                 <th style="color: black">FullName</th>
                                 <th style="color: black">Gender</th>
+                                <th style="color: black">Age</th>
+                                <th style="color: black">Location</th>
                                 <th style="color: black">Phone Number</th>
                                 <th style="color: black">Date Registered</th>
-                                <th style="color: black">Timestamp</th>
                                 <th style="color: black">Action</th>
                             </tr>
                             </thead>
@@ -116,9 +159,10 @@ if (isset($_POST['importSubmit'])) {
                                     <td><?php echo $patient['patientNo'] ?></td>
                                     <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName']; ?></td>
                                     <td><?php echo $patient['sex'] ?></td>
+                                    <td><?php echo $patient['age'] ?></td>
+                                    <td><?php echo $patient['location'] ?></td>
                                     <td><?php echo $patient['phoneNumber'] ?></td>
                                     <td><?php echo date('d-m-Y', strtotime($patient['dateRegistered'])); ?></td>
-                                    <td><?php echo $patient['dateRegistered']; ?></td>
                                     <td>
                                         <button class="btn btn-primary btn-blue"
                                                 onclick="updatePatient(
@@ -261,6 +305,56 @@ if (isset($_POST['importSubmit'])) {
 <?php include "footer_views.php"; ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
+<script src="../public/assets/js/paginator/jquery.paginate.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+
+
+        $('#importFrm').submit(function(e) {
+            if($('#file').val()) {
+                e.preventDefault;
+                $(this).ajaxSubmit({
+                    target:   '#targetLayer',
+                    beforeSubmit: function() {
+                        $("#progress-bar").width('0%');
+                        jQuery('#progress-bar').show();
+                    },
+                    uploadProgress: function (event, position, total, percentComplete){
+                        jQuery("#progress-bar").width(percentComplete + '%');
+                        $("#progress-bar").html('<div id="progress-status">' + percentComplete +' %</div>')
+                    },
+                    success:function (){
+                        $('#loader-icon').hide();
+                    },
+                    resetForm: true
+                });
+                return false;
+            }
+        });
+
+        var prefix = 'paginate';
+        $('#patientTable').paginate({
+            'maxButtons': 10,
+            'elemsPerPage': 10,
+            'disabledClass': prefix + 'Disabled',
+            'activeClass': prefix + 'Active',
+            'containerClass': prefix + 'Container',
+            'listClass': prefix + 'List',
+            'showAllListClass': prefix + 'ShowAllList',
+            'previousClass': prefix + 'Previous',
+            'nextClass': prefix + 'Next',
+            'previousSetClass': prefix + 'PreviousSet',
+            'nextSetClass': prefix + 'NextSet',
+            'showAllClass': prefix + 'ShowAll',
+            'pageClass': prefix + 'Page',
+            'anchorClass': prefix + 'Anchor'
+
+        });
+
+    });
+</script>
+
 <script>
     function getModalData() {
         return {
