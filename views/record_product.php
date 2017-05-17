@@ -9,8 +9,7 @@ session_start();
 require_once __DIR__ . '/../vendor/autoload.php';
 
 
-//    $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($patientId);
-//    $recommendedDrugs = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($patientId);
+    $products = \Hudutech\Controller\ProductInventoryController::all();
 
 $counter = 1;
 
@@ -18,8 +17,9 @@ $counter = 1;
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" media="screen"
-          href="../public/assets/css/bootstrap-datetimepicker.min.css">
+
+
+    <
 
     <?php include 'head_views.php' ?>
     <title>Add Product</title>
@@ -34,6 +34,7 @@ $counter = 1;
             font-size: 1.4em;
         }
     </style>
+
 </head>
 <body class="page-body skin-facebook">
 <div class="page-container">
@@ -92,7 +93,7 @@ $counter = 1;
                                                class="control-label">Invoice No</label>
 
 
-                                        <input type="text" class="form-control" name="invoiceNo" id="InvoiceNo"
+                                        <input type="text" class="form-control" name="invoiceNo" id="invoiceNo"
                                                placeholder="InvoiceNo">
 
                                     </div>
@@ -117,6 +118,16 @@ $counter = 1;
                                     </div>
 
                                     <div class="form-group  col-md-3" style="padding: 5px; margin: 5px;">
+                                        <label for="supplier" style="padding-left: 10px;"
+                                               class="control-label">Supplier</label>
+
+
+                                        <input type="text" class="form-control" name="supplier" id="supplier"
+                                               placeholder="Supplier">
+
+                                    </div>
+
+                                    <div class="form-group  col-md-2" style="padding: 5px; margin: 5px;">
                                         <label for="purchasePrice" style="padding-left: 10px;"
                                                class="control-label">Purchase Price</label>
 
@@ -126,7 +137,7 @@ $counter = 1;
 
                                     </div>
 
-                                    <div class="form-group  col-md-3" style="padding: 5px; margin: 5px;">
+                                    <div class="form-group  col-md-2" style="padding: 5px; margin: 5px;">
                                         <label for="salePrice" style="padding-left: 10px;"
                                                class="control-label">Sale Price</label>
 
@@ -137,7 +148,9 @@ $counter = 1;
                                     </div>
 
 
-                                    <div class="form-group col-md-3" style="padding: 5px; margin: 5px;">
+
+
+                                    <div class="form-group col-md-2" style="padding: 5px; margin: 5px;">
                                         <label style="padding-left: 10px;"
                                                class="control-label">Purchase Date</label>
 
@@ -173,7 +186,7 @@ $counter = 1;
                                     <div class="form-group col-md-2" >
                                         <!--    buttons-->
 
-                                        <input value="Add Product" id="add" onclick="submitFormData()"
+                                        <input value="Add Product" id="add" onclick="submitData()"
                                                class="btn btn-green btn-lg control-label"
                                                type="button"/>
 
@@ -204,7 +217,7 @@ $counter = 1;
                             <div class="panel-title col-md-offset-3">
 
 
-                                <h3> Prescribed Drugs</h3>
+                                <h3>Product Inventory</h3>
 
                             </div>
 
@@ -218,33 +231,42 @@ $counter = 1;
                             <form role="form" class="form-horizontal form-groups-bordered">
 
 
-                                <div class="col-md-10">
+                                <div class="col-md-12">
 
-                                    <h4>Prescription Details</h4>
+
 
                                     <table class="table table-condensed table-bordered " id="queueTable">
                                         <thead>
                                         <tr>
 
                                             <th>#</th>
-                                            <th>Drug Name</th>
-                                            <th>Drug Type</th>
-                                            <th>Quantity</th>
-                                            <th>Prescription</th>
+                                            <th>Batch No</th>
+                                            <th>Invoice No</th>
+                                            <th>Product Name</th>
+                                            <th>Quantity Received</th>
+                                            <th>Supplier</th>
+                                            <th>purchase Price</th>
+                                            <th>Sale Price</th>
+                                            <th>Purchase Date</th>
+                                            <th>Expiry Date</th>
 
                                         </tr>
                                         </thead>
 
                                         <tbody>
-                                        <?php foreach ($recommendedDrugs as $recommendedDrug): ?>
+                                        <?php foreach ($products as $product): ?>
                                             <tr>
 
                                                 <td><?php echo $counter++ ?></td>
-                                                <td><?php echo $recommendedDrug['drugName'] ?></td>
-                                                <td><?php echo $recommendedDrug['drugType'] ?></td>
-                                                <td><?php echo $recommendedDrug['quantity'] ?></td>
-                                                <td><?php echo $recommendedDrug['prescription'] ?></td>
-
+                                                <td><?php echo $product['batchNo'] ?></td>
+                                                <td><?php echo $product['invoiceNo'] ?></td>
+                                                <td><?php echo $product['productName'] ?></td>
+                                                <td><?php echo $product['qtyReceived'] ?></td>
+                                                <td><?php echo $product['supplier'] ?></td>
+                                                <td><?php echo $product['purchasePrice'] ?></td>
+                                                <td><?php echo $product['salePrice'] ?></td>
+                                                <td><?php echo $product['purchaseDate'] ?></td>
+                                                <td><?php echo $product['expiryDate'] ?></td>
 
                                             </tr>
                                         <?php endforeach; ?>
@@ -266,40 +288,12 @@ $counter = 1;
                 </div>
             </div>
 
-            <div class="row" style="margin: 5px;">
-                <div class="col-md-12">
 
-                    <div class="panel panel-primary" data-collapsed="0">
-
-                        <div class="panel-heading">
-                            <div class="panel-title col-md-offset-3">
-
-
-                                <div class="col-md-3 col-md-offset-2">
-                                    <!--    buttons-->
-
-                                    <button id="btn-add-test" onclick="redirectToConsultation()"
-                                            class="btn btn-green   btn-lg">Send To Pharmacy
-                                    </button>
-
-
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
-<?php include 'footer_views.php' ?>
+<?php include 'footer_views.php'; ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
 
@@ -308,28 +302,28 @@ $counter = 1;
 <script src="../public/assets/js/bootstrap-datepicker.js"></script>
 
 
-<script>
+<script type="text/javascript">
 
     function getFormData() {
         return {
             batchNo: $("#batchNo").val(),
-            invoiceNo: $("#invoiceNo").val,
-            productName: $("#productName").val,
-            qtyReceived: $("#qtyReceived").val,
-            purchasedPrice: $("#purchasePrice").val,
-            salePrice: $("#salePrice").val,
-            purchaseDate: $("#purchaseDate").val,
-            expiryDate: $("#expiryDate").val,
-
+            invoiceNo: $("#invoiceNo").val(),
+            productName: $("#productName").val(),
+            qtyReceived: $("#qtyReceived").val(),
+            supplier: $("#supplier").val(),
+            purchasePrice: $("#purchasePrice").val(),
+            salePrice: $("#salePrice").val(),
+            purchaseDate: $("#purchaseDate").val(),
+            expiryDate: $("#expiryDate").val()
 
         }
 
     }
-    function submitFormData() {
+    function submitData() {
 
         var url = 'record_product_endpoint.php';
         var data = getFormData();
-        console.log(data);
+        //console.log(data);
         $.ajax(
             {
                 type: 'POST',
@@ -348,7 +342,7 @@ $counter = 1;
                         }, 1000);
 
                     }
-                    if (response.statusCode == 500) {
+                   else if (response.statusCode == 500) {
                         $('#feedback').removeClass('alert alert-success')
                             .addClass('alert alert-danger')
                             .text(response.message);
@@ -357,19 +351,13 @@ $counter = 1;
 //                           location.reload();
 //                        }, 1000);
                     }
+                },
+                error: function (error) {
+                    console.log(error);
                 }
 
             }
         )
-
-    }
-    function redirectToConsultation() {
-        <?php
-        \Hudutech\Controller\PatientVisitController::markAsLeft($patientId);
-        ?>
-        setTimeout(function () {
-            window.location.href = 'consultation.php';
-        }, 1000);
 
     }
 

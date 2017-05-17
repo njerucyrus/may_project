@@ -64,7 +64,7 @@ class ProductInventoryController implements ProductInventoryInterface
             $stmt->bindParam(":expiryDate", $expiryDate);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
-            echo $exception->getMessage();
+            print_r(json_encode(array("err"=>$exception->getMessage())));
             return false;
         }
 
