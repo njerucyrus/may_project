@@ -84,6 +84,45 @@ class PatientController implements PatientInterface
 
     }
 
+    public function batchCreate(array $patients)
+    {
+     $db = new DB();
+     $conn = $db->connect();
+
+     try{
+         $stmt = $conn->prepare("INSERT INTO patients(
+                                                        patientNo,
+                                                        surName,
+                                                        phoneNumber,
+                                                        patientType,
+                                                        sex,
+                                                        age
+                                                        )  
+                                                VALUES (
+                                                        :patientNo,
+                                                        :surName,
+                                                        :phoneNumber,
+                                                        :patientType,
+                                                        :sex,
+                                                        :age      
+                                                        ) ");
+         foreach ($patients as $patient){
+             $stmt->bindParam(":patientNo", $patient['patientNo']);
+             $stmt->bindParam(":surName", $patient['fullName']);
+             $stmt->bindParam(":phoneNumber", $patient['phoneNumber']);
+             $stmt->bindParam(":patientType", $patient['patientType']);
+             $stmt->bindParam(":sex", $patient['sex']);
+             $stmt->bindParam(":age",$patient['age']);
+             $stmt->execute();
+         }
+
+     }catch (\PDOException $exception) {
+         echo $exception->getMessage();
+         return false;
+     }
+    }
+
+
     public function update(Patient $patient, $id)
     {
         $db = new DB();

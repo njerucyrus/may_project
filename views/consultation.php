@@ -56,6 +56,7 @@ $counter=1;
                                         <th>#</th>
                                         <th>OutPatient Number</th>
                                         <th>FullName</th>
+                                        <th>Age</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -68,6 +69,7 @@ $counter=1;
                                         <td><?php echo $counter++?></td>
                                         <td><?php echo $queuePatient['patientNo'] ?></td>
                                         <td><?php echo $queuePatient['surName']." ".$queuePatient['firstName']." ".$queuePatient['otherName'] ;  ?></td>
+                                        <td><?php echo $queuePatient['age'] ?></td>
                                         <td><input type="button" value="Add Clinical Notes" onclick="showClinicalNotesForms('<?php echo $queuePatient['id']?>', '<?php echo $queuePatient['patientNo']?>')"
                                                    class="form-controls btn btn-blue  btn-md"/></td>
 
