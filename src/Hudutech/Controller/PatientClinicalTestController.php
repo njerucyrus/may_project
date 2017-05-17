@@ -134,7 +134,7 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
 
     }
 
-    public static function showClinicalTests($patientId, $date)
+    public static function showClinicalTests($patientId)
     {
         $db = new DB();
         $conn = $db->connect();
@@ -157,7 +157,7 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         }
     }
 
-    public static function showClinicalTestResults($patientId, $date){
+    public static function showClinicalTestResults($patientId){
         $db = new DB();
         $conn = $db->connect();
 
@@ -179,7 +179,7 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         }
     }
 
-    public static function getClinicalTestTotalCost($patientId, $date){
+    public static function getClinicalTestTotalCost($patientId){
         $db = new DB();
         $conn = $db->connect();
         try{

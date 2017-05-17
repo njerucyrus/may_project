@@ -130,7 +130,7 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
         $conn = $db->connect();
 
         try{
-            $stmt = $conn->prepare("SELECT * FROM drug_prescriptions WHERE patientId=:patientId and date(dateIssued)=CURDATE() AND `status`='not_issued'");
+            $stmt = $conn->prepare("SELECT * FROM drug_prescriptions WHERE patientId=:patientId and date(dateIssued)= CURDATE() AND `status`='not_issued'");
             $stmt->bindParam(":patientId", $patientId);
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
