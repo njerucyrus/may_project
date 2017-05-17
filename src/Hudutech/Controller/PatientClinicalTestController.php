@@ -134,7 +134,7 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
 
     }
 
-    public static function showClinicalTests($patientId, $date)
+    public static function showClinicalTests($patientId)
     {
         $db = new DB();
         $conn = $db->connect();
@@ -142,10 +142,9 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         try{
             $sql = "SELECT c.*, pt.id as patientTestId, pt.testResult, pt.description, pt.isPerformed FROM clinical_tests c
                     INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
-                    WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded";
+                    WHERE pt.patientId=:patientId AND pt.createdAt =CURDATE()";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
-            $stmt->bindParam(":dateRecorded", $date);
             $tests = array();
             if($stmt->execute()){
                 $tests = $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -158,17 +157,16 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         }
     }
 
-    public static function showClinicalTestResults($patientId, $date){
+    public static function showClinicalTestResults($patientId){
         $db = new DB();
         $conn = $db->connect();
 
         try{
             $sql = "SELECT c.*, pt.id as patientTestId, pt.testResult, pt.description, pt.isPerformed FROM clinical_tests c
                     INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
-                    WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded AND pt.isPerformed=1";
+                    WHERE pt.patientId=:patientId AND pt.createdAt = CURDATE() AND pt.isPerformed=1";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
-            $stmt->bindParam(":dateRecorded", $date);
             $tests = array();
             if($stmt->execute()){
                 $tests = $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -181,16 +179,15 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         }
     }
 
-    public static function getClinicalTestTotalCost($patientId, $date){
+    public static function getClinicalTestTotalCost($patientId){
         $db = new DB();
         $conn = $db->connect();
         try{
             $sql = "SELECT SUM(c.cost) as totalCost FROM clinical_tests c
                     INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
-                    WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded";
+                    WHERE pt.patientId=:patientId AND pt.createdAt =CURDATE()";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
-            $stmt->bindParam(":dateRecorded", $date);
             if($stmt->execute()){
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);
                 return (float)$row['totalCost'];

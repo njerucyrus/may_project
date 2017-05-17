@@ -59,7 +59,7 @@ $counter = 1;
                                 <?php foreach ($patients as $patient): ?>
                                     <tr>
                                         <td><?php echo $counter++ ?></td>
-                                        <td><?php echo $patient['patientId'] ?></td>
+                                        <td><?php echo $patient['patientNo'] ?></td>
                                         <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName']; ?></td>
                                         <td><?php echo $patient['phoneNumber'] ?></td>
                                         <td><?php echo $patient['sex'] ?></td>

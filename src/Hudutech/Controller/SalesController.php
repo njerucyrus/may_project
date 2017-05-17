@@ -264,9 +264,9 @@ class SalesController implements SalesInterface
         $db = new DB();
         $conn = $db->connect();
         try {
-            $today = date('Y-m-d');
+
             $stmt = $conn->prepare("SELECT t.id FROM clinical_notes t WHERE
-                                  t.patientId=:patientId AND date(t.date)='{$today}'");
+                                  t.patientId=:patientId AND date(t.date)=CURDATE()");
             $stmt->bindParam(":patientId", $patientId);
             if ($stmt->execute() and $stmt->rowCount() > 0) {
                 return true;
@@ -284,10 +284,9 @@ class SalesController implements SalesInterface
         $db = new DB();
         $conn = $db->connect();
         try {
-            $today = date('Y-m-d');
             $stmt = $conn->prepare("SELECT SUM(t.price) as totalPrice FROM sales t
                                     WHERE t.patientId=:patientId AND
-                                     date(t.datePurchased)='{$today}'");
+                                     date(t.datePurchased)=CURDATE()");
             $stmt->bindParam(":patientId", $patientId);
             if ($stmt->execute() && $stmt->rowCount() == 1) {
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);

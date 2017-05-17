@@ -16,9 +16,8 @@ if (isset($_GET['id'])){
    $_SESSION['patientId'] = $_GET['id'];
     $tests = \Hudutech\Controller\ClinicalTestController::all();
     $patient = \Hudutech\Controller\ClinicalNoteController::getPatientFromClinicalNotes($_SESSION['patientId']);
-    $today = date('Y-m-d');
-    $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests($_SESSION['patientId'], $today);
-    $totalCost = \Hudutech\Controller\PatientClinicalTestController::getClinicalTestTotalCost($_SESSION['patientId'], $today);
+    $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests($_SESSION['patientId']);
+    $totalCost = \Hudutech\Controller\PatientClinicalTestController::getClinicalTestTotalCost($_SESSION['patientId']);
 }
 
 
@@ -59,7 +58,7 @@ $counter = 1;
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td style="color: #000000;"><?php echo $patient['patientId'] ?></td>
+                                    <td style="color: #000000;"><?php echo $patient['patientNo'] ?></td>
                                     <td style="color: #000000;"><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
                                     <td style="color: #000000;"><?php echo $patient['sex'] ?></td>
                                 </tr>

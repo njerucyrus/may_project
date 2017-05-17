@@ -23,7 +23,7 @@ if($requestMethod=='POST') {
             $drug_prescriptions->setDrugType($data['drugType']);
             $drug_prescriptions->setQuantity($data['quantity']);
             $drug_prescriptions->setPrescription($prescription);
-            $drug_prescriptions->setStatus(null);
+            $drug_prescriptions->setStatus("not_issued");
 
             $drug_prescriptionsCtrl = new \Hudutech\Controller\DrugPrescriptionController();
 

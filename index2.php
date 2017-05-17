@@ -67,3 +67,7 @@ echo date('Y-m-d');
 //} else{
 //    echo "didnt work";
 //}
+
+$queuePatients= \Hudutech\Controller\PatientController::showInQueue();
+print_r($queuePatients);
+echo date('Y-m-d');
