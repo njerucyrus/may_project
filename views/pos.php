@@ -12,6 +12,8 @@ $counter = 1;
 <!DOCTYPE html>
 <head>
     <?php include 'head_views.php' ?>
+
+
 </head>
 <body class="page-body skin-facebook">
 <div class="page-container">
@@ -35,23 +37,44 @@ $counter = 1;
 
                             </form>
                         </div>
-                        <h3 style="margin-top: 15px;">Patient Visit List (Showing Patients Not Added to Doctor's
-                            List) </h3>
+
+                        <div class="form-horizontal col-md-12" style="margin-bottom: 15px; padding: 10px;">
+                            <form>
+                                <div class="form-group col-md-4">
+                                    <label for="patientName">Patient Name</label>
+                                    <input type="text" id="patientName" class="form-control"
+                                           value="John Mwangi" disabled>
+
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="patientName">Age</label>
+                                    <input type="text" id="patientAge" class="form-control"
+                                           value="35" disabled>
+
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="patientName">Location</label>
+                                    <input type="text" id="patientName" class="form-control"
+                                           value="Wambugu Farm" disabled>
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <h3 style="margin-top: 15px;">Prescribed Drugs</h3>
                         <hr/>
                         <div class="table-responsive">
-                            <div id="addNew" style="margin-bottom: 15px;" class="clearfix pull-left">
-                                <button class="btn btn-primary" onclick="showAddNewModal()">Add New</button>
-                            </div>
-
 
                             <table class="table table-stripped" id="visitTable">
                                 <thead>
                                 <tr class="bg-success">
                                     <th>#</th>
-                                    <th>PatientNo</th>
-                                    <th>FullName</th>
-                                    <th>Phone Number</th>
-                                    <th>Sex</th>
+                                    <th>Drug Name</th>
+                                    <th>Drug Type</th>
+                                    <th>Quantity</th>
+                                    <th>Prescription</th>
+                                    <th>Status</th>
                                     <th colspan="1">Action</th>
                                 </tr>
                                 </thead>
@@ -79,14 +102,87 @@ $counter = 1;
                 </div>
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="panel panel-primary" data-collapsed="0">
+
+                    <div class="panel-heading">
+                        <div class="panel-title col-md-offset-3">
+
+
+                            <h3>Sell Drug</h3>
+                        </div>
+
+
+                    </div>
+
+                    <div class="panel-body">
+
+                        <!--                   body content will start here-->
+
+
+
+                        <div class="form-group  col-md-4" style="padding: 5px; margin: 5px;">
+                            <label for="supplier" style="padding-left: 10px;"
+                                   class="control-label">Select Drug</label>
+
+                            <select class="form-control" data-width="auto" >
+                                <option>Mustard</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select>
+
+
+                        </div>
+
+                        <div class="form-group  col-md-3" style="padding: 5px; margin: 5px;">
+                            <label for="supplier" style="padding-left: 10px;"
+                                   class="control-label">Quantity</label>
+
+                            <input type="number" class="form-control" name="quantity" id="supplier"
+                                   placeholder="Quantity">
+
+
+                        </div>
+
+                        <input value="Add Product" id="add" onclick="submitData()"
+                               class="btn btn-green btn-md control-label"
+                               type="button"/>
+
+
+
+
+                        <!--                        body content will stop here-->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
     </div>
 </div>
-<
+</div>
+</div>
 
 <?php include 'footer_views.php' ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
 
+
+<!-- JavaScripts initializations and stuff -->
+<script src="../public/assets/js/neon-custom.js"></script>
+
+
+<!-- Demo Settings -->
+<script src="../public/assets/js/neon-demo.js"></script>
+
+<script type="text/javascript">
+    $('select').select2();
+</script>
 <script type="text/javascript">
     $(document).ready(function (e) {
         e.preventDefault();
@@ -217,5 +313,6 @@ $counter = 1;
         })
     }
 </script>
+
 </body>
 </html>
