@@ -8,7 +8,7 @@
 
 require_once __DIR__.'/vendor/autoload.php';
 
-
+echo date('Y-m-d');
 //$loggedInAs = \Hudutech\Controller\UserController::getLoggedInUser('admin');
 //echo $loggedInAs;
 //$ctrl = new \Hudutech\Controller\PatientController();

@@ -93,7 +93,6 @@ include __DIR__ . '/includes/register_user.inc.php';
                                 <div class="col-sm-5">
                                     <select name="userLevel" class="form-control">
                                         <option>admin</option>
-                                        <option>manager</option>
                                         <option>receptionist</option>
                                         <option>doctor</option>
                                         <option>lab_technician</option>
