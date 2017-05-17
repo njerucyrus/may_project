@@ -68,6 +68,9 @@ require_once __DIR__.'/vendor/autoload.php';
 //    echo "didnt work";
 //}
 
-$queuePatients= \Hudutech\Controller\PatientController::showInQueue();
-print_r($queuePatients);
-echo date('Y-m-d');
+//$queuePatients= \Hudutech\Controller\PatientController::showInQueue();
+//print_r($queuePatients);
+//echo date('Y-m-d');
+
+$prescriptions = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions(2836);
+print_r($prescriptions);

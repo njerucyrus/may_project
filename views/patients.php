@@ -156,7 +156,7 @@ if(!empty($_GET['status'])){
                             <?php foreach ($patients as $patient): ?>
                                 <tr>
                                     <td><?php echo $counter++ ?></td>
-                                    <td><?php echo $patient['patientId'] ?></td>
+                                    <td><?php echo $patient['patientNo'] ?></td>
                                     <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName']; ?></td>
                                     <td><?php echo $patient['sex'] ?></td>
                                     <td><?php echo $patient['age'] ?></td>
@@ -172,7 +172,7 @@ if(!empty($_GET['status'])){
                                                         '<?php echo $patient['patientType'] ?>',
                                                         '<?php echo $patient['sex'] ?>',
                                                         '<?php echo $patient['age'] ?>',
-                                                        '<?php echo $patient['patientId'] ?>'
+                                                        '<?php echo $patient['patientNo'] ?>'
                                                         )"><i class="entypo-pencil"></i>Edit
                                         </button>
                                         <button class="btn btn-danger  btn-red"
@@ -418,10 +418,11 @@ if(!empty($_GET['status'])){
         $('#age').val(age);
         $('#patientType').attr('selected', true);
         $('#sex').val(sex);
+        $('#patientNumber').val(patientNo);
         jQuery('#patientModal').modal('show');
         jQuery('#btn-add').text('Save Changes');
         jQuery('#title').text('UPDATE Patient Details');
-        $('#patientNumber').val(patientNo);
+
         $('#btn-add').on('click', function (e) {
             e.preventDefault;
             var url = 'add_patient_endpoint.php';

@@ -16,14 +16,14 @@ if($requestMethod == 'POST') {
     if (!empty($data)) {
         $patient = new \Hudutech\Entity\Patient();
 
-        if (!empty($data['patientId']) and
+        if (!empty($data['patientNo']) and
             !empty($data['fullName']) and
             !empty($data['patientType']) and
             !empty($data['sex']) and
             !empty($data['age'])
         ) {
 
-            $patient->setPatientNo($data['patientId']);
+            $patient->setPatientNo($data['patientNo']);
             $patient->setIdNo(null);
             $patient->setSurName($data['fullName']);
             $patient->setFirstName(null);
@@ -83,14 +83,14 @@ if ($requestMethod == 'PUT') {
     if (!empty($data)) {
         $patient = new \Hudutech\Entity\Patient();
 
-        if (!empty($data['patientId']) and
+        if (!empty($data['patientNo']) and
             !empty($data['fullName']) and
             !empty($data['patientType']) and
             !empty($data['sex']) and
             !empty($data['age'])
         ) {
 
-            $patient->setPatientNo($data['patientId']);
+            $patient->setPatientNo($data['patientNo']);
             $patient->setIdNo(null);
             $patient->setSurName($data['fullName']);
             $patient->setFirstName(null);
