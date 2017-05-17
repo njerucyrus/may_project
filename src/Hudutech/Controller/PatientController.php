@@ -20,7 +20,7 @@ class PatientController implements PatientInterface
         $db = new DB();
         $conn = $db->connect();
         $currentYear = date('Y');
-        $patientNo = $currentYear."-".$patient->getPatientNo();
+        $patientNo = $currentYear . "-" . $patient->getPatientNo();
         $surName = $patient->getSurName();
         $idNo = $patient->getIdNo();
         $firstName = $patient->getFirstName();
@@ -90,12 +90,12 @@ class PatientController implements PatientInterface
 
     public function batchCreate(array $patients)
     {
-     $db = new DB();
-     $conn = $db->connect();
+        $db = new DB();
+        $conn = $db->connect();
 
-     try{
-         $stmt = $conn->prepare("INSERT INTO patients(
-                                                        patientId,
+        try {
+            $stmt = $conn->prepare("INSERT INTO patients(
+                                                        patientNo,
                                                         surName,
                                                         phoneNumber,
                                                         patientType,
@@ -104,7 +104,7 @@ class PatientController implements PatientInterface
                                                         location
                                                         )  
                                                 VALUES (
-                                                        :patientId,
+                                                        :patientNo,
                                                         :surName,
                                                         :phoneNumber,
                                                         :patientType,
@@ -112,22 +112,22 @@ class PatientController implements PatientInterface
                                                         :age,
                                                         :location
                                                         ) ");
-         foreach ($patients as $patient){
-             $stmt->bindParam(":patientId", $patient['patientId']);
-             $stmt->bindParam(":surName", $patient['fullName']);
-             $stmt->bindParam(":phoneNumber", $patient['phoneNumber']);
-             $stmt->bindParam(":patientType", $patient['patientType']);
-             $stmt->bindParam(":sex", $patient['sex']);
-             $stmt->bindParam(":age",$patient['age']);
-             $stmt->bindParam(":location",$patient['location']);
-             $stmt->execute();
-         }
-         return true;
+            foreach ($patients as $patient) {
+                $stmt->bindParam(":patientNo", $patient['patientNo']);
+                $stmt->bindParam(":surName", $patient['fullName']);
+                $stmt->bindParam(":phoneNumber", $patient['phoneNumber']);
+                $stmt->bindParam(":patientType", $patient['patientType']);
+                $stmt->bindParam(":sex", $patient['sex']);
+                $stmt->bindParam(":age", $patient['age']);
+                $stmt->bindParam(":location", $patient['location']);
+                $stmt->execute();
+            }
+            return true;
 
-     }catch (\PDOException $exception) {
-         echo $exception->getMessage();
-         return false;
-     }
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
     }
 
 
@@ -151,7 +151,7 @@ class PatientController implements PatientInterface
         try {
 
             $stmt = $conn->prepare("UPDATE patients SET
-                                                        patientId=:patientId,
+                                                        patientNo=:patientNo,
                                                         idNo=:idNo,
                                                         surName=:surName,
                                                         firstName=:firstName, 
@@ -167,7 +167,7 @@ class PatientController implements PatientInterface
                                                      ");
 
             $stmt->bindParam(":id", $id);
-            $stmt->bindParam(":patientId", $patientNo);
+            $stmt->bindParam(":patientNo", $patientNo);
             $stmt->bindParam(":idNo", $idNo);
             $stmt->bindParam(":surName", $sirName);
             $stmt->bindParam(":firstName", $firstName);
@@ -298,8 +298,8 @@ class PatientController implements PatientInterface
         $conn = $db->connect();
 
         try {
-            $stmt = $conn->prepare("SELECT * FROM patients WHERE patientId=:patientId");
-            $stmt->bindParam(":patientId", $patientNo);
+            $stmt = $conn->prepare("SELECT * FROM patients WHERE patientNo=:patientNo");
+            $stmt->bindParam(":patientNo", $patientNo);
             return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
@@ -312,15 +312,11 @@ class PatientController implements PatientInterface
         $db = new DB();
         $conn = $db->connect();
         try {
-            $today = date('Y-m-d');
-            $status = 'active';
             $sql = "SELECT DISTINCT p.* FROM patients p, patient_visits pv INNER JOIN patients t ON t.id=pv.patientId
-                    WHERE `pv`.`status`=:status AND 
-                    DATE_FORMAT(pv.visitDate, '%Y-%m-%d')=:visitDate AND
-                    p.id = pv.patientId";
+                    WHERE `pv`.`status`= 'active' AND
+                          DATE_FORMAT(pv.visitDate, '%Y-%m-%d')= CURDATE() AND
+                          p.id = pv.patientId";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":visitDate", $today);
-            $stmt->bindParam(":status", $status);
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
             echo $exception->getMessage();

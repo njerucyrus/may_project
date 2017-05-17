@@ -77,10 +77,10 @@ $counter=1;
                                     <?php foreach ($queuePatients as $queuePatient ): ?>
                                     <tr>
                                         <td><?php echo $counter++?></td>
-                                        <td><?php echo $queuePatient['patientId'] ?></td>
+                                        <td><?php echo $queuePatient['patientNo'] ?></td>
                                         <td><?php echo $queuePatient['surName']." ".$queuePatient['firstName']." ".$queuePatient['otherName'] ;  ?></td>
                                         <td><?php echo $queuePatient['age'] ?></td>
-                                        <td><input type="button" value="Add Clinical Notes" onclick="showClinicalNotesForms('<?php echo $queuePatient['id']?>', '<?php echo $queuePatient['patientId']?>')"
+                                        <td><input type="button" value="Add Clinical Notes" onclick="showClinicalNotesForms('<?php echo $queuePatient['id']?>', '<?php echo $queuePatient['patientNo']?>')"
                                                    class="form-controls btn btn-blue  btn-md"/></td>
 
                                     </tr>

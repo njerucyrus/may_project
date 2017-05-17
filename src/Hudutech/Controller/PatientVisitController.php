@@ -72,14 +72,13 @@ class PatientVisitController implements PatientVisitInterface
     {
         $db = new DB();
         $conn = $db->connect();
-        $today = date('Y-m-d');
 
         try {
             $sql = "SELECT p.*, pv.visitDate FROM patients p, patient_visits pv
                     INNER JOIN patients pt ON pt.id=pv.patientId
                     WHERE pv.patientId=:patientId AND
                      `status`='active' AND 
-                     date(pv.visitDate) ='{$today}';
+                     date(pv.visitDate) =CURDATE()
                     ";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
@@ -94,13 +93,13 @@ class PatientVisitController implements PatientVisitInterface
     {
         $db = new DB();
         $conn = $db->connect();
-        $today = date('Y-m-d');
+
 
         try {
             $sql = "SELECT p.*, pv.visitDate FROM patients p, patient_visits pv
                     INNER JOIN patients pt ON pt.id=pv.patientId
                     WHERE `status`='active' AND 
-                     date(pv.visitDate) ='{$today}';
+                     date(pv.visitDate) =CURDATE()
                     ";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
@@ -115,9 +114,8 @@ class PatientVisitController implements PatientVisitInterface
     {
         $db = new DB();
         $conn = $db->connect();
-        $today = date('Y-m-d');
         try {
-            $stmt = $conn->prepare("UPDATE patient_visits SET `status`='left' WHERE patientId=:patientId AND date(visitDate)='{$today}'
+            $stmt = $conn->prepare("UPDATE patient_visits SET `status`='left' WHERE patientId=:patientId AND date(visitDate)=CURDATE()
                                     ;UPDATE patients SET inQueue=0 WHERE id=:patientId");
             $stmt->bindParam(":patientId", $patientId);
             return $stmt->execute() ? true : false;

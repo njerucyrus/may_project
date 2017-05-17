@@ -142,10 +142,9 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         try{
             $sql = "SELECT c.*, pt.id as patientTestId, pt.testResult, pt.description, pt.isPerformed FROM clinical_tests c
                     INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
-                    WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded";
+                    WHERE pt.patientId=:patientId AND pt.createdAt =CURDATE()";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
-            $stmt->bindParam(":dateRecorded", $date);
             $tests = array();
             if($stmt->execute()){
                 $tests = $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -165,10 +164,9 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         try{
             $sql = "SELECT c.*, pt.id as patientTestId, pt.testResult, pt.description, pt.isPerformed FROM clinical_tests c
                     INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
-                    WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded AND pt.isPerformed=1";
+                    WHERE pt.patientId=:patientId AND pt.createdAt = CURDATE() AND pt.isPerformed=1";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
-            $stmt->bindParam(":dateRecorded", $date);
             $tests = array();
             if($stmt->execute()){
                 $tests = $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -187,10 +185,9 @@ class PatientClinicalTestController implements PatientClinicalTestInterface
         try{
             $sql = "SELECT SUM(c.cost) as totalCost FROM clinical_tests c
                     INNER JOIN patient_clinical_tests pt ON pt.testId = c.id
-                    WHERE pt.patientId=:patientId AND pt.createdAt =:dateRecorded";
+                    WHERE pt.patientId=:patientId AND pt.createdAt =CURDATE()";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":patientId", $patientId);
-            $stmt->bindParam(":dateRecorded", $date);
             if($stmt->execute()){
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);
                 return (float)$row['totalCost'];

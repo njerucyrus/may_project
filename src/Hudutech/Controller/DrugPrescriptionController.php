@@ -102,8 +102,7 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
         $db = new DB();
         $conn = $db->connect();
         try{
-            $today = date('Y-m-d');
-            $stmt = $conn->prepare("DELETE FROM drug_prescriptions WHERE id=:id AND date(dateIssued)='{$today}'");
+            $stmt = $conn->prepare("DELETE FROM drug_prescriptions WHERE id=:id AND date(dateIssued)=CURDATE()");
             $stmt->bindParam(":id", $id);
             return $stmt->execute() ? true : false;
         }catch (\PDOException $exception) {
@@ -131,8 +130,7 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
         $conn = $db->connect();
 
         try{
-            $today = date('Y-m-d');
-            $stmt = $conn->prepare("SELECT * FROM drug_prescriptions WHERE patientId=:patientId and date(dateIssued)='{$today}' AND `status`='not_issued'");
+            $stmt = $conn->prepare("SELECT * FROM drug_prescriptions WHERE patientId=:patientId and date(dateIssued)=CURDATE() AND `status`='not_issued'");
             $stmt->bindParam(":patientId", $patientId);
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
