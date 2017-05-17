@@ -5,7 +5,16 @@
  * Date: 06/05/2017
  * Time: 17:28
  */
+require_once __DIR__ . '/vendor/autoload.php';
+$patients = \Hudutech\Controller\PatientController::all();
+
+$patientCounter = 1;
+ foreach ($patients as $patient):
+     $patientCounter++;
+endforeach;
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -59,7 +68,7 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-aqua">
                     <div class="icon" style="padding-bottom: 40px;"><i class="fa fa-user-md"></i></div>
-                    <div class="num" data-start="0" data-end="1023" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+                    <div class="num" data-start="0" data-end="<?php echo $patientCounter;?>" data-postfix="" data-duration="1500" data-delay="1200">0</div>
 
                     <h3>Registered Patients</h3>
                     <p>Patients registered in the system</p>

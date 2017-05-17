@@ -26,6 +26,7 @@ include __DIR__.'/includes/login.inc.php';
         box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
         cursor:pointer;
         vertical-align:middle;
+        width: 300px;
 
         padding: 5px;
         text-align: center;
@@ -54,7 +55,7 @@ include __DIR__.'/includes/login.inc.php';
     </div>
 
 
-    <div class=" login-form ">
+    <div class=" login-form " >
 
         <div class="login-content">
 

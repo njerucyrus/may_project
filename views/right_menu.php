@@ -3,7 +3,7 @@ session_start();
 require_once 'vendor/autoload.php';
 $username = '';
 $level = '';
-if (!isset($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
     header('Location: views/login.php');
 }
 if (isset($_SESSION['username'])) {
@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
 }
 
 ?>
-<div class="sidebar-menu">
+<div class="sidebar-menu" >
 
     <div class="sidebar-menu-inner">
 
@@ -48,7 +48,7 @@ if (isset($_SESSION['username'])) {
         <div class="sidebar-user-info">
 
             <div class="sui-normal">
-                <div class="user-link" >
+                <div class="user-link">
 
                     <i style="color: white; font-size: 3em; display: inline-block;width: 100%;text-align: center;"
                        class="fa fa-user-md "></i>
@@ -63,30 +63,22 @@ if (isset($_SESSION['username'])) {
         </div>
 
         <?php
-        if ($level=='admin')
-        {
+        if ($level == 'admin') {
             admin();
-        }
-        else if($level=='receptionist')
-        {
+        } else if ($level == 'receptionist') {
             receptionist();
-        }
-        else if($level=='doctor')
-        {
+        } else if ($level == 'doctor') {
             doctor();
-        }
-        else if($level=='lab_technician')
-        {
+        } else if ($level == 'lab_technician') {
             lab_technician();
-        }
-        else if($level=='pharmacist')
-        {
+        } else if ($level == 'pharmacist') {
             pharmacist();
         }
 
 
         ?>
-        <?php function admin(){?>
+        <?php function admin()
+        { ?>
 
             <ul id="main-menu" class="main-menu">
                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
@@ -160,7 +152,7 @@ if (isset($_SESSION['username'])) {
                         <span class="title" style="font-size: 2em;"> Lab Test</span>
                     </a>
 
-                    <ul >
+                    <ul>
                         <li>
                             <a href="views/perform_tests.php">
                                 <i class="fa fa-search" style="font-size: 1.5em;"></i>
@@ -193,70 +185,70 @@ if (isset($_SESSION['username'])) {
                 </li>
 
             </ul>
-        <?php }?>
-        <?php function receptionist(){?>
+        <?php } ?>
+        <?php function receptionist()
+        { ?>
 
-        <ul id="main-menu" class="main-menu">
-            <!-- add class "multiple-expanded" to allow multiple submenus to open -->
-            <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-            <li class="opened active has-sub multiple-expanded">
-                <a href="#">
-                    <i class="fa fa-plus-square" style="font-size: 1.8em;"></i>
-                    <span class="title" style="font-size: 1.8em;">Registration</span>
+            <ul id="main-menu" class="main-menu">
+                <!-- add class "multiple-expanded" to allow multiple submenus to open -->
+                <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+                <li class="opened active has-sub multiple-expanded">
+                    <a href="#">
+                        <i class="fa fa-plus-square" style="font-size: 1.8em;"></i>
+                        <span class="title" style="font-size: 1.8em;">Registration</span>
+                    </a>
+                    <ul class="visible">
+                        <li>
+                            <a href="views/register_user.php">
+                                <i class="fa fa-user-plus" style="font-size: 1.5em;"></i>
+                                <span class="title" style="font-size: 1.5em;">Register User</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="views/register_patient.php">
+                                <i class="fa fa-user-md" style="font-size: 1.5em;"></i>
+                                <span class="title" style="font-size: 1.5em;">Register Patient</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="views/record_drug.php">
+                                <i class="fa fa-plus-square" style="font-size: 1.5em;"></i>
+                                <span class="title" style="font-size: 1.5em;">Record Drug</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="views/record_product.php">
+                                <i class="fa fa-plus-square" style="font-size: 1.5em;"></i>
+                                <span class="title" style="font-size: 1.5em;">Record Product</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="views/patients.php">
+                                <i class="fa fa-eye" style="font-size: 1.5em;"></i>
+                                <span class="title" style="font-size: 1.5em;">View Patients</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+
+                <li class="has-sub"
+                ">
+                <a href="views/patient_visit.php">
+                    <i class="fa fa-wheelchair" style="font-size: 1.8em;"></i>
+                    <span class="title" style="font-size: 2em;"> Patient Visit</span>
                 </a>
-                <ul class="visible">
-                    <li>
-                        <a href="views/register_user.php">
-                            <i class="fa fa-user-plus" style="font-size: 1.5em;"></i>
-                            <span class="title" style="font-size: 1.5em;">Register User</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="views/register_patient.php">
-                            <i class="fa fa-user-md" style="font-size: 1.5em;"></i>
-                            <span class="title" style="font-size: 1.5em;">Register Patient</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="views/record_drug.php">
-                            <i class="fa fa-plus-square" style="font-size: 1.5em;"></i>
-                            <span class="title" style="font-size: 1.5em;">Record Drug</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="views/record_product.php">
-                            <i class="fa fa-plus-square" style="font-size: 1.5em;"></i>
-                            <span class="title" style="font-size: 1.5em;">Record Product</span>
-                        </a>
-                    </li>
 
-                    <li>
-                        <a href="views/patients.php">
-                            <i class="fa fa-eye" style="font-size: 1.5em;"></i>
-                            <span class="title" style="font-size: 1.5em;">View Patients</span>
-                        </a>
-                    </li>
+                </li>
 
 
-                </ul>
-            </li>
-
-
-            <li class="has-sub"
-            ">
-            <a href="views/patient_visit.php">
-                <i class="fa fa-wheelchair" style="font-size: 1.8em;"></i>
-                <span class="title" style="font-size: 2em;"> Patient Visit</span>
-            </a>
-
-            </li>
-
-
-
-
-        </ul>
-        <?php }?>
-        <?php function doctor(){?>
+            </ul>
+        <?php } ?>
+        <?php function doctor()
+        { ?>
 
             <ul id="main-menu" class="main-menu">
                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
@@ -281,7 +273,6 @@ if (isset($_SESSION['username'])) {
                     </a>
 
 
-
                 </li>
                 <li class="has-sub">
                     <a href="views/pos.php">
@@ -292,15 +283,13 @@ if (isset($_SESSION['username'])) {
                 </li>
 
             </ul>
-        <?php }?>
-        <?php function lab_technician(){?>
+        <?php } ?>
+        <?php function lab_technician()
+        { ?>
 
             <ul id="main-menu" class="main-menu">
                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                 <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-
-
-
 
 
                 <li class="opened active has-sub multiple-expanded">
@@ -310,7 +299,7 @@ if (isset($_SESSION['username'])) {
                         <span class="title" style="font-size: 2em;"> Lab Test</span>
                     </a>
 
-                    <ul >
+                    <ul>
                         <li>
                             <a href="views/perform_tests.php">
                                 <i class="fa fa-search" style="font-size: 1.5em;"></i>
@@ -337,8 +326,9 @@ if (isset($_SESSION['username'])) {
 
 
             </ul>
-        <?php }?>
-        <?php function pharmacist(){?>
+        <?php } ?>
+        <?php function pharmacist()
+        { ?>
 
             <ul id="main-menu" class="main-menu">
                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
@@ -371,19 +361,12 @@ if (isset($_SESSION['username'])) {
                         </li>
 
 
-
                     </ul>
                 </li>
 
 
-
-
-
-
-
-
             </ul>
-        <?php }?>
+        <?php } ?>
 
     </div>
 </div>
