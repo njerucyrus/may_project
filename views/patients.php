@@ -30,7 +30,7 @@ if (isset($_POST['importSubmit'])) {
 
 
                 array_push($patientsArray, array(
-                    "patientNo" => $currentYear."-".$line[0],
+                    "patientId" => $currentYear."-".$line[0],
                     "fullName" => $line[1],
                     "sex"=>strtoupper($line[2]),
                     "age"=>isset($line[3])? $line[3]: null,
@@ -156,7 +156,7 @@ if(!empty($_GET['status'])){
                             <?php foreach ($patients as $patient): ?>
                                 <tr>
                                     <td><?php echo $counter++ ?></td>
-                                    <td><?php echo $patient['patientNo'] ?></td>
+                                    <td><?php echo $patient['patientId'] ?></td>
                                     <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName']; ?></td>
                                     <td><?php echo $patient['sex'] ?></td>
                                     <td><?php echo $patient['age'] ?></td>
@@ -172,7 +172,7 @@ if(!empty($_GET['status'])){
                                                         '<?php echo $patient['patientType'] ?>',
                                                         '<?php echo $patient['sex'] ?>',
                                                         '<?php echo $patient['age'] ?>',
-                                                        '<?php echo $patient['patientNo'] ?>'
+                                                        '<?php echo $patient['patientId'] ?>'
                                                         )"><i class="entypo-pencil"></i>Edit
                                         </button>
                                         <button class="btn btn-danger  btn-red"

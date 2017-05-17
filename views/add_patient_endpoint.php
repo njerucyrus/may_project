@@ -16,14 +16,14 @@ if($requestMethod == 'POST') {
     if (!empty($data)) {
         $patient = new \Hudutech\Entity\Patient();
 
-        if (!empty($data['patientNo']) and
+        if (!empty($data['patientId']) and
             !empty($data['fullName']) and
             !empty($data['patientType']) and
             !empty($data['sex']) and
             !empty($data['age'])
         ) {
 
-            $patient->setPatientNo($data['patientNo']);
+            $patient->setPatientNo($data['patientId']);
             $patient->setIdNo(null);
             $patient->setSurName($data['fullName']);
             $patient->setFirstName(null);
@@ -40,13 +40,13 @@ if($requestMethod == 'POST') {
             if ($created) {
                 //add patient to visit list
                 $patientVisit = new \Hudutech\Entity\PatientVisit();
-                $patientVisit->setPatientId(\Hudutech\Controller\PatientController::getPatientId($data['patientNo'])['id']);
+                $patientVisit->setPatientId(\Hudutech\Controller\PatientController::getPatientId($data['patientId'])['id']);
                 $patientVisit->setStatus("active");
 
                 $patientVisitCtrl = new \Hudutech\Controller\PatientVisitController();
                 $patientVisitCtrl->create($patientVisit);
                 //add the patient to the queue
-                \Hudutech\Controller\PatientController::addToQueue(\Hudutech\Controller\PatientController::getPatientId($data['patientNo'])['id']);
+                \Hudutech\Controller\PatientController::addToQueue(\Hudutech\Controller\PatientController::getPatientId($data['patientId'])['id']);
 
                 print_r(json_encode(array(
                     "statusCode" => 200,
@@ -83,14 +83,14 @@ if ($requestMethod == 'PUT') {
     if (!empty($data)) {
         $patient = new \Hudutech\Entity\Patient();
 
-        if (!empty($data['patientNo']) and
+        if (!empty($data['patientId']) and
             !empty($data['fullName']) and
             !empty($data['patientType']) and
             !empty($data['sex']) and
             !empty($data['age'])
         ) {
 
-            $patient->setPatientNo($data['patientNo']);
+            $patient->setPatientNo($data['patientId']);
             $patient->setIdNo(null);
             $patient->setSurName($data['fullName']);
             $patient->setFirstName(null);

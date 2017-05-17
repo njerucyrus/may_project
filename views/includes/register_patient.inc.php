@@ -9,10 +9,10 @@ $success_msg = "";
 $error_msg = "";
 
 
-if (!empty($_POST['patientNo']) and !empty($_POST['fullName']) and !empty($_POST['sex']) and !empty($_POST['age'])) {
+if (!empty($_POST['patientId']) and !empty($_POST['fullName']) and !empty($_POST['sex']) and !empty($_POST['age'])) {
 
     $patient = new \Hudutech\Entity\Patient();
-    $patient->setPatientNo($_POST['patientNo']);
+    $patient->setPatientNo($_POST['patientId']);
     $patient->setIdNo(null);
     $patient->setSurName($_POST['fullName']);
     $patient->setFirstName(null);

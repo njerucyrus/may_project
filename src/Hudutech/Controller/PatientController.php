@@ -37,7 +37,7 @@ class PatientController implements PatientInterface
         try {
 
             $stmt = $conn->prepare("INSERT INTO patients(
-                                                            patientNo,
+                                                            patientId,
                                                             idNo,
                                                             surName,
                                                             firstName, 
@@ -51,7 +51,7 @@ class PatientController implements PatientInterface
                                                             location
                                                         )  
                                                 VALUES (
-                                                            :patientNo,
+                                                            :patientId,
                                                             :idNo,
                                                             :surName,
                                                             :firstName,
@@ -66,7 +66,7 @@ class PatientController implements PatientInterface
                                                             
                                                              
                                                         ) ");
-            $stmt->bindParam(":patientNo", $patientNo);
+            $stmt->bindParam(":patientId", $patientNo);
             $stmt->bindParam(":idNo", $idNo);
             $stmt->bindParam(":surName", $surName);
             $stmt->bindParam(":firstName", $firstName);
@@ -95,7 +95,7 @@ class PatientController implements PatientInterface
 
      try{
          $stmt = $conn->prepare("INSERT INTO patients(
-                                                        patientNo,
+                                                        patientId,
                                                         surName,
                                                         phoneNumber,
                                                         patientType,
@@ -104,7 +104,7 @@ class PatientController implements PatientInterface
                                                         location
                                                         )  
                                                 VALUES (
-                                                        :patientNo,
+                                                        :patientId,
                                                         :surName,
                                                         :phoneNumber,
                                                         :patientType,
@@ -113,7 +113,7 @@ class PatientController implements PatientInterface
                                                         :location
                                                         ) ");
          foreach ($patients as $patient){
-             $stmt->bindParam(":patientNo", $patient['patientNo']);
+             $stmt->bindParam(":patientId", $patient['patientId']);
              $stmt->bindParam(":surName", $patient['fullName']);
              $stmt->bindParam(":phoneNumber", $patient['phoneNumber']);
              $stmt->bindParam(":patientType", $patient['patientType']);
@@ -151,7 +151,7 @@ class PatientController implements PatientInterface
         try {
 
             $stmt = $conn->prepare("UPDATE patients SET
-                                                        patientNo=:patientNo,
+                                                        patientId=:patientId,
                                                         idNo=:idNo,
                                                         surName=:surName,
                                                         firstName=:firstName, 
@@ -167,7 +167,7 @@ class PatientController implements PatientInterface
                                                      ");
 
             $stmt->bindParam(":id", $id);
-            $stmt->bindParam(":patientNo", $patientNo);
+            $stmt->bindParam(":patientId", $patientNo);
             $stmt->bindParam(":idNo", $idNo);
             $stmt->bindParam(":surName", $sirName);
             $stmt->bindParam(":firstName", $firstName);
@@ -298,8 +298,8 @@ class PatientController implements PatientInterface
         $conn = $db->connect();
 
         try {
-            $stmt = $conn->prepare("SELECT * FROM patients WHERE patientNo=:patientNo");
-            $stmt->bindParam(":patientNo", $patientNo);
+            $stmt = $conn->prepare("SELECT * FROM patients WHERE patientId=:patientId");
+            $stmt->bindParam(":patientId", $patientNo);
             return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
             echo $exception->getMessage();

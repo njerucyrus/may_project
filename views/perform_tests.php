@@ -11,16 +11,16 @@ $patientId = '';
 $patientTest = null;
 $counter = 1;
 $patient = null;
-if (isset($_POST['patientNo'])) {
-    if (!empty($_POST['patientNo'])) {
-        $_SESSION['patientNo'] = $_POST['patientNo'];
-        $idObj = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
+if (isset($_POST['patientId'])) {
+    if (!empty($_POST['patientId'])) {
+        $_SESSION['patientId'] = $_POST['patientId'];
+        $idObj = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientId']);
         if (!empty($idObj)){
             $patientId = $idObj['id'];
         }
         $today = date('Y-m-d');
         $patientTests = \Hudutech\Controller\PatientClinicalTestController::showClinicalTests($patientId, $today);
-        $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
+        $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientId']);
 
         unset($_POST);
     }else{
@@ -87,7 +87,7 @@ if (isset($_POST['patientNo'])) {
 
 
                                 <tr>
-                                    <td style="color: #000000;"><?php echo $patient['patientNo'] ?></td>
+                                    <td style="color: #000000;"><?php echo $patient['patientId'] ?></td>
                                     <td style="color: #000000;"><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
                                     <td style="color: #000000;"><?php echo $patient['sex'] ?></td>
                                 </tr>
@@ -307,7 +307,7 @@ if (isset($_POST['patientNo'])) {
     }
 
     function submitBackToDoctor() {
-        <?php unset($_POST); unset($_SESSION['patientNo'])?>
+        <?php unset($_POST); unset($_SESSION['patientId'])?>
         $('#mainFeedback')
             .addClass('alert alert-success')
             .text('Test Results Submitted successfully');

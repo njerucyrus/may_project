@@ -59,7 +59,7 @@ $counter = 1;
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td style="color: #000000;"><?php echo $patient['patientNo'] ?></td>
+                                    <td style="color: #000000;"><?php echo $patient['patientId'] ?></td>
                                     <td style="color: #000000;"><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName'] ?></td>
                                     <td style="color: #000000;"><?php echo $patient['sex'] ?></td>
                                 </tr>
