@@ -63,7 +63,7 @@ include  __DIR__.'/includes/register_patient.inc.php';
                                 <label for="patientNo" class="col-sm-3 control-label">OutPatient Number</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="patientNo" placeholder="OutPatient Number ...">
+                                    <input type="text" class="form-control" name="patientNo" placeholder="OutPatient Number ..." required>
                                 </div>
                             </div>
 
@@ -72,7 +72,7 @@ include  __DIR__.'/includes/register_patient.inc.php';
                                 <label for="fullName" class="col-sm-3 control-label">FullName</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="fullName" placeholder="FullName ...">
+                                    <input type="text" class="form-control" name="fullName" placeholder="FullName ..." required>
                                 </div>
                             </div>
 
@@ -80,7 +80,7 @@ include  __DIR__.'/includes/register_patient.inc.php';
                                 <label for="phoneNumber" class="col-sm-3 control-label">Phone Number</label>
 
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" name="phoneNumber" placeholder="Phone Number ..." required>
+                                    <input type="text" class="form-control" name="phoneNumber" placeholder="Phone Number ...">
                                 </div>
                             </div>
 
@@ -99,6 +99,14 @@ include  __DIR__.'/includes/register_patient.inc.php';
 
                                 <div class="col-sm-5">
                                     <input type="number" class="form-control" name="age" placeholder="Age ..." required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location" class="col-sm-3 control-label">Location</label>
+
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="location" placeholder="Location" required>
                                 </div>
                             </div>
 

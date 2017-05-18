@@ -9,10 +9,10 @@ $success_msg = "";
 $error_msg = "";
 
 
-if (!empty($_POST['patientId']) and !empty($_POST['fullName']) and !empty($_POST['sex']) and !empty($_POST['age'])) {
+if (!empty($_POST['patientNo']) and !empty($_POST['fullName']) and !empty($_POST['sex']) and !empty($_POST['age'])) {
 
     $patient = new \Hudutech\Entity\Patient();
-    $patient->setPatientNo($_POST['patientId']);
+    $patient->setPatientNo($_POST['patientNo']);
     $patient->setIdNo(null);
     $patient->setSurName($_POST['fullName']);
     $patient->setFirstName(null);
@@ -23,12 +23,16 @@ if (!empty($_POST['patientId']) and !empty($_POST['fullName']) and !empty($_POST
     $patient->setPatientType($_POST['patientType']);
     $patient->setSex($_POST['sex']);
     $patient->setAge($_POST['age']);
+    $patient->setLocation($_POST['location']);
+
+print_r($patient);
 
     $patientController = new \Hudutech\Controller\PatientController();
+
     if ($patientController->create($patient)) {
         $success_msg .= "Patient  Registered successfully";
     } else {
-        $error_msg .= 'error saving user, please try again ';
+        $error_msg .= 'Error registering Patient, please try again ';
     }
 } else {
 
