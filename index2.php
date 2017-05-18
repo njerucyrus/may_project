@@ -5,10 +5,10 @@
  * Date: 4/21/17
  * Time: 11:15 PM
  */
-
+session_start();
 require_once __DIR__.'/vendor/autoload.php';
 
-echo date('Y-m-d');
+//echo date('Y-m-d');
 //$loggedInAs = \Hudutech\Controller\UserController::getLoggedInUser('admin');
 //echo $loggedInAs;
 //$ctrl = new \Hudutech\Controller\PatientController();
@@ -72,5 +72,12 @@ echo date('Y-m-d');
 //print_r($queuePatients);
 //echo date('Y-m-d');
 
-$prescriptions = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions(2836);
-print_r($prescriptions);
+//$prescriptions = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions(2836);
+//print_r($prescriptions);
+
+//$cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo']);
+//
+//print_r($cart);
+//$checked = \Hudutech\Controller\SalesController::checkout($cart);
+
+//$receipt = \Hudutech\Controller\SalesController::createReceipt($cart[0]['patientId'], $cart[0]['receiptNo']);

@@ -174,7 +174,8 @@ class SalesController implements SalesInterface
     }
 
 
-    public static function createCart(array $cart){
+    public static function createCart(array $cart)
+    {
         $db = new DB();
         $conn = $db->connect();
 
@@ -185,7 +186,7 @@ class SalesController implements SalesInterface
         $price = $cart['price'];
 
 
-        try{
+        try {
             $stmt = $conn->prepare("INSERT INTO cart(
                                                         patientId,
                                                         inventoryId,
@@ -208,20 +209,21 @@ class SalesController implements SalesInterface
             $stmt->bindParam(":qty", $qty);
             $stmt->bindParam(":price", $price);
             return $stmt->execute() ? true : false;
-        }catch (\PDOException $exception) {
+        } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return false;
         }
     }
 
-    public static function showCartItems($receiptNo){
+    public static function showCartItems($receiptNo)
+    {
         $db = new DB();
         $conn = $db->connect();
-        try{
-            $stmt = $conn->prepare("SELECT d.productName, c.qty, c.price FROM drug_inventory d , cart c 
-                                    INNER JOIN cart cr ON cr.inventoryId = d.id 
-                                    WHERE cr.inventoryId=d.id AND cr.receiptNo=:receiptNo");
-            $stmt->bindParam(":receiptNo", $receiptNo);
+        try {
+            $stmt = $conn->prepare("SELECT d.productName, c.* FROM drug_inventory d , cart c
+                                    INNER JOIN drug_inventory dr  ON dr.id = c.inventoryId
+                                    WHERE c.inventoryId=d.id AND c.receiptNo='{$receiptNo}'");
+
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
@@ -229,20 +231,57 @@ class SalesController implements SalesInterface
         }
     }
 
-    public static function updateInventoryQty($inventoryId, $qty){
+
+    public static function removeCartItem($id)
+    {
         $db = new DB();
         $conn = $db->connect();
-
-        try{
-            $stmt = $conn->prepare("UPDATE drug_inventory SET qtyInStock=qtyInStock-'{$qty}'
-                                    WHERE id=:inventoryId");
-            $stmt->bindParam(":inventoryId", $inventoryId);
-            return $stmt->execute() ? true: false;
-        } catch (\PDOException $exception){
+        try {
+            $stmt = $conn->prepare("DELETE FROM cart WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return false;
         }
     }
+
+    public static function getCartTotal($receiptNo)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+
+        try {
+            $stmt = $conn->prepare("SELECT SUM(price) AS cartTotal FROM cart WHERE receiptNo=:receiptNo");
+            $stmt->bindParam(":receiptNo", $receiptNo);
+            $cartTotal = 0;
+            if ($stmt->execute() && $stmt->rowCount() > 0) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                $cartTotal = (float)$row['cartTotal'];
+            }
+            return $cartTotal;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return null;
+        }
+    }
+
+    public static function updateInventoryQty($inventoryId, $qty)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+
+        try {
+            $stmt = $conn->prepare("UPDATE drug_inventory SET qtyInStock=qtyInStock-'{$qty}'
+                                    WHERE id=:inventoryId");
+            $stmt->bindParam(":inventoryId", $inventoryId);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
+
     public static function checkout(array $cart)
     {
         $db = new DB();
@@ -254,7 +293,6 @@ class SalesController implements SalesInterface
                                                         qty, 
                                                         price,
                                                         datePurchased,
-                                                        servedBy,
                                                         receiptNo
                                                     ) VALUES (
                                                         :patientId,
@@ -262,7 +300,6 @@ class SalesController implements SalesInterface
                                                         :qty, 
                                                         :price,
                                                         :datePurchased,
-                                                        :servedBy,
                                                         :receiptNo
                                                     )");
 
@@ -271,9 +308,9 @@ class SalesController implements SalesInterface
                 $stmt->bindParam(":inventoryId", $cartItem['inventoryId']);
                 $stmt->bindParam(":qty", $cartItem['qty']);
                 $stmt->bindParam(":price", $cartItem['price']);
-                $stmt->bindParam(":datePurchased", $cartItem['datePurchased']);
+                $stmt->bindParam(":datePurchased", $cartItem['createdAt']);
                 $stmt->bindParam(":receiptNo", $cartItem['receiptNo']);
-                if ($stmt->execute()){
+                if ($stmt->execute()) {
                     self::updateInventoryQty($cartItem['inventoryId'], $cartItem['qty']);
                 }
             }
@@ -340,7 +377,7 @@ class SalesController implements SalesInterface
         $db = new DB();
         $conn = $db->connect();
         try {
-            $stmt = $conn->prepare("SELECT SUM(t.price) as totalPrice FROM sales t
+            $stmt = $conn->prepare("SELECT SUM(t.price) AS totalPrice FROM sales t
                                     WHERE t.patientId=:patientId AND
                                      date(t.datePurchased)=CURDATE()");
             $stmt->bindParam(":patientId", $patientId);
@@ -368,37 +405,47 @@ class SalesController implements SalesInterface
             $bill['consultationFee'] = ChargeController::getConsultationFee();
         }
         $bill['drugCost'] = self::getTotalDrugCost($patientId);
-        $totalCharges = isset($bill['regFee']) && isset($bill['consultationFee']) ?
-                        (float)($bill['regFee'] + $bill['consultationFee']) : 0;
+        $totalCharges = 0;
+        if (isset($bill['regFee']) && isset($bill['consultationFee'])) {
+            $totalCharges = (float)$bill['regFee'] + (float)$bill['consultationFee'];
+        }
+        if (isset($bill['regFee']) && !isset($bill['consultationFee'])) {
+            $totalCharges = (float)$bill['regFee'];
+        }
+        if (isset($bill['consultationFee']) && !isset($bill['regFee'])) {
+            $totalCharges = (float)$bill['consultationFee'];
+        }
 
-        $totalCost = $totalCharges + $bill['drugCost'];
+        $totalCost = $totalCharges + (float)$bill['drugCost'];
         $bill['totalCost'] = $totalCost;
         return $bill;
     }
 
-    public static function markPaidRegFee($patientId){
+    public static function markPaidRegFee($patientId)
+    {
         $db = new DB();
         $conn = $db->connect();
-        try{
+        try {
             $stmt = $conn->prepare("UPDATE patients SET regFeePaid=1 WHERE id=:patientId");
             $stmt->bindParam(":patientId", $patientId);
             return $stmt->execute() ? true : false;
-        } catch (\PDOException $exception){
+        } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return false;
         }
     }
 
-    public static function createReceipt($patientId, $receiptNo) {
+    public static function createReceipt($patientId, $receiptNo)
+    {
         $db = new DB();
         $conn = $db->connect();
 
         $bill = self::getPatientBill($patientId);
-        $regFee = isset($bill['regFee'])? $bill['regFee'] : null;
-        $consultFee = isset($bill['consultationFee'])? $bill['consultationFee'] : null;
+        $regFee = isset($bill['regFee']) ? $bill['regFee'] : null;
+        $consultFee = isset($bill['consultationFee']) ? $bill['consultationFee'] : null;
         $totalCost = $bill['totalCost'];
 
-        try{
+        try {
             $stmt = $conn->prepare("INSERT INTO sales_receipts(
                                                                 patientId, 
                                                                 receiptNo,
@@ -419,13 +466,12 @@ class SalesController implements SalesInterface
             $stmt->bindParam(":consultationFee", $consultFee);
             $stmt->bindParam(":regFee", $regFee);
             $stmt->bindParam(":totalCost", $totalCost);
-            if ($stmt->execute()){
+            if ($stmt->execute()) {
                 if (!is_null($regFee)) {
                     self::markPaidRegFee($patientId);
                 }
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
         } catch (\PDOException $exception) {
