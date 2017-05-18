@@ -37,7 +37,7 @@ class PatientController implements PatientInterface
         try {
 
             $stmt = $conn->prepare("INSERT INTO patients(
-                                                            patientId,
+                                                            patientNo,
                                                             idNo,
                                                             surName,
                                                             firstName, 
@@ -66,7 +66,7 @@ class PatientController implements PatientInterface
                                                             
                                                              
                                                         ) ");
-            $stmt->bindParam(":patientId", $patientNo);
+            $stmt->bindParam(":patientNo", $patientNo);
             $stmt->bindParam(":idNo", $idNo);
             $stmt->bindParam(":surName", $surName);
             $stmt->bindParam(":firstName", $firstName);

@@ -218,10 +218,10 @@ class SalesController implements SalesInterface
         $db = new DB();
         $conn = $db->connect();
         try{
-            $stmt = $conn->prepare("SELECT d.productName, c.qty, c.price FROM drug_inventory d , cart c 
-                                    INNER JOIN cart cr ON cr.inventoryId = d.id 
-                                    WHERE cr.inventoryId=d.id AND cr.receiptNo=:receiptNo");
-            $stmt->bindParam(":receiptNo", $receiptNo);
+            $stmt = $conn->prepare("SELECT d.productName, c.id, c.qty, c.price FROM drug_inventory d , cart c
+                                    INNER JOIN drug_inventory dr  ON dr.id = c.inventoryId
+                                    WHERE c.inventoryId=d.id AND c.receiptNo='{$receiptNo}'");
+
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
@@ -229,6 +229,18 @@ class SalesController implements SalesInterface
         }
     }
 
+    public static function removeCartItem($id){
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $stmt = $conn->prepare("DELETE FROM cart WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
     public static function updateInventoryQty($inventoryId, $qty){
         $db = new DB();
         $conn = $db->connect();

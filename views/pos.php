@@ -8,20 +8,22 @@ session_start();
  */
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$patientId = '';
 $counter = 1;
+$cartCounter = 1;
 $prescriptions = [];
 $patient = [];
 if (isset($_POST['submit'])) {
-    if (isset($_POST['patientNo'])) {
+    if (!empty($_POST['patientNo']) && !isset($_SESSION['patientNo'])) {
         if (!empty($_POST['patientNo'])) {
             $_SESSION['patientNo'] = $_POST['patientNo'];
             $idObj = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
             if (!empty($idObj)) {
                 $patientId = $idObj['id'];
+                $_SESSION['patientId'] = $patientId;
             }
-            $prescriptions = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($patientId);
-            $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
+            if (!isset($_SESSION['receiptNo'])) {
+                $_SESSION['receiptNo'] = \Hudutech\Controller\SalesController::generateReceiptNo();
+            }
 
             unset($_POST);
         } else {
@@ -32,35 +34,41 @@ if (isset($_POST['submit'])) {
 
     }
 }
+
+$prescriptions = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($_SESSION['patientId']);
+$patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
+$receiptNo = isset($_SESSION['receiptNo']) ? $_SESSION['receiptNo'] : '';
 $drugs = \Hudutech\Controller\DrugInventoryController::all();
+$cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo']);
 
-if (isset($_POST['btnAddCart'])) {
-    if (!isset($_SESSION['cartData']) and !isset($_SESSION['cart'])) {
-
-        $_SESSION['cartData'] = array();
-        $_SESSION['cart'] = array();
-    }
-    if (isset($_POST['drug']) && isset($_POST['quantity'])) {
-
-        if (!isset($_SESSION['receiptNo'])) {
-            $receiptNo = \Hudutech\Controller\SalesController::generateReceiptNo();
-            $_SESSION['receiptNo'] = $receiptNo;
-        }
-
-        $price = \Hudutech\Controller\DrugInventoryController::getPrice($_POST['drug'], $_POST['quantity']);
-
-        $_SESSION['cartData']['patientId'] = $patient['id'];
-        $_SESSION['cartData']['inventoryId'] = $_POST['drug'];
-        $_SESSION['cartData']['qty'] = $_POST['quantity'];
-        $_SESSION['cartData']['receiptNo'] = $_SESSION['receiptNo'];
-        $_SESSION['cartData']['price'] = $price;
-        $_SESSION['cartData']['datePurchased'] = date('Y-m-d');
-        array_push($_SESSION['cart'], $_SESSION['cartData']);
-
-    }
-}
+//if (isset($_POST['btnAddCart'])) {
+//    if (!isset($_SESSION['cartData']) and !isset($_SESSION['cart'])) {
+//
+//        $_SESSION['cartData'] = array();
+//        $_SESSION['cart'] = array();
+//    }
+//    if (isset($_POST['drug']) && isset($_POST['quantity'])) {
+//
+//        if (!isset($_SESSION['receiptNo'])) {
+//            $receiptNo = \Hudutech\Controller\SalesController::generateReceiptNo();
+//            $_SESSION['receiptNo'] = $receiptNo;
+//        }
+//
+//        $price = \Hudutech\Controller\DrugInventoryController::getPrice($_POST['drug'], $_POST['quantity']);
+//
+//        $_SESSION['cartData']['patientId'] = $patient['id'];
+//        $_SESSION['cartData']['inventoryId'] = $_POST['drug'];
+//        $_SESSION['cartData']['qty'] = $_POST['quantity'];
+//        $_SESSION['cartData']['receiptNo'] = $_SESSION['receiptNo'];
+//        $_SESSION['cartData']['price'] = $price;
+//        $_SESSION['cartData']['datePurchased'] = date('Y-m-d');
+//        array_push($_SESSION['cart'], $_SESSION['cartData']);
+//
+//    }
+//}
 ?>
 <!DOCTYPE html>
+<html>
 <head>
     <?php include 'head_views.php' ?>
     <style>
@@ -196,8 +204,10 @@ if (isset($_POST['btnAddCart'])) {
 
                             <!--                   body content will start here-->
 
-                            <form name="cartForm" id="cartForm"
-                                  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+                            <div id="feedback"></div>
+
+                            <form name="cartForm" id="cartForm">
+
                                 <div class="form-group  col-md-5" style="padding: 5px; margin: 5px;">
                                     <label for="drug" style="padding-left: 10px;"
                                            class="control-label">Select Drug</label>
@@ -216,17 +226,15 @@ if (isset($_POST['btnAddCart'])) {
                                     <label for="supplier" style="padding-left: 10px;"
                                            class="control-label">Quantity</label>
 
-                                    <input type="number" class="form-control" name="quantity" id="supplier"
+                                    <input type="number" class="form-control" name="qty" id="qty"
                                            placeholder="Quantity">
 
 
                                 </div>
-
-                                <div class="form-group col-md-2" style="padding-top: 30px;">
-                                    <input type="submit" name="btnAddCart" value="Add to Cart"
-                                           class="btn btn-green btn-md control-label"/>
-                                </div>
                             </form>
+                            <div class="form-group col-md-2" style="padding-top: 30px;">
+                                <button class="btn btn-success btn-green btn-md " id="addCart">Add to Cart</button>
+                            </div>
 
                         </div>
 
@@ -330,21 +338,24 @@ if (isset($_POST['btnAddCart'])) {
 
                             <div class="table-responsive">
 
-                                <table class="table table-stripped" id="visitTable">
+                                <table class="table table-stripped" id="cartTable">
                                     <thead>
                                     <tr class="bg-success">
                                         <th>#</th>
                                         <th>Drug Name</th>
                                         <th>Quantity</th>
+                                        <th>Price</th>
                                         <th colspan="1">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($_SESSION['cart'] as $cartItem): ?>
+                                    <?php foreach ($cart as $cartItem): ?>
                                         <tr>
-                                            <td><?php echo $counter++ ?></td>
-                                            <td><?php echo $cartItem['inventoryId'] ?></td>
+                                            <td><?php echo $cartCounter++ ?></td>
+                                            <td><?php echo $cartItem['productName'] ?></td>
                                             <td><?php echo $cartItem['qty'] ?></td>
+                                            <td><?php echo $cartItem['price'] ?></td>
+                                            <td><button class="btn btn-xs btn-danger btn-blue"><i class="entypo-cancel"></i>Remove</button></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
@@ -372,7 +383,59 @@ if (isset($_POST['btnAddCart'])) {
 <?php include 'footer_views.php' ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function (e) {
+        e.preventDefault;
+        $('#addCart').on('click', function (event) {
+            event.preventDefault;
+            addToCart();
+        });
+    })
+</script>
+<script>
+    function getData() {
+        return {
+            inventoryId: $('#drug').val(),
+            qty: $('#qty').val()
+        };
+    }
+    function addToCart() {
+        var data = getData();
+        data['patientId'] = '<?php echo $_SESSION['patientId'] ?>';
+        data['receiptNo'] = '<?php echo $_SESSION['receiptNo'] ?>';
+        var url = 'cart_endpoint.php';
 
+        console.log(data);
 
+        $.ajax(
+            {
+                type: 'POST',
+                url: url,
+                data: JSON.stringify(data),
+                dataType : 'json',
+                contentType: 'application/json; charset=utf-8;',
+                success: function (response) {
+                    console.log(response)
+                    if (response.statusCode == 200) {
+                        $('#feedback').removeClass('alert alert-danger')
+                            .addClass('alert alert-success')
+                            .text(response.message);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    }
+                    if (response.statusCode == 500) {
+                        $('#feedback').removeClass('alert alert-success')
+                            .html('<div class="alert alert-danger alert-dismissable">' +
+                                '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                '<strong>Error! </strong> ' + response.message + '</div>')
+
+                    }
+
+                }
+            }
+        );
+    }
+</script>
 </body>
 </html>
