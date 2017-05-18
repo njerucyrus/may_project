@@ -274,12 +274,36 @@ if (isset($_SESSION['username'])) {
 
 
                 </li>
-                <li class="has-sub">
-                    <a href="views/pos.php">
-                        <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 1.8em;"></i>
-                        <span class="title" style="font-size: 2em;"> Pharmacy</span>
+                <li class="has-sub ">
+                    <a href="#">
+                        <i class="fa fa-plus-square" style="font-size: 1.8em;"></i>
+                        <span class="title" style="font-size: 1.8em;">Pharmacy</span>
                     </a>
+                    <ul class="visible">
+                        <li class="has-sub">
+                            <a href="views/pos.php">
+                                <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 1.8em;"></i>
+                                <span class="title" style="font-size: 2em;"> POS</span>
+                            </a>
 
+                        </li>
+
+                        <li>
+                            <a href="views/record_drug.php">
+                                <i class="fa fa-plus-square" style="font-size: 1.5em;"></i>
+                                <span class="title" style="font-size: 1.5em;">Drug Inventory</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="views/record_product.php">
+                                <i class="fa fa-plus-square" style="font-size: 1.5em;"></i>
+                                <span class="title" style="font-size: 1.5em;">Product Inventory</span>
+                            </a>
+                        </li>
+
+
+
+                    </ul>
                 </li>
 
             </ul>
