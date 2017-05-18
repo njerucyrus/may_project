@@ -32,7 +32,7 @@ $counter = 1;
 
         td {
             color: #000000;
-            font-size: 1.3em;
+            font-size: 1.4em;
         }
     </style>
 

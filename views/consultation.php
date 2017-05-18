@@ -413,7 +413,7 @@ $counter=1;
         function filterTable() {
             // Declare variables
             var input, filter, table, tr, td, i;
-            input = document.getElementById("patientId");
+            input = document.getElementById("patientNo");
             filter = input.value.toUpperCase();
             table = document.getElementById("queueTable");
             tr = table.getElementsByTagName("tr");

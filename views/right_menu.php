@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
 }
 
 ?>
-<div class="sidebar-menu" >
+<div class="sidebar-menu" style="margin-top: -100px;">
 
     <div class="sidebar-menu-inner">
 

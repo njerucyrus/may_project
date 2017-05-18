@@ -26,7 +26,7 @@ $counter = 1;
     <style>
         th {
             color: #000000;
-            font-size: 1.6em;
+            font-size: 1.5em;
         }
 
         td {

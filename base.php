@@ -8,16 +8,22 @@
 require_once __DIR__ . '/vendor/autoload.php';
 $patients = \Hudutech\Controller\PatientController::all();
 $drugs=\Hudutech\Controller\DrugInventoryController::all();
+$visitors=\Hudutech\Controller\PatientVisitController::all();
 
 $patientCounter = 1;
 $drugCounter = 1;
+$visitCounter=1;
  foreach ($patients as $patient):
      $patientCounter++;
 endforeach;
 
 foreach ($drugs as $drug):
-    $drugCounter;
+    $drugCounter++;
 endforeach;
+
+foreach ($visitors as $visit):
+    $visitCounter++;
+    endforeach;
 
 ?>
 
@@ -26,15 +32,15 @@ endforeach;
 <?php
 include 'views/head.php';
 ?>
-<body class="page-body skin-facebook" >
+<body class="page-body skin-facebook"  >
 
-<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+<div class="page-container" ><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
     <?php
     include 'views/right_menu.php';
     ?>
 
-    <div class="main-content">
+    <div class="main-content" >
 <?php include 'views/header_menu.php'  ?>
 
         <hr />
@@ -48,10 +54,10 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-red">
                     <div class="icon"><i class="entypo-users"></i></div>
-                    <div class="num" data-start="0" data-end="83" data-postfix="" data-duration="1500" data-delay="0">0</div>
+                    <div class="num" data-start="0" data-end="<?php echo $visitCounter;?>" data-postfix="" data-duration="1500" data-delay="0">0</div>
 
-                    <h3>Registered users</h3>
-                    <p>so far in our Hospital System</p>
+                    <h3>Patients Visits</h3>
+                    <p>Providing best services</p>
                 </div>
 
             </div>
