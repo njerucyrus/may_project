@@ -122,7 +122,7 @@ if (isset($_POST['patientNo'])) {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <? foreach ($patientTests as $patientTest): ?>
+                                <?php foreach ($patientTests as $patientTest): ?>
                                     <tr>
                                         <th><?php echo $counter++ ?></th>
                                         <th><?php echo $patientTest['testName'] ?></th>
