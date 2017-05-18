@@ -173,6 +173,62 @@ class SalesController implements SalesInterface
         return strtoupper(substr(bin2hex($bytes), 0, $length));
     }
 
+
+    public static function createCart(array $cart){
+        $db = new DB();
+        $conn = $db->connect();
+
+        $inventoryId = $cart['inventoryId'];
+        $patientId = isset($cart['patientId']) ? $cart['patientId'] : null;
+        $receiptNo = $cart['receiptNo'];
+        $qty = $cart['qty'];
+        $price = $cart['price'];
+
+
+        try{
+            $stmt = $conn->prepare("INSERT INTO cart(
+                                                        patientId,
+                                                        inventoryId,
+                                                        receiptNo,
+                                                        qty, 
+                                                        price, 
+                                                        createdAt
+                                                    )
+                                                    VALUES (
+                                                        :patientId,
+                                                        :inventoryId,
+                                                        :receiptNo,
+                                                        :qty,
+                                                        :price,
+                                                        CURDATE()
+                                                    )");
+            $stmt->bindParam(":patientId", $patientId);
+            $stmt->bindParam(":inventoryId", $inventoryId);
+            $stmt->bindParam(":receiptNo", $receiptNo);
+            $stmt->bindParam(":qty", $qty);
+            $stmt->bindParam(":price", $price);
+            return $stmt->execute() ? true : false;
+        }catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
+
+    public static function showCartItems($receiptNo){
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $stmt = $conn->prepare("SELECT d.productName, c.qty, c.price FROM drug_inventory d , cart c 
+                                    INNER JOIN cart cr ON cr.inventoryId = d.id 
+                                    WHERE cr.inventoryId=d.id AND cr.receiptNo=:receiptNo");
+            $stmt->bindParam(":receiptNo", $receiptNo);
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
     public static function updateInventoryQty($inventoryId, $qty){
         $db = new DB();
         $conn = $db->connect();
