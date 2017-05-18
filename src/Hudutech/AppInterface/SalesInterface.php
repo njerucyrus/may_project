@@ -26,6 +26,10 @@ interface SalesInterface
 
     public static function generateReceiptNo();
 
+    public static function createCart(array $cart);
+
+    public static function showCartItems($receiptNo);
+
     public static function updateInventoryQty($inventoryId, $qty);
 
     public static function checkout(array $cart);

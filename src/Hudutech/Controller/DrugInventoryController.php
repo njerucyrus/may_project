@@ -196,7 +196,7 @@ class DrugInventoryController implements DrugInventoryInterface
             $stmt->bindParam(":id", $id);
             $price = 0;
             if ($stmt->execute()) {
-                $row = $stmt->fetch(\PDO::FETCH_CLASS);
+                $row = $stmt->fetch(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, DrugInventory::class);
                 $price = (float)(($qty/$row['doseQty']) * $row['dosePrice']);
             }
             $db->closeConnection();

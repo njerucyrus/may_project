@@ -7,34 +7,67 @@ session_start();
  * Time: 7:23 PM
  */
 require_once __DIR__ . '/../vendor/autoload.php';
+
 $patientId = '';
 $counter = 1;
 $prescriptions = [];
 $patient = [];
-if (isset($_POST['patientNo'])) {
-    if (!empty($_POST['patientNo'])) {
-        $_SESSION['patientNo'] = $_POST['patientNo'];
-        $idObj = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
-        if (!empty($idObj)) {
-            $patientId = $idObj['id'];
-        }
-        $prescriptions = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($patientId);
-        $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
+if (isset($_POST['submit'])) {
+    if (isset($_POST['patientNo'])) {
+        if (!empty($_POST['patientNo'])) {
+            $_SESSION['patientNo'] = $_POST['patientNo'];
+            $idObj = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
+            if (!empty($idObj)) {
+                $patientId = $idObj['id'];
+            }
+            $prescriptions = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($patientId);
+            $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
 
-        unset($_POST);
+            unset($_POST);
+        } else {
+            unset($_POST);
+        }
     } else {
         unset($_POST);
-    }
-} else {
-    unset($_POST);
 
+    }
 }
 $drugs = \Hudutech\Controller\DrugInventoryController::all();
+
+if (isset($_POST['btnAddCart'])) {
+    if (!isset($_SESSION['cartData']) and !isset($_SESSION['cart'])) {
+
+        $_SESSION['cartData'] = array();
+        $_SESSION['cart'] = array();
+    }
+    if (isset($_POST['drug']) && isset($_POST['quantity'])) {
+
+        if (!isset($_SESSION['receiptNo'])) {
+            $receiptNo = \Hudutech\Controller\SalesController::generateReceiptNo();
+            $_SESSION['receiptNo'] = $receiptNo;
+        }
+
+        $price = \Hudutech\Controller\DrugInventoryController::getPrice($_POST['drug'], $_POST['quantity']);
+
+        $_SESSION['cartData']['patientId'] = $patient['id'];
+        $_SESSION['cartData']['inventoryId'] = $_POST['drug'];
+        $_SESSION['cartData']['qty'] = $_POST['quantity'];
+        $_SESSION['cartData']['receiptNo'] = $_SESSION['receiptNo'];
+        $_SESSION['cartData']['price'] = $price;
+        $_SESSION['cartData']['datePurchased'] = date('Y-m-d');
+        array_push($_SESSION['cart'], $_SESSION['cartData']);
+
+    }
+}
 ?>
 <!DOCTYPE html>
 <head>
     <?php include 'head_views.php' ?>
-
+    <style>
+        select {
+            font-weight: bold;
+        }
+    </style>
 
 </head>
 <body class="page-body skin-facebook">
@@ -53,7 +86,7 @@ $drugs = \Hudutech\Controller\DrugInventoryController::all();
                                     <label for="patientNo">PatientNo</label>
                                     <input type="text" id="patientNo" name="patientNo" class="form-control"
                                            placeholder="Enter Patient Number">
-                                    <input type="submit" class="btn btn-primary btn-blue" value="Go">
+                                    <input type="submit" name="submit" class="btn btn-primary btn-blue" value="Go">
                                 </div>
 
                             </form>
@@ -145,7 +178,7 @@ $drugs = \Hudutech\Controller\DrugInventoryController::all();
         <div id="sellDrug" class="col-md-12">
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
 
                     <div class="panel panel-primary" data-collapsed="0">
 
@@ -163,87 +196,44 @@ $drugs = \Hudutech\Controller\DrugInventoryController::all();
 
                             <!--                   body content will start here-->
 
+                            <form name="cartForm" id="cartForm"
+                                  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+                                <div class="form-group  col-md-5" style="padding: 5px; margin: 5px;">
+                                    <label for="drug" style="padding-left: 10px;"
+                                           class="control-label">Select Drug</label>
 
-                            <div class="form-group  col-md-5" style="padding: 5px; margin: 5px;">
-                                <label for="supplier" style="padding-left: 10px;"
-                                       class="control-label">Select Drug</label>
+                                    <select class="form-control" name="drug" id="drug" data-width="auto">
+                                        <?php foreach ($drugs as $drug): ?>
+                                            <option value="<?php echo $drug['id'] ?>"><?php echo $drug['productName'] . " |QtyLeft[" . $drug['qtyInStock'] . "]"; ?></option>
+                                        <?php endforeach; ?>
 
-                                <select class="form-control" data-width="auto">
-                                    <?php foreach ($drugs as $drug): ?>
-                                    <option value="<?php echo $drug['id']?>"><?php echo $drug['productName'];?></option>
-                                    <?php endforeach;?>
-
-                                </select>
-
-
-                            </div>
-
-                            <div class="form-group  col-md-3" style="padding: 5px; margin: 5px;">
-                                <label for="supplier" style="padding-left: 10px;"
-                                       class="control-label">Quantity</label>
-
-                                <input type="number" class="form-control" name="quantity" id="supplier"
-                                       placeholder="Quantity">
+                                    </select>
 
 
-                            </div>
+                                </div>
 
-                            <div class="form-group col-md-2" style="padding-top: 30px;">
-                                <input value="Add to Cart" id="add" onclick="submitData()"
-                                       class="btn btn-green btn-md control-label"
-                                       type="button"/>
-                            </div>
+                                <div class="form-group  col-md-3" style="padding: 5px; margin: 5px;">
+                                    <label for="supplier" style="padding-left: 10px;"
+                                           class="control-label">Quantity</label>
+
+                                    <input type="number" class="form-control" name="quantity" id="supplier"
+                                           placeholder="Quantity">
+
+
+                                </div>
+
+                                <div class="form-group col-md-2" style="padding-top: 30px;">
+                                    <input type="submit" name="btnAddCart" value="Add to Cart"
+                                           class="btn btn-green btn-md control-label"/>
+                                </div>
+                            </form>
 
                         </div>
 
                     </div>
 
                 </div>
-                <div class="col-md-6">
 
-                    <div class="panel panel-primary" data-collapsed="0">
-
-                        <div class="panel-heading">
-                            <div class="panel-title col-md-offset-3">
-
-
-                                <h3>Cart</h3>
-                            </div>
-
-
-                        </div>
-
-                        <div class="panel-body">
-
-                            <!--                   body content will start here-->
-
-
-                            <div class="table-responsive">
-
-                                <table class="table table-stripped" id="visitTable">
-                                    <thead>
-                                    <tr class="bg-success">
-                                        <th>#</th>
-                                        <th>Drug Name</th>
-                                        <th>Drug Type</th>
-                                        <th>Quantity</th>
-                                        <th>Prescription</th>
-                                        <th>Status</th>
-                                        <th colspan="1">Action</th>
-                                    </tr>
-                                    </thead>
-
-
-                                </table>
-                            </div>
-
-
-                            <!--                        body content will stop here-->
-                        </div>
-
-                    </div>
-
-                </div>
             </div>
 
             <div class="row">
@@ -305,11 +295,62 @@ $drugs = \Hudutech\Controller\DrugInventoryController::all();
 
                             </div>
                             <div class="form-group col-md-8 col-md-offset-3">
-                                <input value="Check Out" id="checkOut" onclick="submitData()"
+                                <input type="submit" value="Check Out" id="checkOut"
                                        class="btn btn-green btn-lg control-label"
-                                       type="button"/>
+                                />
                             </div>
                             <div>
+                            </div>
+
+
+                            <!--                        body content will stop here-->
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="panel panel-primary" data-collapsed="0">
+
+                        <div class="panel-heading">
+                            <div class="panel-title col-md-offset-3">
+
+
+                                <h3>Cart</h3>
+                            </div>
+
+
+                        </div>
+
+                        <div class="panel-body">
+
+                            <!--                   body content will start here-->
+
+
+                            <div class="table-responsive">
+
+                                <table class="table table-stripped" id="visitTable">
+                                    <thead>
+                                    <tr class="bg-success">
+                                        <th>#</th>
+                                        <th>Drug Name</th>
+                                        <th>Quantity</th>
+                                        <th colspan="1">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach ($_SESSION['cart'] as $cartItem): ?>
+                                        <tr>
+                                            <td><?php echo $counter++ ?></td>
+                                            <td><?php echo $cartItem['inventoryId'] ?></td>
+                                            <td><?php echo $cartItem['qty'] ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+
+
+                                </table>
                             </div>
 
 
