@@ -1,5 +1,6 @@
 <?php
 session_start();
+//error_reporting(0);
 /**
  * Created by PhpStorm.
  * User: hudutech
@@ -12,12 +13,16 @@ $counter = 1;
 $cartCounter = 1;
 $prescriptions = [];
 $patient = [];
-if (isset($_POST['submit'])) {
+
+
+if (!empty($_POST['submit'])) {
     if (!empty($_POST['patientNo']) && !isset($_SESSION['patientNo'])) {
         if (!empty($_POST['patientNo'])) {
             $_SESSION['patientNo'] = $_POST['patientNo'];
+            unset($_POST);
+            header('Location:'.$_SERVER['PHP_SELF']);
             $idObj = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
-            if (!empty($idObj)) {
+            if (!empty($idObj) && !isset($_SESSION['patientId'])) {
                 $patientId = $idObj['id'];
                 $_SESSION['patientId'] = $patientId;
             }
@@ -37,35 +42,11 @@ if (isset($_POST['submit'])) {
 
 $prescriptions = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($_SESSION['patientId']);
 $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['patientNo']);
-$receiptNo = isset($_SESSION['receiptNo']) ? $_SESSION['receiptNo'] : '';
 $drugs = \Hudutech\Controller\DrugInventoryController::all();
 $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo']);
+$cartTotal = \Hudutech\Controller\SalesController::getCartTotal($_SESSION['receiptNo']);
 
-//if (isset($_POST['btnAddCart'])) {
-//    if (!isset($_SESSION['cartData']) and !isset($_SESSION['cart'])) {
-//
-//        $_SESSION['cartData'] = array();
-//        $_SESSION['cart'] = array();
-//    }
-//    if (isset($_POST['drug']) && isset($_POST['quantity'])) {
-//
-//        if (!isset($_SESSION['receiptNo'])) {
-//            $receiptNo = \Hudutech\Controller\SalesController::generateReceiptNo();
-//            $_SESSION['receiptNo'] = $receiptNo;
-//        }
-//
-//        $price = \Hudutech\Controller\DrugInventoryController::getPrice($_POST['drug'], $_POST['quantity']);
-//
-//        $_SESSION['cartData']['patientId'] = $patient['id'];
-//        $_SESSION['cartData']['inventoryId'] = $_POST['drug'];
-//        $_SESSION['cartData']['qty'] = $_POST['quantity'];
-//        $_SESSION['cartData']['receiptNo'] = $_SESSION['receiptNo'];
-//        $_SESSION['cartData']['price'] = $price;
-//        $_SESSION['cartData']['datePurchased'] = date('Y-m-d');
-//        array_push($_SESSION['cart'], $_SESSION['cartData']);
-//
-//    }
-//}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -152,7 +133,7 @@ $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo
                                         <th> Drug Type</th>
                                         <th> Quantity</th>
                                         <th> Prescription</th>
-                                        <th> Status</th>
+                                        <th colspan="2"> Action</th>
 
                                     </tr>
                                     </thead>
@@ -164,7 +145,10 @@ $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo
                                             <td><?php echo $presc['drugType'] ?></td>
                                             <td><?php echo $presc['quantity'] ?></td>
                                             <td><?php echo $presc['prescription'] ?></td>
-                                            <td><?php echo $presc['status'] ?></td>
+                                            <td colspan="2">
+                                                <button class="btn btn-success btn-green"><i class="entypo-check"></i> Mark Sold</button>
+                                                <button class="btn btn-danger btn-red ">Mark Not Available</button>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
@@ -264,13 +248,12 @@ $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo
 
 
                             <div class="form-group  col-md-8" style="padding: 5px; margin: 5px;">
+
                                 <label for="total" style="padding-left: 10px;"
                                        class="control-label">Total</label>
-
-
                                 <div class="input-group">
                                     <span class="input-group-addon btn-success">KSH</span>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" value="<?php echo $cartTotal?>" id="total"disabled>
                                     <span class="input-group-addon btn-success">.00</span>
                                 </div>
 
@@ -303,9 +286,8 @@ $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo
 
                             </div>
                             <div class="form-group col-md-8 col-md-offset-3">
-                                <input type="submit" value="Check Out" id="checkOut"
-                                       class="btn btn-green btn-lg control-label"
-                                />
+                                <button type="button" onclick="cartCheckout()" value="Check Out" id="checkOut" class="btn btn-green btn-lg control-label">Checkout</button>
+
                             </div>
                             <div>
                             </div>
@@ -325,7 +307,7 @@ $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo
                             <div class="panel-title col-md-offset-3">
 
 
-                                <h3>Cart</h3>
+                                <h3>Cart (Ksh <?php echo $cartTotal?>.00)</h3>
                             </div>
 
 
@@ -355,7 +337,7 @@ $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo
                                             <td><?php echo $cartItem['productName'] ?></td>
                                             <td><?php echo $cartItem['qty'] ?></td>
                                             <td><?php echo $cartItem['price'] ?></td>
-                                            <td><button class="btn btn-xs btn-danger btn-blue"><i class="entypo-cancel"></i>Remove</button></td>
+                                            <td><button class="btn btn-xs btn-danger btn-blue" onclick=" removeFromCart('<?php echo $cartItem['id']?>')"><i class="entypo-cancel"></i>Remove</button></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
@@ -377,8 +359,30 @@ $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo
         </div>
     </div>
 </div>
+
+<!-- Modal 4 (Confirm)-->
+<div class="modal fade" id="confirmDeleteModal" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="confirmTitle">Confirm Action</h4>
+                <div id="confirmFeedback">
+
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <p style="font-size: 16px;"> Are you sure you want to Remove From Cart?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id='btnConfirmDelete' class="btn btn-info">Continue</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
+<!--end-->
 
 <?php include 'footer_views.php' ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
@@ -421,8 +425,9 @@ $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo
                             .addClass('alert alert-success')
                             .text(response.message);
                         setTimeout(function () {
-                            location.reload();
-                        }, 1000);
+                            window.location.href='pos.php';
+                        }, 1000)
+
                     }
                     if (response.statusCode == 500) {
                         $('#feedback').removeClass('alert alert-success')
@@ -435,6 +440,74 @@ $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo
                 }
             }
         );
+    }
+    function removeFromCart(id) {
+        $('#confirmTitle').text('Remove Item');
+        $('#confirmDeleteModal').modal('show');
+        var url = 'cart_endpoint.php';
+        $('#btnConfirmDelete').on('click', function (e) {
+            e.preventDefault;
+            $.ajax(
+                {
+                    type: 'DELETE',
+                    url: url,
+                    data: JSON.stringify({'id': id}),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        if (response.statusCode == 204) {
+                            $('#confirmFeedback').removeClass('alert alert-danger')
+                                .addClass('alert alert-success')
+                                .text(response.message);
+                            setTimeout(function () {
+                                window.location.href='pos.php';
+                            }, 1000);
+                        }
+                        if (response.statusCode == 500) {
+                            $('#confirmFeedback').removeClass('alert alert-success')
+                                .html('<div class="alert alert-danger alert-dismissable">' +
+                                    '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                    '<strong>Error! </strong> ' + response.message + '</div>')
+
+                        }
+                    }
+                }
+            )
+        });
+    }
+
+    function cartCheckout() {
+        var url = 'checkout.php';
+        var totalCost = '<?php echo $cartTotal ?>';
+        console.log({cost: totalCost});
+        $.ajax(
+            {
+                type: 'POST',
+                url: url,
+                data: JSON.stringify({cost: totalCost}),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8;',
+                success: function (response) {
+                    console.log(response);
+                    if (response.statusCode == 200) {
+                        $('#feedback').removeClass('alert alert-danger')
+                            .addClass('alert alert-success')
+                            .text(response.message);
+                        setTimeout(function () {
+                            window.location.href='pos.php';
+                        }, 1000)
+
+                    }
+                    if (response.statusCode == 500) {
+                        $('#feedback').removeClass('alert alert-success')
+                            .html('<div class="alert alert-danger alert-dismissable">' +
+                                '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                '<strong>Error! </strong> ' + response.message + '</div>')
+
+                    }
+                }
+            }
+        )
     }
 </script>
 </body>
