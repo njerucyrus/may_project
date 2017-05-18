@@ -20,7 +20,7 @@ if ($requestMethod == 'POST') {
                     "inventoryId" => $data['inventoryId'],
                     "qty" => $data['qty'],
                     "receiptNo" => $data['receiptNo'],
-                    "patientId" => isset($data['patientId']) ? $data['patientId'] : null,
+                    "patientId" => isset($data['pId']) ? $data['pId'] : null,
                     "price" => $price
                 ));
             if ($cartCreated) {

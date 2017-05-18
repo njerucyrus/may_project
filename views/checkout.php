@@ -17,6 +17,13 @@ if (!empty($data['cost'])){
         $checked = \Hudutech\Controller\SalesController::checkout($cart);
         $receipt = \Hudutech\Controller\SalesController::createReceipt($cart[0]['patientId'], $cart[0]['receiptNo']);
         if ($receipt){
+            $marked = \Hudutech\Controller\DrugPrescriptionController::markSold($cart[0]['patientId']);
+            if ($marked){
+                unset($_SESSION['receiptNo']);
+                unset($_SESSION['pId']);
+                unset($_SESSION['pNo']);
+
+            }
             print_r(json_encode(array(
                 "statusCode"=>200,
                 "message"=>"Checkout Completed successfully."
