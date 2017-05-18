@@ -20,7 +20,8 @@ if($requestMethod == 'POST') {
             !empty($data['fullName']) and
             !empty($data['patientType']) and
             !empty($data['sex']) and
-            !empty($data['age'])
+            !empty($data['age'])and
+            !empty($data['location'])
         ) {
 
             $patient->setPatientNo($data['patientNo']);
@@ -34,19 +35,21 @@ if($requestMethod == 'POST') {
             $patient->setPatientType($data['patientType']);
             $patient->setSex($data['sex']);
             $patient->setAge($data['age']);
+            $patient->setLocation($data['location']);
 
             $patientCtrl = new \Hudutech\Controller\PatientController();
             $created = $patientCtrl->create($patient);
             if ($created) {
                 //add patient to visit list
+
                 $patientVisit = new \Hudutech\Entity\PatientVisit();
-                $patientVisit->setPatientId(\Hudutech\Controller\PatientController::getPatientId($data['patientId'])['id']);
+                $patientVisit->setPatientId(\Hudutech\Controller\PatientController::getPatientId(date('Y')."-".$data['patientNo'])['id']);
                 $patientVisit->setStatus("active");
 
                 $patientVisitCtrl = new \Hudutech\Controller\PatientVisitController();
                 $patientVisitCtrl->create($patientVisit);
                 //add the patient to the queue
-                \Hudutech\Controller\PatientController::addToQueue(\Hudutech\Controller\PatientController::getPatientId($data['patientId'])['id']);
+                \Hudutech\Controller\PatientController::addToQueue(\Hudutech\Controller\PatientController::getPatientId(date('Y')."-".$data['patientNo'])['id']);
 
                 print_r(json_encode(array(
                     "statusCode" => 200,
@@ -88,6 +91,8 @@ if ($requestMethod == 'PUT') {
             !empty($data['patientType']) and
             !empty($data['sex']) and
             !empty($data['age'])
+            and
+            !empty($data['location'])
         ) {
 
             $patient->setPatientNo($data['patientNo']);
@@ -101,6 +106,7 @@ if ($requestMethod == 'PUT') {
             $patient->setPatientType($data['patientType']);
             $patient->setSex($data['sex']);
             $patient->setAge($data['age']);
+            $patient->setLocation($data['location']);
 
             $patientCtrl = new \Hudutech\Controller\PatientController();
             $updated = $patientCtrl->update($patient, $data['id']);

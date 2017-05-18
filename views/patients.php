@@ -172,6 +172,7 @@ if(!empty($_GET['status'])){
                                                         '<?php echo $patient['patientType'] ?>',
                                                         '<?php echo $patient['sex'] ?>',
                                                         '<?php echo $patient['age'] ?>',
+                                                        '<?php echo $patient['location'] ?>',
                                                         '<?php echo $patient['patientNo'] ?>'
                                                         )"><i class="entypo-pencil"></i>Edit
                                         </button>
@@ -258,6 +259,15 @@ if(!empty($_GET['status'])){
 
                         </div>
                     </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="location" class="control-label">Location</label>
+                            <input type="text" max="150" class="form-control" id="location" name="location">
+
+                        </div>
+                    </div>
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="patientType" class="control-label">Patient Type</label>
@@ -363,6 +373,7 @@ if(!empty($_GET['status'])){
             patientType: $('#patientType').val(),
             sex: $('#sex').val(),
             age: $('#age').val(),
+            location: $('#location').val(),
             patientNo: $('#patientNumber').val()
         }
     }
@@ -410,12 +421,14 @@ if(!empty($_GET['status'])){
                            patientType,
                            sex,
                            age,
+                           location,
                            patientNo) {
 
 
         $('#fullName').val(fullName);
         $('#phoneNumber').val(phoneNumber);
         $('#age').val(age);
+        $('#location').val(location);
         $('#patientType').attr('selected', true);
         $('#sex').val(sex);
         $('#patientNumber').val(patientNo);

@@ -51,6 +51,8 @@ $counter = 1;
                                     <th>PatientNo</th>
                                     <th>FullName</th>
                                     <th>Phone Number</th>
+                                    <th>Age</th>
+                                    <th>Location</th>
                                     <th>Sex</th>
                                     <th colspan="1">Action</th>
                                 </tr>
@@ -62,6 +64,8 @@ $counter = 1;
                                         <td><?php echo $patient['patientNo'] ?></td>
                                         <td><?php echo $patient['surName'] . " " . $patient['firstName'] . " " . $patient['otherName']; ?></td>
                                         <td><?php echo $patient['phoneNumber'] ?></td>
+                                        <td><?php echo $patient['age'] ?></td>
+                                        <td><?php echo $patient['location'] ?></td>
                                         <td><?php echo $patient['sex'] ?></td>
                                         <td>
                                             <button class="btn btn-primary"
@@ -149,6 +153,15 @@ $counter = 1;
 
                         </div>
                     </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="location" class="control-label">Location</label>
+                            <input type="location" max="150" class="form-control" id="location" name="location">
+
+                        </div>
+                    </div>
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="patientType" class="control-label">Patient Type</label>
@@ -259,6 +272,7 @@ $counter = 1;
             patientType: $('#patientType').val(),
             sex: $('#sex').val(),
             age: $('#age').val(),
+            location: $('#location').val(),
             patientNo: $('#patientNumber').val()
         }
     }
@@ -293,7 +307,10 @@ $counter = 1;
                                     '<strong>Error! </strong> ' + response.message + '</div>')
 
                         }
-                    }
+                    },
+                    error: function (error) {
+                    console.log(error);
+                }
 
                 }
             )
