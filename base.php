@@ -7,10 +7,16 @@
  */
 require_once __DIR__ . '/vendor/autoload.php';
 $patients = \Hudutech\Controller\PatientController::all();
+$drugs=\Hudutech\Controller\DrugInventoryController::all();
 
 $patientCounter = 1;
+$drugCounter = 1;
  foreach ($patients as $patient):
      $patientCounter++;
+endforeach;
+
+foreach ($drugs as $drug):
+    $drugCounter;
 endforeach;
 
 ?>
@@ -80,10 +86,10 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-blue">
                     <div class="icon" style="padding-bottom: 40px;"><i class="fa fa-ambulance"></i></div>
-                    <div class="num" data-start="0" data-end="152" data-postfix="" data-duration="1500" data-delay="1800">0</div>
+                    <div class="num" data-start="0" data-end="<?php echo $drugCounter;?>" data-postfix="" data-duration="1500" data-delay="1800">0</div>
 
-                    <h3>Daily Visits</h3>
-                    <p>Average Number of patients we attend.</p>
+                    <h3>Drug Inventory</h3>
+                    <p>Number of drugs registered</p>
                 </div>
 
             </div>
