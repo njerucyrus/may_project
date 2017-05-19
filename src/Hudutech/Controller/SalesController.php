@@ -393,7 +393,26 @@ class SalesController implements SalesInterface
             return null;
         }
     }
+    public static function testCost(){
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $stmt = $conn->prepare("SELECT SUM(ct.cost) as testCost FROM clinical_tests ct , patient_clinical_tests ppt
+                INNER JOIN clinical_tests ctl ON ctl.id = ppt.testId WHERE ppt.testId=ct.id
+               AND ppt.isPerformed=1 AND date(ppt.updatedAt) = CURDATE() AND patientId=:patientId");
 
+            $stmt->bindParam(":patientId", $patientId);
+            $testCost = 0;
+            if ($stmt->execute() && $stmt->rowCount()==1) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                $testCost = (float)$row['testCost'];
+            }
+            return $testCost;
+        }catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return 0;
+        }
+    }
     public static function getPatientBill($patientId, $receiptNo)
     {
         $bill = array();
@@ -417,7 +436,10 @@ class SalesController implements SalesInterface
             $totalCharges = (float)$bill['consultationFee'];
         }
 
-        $totalCost = $totalCharges + (float)$bill['drugCost'];
+        $testCost = self::testCost();
+
+        $totalCost = $totalCharges + (float)$bill['drugCost'] + $testCost;
+        $bill['testCost'] = $totalCost;
         $bill['totalCost'] = $totalCost;
         return $bill;
     }
