@@ -375,6 +375,7 @@ $counter = 1;
     function redirectToConsultation() {
         <?php
         \Hudutech\Controller\PatientVisitController::markAsLeft($patientId);
+        unset($_SESSION['patientId']);
         ?>
         setTimeout(function () {
             window.location.href = 'consultation.php';

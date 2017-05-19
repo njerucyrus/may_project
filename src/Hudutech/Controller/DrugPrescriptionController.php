@@ -169,6 +169,40 @@ class DrugPrescriptionController implements DrugPrescriptionInterface
         }
     }
 
+    public static function markSold($patientId){
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("UPDATE drug_prescriptions SET
+                                    `status`='issued' 
+                                    WHERE `status`='not_issued' AND
+                                     patientId=:patientId AND
+                                      date(dateIssued)=CURDATE()"
+                                    );
+            $stmt->bindParam(":patientId", $patientId);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
+    public static function getPrescriptionCount($patientId){
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("SELECT t.* FROM drug_prescriptions t 
+            WHERE date(t.dateIssued)= CURDATE() AND 
+            t.status !='unavailable' AND t.patientId=:patientId ");
+            $stmt->bindParam(":patientId", $patientId);
+            return $stmt->execute() && $stmt->rowCount() >0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
 
 
 
