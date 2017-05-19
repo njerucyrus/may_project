@@ -22,7 +22,7 @@ for ($k=0; $k<sizeof($drugs); $k++) {
     $drugCounter++;
 }
 
-for ($m=0; $m<sizeof($patients); $m++) {
+for ($m=0; $m<sizeof(count($visitors)); $m++) {
     $visitCounter++;
 }
 
