@@ -10,20 +10,23 @@ $patients = \Hudutech\Controller\PatientController::all();
 $drugs=\Hudutech\Controller\DrugInventoryController::all();
 $visitors=\Hudutech\Controller\PatientVisitController::all();
 
+
 $patientCounter = 1;
 $drugCounter = 1;
 $visitCounter=1;
- foreach ($patients as $patient):
+ for ($i=0; $i<sizeof($patients); $i++) {
      $patientCounter++;
-endforeach;
+ }
 
-foreach ($drugs as $drug):
+for ($k=0; $k<sizeof($drugs); $k++) {
     $drugCounter++;
-endforeach;
+}
 
-foreach ($visitors as $visit):
+for ($m=0; $m<sizeof($patients); $m++) {
     $visitCounter++;
-    endforeach;
+}
+
+
 
 ?>
 

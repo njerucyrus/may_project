@@ -22,7 +22,7 @@ if (isset($_SESSION['username'])) {
 
             <!-- logo -->
             <div class="logo">
-                <a href="base.php">
+                <a href="index.php">
                     <img src="public/assets/images/clinic.png" width="120" alt=""/>
                 </a>
             </div>
@@ -181,6 +181,29 @@ if (isset($_SESSION['username'])) {
                         <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 1.8em;"></i>
                         <span class="title" style="font-size: 2em;"> Pharmacy</span>
                     </a>
+
+                </li>
+
+
+                <li class="has-sub">
+
+                    <a href="#">
+                        <i class="fa fa-file-o" style="font-size: 1.8em;"></i>
+                        <span class="title" style="font-size: 2em;"> Reports</span>
+                    </a>
+
+                    <ul>
+                        <li>
+                            <a href="views/drug_sales.php">
+                                <i class="fa fa-search" style="font-size: 1.5em;"></i>
+                                <span class="title" style="font-size: 1.5em;">Drug Sales</span>
+                            </a>
+                        </li>
+
+
+
+
+                    </ul>
 
                 </li>
 

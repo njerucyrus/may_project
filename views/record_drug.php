@@ -20,7 +20,7 @@ $counter = 1;
 <head>
 
 
-    <
+
 
     <?php include 'head_views.php' ?>
     <title>Add Drug</title>
