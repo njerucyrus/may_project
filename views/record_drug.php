@@ -19,11 +19,8 @@ $counter = 1;
 <html>
 <head>
 
-
-    <
-
     <?php include 'head_views.php' ?>
-    <title>Add Drug</title>
+    <title>Add Drug Invetory</title>
     <style>
         th {
             color: #000000;
@@ -211,8 +208,6 @@ $counter = 1;
 
                             </form>
 
-
-                            <!--                        body content will stop here-->
                         </div>
 
                     </div>
@@ -240,30 +235,24 @@ $counter = 1;
                         <div class="panel-body ">
 
                             <!--                   body content will start here-->
-
-                            <form role="form" class="form-horizontal form-groups-bordered">
-
-
                                 <div class="col-md-12">
-
-
-
+                                    <div class="table-responsive">
                                     <table class="table table-condensed table-bordered " id="queueTable">
                                         <thead>
                                         <tr>
 
                                             <th>#</th>
-                                            <th>Batch No</th>
-                                            <th>Invoice No</th>
-                                            <th>Product Name</th>
-                                            <th>Quantity Received</th>
+                                            <th>BatchNo</th>
+                                            <th>InvoiceNo</th>
+                                            <th>DrugName</th>
+                                            <th>Qty Received</th>
                                             <th>Supplier</th>
                                             <th>purchase Price</th>
                                             <th>Date Purchased</th>
                                             <th>Expiry Date</th>
-                                            <th>Dose Quantity</th>
+                                            <th>Dose Qty</th>
                                             <th>Dose Price</th>
-                                            <th>Quantity In Stock</th>
+                                            <th>Qty In Stock</th>
 
 
                                         </tr>
@@ -272,7 +261,6 @@ $counter = 1;
                                         <tbody>
                                         <?php foreach ($drugs as $drug): ?>
                                             <tr>
-
                                                 <td><?php echo $counter++ ?></td>
                                                 <td><?php echo $drug['batchNo'] ?></td>
                                                 <td><?php echo $drug['invoiceNo'] ?></td>
@@ -296,8 +284,9 @@ $counter = 1;
                                     </table>
 
                                 </div>
+                                </div>
 
-                            </form>
+
 
 
                             <!--                        body content will stop here-->
@@ -403,5 +392,7 @@ $counter = 1;
         });
     });
 </script>
+
+
 </body>
 </html>

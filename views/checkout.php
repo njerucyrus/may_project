@@ -22,12 +22,13 @@ if (!empty($data['cost'])){
                 unset($_SESSION['receiptNo']);
                 unset($_SESSION['pId']);
                 unset($_SESSION['pNo']);
-
+                
+                print_r(json_encode(array(
+                    "statusCode"=>200,
+                    "message"=>"Checkout Completed successfully."
+                )));
             }
-            print_r(json_encode(array(
-                "statusCode"=>200,
-                "message"=>"Checkout Completed successfully."
-            )));
+
         }else{
             print_r(json_encode(array(
                 "statusCode"=>500,
