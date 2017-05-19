@@ -8,6 +8,79 @@
 session_start();
 require_once __DIR__.'/vendor/autoload.php';
 
+require_once __DIR__.'/public/assets/report/fpdf.php';
+
+
+$pdf = new FPDF();
+$pdf->AddPage();
+       // Set font for report subject (new page)
+$pdf->SetY(0);
+$pdf->SetX(50);
+$pdf->SetFont('Arial','B',14);
+$pdf->Cell(40,10,'Sales Receipt',0);
+
+// Set font for column headings (new page)
+        $pdf->SetY(10);
+        $pdf->SetX(20);
+        $pdf->Cell(95,6,'Item Name','B',0,'L',0);
+        $pdf->Cell(30,6,'Qty','B',0,'L',0);
+        $pdf->Cell(30,6,'Unit Price','B',0,'L',0);
+        $pdf->Cell(15,6,'Amount','B',0,'L',0);
+
+        //Go to next row
+        $y_axis =0;
+
+
+    $item_name ="panadol";
+    $qty ="24";
+    $unit_price ="100";
+    $amount = "50";
+
+    $pdf->SetY(10);
+    $pdf->SetX(20);
+    $pdf->Cell(95,42,$item_name,0,0,'L',0);
+    $pdf->Cell(30,42,$qty,0,0,'L',0);
+    $pdf->Cell(30,42,$unit_price,0,0,'L',0);
+    $pdf->Cell(15,42,$amount,0,0,'L',0);
+
+    $staff = "sam";
+    $date = "19-5-2017";
+    $receipt_no ="23543423";
+    $gTotal="230";
+
+    $pdf->SetXY(20,65);
+
+    $pdf->Cell(30,5,'Date:',0,0,'C',0);
+    $pdf->Cell(75,5,$date,0,0,'L',0);
+
+    $pdf->Cell(30,5,'Operator:',0,0,'C',0);
+    $pdf->Cell(55,5,$staff,0,0,'L',0);
+
+    $pdf->Cell(30,5,'Receipt No:',0,0,'C',0);
+    $pdf->Cell(45,5,$receipt_no,0,0,'L',0);
+
+    $pdf->SetXY(100,90);
+    $pdf->Cell(50,92,'Gross Total',0,0,'L',0);
+     $pdf->Cell(65,92,$gTotal,0,0,'L',0);
+
+    $pdf->SetY($y_axis);
+    $pdf->SetX(50);
+
+
+
+
+//Send file
+$pdf->Output();
+
+
+
+
+
+
+
+
+
+
 //echo date('Y-m-d');
 //$loggedInAs = \Hudutech\Controller\UserController::getLoggedInUser('admin');
 //echo $loggedInAs;
