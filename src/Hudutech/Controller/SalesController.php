@@ -480,5 +480,20 @@ class SalesController implements SalesInterface
         }
     }
 
+    public static function showSales(){
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $stmt = $conn->prepare("SELECT DISTINCT t.productName, s.receiptNo, s.price , s.qty ,s.datePurchased
+                                    FROM drug_inventory t, sales s
+                                    INNER JOIN drug_inventory dr ON s.inventoryId = dr.id
+                                    WHERE s.inventoryId = dr.id ORDER BY s.datePurchased DESC");
+            return $stmt->execute() ? $stmt->fetchAll(\PDO::FETCH_ASSOC) :[];
+        } catch (\PDOException $exception){
+            echo $exception->getMessage();
+            return [];
+        }
+    }
+
 
 }

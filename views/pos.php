@@ -5,7 +5,7 @@ error_reporting(0);
  * Created by PhpStorm.
  * User: hudutech
  * Date: 5/8/17
- * Time: 7:23 PM
+ Prescribed23 PM
  */
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -41,6 +41,8 @@ if (!empty($_POST['submit'])) {
 }
 
 $prescriptions = \Hudutech\Controller\DrugPrescriptionController::getPrescriptions($_SESSION['pId']);
+$prescriptionSize = \Hudutech\Controller\DrugPrescriptionController::getPrescriptionCount($_SESSION['pId']);
+
 $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['pNo']);
 $drugs = \Hudutech\Controller\DrugInventoryController::all();
 $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo']);
@@ -65,11 +67,11 @@ $cartTotal = \Hudutech\Controller\SalesController::getCartTotal($_SESSION['recei
     <div class="main-content">
         <?php include 'header_menu_views.php' ?>
         <div class="row">
-            <div class="col col-md-12" style="margin-bottom: 15px;">
-                <button class="btn btn-default" id="btnOverCounter"> Click Here To Sell Drugs Over the counter</button>
-            </div>
-        <hr/>
-            <div class="col col-md-12">
+<!--            <div class="col col-md-12" style="margin-bottom: 15px;">-->
+<!--                <button class="btn btn-default" id="btnOverCounter" onclick="overCounter()"> Click Here To Sell Drugs Over the counter</button>-->
+<!--            </div>-->
+<!--        <hr/>-->
+            <div class="col col-md-12" id="patientInfo">
                 <div class="panel panel-primary" data-collapsed="0">
                     <div class="container-fluid">
                         <div class="form-horizontal" style="margin-bottom: 15px; padding: 10px;">
@@ -177,7 +179,7 @@ $cartTotal = \Hudutech\Controller\SalesController::getCartTotal($_SESSION['recei
             </div>
         </div>
 
-
+<?php if(sizeof($prescriptionSize) > 0){?>
         <div id="sellDrug" class="col-md-12">
 
             <div class="row">
@@ -374,6 +376,10 @@ $cartTotal = \Hudutech\Controller\SalesController::getCartTotal($_SESSION['recei
             </div>
 
         </div>
+        <?php } else{
+    echo "<div class='alert alert-info'><i class='entypo-info' style='font-size: 1.4em;'></i>No Drug Prescriptions FOR Specified Patient. (<span style='color: red'>Cannot Make Drug Sale For Non Prescribed Patients</span>). </div>";
+}
+        ?>
     </div>
 </div>
 
@@ -432,6 +438,10 @@ $cartTotal = \Hudutech\Controller\SalesController::getCartTotal($_SESSION['recei
 <script>
     $(document).ready(function (e) {
         e.preventDefault;
+//        $('#btnOverCounter').on('click', function () {
+//            $('#sellDrug').hide();
+//        });
+
         $('#addCart').on('click', function (event) {
             event.preventDefault;
             addToCart();
@@ -611,15 +621,6 @@ $cartTotal = \Hudutech\Controller\SalesController::getCartTotal($_SESSION['recei
             $('#checkOut').hide();
         }
 
-    }
-    function overCounter() {
-        $('#sellDrug').hide();
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function() {
-            document.location = 'pos.php';
-        };
-        xhr.open('GET', 'refresh_endpoint.php', true);
-        xhr.send();
     }
 </script>
 </body>

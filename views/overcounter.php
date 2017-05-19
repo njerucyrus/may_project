@@ -7,4 +7,6 @@ session_start();
  * Time: 9:49 AM
  */
 require_once __DIR__.'/../vendor/autoload.php';
-$_SESSION['receiptNo'] = \Hudutech\
+
+$_SESSION['receiptNo'] = \Hudutech\Controller\SalesController::generateReceiptNo();
+
