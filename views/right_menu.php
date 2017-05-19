@@ -22,7 +22,7 @@ if (isset($_SESSION['username'])) {
 
             <!-- logo -->
             <div class="logo">
-                <a href="base.php">
+                <a href="index.php">
                     <img src="public/assets/images/clinic.png" width="120" alt=""/>
                 </a>
             </div>
@@ -184,6 +184,15 @@ if (isset($_SESSION['username'])) {
 
                 </li>
 
+                <li class="has-sub">
+
+                    <a href="views/drug_sales.php">
+                        <i class="fa fa-money" style="font-size: 1.8em;"></i>
+                        <span class="title" style="font-size: 2em;"> Drug Sales</span>
+                    </a>
+
+                </li>
+
             </ul>
         <?php } ?>
         <?php function receptionist()
@@ -305,6 +314,8 @@ if (isset($_SESSION['username'])) {
 
                     </ul>
                 </li>
+
+
 
             </ul>
         <?php } ?>

@@ -6,8 +6,9 @@
  * Time: 11:29 AM
  */
 require_once __DIR__.'/../vendor/autoload.php';
-
+$counter = 1;
 $sales = \Hudutech\Controller\SalesController::showSales();
+
 
 ?>
 
@@ -47,11 +48,11 @@ $sales = \Hudutech\Controller\SalesController::showSales();
                             <?php foreach ($sales as $sale): ?>
                                 <tr>
                                     <td><?php echo $counter++ ?></td>
-                                    <td><?php $sale['receiptNo']?></td>
-                                    <td><?php $sale['productName']?></td>
-                                    <td><?php $sale['price']?></td>
-                                    <td><?php $sale['qty']?></td>
-                                    <td><?php $sale['datePurchased']?></td>
+                                    <td><?php echo $sale['receiptNo']?></td>
+                                    <td><?php echo $sale['productName']?></td>
+                                    <td><?php echo $sale['price']?></td>
+                                    <td><?php echo $sale['qty']?></td>
+                                    <td><?php echo $sale['datePurchased']?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

@@ -38,9 +38,9 @@ interface SalesInterface
 
     public static function canPayConsultationFee($patientId);
 
-    public static function getTotalDrugCost($patientId);
+    public static function getTotalDrugCost($patientId, $receiptNo);
 
-    public static function getPatientBill($patientId);
+    public static function getPatientBill($patientId, $receiptNo);
 
     public static function markPaidRegFee($patientId);
 

@@ -372,15 +372,16 @@ class SalesController implements SalesInterface
         }
     }
 
-    public static function getTotalDrugCost($patientId)
+    public static function getTotalDrugCost($patientId, $receiptNo)
     {
         $db = new DB();
         $conn = $db->connect();
         try {
             $stmt = $conn->prepare("SELECT SUM(t.price) AS totalPrice FROM sales t
-                                    WHERE t.patientId=:patientId AND
+                                    WHERE t.patientId=:patientId AND t.receiptNo=:receiptNo AND
                                      date(t.datePurchased)=CURDATE()");
             $stmt->bindParam(":patientId", $patientId);
+            $stmt->bindParam(":receiptNo", $receiptNo);
             if ($stmt->execute() && $stmt->rowCount() == 1) {
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);
                 return (float)$row['totalPrice'];
@@ -393,7 +394,7 @@ class SalesController implements SalesInterface
         }
     }
 
-    public static function getPatientBill($patientId)
+    public static function getPatientBill($patientId, $receiptNo)
     {
         $bill = array();
         $paidRegFee = self::paidRegFee($patientId);
@@ -404,7 +405,7 @@ class SalesController implements SalesInterface
         if ($canPayConsultationFee) {
             $bill['consultationFee'] = ChargeController::getConsultationFee();
         }
-        $bill['drugCost'] = self::getTotalDrugCost($patientId);
+        $bill['drugCost'] = self::getTotalDrugCost($patientId, $receiptNo);
         $totalCharges = 0;
         if (isset($bill['regFee']) && isset($bill['consultationFee'])) {
             $totalCharges = (float)$bill['regFee'] + (float)$bill['consultationFee'];
@@ -440,7 +441,7 @@ class SalesController implements SalesInterface
         $db = new DB();
         $conn = $db->connect();
 
-        $bill = self::getPatientBill($patientId);
+        $bill = self::getPatientBill($patientId, $receiptNo);
         $regFee = isset($bill['regFee']) ? $bill['regFee'] : null;
         $consultFee = isset($bill['consultationFee']) ? $bill['consultationFee'] : null;
         $totalCost = $bill['totalCost'];
@@ -487,8 +488,8 @@ class SalesController implements SalesInterface
             $stmt = $conn->prepare("SELECT DISTINCT t.productName, s.receiptNo, s.price , s.qty ,s.datePurchased
                                     FROM drug_inventory t, sales s
                                     INNER JOIN drug_inventory dr ON s.inventoryId = dr.id
-                                    WHERE s.inventoryId = dr.id ORDER BY s.datePurchased DESC");
-            return $stmt->execute() ? $stmt->fetchAll(\PDO::FETCH_ASSOC) :[];
+                                    WHERE s.inventoryId = dr.id ORDER BY s.receiptNo ");
+            return $stmt->execute() && $stmt->rowCount()>0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) :[];
         } catch (\PDOException $exception){
             echo $exception->getMessage();
             return [];
