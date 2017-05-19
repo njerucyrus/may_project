@@ -8,7 +8,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 $patients = \Hudutech\Controller\PatientController::all();
 $drugs=\Hudutech\Controller\DrugInventoryController::all();
-$users=\Hudutech\Controller\UserController::all();
+$users=\Hudutech\Controller\PatientVisitController::all();
 
 
 $patientCounter = 1;
@@ -22,7 +22,7 @@ for ($k=0; $k<sizeof($drugs); $k++) {
     $drugCounter++;
 }
 
-for ($m=0; $m<sizeof($users); $m++) {
+for ($m=0; $m<count($users); $m++) {
     $userCounter++;
 }
 
@@ -59,7 +59,7 @@ include 'views/head.php';
                     <div class="icon"><i class="entypo-users"></i></div>
                     <div class="num" data-start="0" data-end="<?php echo $userCounter;?>" data-postfix="" data-duration="1500" data-delay="0">0</div>
 
-                    <h3>Users Registered</h3>
+                    <h3>Total Sales</h3>
                     <p>Providing best services</p>
                 </div>
 
