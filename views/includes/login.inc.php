@@ -17,13 +17,13 @@ if (isset($_POST['submit'])) {
         $password = $_POST['password'];
         $authenticated = \Hudutech\Controller\UserController::authenticate($username, $password);
 
-        if ($authenticated) {
+        if (array_key_exists("success",$authenticated)) {
             $success_msg .= "Login Successful";
             $_SESSION['username'] = $username;
             header("Location: ../index.php");
 
-        } else {
-            $error_msg .= "Invalid username or password. Please try again";
+        } elseif (array_key_exists("error", $authenticated)) {
+            $error_msg .= $authenticated['error'];
         }
     } else {
         $error_msg .= "username and password required";

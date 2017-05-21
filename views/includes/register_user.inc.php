@@ -22,6 +22,7 @@ if(!empty($_POST['submit'])) {
 
             $user->setUserLevel($_POST['userLevel']);
             $user->setPassword($_POST['password']);
+            $user->isActive();
             $userController = new \Hudutech\Controller\UserController();
             if ($userController->create($user)) {
                 $success_msg .= "User saved successfully";
