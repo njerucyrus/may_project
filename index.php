@@ -7,14 +7,14 @@
  */
 require_once __DIR__ . '/vendor/autoload.php';
 $patients = \Hudutech\Controller\PatientController::all();
-$drugs=\Hudutech\Controller\DrugInventoryController::all();
-$visitors=\Hudutech\Controller\PatientVisitController::all();
+$drugs = \Hudutech\Controller\DrugInventoryController::all();
+$visitors = \Hudutech\Controller\PatientVisitController::all();
 
 $patientCounter = 1;
 $drugCounter = 1;
-$visitCounter=1;
- foreach ($patients as $patient):
-     $patientCounter++;
+$visitCounter = 1;
+foreach ($patients as $patient):
+    $patientCounter++;
 endforeach;
 
 foreach ($drugs as $drug):
@@ -23,7 +23,7 @@ endforeach;
 
 foreach ($visitors as $visit):
     $visitCounter++;
-    endforeach;
+endforeach;
 
 ?>
 
@@ -32,21 +32,19 @@ foreach ($visitors as $visit):
 <?php
 include 'views/head.php';
 ?>
-<body class="page-body skin-facebook"  >
+<body class="page-body skin-facebook">
 
-<div class="page-container" ><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+<div class="page-container">
+    <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
     <?php
     include 'views/right_menu.php';
     ?>
 
-    <div class="main-content" >
-<?php include 'views/header_menu.php'  ?>
+    <div class="main-content">
+        <?php include 'views/header_menu.php' ?>
 
-        <hr />
-
-
-
+        <hr/>
 
 
         <div class="row">
@@ -54,7 +52,9 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-red">
                     <div class="icon"><i class="entypo-users"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo $visitCounter;?>" data-postfix="" data-duration="1500" data-delay="0">0</div>
+                    <div class="num" data-start="0" data-end="<?php echo $visitCounter; ?>" data-postfix=""
+                         data-duration="1500" data-delay="0">0
+                    </div>
 
                     <h3>Patients Visits</h3>
                     <p>Providing best services</p>
@@ -69,7 +69,7 @@ include 'views/head.php';
 
 
                     <h1 style="color: white">Date</h1>
-                    <h2 style="color: white"><?php echo date("Y/m/d")?></h2>
+                    <h2 style="color: white"><?php echo date("Y/m/d") ?></h2>
                 </div>
 
             </div>
@@ -80,7 +80,9 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-aqua">
                     <div class="icon" style="padding-bottom: 40px;"><i class="fa fa-user-md"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo $patientCounter;?>" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+                    <div class="num" data-start="0" data-end="<?php echo $patientCounter; ?>" data-postfix=""
+                         data-duration="1500" data-delay="1200">0
+                    </div>
 
                     <h3>Registered Patients</h3>
                     <p>Patients registered in the system</p>
@@ -92,7 +94,9 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-blue">
                     <div class="icon" style="padding-bottom: 40px;"><i class="fa fa-ambulance"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo $drugCounter;?>" data-postfix="" data-duration="1500" data-delay="1800">0</div>
+                    <div class="num" data-start="0" data-end="<?php echo $drugCounter; ?>" data-postfix=""
+                         data-duration="1500" data-delay="1800">0
+                    </div>
 
                     <h3>Drug Inventory</h3>
                     <p>Number of drugs registered</p>
@@ -101,27 +105,24 @@ include 'views/head.php';
             </div>
         </div>
 
-        <br />
+        <br/>
 
         <!--       down row start here-->
 
         <!--        down row stop here-->
 
 
-        <br />
+        <br/>
 
 
-
-        <br />
-
-
-
+        <br/>
 
 
         <!-- Footer -->
-        <footer class="main" style="position: absolute; bottom: 0; " >
+        <footer class="main" style="position: absolute; bottom: 0; ">
 
-            &copy; 2017 <strong>Developed by</strong>  <a href="http://hudutech.com" target="_blank">Hudutech Solutions</a>
+            &copy; 2017 <strong>Developed by</strong> <a href="http://hudutech.com" target="_blank">Hudutech
+                Solutions</a>
 
         </footer>
     </div>
@@ -144,7 +145,8 @@ include 'views/head.php';
             <div class="chat-group" id="group-1">
                 <strong>Favorites</strong>
 
-                <a href="#" id="sample-user-123" data-conversation-history="#sample_history"><span class="user-status is-online"></span> <em>Catherine J. Watkins</em></a>
+                <a href="#" id="sample-user-123" data-conversation-history="#sample_history"><span
+                            class="user-status is-online"></span> <em>Catherine J. Watkins</em></a>
                 <a href="#"><span class="user-status is-online"></span> <em>Nicholas R. Walker</em></a>
                 <a href="#"><span class="user-status is-busy"></span> <em>Susan J. Best</em></a>
                 <a href="#"><span class="user-status is-offline"></span> <em>Brandon S. Young</em></a>
@@ -156,7 +158,8 @@ include 'views/head.php';
                 <strong>Work</strong>
 
                 <a href="#"><span class="user-status is-offline"></span> <em>Robert J. Garcia</em></a>
-                <a href="#" data-conversation-history="#sample_history_2"><span class="user-status is-offline"></span> <em>Daniel A. Pena</em></a>
+                <a href="#" data-conversation-history="#sample_history_2"><span class="user-status is-offline"></span>
+                    <em>Daniel A. Pena</em></a>
                 <a href="#"><span class="user-status is-busy"></span> <em>Rodrigo E. Lozano</em></a>
             </div>
 
@@ -195,11 +198,7 @@ include 'views/head.php';
     </div>
 
 
-
-
-
 </div>
-
 
 
 <!-- Imported styles on this page -->

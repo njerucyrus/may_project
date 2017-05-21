@@ -173,7 +173,7 @@ class User
      */
     public function setPassword($password)
     {
-        $this->password =password_hash($password, PASSWORD_BCRYPT);
+        $this->password = password_hash($password, PASSWORD_BCRYPT);
     }
 
 }
