@@ -25,14 +25,14 @@ class Auth
     /**
      * @param $username
      * @param $password
-     * @return bool
+     * @return array
      */
     public static function authenticate($username, $password)
     {
         $db = new DB();
         $conn = $db->connect();
         try {
-            $stmt = $conn->prepare("SELECT * FROM users WHERE username=:username");
+            $stmt = $conn->prepare("SELECT * FROM `users` WHERE `username`=:username");
             $stmt->bindParam(":username", $username);
 
             $stmt->execute();
@@ -41,19 +41,24 @@ class Auth
 
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);
                 if (password_verify($password, $row['password'])) {
-                    return true;
+                    if ($row['isActive'] == 0) {
+                        return ["error" => "Your Account Has Been Temporally block Contact Admin"];
+                    }
+                    if ($row['isActive'] == 1) {
+                        return ["success" => "Authenticated Successfully"];
+                    } else {
+                        return ["error" => "Invalid Login Credentials Supplied."];
+                    }
                 } else {
-                    return false;
+                    return ["error" => "Invalid Login Credentials Supplied."];
                 }
 
-
             } else {
-                return false;
+                return ["error" => "Invalid Login Credentials Supplied."];
             }
-
         } catch (\PDOException $e) {
             echo $e->getMessage();
-            return false;
+            return ["error" => "Internal Server error occurred Try again later."];
         }
     }
 

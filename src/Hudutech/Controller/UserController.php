@@ -26,6 +26,7 @@ class UserController extends Auth implements UserInterface
         $username = $user->getUsername();
         $userLevel = $user->getUserLevel();
         $password = $user->getPassword();
+        $isActive = $user->isActive();
 
         try{
             $stmt = $conn->prepare("INSERT INTO clinic_db.users(
@@ -34,14 +35,16 @@ class UserController extends Auth implements UserInterface
                                                                     email,
                                                                     username,
                                                                     userLevel,
-                                                                    password
+                                                                    password,
+                                                                    isActive
                                                                 ) VALUES (
                                                                     :firstName,
                                                                     :lastName,
                                                                     :email,
                                                                     :username,
                                                                     :userLevel,
-                                                                    :password
+                                                                    :password,
+                                                                    :isActive
                                                                 ) 
                                                                 ");
             $stmt->bindParam(":firstName", $firstName);
@@ -50,6 +53,7 @@ class UserController extends Auth implements UserInterface
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":userLevel", $userLevel);
             $stmt->bindParam(":password",$password);
+            $stmt->bindParam(":isActive",$isActive);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
@@ -68,6 +72,7 @@ class UserController extends Auth implements UserInterface
         $username = $user->getUsername();
         $userLevel = $user->getUserLevel();
         $password = $user->getPassword();
+        $isActive = $user->isActive();
 
         try{
             $stmt = $conn->prepare("UPDATE clinic_db.users SET
@@ -76,7 +81,8 @@ class UserController extends Auth implements UserInterface
                                                             email=:email,
                                                             username=:username,
                                                             userLevel=:userLevel,
-                                                            password=:password
+                                                            password=:password,
+                                                            isActive=:isActive
                                                         WHERE
                                                             id=:id
                                                         ");
@@ -87,6 +93,7 @@ class UserController extends Auth implements UserInterface
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":userLevel", $userLevel);
             $stmt->bindParam(":password",$password);
+            $stmt->bindParam(":isActive",$isActive);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
             echo $exception->getMessage();

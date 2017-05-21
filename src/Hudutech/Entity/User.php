@@ -47,6 +47,10 @@ class User
      * @var
      */
     private $password;
+    /**
+     * @var bool
+     */
+    private $active;
 
     /**
      * @return mixed
@@ -175,5 +179,22 @@ class User
     {
         $this->password = password_hash($password, PASSWORD_BCRYPT);
     }
+
+    /**
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
 
 }
