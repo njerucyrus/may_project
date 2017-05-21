@@ -10,9 +10,7 @@ if (isset($_SESSION['username'])) {
     $user = \Hudutech\Controller\UserController::getLoggedInUser($_SESSION['username']);
     $username = $user['username'];
     $level = $user['userLevel'];
-
 }
-
 ?>
 <div class="sidebar-menu">
 

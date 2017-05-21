@@ -96,5 +96,29 @@ class Auth
         }
     }
 
+    /**
+     * @param $password
+     * @return bool|string
+     */
+    public static function makePassword($password)
+    {
+        return password_hash($password, PASSWORD_BCRYPT);
+    }
 
+    public static function changePassword($username, $newPassword)
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        $password = self::makePassword($newPassword);
+
+        try {
+            $stmt = $conn->prepare("UPDATE `users` SET `password`=:password WHERE `username`=:username");
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":password", $password);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
 }

@@ -8,7 +8,6 @@
 
 namespace Hudutech\Controller;
 
-
 use Hudutech\AppInterface\UserInterface;
 use Hudutech\Auth\Auth;
 use Hudutech\DBManager\DB;
@@ -159,16 +158,12 @@ class UserController extends Auth implements UserInterface
         $db = new DB();
         $conn = $db->connect();
         try{
-            $stmt = $conn->prepare("SELECT t.* FROM clinic_db.users t WHERE t.id=:id");
-            $stmt->bindParam(":id", $id);
-            return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : null;
+            $stmt = $conn->prepare("SELECT t.* FROM clinic_db.users t WHERE 1");
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return [];
         }
     }
-
-
-
 
 }
