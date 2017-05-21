@@ -184,26 +184,12 @@ if (isset($_SESSION['username'])) {
 
                 </li>
 
-
                 <li class="has-sub">
 
-                    <a href="#">
-                        <i class="fa fa-file-o" style="font-size: 1.8em;"></i>
-                        <span class="title" style="font-size: 2em;"> Reports</span>
+                    <a href="views/drug_sales.php">
+                        <i class="fa fa-money" style="font-size: 1.8em;"></i>
+                        <span class="title" style="font-size: 2em;"> Drug Sales</span>
                     </a>
-
-                    <ul>
-                        <li>
-                            <a href="views/drug_sales.php">
-                                <i class="fa fa-search" style="font-size: 1.5em;"></i>
-                                <span class="title" style="font-size: 1.5em;">Drug Sales</span>
-                            </a>
-                        </li>
-
-
-
-
-                    </ul>
 
                 </li>
 
@@ -328,6 +314,8 @@ if (isset($_SESSION['username'])) {
 
                     </ul>
                 </li>
+
+
 
             </ul>
         <?php } ?>

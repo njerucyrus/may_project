@@ -44,7 +44,7 @@
     <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     <!--[endif]-->
 <style>
-    th, td, label, thead {
+    th, td, label, thead ,li, input {
         color: #000000;
     }
 </style>

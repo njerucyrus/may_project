@@ -9,7 +9,7 @@ session_start();
 $error_msg="";
 $success_msg="";
 if(isset($_SESSION['username'])){
-    header("Location: ../base.php");
+    header("Location: ../index.php");
 }
 if(isset($_POST['submit'])) {
     if (isset($_POST['username']) && isset($_POST['password'])) {

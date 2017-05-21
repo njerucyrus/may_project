@@ -47,6 +47,7 @@ $patient = \Hudutech\Controller\PatientController::getPatientId($_SESSION['pNo']
 $drugs = \Hudutech\Controller\DrugInventoryController::all();
 $cart = \Hudutech\Controller\SalesController::showCartItems($_SESSION['receiptNo']);
 $cartTotal = \Hudutech\Controller\SalesController::getCartTotal($_SESSION['receiptNo']);
+$patientBill = \Hudutech\Controller\SalesController::getPatientBill($_SESSION['pId'], $_SESSION['receiptNo']);
 
 
 ?>
@@ -259,12 +260,17 @@ $cartTotal = \Hudutech\Controller\SalesController::getCartTotal($_SESSION['recei
 
 
                             <div class="form-group  col-md-8" style="padding: 5px; margin: 5px;">
+                                <ul class="list-group">
+                                    <li class="list-group-item" style="font-size: 1.2em; font-weight: bold;">Registration Fee Ksh: <?php echo isset($patientBill['regFee']) ? $patientBill['regFee'].".00" : 0.00 ?></li>
+                                    <li class="list-group-item" style="font-size: 1.2em; font-weight: bold;">Registration Fee Ksh: <?php echo isset($patientBill['consultationFee']) ? $patientBill['consultationFee']. ".00" : 0.00?></li>
+                                    <li class="list-group-item" style="font-size: 1.2em; font-weight: bold;">Clinical Test Fee Ksh: <?php echo isset($patientBill['testCost']) ? $patientBill['testCost']. ".00" : 0.00?></li>
+                                </ul>
 
                                 <label for="total" style="padding-left: 10px;"
                                        class="control-label">Total</label>
                                 <div class="input-group">
                                     <span class="input-group-addon btn-success">KSH</span>
-                                    <input type="text" class="form-control" value="<?php echo $cartTotal ?>" id="total"
+                                    <input type="text" class="form-control" value="<?php echo $patientBill['totalCost']+$patientBill['testCost']+$cartTotal ?>" id="total"
                                            disabled>
                                     <span class="input-group-addon btn-success">.00</span>
                                 </div>

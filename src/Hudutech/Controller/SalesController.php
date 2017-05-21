@@ -372,15 +372,16 @@ class SalesController implements SalesInterface
         }
     }
 
-    public static function getTotalDrugCost($patientId)
+    public static function getTotalDrugCost($patientId, $receiptNo)
     {
         $db = new DB();
         $conn = $db->connect();
         try {
             $stmt = $conn->prepare("SELECT SUM(t.price) AS totalPrice FROM sales t
-                                    WHERE t.patientId=:patientId AND
+                                    WHERE t.patientId=:patientId AND t.receiptNo=:receiptNo AND
                                      date(t.datePurchased)=CURDATE()");
             $stmt->bindParam(":patientId", $patientId);
+            $stmt->bindParam(":receiptNo", $receiptNo);
             if ($stmt->execute() && $stmt->rowCount() == 1) {
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);
                 return (float)$row['totalPrice'];
@@ -392,8 +393,27 @@ class SalesController implements SalesInterface
             return null;
         }
     }
+    public static function testCost(){
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+            $stmt = $conn->prepare("SELECT SUM(ct.cost) as testCost FROM clinical_tests ct , patient_clinical_tests ppt
+                INNER JOIN clinical_tests ctl ON ctl.id = ppt.testId WHERE ppt.testId=ct.id
+               AND ppt.isPerformed=1 AND date(ppt.updatedAt) = CURDATE() AND patientId=:patientId");
 
-    public static function getPatientBill($patientId)
+            $stmt->bindParam(":patientId", $patientId);
+            $testCost = 0;
+            if ($stmt->execute() && $stmt->rowCount()==1) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                $testCost = (float)$row['testCost'];
+            }
+            return $testCost;
+        }catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return 0;
+        }
+    }
+    public static function getPatientBill($patientId, $receiptNo)
     {
         $bill = array();
         $paidRegFee = self::paidRegFee($patientId);
@@ -404,7 +424,7 @@ class SalesController implements SalesInterface
         if ($canPayConsultationFee) {
             $bill['consultationFee'] = ChargeController::getConsultationFee();
         }
-        $bill['drugCost'] = self::getTotalDrugCost($patientId);
+        $bill['drugCost'] = self::getTotalDrugCost($patientId, $receiptNo);
         $totalCharges = 0;
         if (isset($bill['regFee']) && isset($bill['consultationFee'])) {
             $totalCharges = (float)$bill['regFee'] + (float)$bill['consultationFee'];
@@ -416,7 +436,10 @@ class SalesController implements SalesInterface
             $totalCharges = (float)$bill['consultationFee'];
         }
 
-        $totalCost = $totalCharges + (float)$bill['drugCost'];
+        $testCost = self::testCost();
+
+        $totalCost = $totalCharges + (float)$bill['drugCost'] + $testCost;
+        $bill['testCost'] = $totalCost;
         $bill['totalCost'] = $totalCost;
         return $bill;
     }
@@ -440,7 +463,7 @@ class SalesController implements SalesInterface
         $db = new DB();
         $conn = $db->connect();
 
-        $bill = self::getPatientBill($patientId);
+        $bill = self::getPatientBill($patientId, $receiptNo);
         $regFee = isset($bill['regFee']) ? $bill['regFee'] : null;
         $consultFee = isset($bill['consultationFee']) ? $bill['consultationFee'] : null;
         $totalCost = $bill['totalCost'];
@@ -487,8 +510,8 @@ class SalesController implements SalesInterface
             $stmt = $conn->prepare("SELECT DISTINCT t.productName, s.receiptNo, s.price , s.qty ,s.datePurchased
                                     FROM drug_inventory t, sales s
                                     INNER JOIN drug_inventory dr ON s.inventoryId = dr.id
-                                    WHERE s.inventoryId = dr.id ORDER BY s.datePurchased DESC");
-            return $stmt->execute() ? $stmt->fetchAll(\PDO::FETCH_ASSOC) :[];
+                                    WHERE s.inventoryId = dr.id ORDER BY s.receiptNo ");
+            return $stmt->execute() && $stmt->rowCount()>0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) :[];
         } catch (\PDOException $exception){
             echo $exception->getMessage();
             return [];

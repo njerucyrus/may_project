@@ -332,7 +332,14 @@ if (isset($_SESSION['username'])) {
 
                     </ul>
                 </li>
+                <li class="has-sub">
 
+                    <a href="drug_sales.php">
+                        <i class="fa fa-money" style="font-size: 1.8em;"></i>
+                        <span class="title" style="font-size: 2em;"> Drug Sales</span>
+                    </a>
+
+                </li>
             </ul>
         <?php }?>
         <?php function lab_technician(){?>
