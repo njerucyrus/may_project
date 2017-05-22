@@ -371,8 +371,6 @@ $patientBill = \Hudutech\Controller\SalesController::getPatientBill($_SESSION['p
                                 </table>
                             </div>
 
-
-                            <!--                        body content will stop here-->
                         </div>
 
                     </div>
