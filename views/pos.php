@@ -270,7 +270,7 @@ $patientBill = \Hudutech\Controller\SalesController::getPatientBill($_SESSION['p
                                        class="control-label">Total</label>
                                 <div class="input-group">
                                     <span class="input-group-addon btn-success">KSH</span>
-                                    <input type="text" class="form-control" value="<?php echo $patientBill['totalCost']+$patientBill['testCost']+$cartTotal ?>" id="total"
+                                    <input type="text" class="form-control" value="<?php echo $patientBill['totalCost']+$cartTotal ?>" id="total"
                                            disabled>
                                     <span class="input-group-addon btn-success">.00</span>
                                 </div>
