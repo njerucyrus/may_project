@@ -127,6 +127,13 @@ if (isset($_SESSION['username'])) {
                             </a>
                         </li>
 
+                        <li>
+                            <a href="views/users.php">
+                                <i class="fa fa-eye" style="font-size: 1.5em;"></i>
+                                <span class="title" style="font-size: 1.5em;">View users</span>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </li>
