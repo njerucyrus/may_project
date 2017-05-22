@@ -52,11 +52,11 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-red">
                     <div class="icon"><i class="entypo-users"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo $visitCounter; ?>" data-postfix=""
+                    <div class="num" data-start="0" data-end="24" data-postfix=""
                          data-duration="1500" data-delay="0">0
                     </div>
 
-                    <h3>Patients Visits</h3>
+                    <h3>Hours</h3>
                     <p>Providing best services</p>
                 </div>
 

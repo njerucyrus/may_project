@@ -262,7 +262,7 @@ $patientBill = \Hudutech\Controller\SalesController::getPatientBill($_SESSION['p
                             <div class="form-group  col-md-8" style="padding: 5px; margin: 5px;">
                                 <ul class="list-group">
                                     <li class="list-group-item" style="font-size: 1.2em; font-weight: bold;">Registration Fee Ksh: <?php echo isset($patientBill['regFee']) ? $patientBill['regFee'].".00" : 0.00 ?></li>
-                                    <li class="list-group-item" style="font-size: 1.2em; font-weight: bold;">Registration Fee Ksh: <?php echo isset($patientBill['consultationFee']) ? $patientBill['consultationFee']. ".00" : 0.00?></li>
+                                    <li class="list-group-item" style="font-size: 1.2em; font-weight: bold;">Consultation Fee Ksh: <?php echo isset($patientBill['consultationFee']) ? $patientBill['consultationFee']. ".00" : 0.00?></li>
                                     <li class="list-group-item" style="font-size: 1.2em; font-weight: bold;">Clinical Test Fee Ksh: <?php echo isset($patientBill['testCost']) ? $patientBill['testCost']. ".00" : 0.00?></li>
                                 </ul>
 
