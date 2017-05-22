@@ -1,5 +1,4 @@
 <?php
-session_start();
 /**
  * Created by PhpStorm.
  * User: New LAptop
@@ -19,6 +18,8 @@ if (isset($_POST['submit'])) {
 
         if ($authenticated) {
             $success_msg .= "Login Successful";
+            $user = \Hudutech\Controller\UserController::getLoggedInUser($username);
+            $_SESSION['userLevel'] = $user['userLevel'];
             $_SESSION['username'] = $username;
             header("Location: ../index.php");
 

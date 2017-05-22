@@ -2,17 +2,16 @@
 session_start();
 require_once 'vendor/autoload.php';
 $username = '';
-$level = '';
 if (!isset($_SESSION['username'])) {
     header('Location: views/login.php');
 }
-if (isset($_SESSION['username'])) {
-    $user = \Hudutech\Controller\UserController::getLoggedInUser($_SESSION['username']);
-    $username = $user['username'];
-    $level = $user['userLevel'];
+//
+//if (isset($_SESSION['username'])) {
+//    $user = \Hudutech\Controller\UserController::getLoggedInUser($_SESSION['username']);
+//    $username = $user['username'];
+//
 
-}
-
+//}
 ?>
 <div class="sidebar-menu" style="margin-top: -100px;">
 
@@ -53,8 +52,8 @@ if (isset($_SESSION['username'])) {
                     <i style="color: white; font-size: 3em; display: inline-block;width: 100%;text-align: center;"
                        class="fa fa-user-md "></i>
 
-                    <h2 style="font-size: 1.5em; color: white; text-align: center;">Welcome,<?php echo $username ?></h2>
-                    <p style="font-size: 1.2em; color: white; text-align: center;"> Logged in as (<?php echo $level; ?>
+                    <h2 style="font-size: 1.5em; color: white; text-align: center;">Welcome,<?php echo $_SESSION['username']?></h2>
+                    <p style="font-size: 1.2em; color: white; text-align: center;"> Logged in as (<?php echo $_SESSION['userLevel']; ?>
                         )</p>
                 </div>
             </div>
@@ -63,15 +62,15 @@ if (isset($_SESSION['username'])) {
         </div>
 
         <?php
-        if ($level == 'admin') {
+        if ($_SESSION['userLevel'] == 'admin') {
             admin();
-        } else if ($level == 'receptionist') {
+        } else if ($_SESSION['userLevel'] == 'receptionist') {
             receptionist();
-        } else if ($level == 'doctor') {
+        } else if ($_SESSION['userLevel'] == 'doctor') {
             doctor();
-        } else if ($level == 'lab_technician') {
+        } else if ($_SESSION['userLevel'] == 'lab_technician') {
             lab_technician();
-        } else if ($level == 'pharmacist') {
+        } else if ($_SESSION['userLevel'] == 'pharmacist') {
             pharmacist();
         }
 

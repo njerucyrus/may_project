@@ -1,6 +1,5 @@
 <?php
 session_start();
-error_reporting(0);
 /**
  * Created by PhpStorm.
  * User: hudutech
