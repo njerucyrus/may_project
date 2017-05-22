@@ -126,4 +126,31 @@ class Auth
             return false;
         }
     }
+    public static function deactivateAccount($id) {
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("UPDATE users SET isActive=0 WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
+
+    public static function activateAccount($id){
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("UPDATE users SET isActive=1 WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
 }
