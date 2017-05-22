@@ -87,7 +87,7 @@ class Auth
         $db = new DB();
         $conn = $db->connect();
         try {
-            $stmt = $conn->prepare("SELECT username, userLevel FROM clinic_db.users WHERE username=:username");
+            $stmt = $conn->prepare("SELECT username, userLevel FROM users WHERE username=:username");
             $stmt->bindParam(":username", $username);
             if ($stmt->execute() && $stmt->rowCount() == 1) {
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);

@@ -8,5 +8,6 @@ session_start();
  */
 
 unset($_SESSION['username']);
+unset($_SESSION['userLevel']);
 session_destroy();
 header('Location: login.php');

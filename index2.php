@@ -154,3 +154,6 @@ $pdf->Output();
 //$checked = \Hudutech\Controller\SalesController::checkout($cart);
 
 //$receipt = \Hudutech\Controller\SalesController::createReceipt($cart[0]['patientId'], $cart[0]['receiptNo']);
+
+$user = \Hudutech\Controller\UserController::getLoggedInUser('njeru');
+print_r($user);

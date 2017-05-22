@@ -29,7 +29,7 @@ class UserController extends Auth implements UserInterface
         $isActive = $user->isActive();
 
         try{
-            $stmt = $conn->prepare("INSERT INTO clinic_db.users(
+            $stmt = $conn->prepare("INSERT INTO users(
                                                                     firstName,
                                                                     lastName,
                                                                     email,
@@ -75,7 +75,7 @@ class UserController extends Auth implements UserInterface
         $isActive = $user->isActive();
 
         try{
-            $stmt = $conn->prepare("UPDATE clinic_db.users SET
+            $stmt = $conn->prepare("UPDATE users SET
                                                             firstName=:firstName,
                                                             lastName=:lastLogin,
                                                             email=:email,
@@ -107,7 +107,7 @@ class UserController extends Auth implements UserInterface
         $conn = $db->connect();
 
         try{
-            $stmt = $conn->prepare("DELETE FROM clinic_db.users WHERE id=:id");
+            $stmt = $conn->prepare("DELETE FROM users WHERE id=:id");
             $stmt->bindParam(":id", $id);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
@@ -122,7 +122,7 @@ class UserController extends Auth implements UserInterface
         $conn = $db->connect();
 
         try{
-            $stmt = $conn->prepare("DELETE FROM clinic_db.users");
+            $stmt = $conn->prepare("DELETE FROM users");
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
@@ -136,7 +136,7 @@ class UserController extends Auth implements UserInterface
         $db = new DB();
         $conn = $db->connect();
         try{
-            $stmt = $conn->prepare("SELECT t.* FROM clinic_db.users t WHERE t.id=:id");
+            $stmt = $conn->prepare("SELECT t.* FROM users t WHERE t.id=:id");
             $stmt->bindParam(":id", $id);
             return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
@@ -150,7 +150,7 @@ class UserController extends Auth implements UserInterface
         $db = new DB();
         $conn = $db->connect();
         try{
-            $stmt = $conn->prepare("SELECT t.* FROM clinic_db.users t WHERE t.id=:id");
+            $stmt = $conn->prepare("SELECT t.* FROM users t WHERE t.id=:id");
             $stmt->bindParam(":id", $id);
             $stmt->setFetchMode(\PDO::FETCH_CLASS |\PDO::FETCH_PROPS_LATE, User::class);
             return $stmt->execute() && $stmt->rowCount() == 1 ? $stmt->fetch() : null;
@@ -165,7 +165,7 @@ class UserController extends Auth implements UserInterface
         $db = new DB();
         $conn = $db->connect();
         try{
-            $stmt = $conn->prepare("SELECT t.* FROM clinic_db.users t WHERE 1");
+            $stmt = $conn->prepare("SELECT t.* FROM users t WHERE 1");
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
         } catch (\PDOException $exception) {
             echo $exception->getMessage();

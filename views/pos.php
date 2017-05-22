@@ -1,6 +1,5 @@
 <?php
 session_start();
-error_reporting(0);
 /**
  * Created by PhpStorm.
  * User: hudutech
@@ -371,8 +370,6 @@ $patientBill = \Hudutech\Controller\SalesController::getPatientBill($_SESSION['p
                                 </table>
                             </div>
 
-
-                            <!--                        body content will stop here-->
                         </div>
 
                     </div>
