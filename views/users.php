@@ -48,7 +48,7 @@ $users = \Hudutech\Controller\UserController::all();
                                         <td><?php echo $user['username'];?></td>
                                         <td><?php echo $user['userLevel'];?></td>
                                         <td>
-                                            <button class="btn btn-default"><i class="entypo-lock-open"></i>Change Password</button>
+                                            <a href="change_password.php?username=<?php echo urlencode($user['username'])?>" class="btn btn-default"><i class="entypo-lock-open"></i>Change Password</a>
                                             <button class="btn btn-info"><i class="entypo-lock"></i> Deactivate Account</button>
                                             <button class="btn btn-danger btn-red">Delete Account</button>
                                         </td>

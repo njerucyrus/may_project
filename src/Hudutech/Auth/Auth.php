@@ -42,7 +42,7 @@ class Auth
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);
                 if (password_verify($password, $row['password'])) {
                     if ($row['isActive'] == 0) {
-                        return ["error" => "Your Account Has Been Temporally block Contact Admin"];
+                        return ["error" => "Your Account Has Been Temporally blocked Contact Admin"];
                     }
                     if ($row['isActive'] == 1) {
                         return ["success" => "Authenticated Successfully"];
