@@ -393,13 +393,13 @@ class SalesController implements SalesInterface
             return null;
         }
     }
-    public static function testCost(){
+    public static function testCost($patientId){
         $db = new DB();
         $conn = $db->connect();
         try{
             $stmt = $conn->prepare("SELECT SUM(ct.cost) as testCost FROM clinical_tests ct , patient_clinical_tests ppt
-                INNER JOIN clinical_tests ctl ON ctl.id = ppt.testId WHERE ppt.testId=ct.id
-               AND ppt.isPerformed=1 AND date(ppt.updatedAt) = CURDATE() AND patientId=:patientId");
+                                    INNER JOIN clinical_tests ctl ON ctl.id = ppt.testId WHERE ppt.testId=ct.id
+                                    AND ppt.isPerformed=1 AND date(ppt.updatedAt) =CURDATE() AND patientId=:patientId");
 
             $stmt->bindParam(":patientId", $patientId);
             $testCost = 0;
@@ -436,10 +436,10 @@ class SalesController implements SalesInterface
             $totalCharges = (float)$bill['consultationFee'];
         }
 
-        $testCost = self::testCost();
+        $testCost = self::testCost($patientId);
 
         $totalCost = $totalCharges + (float)$bill['drugCost'] + $testCost;
-        $bill['testCost'] = $totalCost;
+        $bill['testCost'] = $testCost;
         $bill['totalCost'] = $totalCost;
         return $bill;
     }
