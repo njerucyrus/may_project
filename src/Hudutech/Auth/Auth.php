@@ -42,7 +42,7 @@ class Auth
                 $row = $stmt->fetch(\PDO::FETCH_ASSOC);
                 if (password_verify($password, $row['password'])) {
                     if ($row['isActive'] == 0) {
-                        return ["error" => "Your Account Has Been Temporally block Contact Admin"];
+                        return ["error" => "Your Account Has Been Temporally blocked Contact Admin"];
                     }
                     if ($row['isActive'] == 1) {
                         return ["success" => "Authenticated Successfully"];
@@ -120,6 +120,33 @@ class Auth
             $stmt = $conn->prepare("UPDATE `users` SET `password`=:password WHERE `username`=:username");
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":password", $password);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
+    public static function deactivateAccount($id) {
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("UPDATE users SET isActive=0 WHERE id=:id");
+            $stmt->bindParam(":id", $id);
+            return $stmt->execute() ? true : false;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return false;
+        }
+    }
+
+    public static function activateAccount($id){
+        $db = new DB();
+        $conn = $db->connect();
+
+        try{
+            $stmt = $conn->prepare("UPDATE users SET isActive=1 WHERE id=:id");
+            $stmt->bindParam(":id", $id);
             return $stmt->execute() ? true : false;
         } catch (\PDOException $exception) {
             echo $exception->getMessage();
