@@ -1,0 +1,1260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc9d0075-dd33-448b-888d-9595ea699b85" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Controller/StudentClassController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../hudutech_next/.idea/hudutech_next.iml" afterPath="$PROJECT_DIR$/../hudutech_next/.idea/hudutech_next.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../hudutech_next/index.php" afterPath="$PROJECT_DIR$/../hudutech_next/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../hudutech_next/src/Hudutech/AppInterface/StudentClassInterface.php" afterPath="$PROJECT_DIR$/../hudutech_next/src/Hudutech/AppInterface/StudentClassInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Controller/StudentController.php" afterPath="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Controller/StudentController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Entity/StudentClass.php" afterPath="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Entity/StudentClass.php" />
+    </list>
+    <ignored path="$PROJECT_DIR$/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinic_db@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinic_db@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="sales_receipts" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinic_db@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="drug_prescriptions" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinic_db@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="drug_inventory" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinic_db@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinical_tests" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinic_db@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinical_notes" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinic_db@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="charges" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="clinic_db@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="cart" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/bd990b72-c1d4-4048-a60c-f4d96bff217e/console.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clinic_db.drug_inventory" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.drug_inventory">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SalesController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/SalesController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="571" column="63" lean-forward="false" selection-start-line="571" selection-start-column="63" selection-end-line="571" selection-end-column="63" />
+              <folding>
+                <marker date="1496824998283" expanded="true" signature="732:1905" ph="INSERT INTO sales... " />
+                <marker date="1496824998283" expanded="true" signature="2896:3486" ph="UPDATE sales... " />
+                <marker date="1496824998283" expanded="true" signature="4299:4329" ph="DELETE FROM " />
+                <marker date="1496824998283" expanded="true" signature="4709:4747" ph="SELECT t.* F... sales" />
+                <marker date="1496824998283" expanded="true" signature="5178:5216" ph="SELECT t.* F... sales" />
+                <marker date="1496824998283" expanded="true" signature="5717:5748" ph="SELECT t.* F... sales" />
+                <marker date="1496824998283" expanded="true" signature="6877:7856" ph="INSERT INTO cart... " />
+                <marker date="1496824998283" expanded="true" signature="8472:8711" ph="SELECT d.pro... drug_inventory" />
+                <marker date="1496824998283" expanded="true" signature="9108:9137" ph="DELETE FROM " />
+                <marker date="1496824998283" expanded="true" signature="9531:9598" ph="SELECT SUM(p... cart" />
+                <marker date="1496824998283" expanded="true" signature="10212:10326" ph="UPDATE drug_... " />
+                <marker date="1496824998283" expanded="true" signature="10734:11671" ph="INSERT INTO sales... " />
+                <marker date="1496824998283" expanded="true" signature="12667:12715" ph="SELECT t.* F... patients" />
+                <marker date="1496824998283" expanded="true" signature="13602:13725" ph="SELECT t.id clinical_notes" />
+                <marker date="1496824998283" expanded="true" signature="14249:14460" ph="SELECT SUM(t... sales" />
+                <marker date="1496824998283" expanded="true" signature="15091:15404" ph="SELECT SUM(c... clinical_tests" />
+                <marker date="1496824998283" expanded="true" signature="17243:17295" ph="UPDATE patie... " />
+                <marker date="1496824998283" expanded="true" signature="17976:19020" ph="INSERT INTO sales_receipts... " />
+                <marker date="1496824998283" expanded="true" signature="19868:20177" ph="SELECT ct.te... clinical_tests" />
+                <marker date="1496824998283" expanded="true" signature="20972:21325" ph="SELECT DISTI... drug_inventory" />
+                <marker date="1496824998283" expanded="true" signature="22816:23134" ph="SELECT DISTI... drug_inventory" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clinic_db.drug_prescriptions" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.drug_prescriptions">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clinic_db.patient_clinical_tests" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.patient_clinical_tests">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clinic_db.patient_visits" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.patient_visits">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clinic_db.patients" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.patients">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clinic_db.product_inventory" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.product_inventory">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clinic_db.sales_receipts" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.sales_receipts">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clinic_db.sales" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.sales">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>regf</find>
+      <find>base</find>
+      <find>base.php</find>
+      <find>clinic_db</find>
+      <find>clinic_db.</find>
+      <find>../</find>
+      <find>public</find>
+      <find>self::updateTotalEarning();</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>../public</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../hudutech_next" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/../hudutech_next/views/includes/register_subjects.inc.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/views/register_teacher.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/views/includes/register_teacher.inc.php" />
+        <option value="$PROJECT_DIR$/views/head.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/views/navbar.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/views/head.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/views/sidebar.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Controller/SubjectController.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/95bd5fcb-ce24-44e9-bd2a-08b6675e6a07/console.sql" />
+        <option value="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Controller/ExamController.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/src/Hudutech/AppInterface/StudentInterface.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/composer.json" />
+        <option value="$PROJECT_DIR$/../hudutech_next/views/studentsforexam.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/views/record_marks.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/views/register_student.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Entity/StudentClass.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/src/Hudutech/AppInterface/StudentClassInterface.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Controller/StudentClassController.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/src/Hudutech/Controller/StudentController.php" />
+        <option value="$PROJECT_DIR$/../referral/.gitiignore" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Entity/User.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/AppInterface/BaseInterface.php" />
+        <option value="$PROJECT_DIR$/../referral/vendor/composer/autoload_classmap.php" />
+        <option value="$PROJECT_DIR$/../referral/composer.json" />
+        <option value="$PROJECT_DIR$/../referral/src/App/DBManager/ComplexQuery.php" />
+        <option value="$PROJECT_DIR$/../referral/.gitignore" />
+        <option value="$PROJECT_DIR$/../referral/src/App/AppInterface/UserInterface.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Controller/UserController.php" />
+        <option value="$PROJECT_DIR$/../hudutech_next/index.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Entity/ReferralTree.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/AppInterface/ReferralTreeInterface.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Entity/Site.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/AppInterface/SiteInterface.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Controller/SiteController.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/AppInterface/PaymentInterface.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Controller/PaymentController.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Entity/Payment.php" />
+        <option value="$PROJECT_DIR$/../billboards/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOException.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/DBManager/DB.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Entity/Fund.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/AppInterface/FundInterface.php" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Controller/ReferralTreeController.php" />
+        <option value="$PROJECT_DIR$/../referral/views/home.php" />
+        <option value="$PROJECT_DIR$/../referral/index.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/7a6e7260-1b0f-4536-b46a-1e358b6ed127/console.sql" />
+        <option value="$PROJECT_DIR$/../referral/src/App/Controller/FundController.php" />
+        <option value="$PROJECT_DIR$/src/Hudutech/DBManager/DB.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/91dccbae-f6a3-4533-ab06-ed91c3ebf9b9/console.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/bd990b72-c1d4-4048-a60c-f4d96bff217e/console.sql" />
+        <option value="$PROJECT_DIR$/src/Hudutech/Controller/SalesController.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1301" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="referral" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="referral" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hudutech" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hudutech" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DBManager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iclinic" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hudutech" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path" value="/usr/bin/node" />
+    <property name="settings.editor.selected.configurable" value="SQL Dialects" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/../hudutech_next/.gitignore&#10;true" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL&#10;HSQLDB (Remote)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../referral" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../referral" />
+      <recent name="$PROJECT_DIR$/../referral/src/App/DBManager" />
+      <recent name="$PROJECT_DIR$/../hudutech_next" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../hudutech_next/views" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc9d0075-dd33-448b-888d-9595ea699b85" name="Default" comment="" />
+      <created>1492792966884</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1492792966884</updated>
+      <workItem from="1493965667202" duration="4165000" />
+      <workItem from="1495184843646" duration="7906000" />
+      <workItem from="1495345518364" duration="3900000" />
+      <workItem from="1495385195249" duration="18226000" />
+      <workItem from="1495436910692" duration="37000" />
+      <workItem from="1495447531938" duration="7031000" />
+      <workItem from="1495469943163" duration="9159000" />
+      <workItem from="1495518212093" duration="9354000" />
+      <workItem from="1495541709809" duration="13010000" />
+      <workItem from="1495605632930" duration="10193000" />
+      <workItem from="1495630322280" duration="16483000" />
+      <workItem from="1495685965702" duration="6290000" />
+      <workItem from="1495710104902" duration="6546000" />
+      <workItem from="1495776097924" duration="6953000" />
+      <workItem from="1496164325793" duration="1449000" />
+      <workItem from="1496211019556" duration="43137000" />
+      <workItem from="1496379627634" duration="239000" />
+      <workItem from="1496553119711" duration="7374000" />
+      <workItem from="1496578774190" duration="36980000" />
+      <workItem from="1496689541694" duration="5940000" />
+      <workItem from="1496727400045" duration="6153000" />
+      <workItem from="1496764000189" duration="5842000" />
+      <workItem from="1496815406483" duration="8157000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="234524000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.91346157" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16308671" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.4972156" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34775642" sideWeight="0.21002387" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17581543" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852563" sideWeight="0.7048528" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35897437" sideWeight="0.7899761" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.4972156" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34775642" sideWeight="0.21002387" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852563" sideWeight="0.7048528" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17307693" sideWeight="0.7899761" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.91346157" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16308671" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17581543" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Hudutech/Controller/ClinicalNoteController.php</url>
+          <line>35</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="8" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/AppInterface/BaseInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/AppInterface/PaymentInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_8.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11693">
+          <caret line="356" column="0" lean-forward="false" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../billboards/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/7a6e7260-1b0f-4536-b46a-1e358b6ed127/referral_db.referral_code_counts">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../billboards/vendor/hamcrest/hamcrest-php/hamcrest/Hamcrest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3528">
+          <caret line="168" column="13" lean-forward="false" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/DBManager/DB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-883">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/AppInterface/SiteInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/AppInterface/UserInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/Entity/Payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/AppInterface/ReferralTreeInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../hudutech_next/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="25" lean-forward="false" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/vendor/composer/autoload_classmap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-59">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/7a6e7260-1b0f-4536-b46a-1e358b6ed127/referral_db.referral_tree">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../billboards/app/Board.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../billboards/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="17" column="38" lean-forward="false" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/Core_c.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4810">
+          <caret line="87" column="10" lean-forward="false" selection-start-line="87" selection-start-column="10" selection-end-line="87" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../billboards/app/Console/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/index_original.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/views/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2142">
+          <caret line="102" column="45" lean-forward="false" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/7a6e7260-1b0f-4536-b46a-1e358b6ed127/referral_db.earning_account">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/7a6e7260-1b0f-4536-b46a-1e358b6ed127/referral_db.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/index2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7a6e7260-1b0f-4536-b46a-1e358b6ed127/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/Entity/Fund.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/AppInterface/FundInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/Controller/FundController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4032">
+          <caret line="199" column="27" lean-forward="false" selection-start-line="199" selection-start-column="27" selection-end-line="199" selection-end-column="27" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="false" />
+            <marker date="1496767592548" expanded="true" signature="520:655" ph="INSERT INTO earning_account... " />
+            <marker date="1496767592548" expanded="true" signature="1321:1440" ph="UPDATE earni... " />
+            <marker date="1496767592548" expanded="true" signature="1997:2106" ph="UPDATE earni... " />
+            <marker date="1496767592548" expanded="true" signature="2655:2711" ph="SELECT balan... earning_account" />
+            <marker date="1496767592548" expanded="true" signature="3501:3544" ph="UPDATE earni... " />
+            <marker date="1496767592548" expanded="true" signature="3501:3553" ph="UPDATE earni... " />
+            <marker date="1496767592548" expanded="true" signature="3501:3616" ph="UPDATE earni... " />
+            <marker date="1496767592548" expanded="true" signature="4718:5118" ph="SELECT DISTI... users" />
+            <marker date="1496767592548" expanded="true" signature="5650:6115" ph="SELECT DISTI... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <folding>
+            <element signature="e#6#89#0#PHP" expanded="false" />
+            <element signature="e#119#154#0#PHP" expanded="false" />
+            <marker date="1496247182875" expanded="true" signature="896:2589" ph="INSERT INTO users... " />
+            <marker date="1496247182875" expanded="true" signature="4275:5177" ph="UPDATE users... " />
+            <marker date="1496247182875" expanded="true" signature="6356:6386" ph="DELETE FROM " />
+            <marker date="1496247182875" expanded="true" signature="6942:6967" ph="DELETE FROM " />
+            <marker date="1496247182875" expanded="true" signature="7481:7513" ph="SELECT * FRO... users" />
+            <marker date="1496247182875" expanded="true" signature="8121:8153" ph="SELECT * FRO... users" />
+            <marker date="1496247182875" expanded="true" signature="8829:8856" ph="SELECT * FRO... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/Controller/SiteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4284">
+          <caret line="211" column="34" lean-forward="false" selection-start-line="211" selection-start-column="34" selection-end-line="211" selection-end-column="34" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="false" />
+            <element signature="e#120#155#0#PHP" expanded="false" />
+            <marker date="1496260109313" expanded="true" signature="536:620" ph="INSERT INTO sites... " />
+            <marker date="1496260109313" expanded="true" signature="1304:1388" ph="INSERT INTO sites... " />
+            <marker date="1496260109313" expanded="true" signature="2145:2229" ph="UPDATE sites... " />
+            <marker date="1496260109313" expanded="true" signature="2955:3039" ph="UPDATE sites... " />
+            <marker date="1496260109313" expanded="true" signature="3715:3745" ph="DELETE FROM " />
+            <marker date="1496260109313" expanded="true" signature="4308:4333" ph="DELETE FROM " />
+            <marker date="1496260109313" expanded="true" signature="4848:4886" ph="SELECT t.* F... sites" />
+            <marker date="1496260109313" expanded="true" signature="5488:5526" ph="SELECT t.* F... sites" />
+            <marker date="1496260109313" expanded="true" signature="6213:6244" ph="SELECT t.* F... sites" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../referral/src/App/Controller/ReferralTreeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="127" column="34" lean-forward="true" selection-start-line="127" selection-start-column="34" selection-end-line="127" selection-end-column="34" />
+          <folding>
+            <element signature="e#6#89#0#PHP" expanded="false" />
+            <element signature="e#119#162#0#PHP" expanded="false" />
+            <marker date="1496764134769" expanded="true" signature="588:675" ph="INSERT INTO referral_tree... " />
+            <marker date="1496764134769" expanded="true" signature="1313:1351" ph="DELETE FROM " />
+            <marker date="1496764134769" expanded="true" signature="1909:1942" ph="DELETE FROM " />
+            <marker date="1496764134769" expanded="true" signature="2500:2546" ph="SELECT t.* F... referral_tree" />
+            <marker date="1496764134769" expanded="true" signature="3192:3230" ph="SELECT t.* F... referral_tree" />
+            <marker date="1496764134769" expanded="true" signature="3192:3231" ph="SELECT t.* F... referral_tree" />
+            <marker date="1496764134769" expanded="true" signature="3192:3233" ph="SELECT t.* F... referral_tree" />
+            <marker date="1496764134769" expanded="true" signature="3805:3862" ph="SELECT userI... referral_tree" />
+            <marker date="1496764134769" expanded="true" signature="4921:5052" ph="INSERT INTO referral_tree... " />
+            <marker date="1496764134769" expanded="true" signature="6010:6075" ph="SELECT l1 FR... referral_tree" />
+            <marker date="1496764134769" expanded="true" signature="6679:6743" ph="SELECT * FRO... referral_tree" />
+            <marker date="1496764134769" expanded="true" signature="7797:7849" ph="SELECT * FRO... referral_tree" />
+            <marker date="1496764134769" expanded="true" signature="7797:7861" ph="SELECT * FRO... referral_tree" />
+            <marker date="1496764134769" expanded="true" signature="8982:9122" ph="UPDATE refer... " />
+            <marker date="1496764134769" expanded="true" signature="10026:10095" ph="INSERT INTO referral_code_counts... " />
+            <marker date="1496764134769" expanded="true" signature="10675:10757" ph="INSERT INTO referral_earnings... " />
+            <marker date="1496764134769" expanded="true" signature="11363:11430" ph="SELECT * FRO... referral_code_counts" />
+            <marker date="1496764134769" expanded="true" signature="12365:12405" ph="UPDATE refer... " />
+            <marker date="1496764134769" expanded="true" signature="12365:12414" ph="UPDATE refer... " />
+            <marker date="1496764134769" expanded="true" signature="12365:12486" ph="UPDATE refer... " />
+            <marker date="1496764134769" expanded="true" signature="13025:13054" ph="UPDATE refer... " />
+            <marker date="1496764134769" expanded="true" signature="13025:13069" ph="UPDATE refer... " />
+            <marker date="1496764134769" expanded="true" signature="13025:13151" ph="UPDATE refer... " />
+            <marker date="1496764134769" expanded="true" signature="13025:13168" ph="UPDATE refer... " />
+            <marker date="1496764134769" expanded="true" signature="13733:13918" ph="SELECT (l1Ea... referral_earnings" />
+            <marker date="1496764134769" expanded="true" signature="14518:14568" ph="SELECT refer... referral_earnings" />
+            <marker date="1496764134769" expanded="true" signature="15178:15301" ph="UPDATE refer... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pharmacy/add_stock.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-688">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hudutech/DBManager/ComplexQuery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#89#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hudutech/DBManager/DB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-676">
+          <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/ClinicalNoteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="139" column="22" lean-forward="false" selection-start-line="139" selection-start-column="22" selection-end-line="139" selection-end-column="22" />
+          <folding>
+            <marker date="1495061794000" expanded="true" signature="886:1853" ph="INSERT INTO clinical_notes... " />
+            <marker date="1495061794000" expanded="true" signature="3033:3426" ph="UPDATE clini... " />
+            <marker date="1495061794000" expanded="true" signature="4237:4276" ph="DELETE FROM " />
+            <marker date="1495061794000" expanded="true" signature="4691:4717" ph="DELETE FROM " />
+            <marker date="1495061794000" expanded="true" signature="5143:5198" ph="SELECT * FRO... clinical_notes" />
+            <marker date="1495061794000" expanded="true" signature="6372:6442" ph="SELECT * FRO... clinical_notes" />
+            <marker date="1495061794000" expanded="true" signature="7872:7942" ph="SELECT * FRO... clinical_notes" />
+            <marker date="1495061794000" expanded="true" signature="8522:8764" ph="SELECT DISTI... patients" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/PDO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/91dccbae-f6a3-4533-ab06-ed91c3ebf9b9/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.drug_prescriptions">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.patient_clinical_tests">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.patients">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.product_inventory">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.sales_receipts">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.sales">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.patient_visits">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/bd990b72-c1d4-4048-a60c-f4d96bff217e/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.drug_inventory">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/SalesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="571" column="63" lean-forward="false" selection-start-line="571" selection-start-column="63" selection-end-line="571" selection-end-column="63" />
+          <folding>
+            <marker date="1496824998283" expanded="true" signature="732:1905" ph="INSERT INTO sales... " />
+            <marker date="1496824998283" expanded="true" signature="2896:3486" ph="UPDATE sales... " />
+            <marker date="1496824998283" expanded="true" signature="4299:4329" ph="DELETE FROM " />
+            <marker date="1496824998283" expanded="true" signature="4709:4747" ph="SELECT t.* F... sales" />
+            <marker date="1496824998283" expanded="true" signature="5178:5216" ph="SELECT t.* F... sales" />
+            <marker date="1496824998283" expanded="true" signature="5717:5748" ph="SELECT t.* F... sales" />
+            <marker date="1496824998283" expanded="true" signature="6877:7856" ph="INSERT INTO cart... " />
+            <marker date="1496824998283" expanded="true" signature="8472:8711" ph="SELECT d.pro... drug_inventory" />
+            <marker date="1496824998283" expanded="true" signature="9108:9137" ph="DELETE FROM " />
+            <marker date="1496824998283" expanded="true" signature="9531:9598" ph="SELECT SUM(p... cart" />
+            <marker date="1496824998283" expanded="true" signature="10212:10326" ph="UPDATE drug_... " />
+            <marker date="1496824998283" expanded="true" signature="10734:11671" ph="INSERT INTO sales... " />
+            <marker date="1496824998283" expanded="true" signature="12667:12715" ph="SELECT t.* F... patients" />
+            <marker date="1496824998283" expanded="true" signature="13602:13725" ph="SELECT t.id clinical_notes" />
+            <marker date="1496824998283" expanded="true" signature="14249:14460" ph="SELECT SUM(t... sales" />
+            <marker date="1496824998283" expanded="true" signature="15091:15404" ph="SELECT SUM(c... clinical_tests" />
+            <marker date="1496824998283" expanded="true" signature="17243:17295" ph="UPDATE patie... " />
+            <marker date="1496824998283" expanded="true" signature="17976:19020" ph="INSERT INTO sales_receipts... " />
+            <marker date="1496824998283" expanded="true" signature="19868:20177" ph="SELECT ct.te... clinical_tests" />
+            <marker date="1496824998283" expanded="true" signature="20972:21325" ph="SELECT DISTI... drug_inventory" />
+            <marker date="1496824998283" expanded="true" signature="22816:23134" ph="SELECT DISTI... drug_inventory" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
