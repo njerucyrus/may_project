@@ -68,30 +68,3 @@ if($requestMethod=='POST') {
 
     }
 }
-if ($requestMethod == 'DELETE') {
-    if (!empty($data['id'])) {
-
-        $deleted= \Hudutech\Controller\ProductInventoryController::delete($data['id']);
-        if ($deleted) {
-            print_r(json_encode(array(
-                "statusCode" => 204,
-                "message" => "Patient Deleted!"
-            )));
-        } else {
-            print_r(json_encode(
-                array(
-                    "statusCode" => 500,
-                    "message" => "error occurred while registering the patient please try again later"
-                )
-            ));
-        }
-    }
-    else{
-        print_r(json_encode(
-            array(
-                "statusCode" => 500,
-                "message" => "Failed to fetch patient info!"
-            )
-        ));
-    }
-}

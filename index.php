@@ -29,9 +29,13 @@ endforeach;
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
 <?php
 include 'views/head.php';
 ?>
+<link rel="stylesheet" href="public/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
+<link rel="stylesheet" href="public/assets/js/rickshaw/rickshaw.min.css">
+</head>
 <body class="page-body skin-facebook">
 
 <div class="page-container">
@@ -41,7 +45,9 @@ include 'views/head.php';
     include 'views/right_menu.php';
     ?>
 
+
     <div class="main-content">
+
         <?php include 'views/header_menu.php' ?>
 
         <hr/>
@@ -52,11 +58,11 @@ include 'views/head.php';
 
                 <div class="tile-stats tile-red">
                     <div class="icon"><i class="entypo-users"></i></div>
-                    <div class="num" data-start="0" data-end="24" data-postfix=""
+                    <div class="num" data-start="0" data-end="<?php echo $visitCounter; ?>" data-postfix=""
                          data-duration="1500" data-delay="0">0
                     </div>
 
-                    <h3>Hours</h3>
+                    <h3>Patients Visits</h3>
                     <p>Providing best services</p>
                 </div>
 
@@ -128,36 +134,125 @@ include 'views/head.php';
     </div>
 
 
+    <div id="chat" class="fixed" data-current-user="Art Ramadani" data-order-by-status="1" data-max-chat-history="25">
+
+        <div class="chat-inner">
 
 
+            <h2 class="chat-header">
+                <a href="#" class="chat-close"><i class="entypo-cancel"></i></a>
+
+                <i class="entypo-users"></i>
+                Chat
+                <span class="badge badge-success is-hidden">0</span>
+            </h2>
+
+
+            <div class="chat-group" id="group-1">
+                <strong>Favorites</strong>
+
+                <a href="#" id="sample-user-123" data-conversation-history="#sample_history"><span
+                            class="user-status is-online"></span> <em>Catherine J. Watkins</em></a>
+                <a href="#"><span class="user-status is-online"></span> <em>Nicholas R. Walker</em></a>
+                <a href="#"><span class="user-status is-busy"></span> <em>Susan J. Best</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Brandon S. Young</em></a>
+                <a href="#"><span class="user-status is-idle"></span> <em>Fernando G. Olson</em></a>
+            </div>
+
+
+            <div class="chat-group" id="group-2">
+                <strong>Work</strong>
+
+                <a href="#"><span class="user-status is-offline"></span> <em>Robert J. Garcia</em></a>
+                <a href="#" data-conversation-history="#sample_history_2"><span class="user-status is-offline"></span>
+                    <em>Daniel A. Pena</em></a>
+                <a href="#"><span class="user-status is-busy"></span> <em>Rodrigo E. Lozano</em></a>
+            </div>
+
+
+            <div class="chat-group" id="group-3">
+                <strong>Social</strong>
+
+                <a href="#"><span class="user-status is-busy"></span> <em>Velma G. Pearson</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Margaret R. Dedmon</em></a>
+                <a href="#"><span class="user-status is-online"></span> <em>Kathleen M. Canales</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Tracy J. Rodriguez</em></a>
+            </div>
+
+        </div>
+
+        <!-- conversation template -->
+        <div class="chat-conversation">
+
+            <div class="conversation-header">
+                <a href="#" class="conversation-close"><i class="entypo-cancel"></i></a>
+
+                <span class="user-status"></span>
+                <span class="display-name"></span>
+                <small></small>
+            </div>
+
+            <ul class="conversation-body">
+            </ul>
+
+            <div class="chat-textarea">
+                <textarea class="form-control autogrow" placeholder="Type your message"></textarea>
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
 
 <!-- Imported styles on this page -->
-<link rel="stylesheet" href="public/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
-<link rel="stylesheet" href="public/assets/js/rickshaw/rickshaw.min.css">
 
-<!-- Bottom scripts (common) -->
+
+<!--<!-- Bottom scripts (common) -->-->
+<!--<script src="public/assets/js/gsap/TweenMax.min.js"></script>-->
+<!--<script src="public/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>-->
+<!--<script src="public/assets/js/jquery-3.2.0.slim.min.js"></script>-->
+<!--<script src="public/assets/js/bootstrap.js"></script>-->
+<!--<script src="public/assets/js/joinable.js"></script>-->
+<!--<script src="public/assets/js/resizeable.js"></script>-->
+<!--<script src="public/assets/js/neon-api.js"></script>-->
+<!--<script src="public/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>-->
+<!---->
+<!---->
+<!--<!-- Imported scripts on this page -->-->
+<!--<script src="public/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>-->
+<!--<script src="public/assets/js/jquery.sparkline.min.js"></script>-->
+<!--<script src="public/assets/js/rickshaw/vendor/d3.v3.js"></script>-->
+<!--<script src="public/assets/js/rickshaw/rickshaw.min.js"></script>-->
+<!--<script src="public/assets/js/raphael-min.js"></script>-->
+<!--<script src="public/assets/js/morris.min.js"></script>-->
+<!--<script src="public/assets/js/toastr.js"></script>-->
+<!--<script src="public/assets/js/neon-chat.js"></script>-->
+<!---->
+<!---->
+<!--<!-- JavaScripts initializations and stuff -->-->
+<!--<script src="public/assets/js/neon-custom.js"></script>-->
+<!---->
+<!---->
+<!--<!-- Demo Settings -->-->
+<!--<script src="public/assets/js/neon-demo.js"></script>-->
+
 <script src="public/assets/js/gsap/TweenMax.min.js"></script>
-<script src="public/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+
 <script src="public/assets/js/jquery-3.2.0.slim.min.js"></script>
+<script src="public/assets/js/jquery-1.11.3.min.js"></script>
+<script src="public/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
 <script src="public/assets/js/bootstrap.js"></script>
 <script src="public/assets/js/joinable.js"></script>
 <script src="public/assets/js/resizeable.js"></script>
 <script src="public/assets/js/neon-api.js"></script>
-<script src="public/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-
-
-<!-- Imported scripts on this page -->
-<script src="public/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
-<script src="public/assets/js/jquery.sparkline.min.js"></script>
-<script src="public/assets/js/rickshaw/vendor/d3.v3.js"></script>
-<script src="public/assets/js/rickshaw/rickshaw.min.js"></script>
-<script src="public/assets/js/raphael-min.js"></script>
-<script src="public/assets/js/morris.min.js"></script>
-<script src="public/assets/js/toastr.js"></script>
+<script src="public/assets/js/neon-login.js"></script>
+<script src="public/assets/js/jquery-1.11.3.min.js"></script
+        <!-- Imported scripts on this page -->
+<script src="public/assets/js/bootstrap-switch.min.js"></script>
 <script src="public/assets/js/neon-chat.js"></script>
+<script src="public/assets/js/paginator/jquery.paginate.min.js"></script>
 
 
 <!-- JavaScripts initializations and stuff -->
@@ -166,6 +261,7 @@ include 'views/head.php';
 
 <!-- Demo Settings -->
 <script src="public/assets/js/neon-demo.js"></script>
+
 
 </body>
 </html>

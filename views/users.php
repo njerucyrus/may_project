@@ -49,8 +49,19 @@ $users = \Hudutech\Controller\UserController::all();
                                         <td><?php echo $user['userLevel'];?></td>
                                         <td>
                                             <a href="change_password.php?username=<?php echo urlencode($user['username'])?>" class="btn btn-default"><i class="entypo-lock-open"></i>Change Password</a>
+                                            <?php
+                                            if ($user['isActive'] == 1){
+                                                ?>
+                                            <button class="btn btn-info" onclick="showConfirmModal('<?php echo $user['id']?>', '<?php echo $user['username']?>')"><i class="entypo-lock"></i> Deactivate Account</button>
+                                           <?php
+                                            } elseif($user['isActive'] == 0){
+                                                ?>
+                                            <button class="btn btn-success" onclick="showConfirmModal('<?php echo $user['id']?>', '<?php echo $user['username']?>')"><i class="entypo-lock"></i> Activate Account</button>
+                                           <?php
+                                            }
+                                            ?>
 
-<!--                                         <button class="btn btn-danger btn-red">Delete Account</button>-->
+                                            <button class="btn btn-danger btn-red">Delete Account</button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

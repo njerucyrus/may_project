@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /**
  * Created by PhpStorm.
  * User: hudutech
@@ -19,7 +19,7 @@ $counter = 1;
 <head>
 
 
-
+    <
 
     <?php include 'head_views.php' ?>
     <title>Add Product</title>
@@ -218,8 +218,7 @@ $counter = 1;
 
 
                                 <h3>Product Inventory</h3>
-                                <div id="feedback">
-                                </div>
+
                             </div>
 
 
@@ -250,7 +249,6 @@ $counter = 1;
                                             <th>Sale Price</th>
                                             <th>Purchase Date</th>
                                             <th>Expiry Date</th>
-                                            <th>Action</th>
 
                                         </tr>
                                         </thead>
@@ -269,10 +267,6 @@ $counter = 1;
                                                 <td><?php echo $product['salePrice'] ?></td>
                                                 <td><?php echo $product['purchaseDate'] ?></td>
                                                 <td><?php echo $product['expiryDate'] ?></td>
-                                                <td><button class="btn btn-danger  btn-red"
-                                                            onclick="deleteProduct('<?php echo $product['id'] ?>')"><i
-                                                                class="entypo-cancel"></i>Delete
-                                                    </button></td>
 
                                             </tr>
                                         <?php endforeach; ?>
@@ -299,35 +293,9 @@ $counter = 1;
     </div>
 </div>
 
-
-
-<!-- Modal 4 (Confirm)-->
-<div class="modal" id="confirmDeleteModal" data-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h4 class="modal-title" id="confirmTitle">Confirm Action</h4>
-                <div id="confirmFeedback">
-
-                </div>
-            </div>
-
-            <div class="modal-body">
-                <p style="font-size: 16px;"> Are you sure you want to delete product?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id='btnConfirmDelete' class="btn btn-info">Continue</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--end-->
 <?php include 'footer_views.php'; ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
-
 
 <!-- Imported scripts on this page -->
 
@@ -391,43 +359,6 @@ $counter = 1;
             }
         )
 
-    }
-    function deleteProduct(id) {
-        $('#confirmTitle').text('Delete Product');
-        $('#confirmDeleteModal').modal('show');
-        var url = 'record_product_endpoint.php';
-        $('#btnConfirmDelete').on('click', function (e) {
-            e.preventDefault;
-            $.ajax(
-                {
-                    type: 'DELETE',
-                    url: url,
-                    data: JSON.stringify({'id': id}),
-                    dataType: 'json',
-                    contentType: 'application/json; charset=utf-8',
-                    success: function (response) {
-                        if (response.statusCode == 204) {
-                            $('#confirmFeedback').removeClass('alert alert-danger')
-                                .addClass('alert alert-success')
-                                .text(response.message);
-                            setTimeout(function () {
-                                location.reload();
-                            }, 1000);
-                        }
-                        if (response.statusCode == 500) {
-                            $('#confirmFeedback').removeClass('alert alert-success')
-                                .html('<div class="alert alert-danger alert-dismissable">' +
-                                    '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
-                                    '<strong>Error! </strong> ' + response.message + '</div>')
-
-                        }
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                }
-            )
-        });
     }
 
 

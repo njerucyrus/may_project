@@ -191,7 +191,7 @@ if(!empty($_GET['status'])){
         </div>
     </div>
 </div>
-
+</div>
 <div class="modal fade" id="patientModal">
     <div class="modal-dialog">
         <div class="modal-content">

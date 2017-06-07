@@ -11,7 +11,7 @@
     <!-- Profile Info and Notifications -->
     <div class="col-offset-3 col-md-6 col-sm-8  ">
 
-        <H1>I-CLINIC</H1>
+        <H1>SugarBaker Memorial Dispensary</H1>
 
     </div>
 

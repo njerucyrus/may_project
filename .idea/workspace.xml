@@ -165,64 +165,80 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SalesController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SalesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/SalesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="571" column="63" lean-forward="false" selection-start-line="571" selection-start-column="63" selection-end-line="571" selection-end-column="63" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1496824998283" expanded="true" signature="732:1905" ph="INSERT INTO sales... " />
-                <marker date="1496824998283" expanded="true" signature="2896:3486" ph="UPDATE sales... " />
-                <marker date="1496824998283" expanded="true" signature="4299:4329" ph="DELETE FROM " />
-                <marker date="1496824998283" expanded="true" signature="4709:4747" ph="SELECT t.* F... sales" />
-                <marker date="1496824998283" expanded="true" signature="5178:5216" ph="SELECT t.* F... sales" />
-                <marker date="1496824998283" expanded="true" signature="5717:5748" ph="SELECT t.* F... sales" />
-                <marker date="1496824998283" expanded="true" signature="6877:7856" ph="INSERT INTO cart... " />
-                <marker date="1496824998283" expanded="true" signature="8472:8711" ph="SELECT d.pro... drug_inventory" />
-                <marker date="1496824998283" expanded="true" signature="9108:9137" ph="DELETE FROM " />
-                <marker date="1496824998283" expanded="true" signature="9531:9598" ph="SELECT SUM(p... cart" />
-                <marker date="1496824998283" expanded="true" signature="10212:10326" ph="UPDATE drug_... " />
-                <marker date="1496824998283" expanded="true" signature="10734:11671" ph="INSERT INTO sales... " />
-                <marker date="1496824998283" expanded="true" signature="12667:12715" ph="SELECT t.* F... patients" />
-                <marker date="1496824998283" expanded="true" signature="13602:13725" ph="SELECT t.id clinical_notes" />
-                <marker date="1496824998283" expanded="true" signature="14249:14460" ph="SELECT SUM(t... sales" />
-                <marker date="1496824998283" expanded="true" signature="15091:15404" ph="SELECT SUM(c... clinical_tests" />
-                <marker date="1496824998283" expanded="true" signature="17243:17295" ph="UPDATE patie... " />
-                <marker date="1496824998283" expanded="true" signature="17976:19020" ph="INSERT INTO sales_receipts... " />
-                <marker date="1496824998283" expanded="true" signature="19868:20177" ph="SELECT ct.te... clinical_tests" />
-                <marker date="1496824998283" expanded="true" signature="20972:21325" ph="SELECT DISTI... drug_inventory" />
-                <marker date="1496824998283" expanded="true" signature="22816:23134" ph="SELECT DISTI... drug_inventory" />
+                <element signature="e#6#90#0#PHP" expanded="true" />
+                <element signature="e#125#166#0#PHP" expanded="true" />
+                <marker date="1496827855751" expanded="true" signature="732:1905" ph="INSERT INTO sales... " />
+                <marker date="1496827855751" expanded="true" signature="2896:3486" ph="UPDATE sales... " />
+                <marker date="1496827855751" expanded="true" signature="4299:4329" ph="DELETE FROM " />
+                <marker date="1496827855751" expanded="true" signature="4709:4747" ph="SELECT t.* F... sales" />
+                <marker date="1496827855751" expanded="true" signature="5178:5216" ph="SELECT t.* F... sales" />
+                <marker date="1496827855751" expanded="true" signature="5717:5748" ph="SELECT t.* F... sales" />
+                <marker date="1496827855751" expanded="true" signature="6877:7856" ph="INSERT INTO cart... " />
+                <marker date="1496827855751" expanded="true" signature="8472:8711" ph="SELECT d.pro... drug_inventory" />
+                <marker date="1496827855751" expanded="true" signature="9108:9137" ph="DELETE FROM " />
+                <marker date="1496827855751" expanded="true" signature="9531:9598" ph="SELECT SUM(p... cart" />
+                <marker date="1496827855751" expanded="true" signature="10212:10326" ph="UPDATE drug_... " />
+                <marker date="1496827855751" expanded="true" signature="10734:11671" ph="INSERT INTO sales... " />
+                <marker date="1496827855751" expanded="true" signature="12667:12715" ph="SELECT t.* F... patients" />
+                <marker date="1496827855751" expanded="true" signature="13602:13725" ph="SELECT t.id clinical_notes" />
+                <marker date="1496827855751" expanded="true" signature="14249:14460" ph="SELECT SUM(t... sales" />
+                <marker date="1496827855751" expanded="true" signature="15091:15404" ph="SELECT SUM(c... clinical_tests" />
+                <marker date="1496827855751" expanded="true" signature="17243:17295" ph="UPDATE patie... " />
+                <marker date="1496827855751" expanded="true" signature="17976:19020" ph="INSERT INTO sales_receipts... " />
+                <marker date="1496827855751" expanded="true" signature="19868:20177" ph="SELECT ct.te... clinical_tests" />
+                <marker date="1496827855751" expanded="true" signature="20972:21325" ph="SELECT DISTI... drug_inventory" />
+                <marker date="1496827855751" expanded="true" signature="22816:23134" ph="SELECT DISTI... drug_inventory" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clinic_db.drug_prescriptions" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.drug_prescriptions">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/UserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6829">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#19#101#0#PHP" expanded="true" />
+                <element signature="e#135#175#0#PHP" expanded="true" />
+                <marker date="1496826135607" expanded="true" signature="756:2010" ph="INSERT INTO users... " />
+                <marker date="1496826135607" expanded="true" signature="3083:3786" ph="UPDATE users... " />
+                <marker date="1496826135607" expanded="true" signature="4597:4627" ph="DELETE FROM " />
+                <marker date="1496826135607" expanded="true" signature="5005:5022" ph="DELETE FROM " />
+                <marker date="1496826135607" expanded="true" signature="5359:5397" ph="SELECT t.* F... users" />
+                <marker date="1496826135607" expanded="true" signature="5826:5864" ph="SELECT t.* F... users" />
+                <marker date="1496826135607" expanded="true" signature="6358:6389" ph="SELECT t.* F... users" />
+                <marker date="1496826135607" expanded="true" signature="7376:8630" ph="INSERT INTO users... " />
+                <marker date="1496826135607" expanded="true" signature="9703:10406" ph="UPDATE users... " />
+                <marker date="1496826135607" expanded="true" signature="11217:11247" ph="DELETE FROM " />
+                <marker date="1496826135607" expanded="true" signature="11625:11642" ph="DELETE FROM " />
+                <marker date="1496826135607" expanded="true" signature="11979:12017" ph="SELECT t.* F... users" />
+                <marker date="1496826135607" expanded="true" signature="12446:12484" ph="SELECT t.* F... users" />
+                <marker date="1496826135607" expanded="true" signature="12978:13009" ph="SELECT t.* F... users" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clinic_db.patient_clinical_tests" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/24d6c2b/bd990b72-c1d4-4048-a60c-f4d96bff217e/clinic_db.patient_clinical_tests">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+      <file leaf-file-name="ProductInventoryController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/ProductInventoryController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3076">
+              <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+              <folding>
+                <marker date="1496827945291" expanded="true" signature="1014:2703" ph="INSERT INTO product_inventory... " />
+                <marker date="1496827945291" expanded="true" signature="4097:4944" ph="UPDATE produ... " />
+                <marker date="1496827945291" expanded="true" signature="5922:5964" ph="DELETE FROM " />
+                <marker date="1496827945291" expanded="true" signature="6344:6394" ph="SELECT t.* F... product_inventory" />
+                <marker date="1496827945291" expanded="true" signature="6820:6870" ph="SELECT t.* F... product_inventory" />
+                <marker date="1496827945291" expanded="true" signature="7376:7419" ph="SELECT t.* F... product_inventory" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -320,12 +336,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../hudutech_next" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../hudutech_next/views/includes/register_subjects.inc.php" />
         <option value="$PROJECT_DIR$/../hudutech_next/views/register_teacher.php" />
         <option value="$PROJECT_DIR$/../hudutech_next/views/includes/register_teacher.inc.php" />
         <option value="$PROJECT_DIR$/views/head.php" />
@@ -376,6 +391,7 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/91dccbae-f6a3-4533-ab06-ed91c3ebf9b9/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/bd990b72-c1d4-4048-a60c-f4d96bff217e/console.sql" />
         <option value="$PROJECT_DIR$/src/Hudutech/Controller/SalesController.php" />
+        <option value="$PROJECT_DIR$/src/Hudutech/Controller/ProductInventoryController.php" />
       </list>
     </option>
   </component>
@@ -628,12 +644,12 @@
       <workItem from="1496689541694" duration="5940000" />
       <workItem from="1496727400045" duration="6153000" />
       <workItem from="1496764000189" duration="5842000" />
-      <workItem from="1496815406483" duration="8157000" />
+      <workItem from="1496815406483" duration="9750000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="234524000" />
+    <option name="totallyTimeSpent" value="236117000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -645,18 +661,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.91346157" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16308671" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42402545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.4972156" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34775642" sideWeight="0.21002387" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17581543" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852563" sideWeight="0.7048528" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35897437" sideWeight="0.7899761" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09294872" sideWeight="0.7899761" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -699,7 +715,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Hudutech/Controller/ClinicalNoteController.php</url>
-          <line>35</line>
+          <line>36</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -708,20 +724,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../referral/src/App/AppInterface/BaseInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../referral/src/App/AppInterface/PaymentInterface.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_8.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-11693">
@@ -1068,7 +1070,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#89#0#PHP" expanded="false" />
+            <element signature="e#19#102#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1086,14 +1088,14 @@
         <state relative-caret-position="162">
           <caret line="139" column="22" lean-forward="false" selection-start-line="139" selection-start-column="22" selection-end-line="139" selection-end-column="22" />
           <folding>
-            <marker date="1495061794000" expanded="true" signature="886:1853" ph="INSERT INTO clinical_notes... " />
-            <marker date="1495061794000" expanded="true" signature="3033:3426" ph="UPDATE clini... " />
-            <marker date="1495061794000" expanded="true" signature="4237:4276" ph="DELETE FROM " />
-            <marker date="1495061794000" expanded="true" signature="4691:4717" ph="DELETE FROM " />
-            <marker date="1495061794000" expanded="true" signature="5143:5198" ph="SELECT * FRO... clinical_notes" />
-            <marker date="1495061794000" expanded="true" signature="6372:6442" ph="SELECT * FRO... clinical_notes" />
-            <marker date="1495061794000" expanded="true" signature="7872:7942" ph="SELECT * FRO... clinical_notes" />
-            <marker date="1495061794000" expanded="true" signature="8522:8764" ph="SELECT DISTI... patients" />
+            <marker date="1496826135611" expanded="true" signature="886:1853" ph="INSERT INTO clinical_notes... " />
+            <marker date="1496826135611" expanded="true" signature="3033:3426" ph="UPDATE clini... " />
+            <marker date="1496826135611" expanded="true" signature="4237:4276" ph="DELETE FROM " />
+            <marker date="1496826135611" expanded="true" signature="4691:4717" ph="DELETE FROM " />
+            <marker date="1496826135611" expanded="true" signature="5143:5198" ph="SELECT * FRO... clinical_notes" />
+            <marker date="1496826135611" expanded="true" signature="6372:6442" ph="SELECT * FRO... clinical_notes" />
+            <marker date="1496826135611" expanded="true" signature="7872:7942" ph="SELECT * FRO... clinical_notes" />
+            <marker date="1496826135611" expanded="true" signature="8522:8764" ph="SELECT DISTI... patients" />
           </folding>
         </state>
       </provider>
@@ -1226,32 +1228,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/ProductInventoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3076">
+          <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding>
+            <marker date="1496827945291" expanded="true" signature="1014:2703" ph="INSERT INTO product_inventory... " />
+            <marker date="1496827945291" expanded="true" signature="4097:4944" ph="UPDATE produ... " />
+            <marker date="1496827945291" expanded="true" signature="5922:5964" ph="DELETE FROM " />
+            <marker date="1496827945291" expanded="true" signature="6344:6394" ph="SELECT t.* F... product_inventory" />
+            <marker date="1496827945291" expanded="true" signature="6820:6870" ph="SELECT t.* F... product_inventory" />
+            <marker date="1496827945291" expanded="true" signature="7376:7419" ph="SELECT t.* F... product_inventory" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/SalesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="571" column="63" lean-forward="false" selection-start-line="571" selection-start-column="63" selection-end-line="571" selection-end-column="63" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1496824998283" expanded="true" signature="732:1905" ph="INSERT INTO sales... " />
-            <marker date="1496824998283" expanded="true" signature="2896:3486" ph="UPDATE sales... " />
-            <marker date="1496824998283" expanded="true" signature="4299:4329" ph="DELETE FROM " />
-            <marker date="1496824998283" expanded="true" signature="4709:4747" ph="SELECT t.* F... sales" />
-            <marker date="1496824998283" expanded="true" signature="5178:5216" ph="SELECT t.* F... sales" />
-            <marker date="1496824998283" expanded="true" signature="5717:5748" ph="SELECT t.* F... sales" />
-            <marker date="1496824998283" expanded="true" signature="6877:7856" ph="INSERT INTO cart... " />
-            <marker date="1496824998283" expanded="true" signature="8472:8711" ph="SELECT d.pro... drug_inventory" />
-            <marker date="1496824998283" expanded="true" signature="9108:9137" ph="DELETE FROM " />
-            <marker date="1496824998283" expanded="true" signature="9531:9598" ph="SELECT SUM(p... cart" />
-            <marker date="1496824998283" expanded="true" signature="10212:10326" ph="UPDATE drug_... " />
-            <marker date="1496824998283" expanded="true" signature="10734:11671" ph="INSERT INTO sales... " />
-            <marker date="1496824998283" expanded="true" signature="12667:12715" ph="SELECT t.* F... patients" />
-            <marker date="1496824998283" expanded="true" signature="13602:13725" ph="SELECT t.id clinical_notes" />
-            <marker date="1496824998283" expanded="true" signature="14249:14460" ph="SELECT SUM(t... sales" />
-            <marker date="1496824998283" expanded="true" signature="15091:15404" ph="SELECT SUM(c... clinical_tests" />
-            <marker date="1496824998283" expanded="true" signature="17243:17295" ph="UPDATE patie... " />
-            <marker date="1496824998283" expanded="true" signature="17976:19020" ph="INSERT INTO sales_receipts... " />
-            <marker date="1496824998283" expanded="true" signature="19868:20177" ph="SELECT ct.te... clinical_tests" />
-            <marker date="1496824998283" expanded="true" signature="20972:21325" ph="SELECT DISTI... drug_inventory" />
-            <marker date="1496824998283" expanded="true" signature="22816:23134" ph="SELECT DISTI... drug_inventory" />
+            <element signature="e#6#90#0#PHP" expanded="true" />
+            <element signature="e#125#166#0#PHP" expanded="true" />
+            <marker date="1496827855751" expanded="true" signature="732:1905" ph="INSERT INTO sales... " />
+            <marker date="1496827855751" expanded="true" signature="2896:3486" ph="UPDATE sales... " />
+            <marker date="1496827855751" expanded="true" signature="4299:4329" ph="DELETE FROM " />
+            <marker date="1496827855751" expanded="true" signature="4709:4747" ph="SELECT t.* F... sales" />
+            <marker date="1496827855751" expanded="true" signature="5178:5216" ph="SELECT t.* F... sales" />
+            <marker date="1496827855751" expanded="true" signature="5717:5748" ph="SELECT t.* F... sales" />
+            <marker date="1496827855751" expanded="true" signature="6877:7856" ph="INSERT INTO cart... " />
+            <marker date="1496827855751" expanded="true" signature="8472:8711" ph="SELECT d.pro... drug_inventory" />
+            <marker date="1496827855751" expanded="true" signature="9108:9137" ph="DELETE FROM " />
+            <marker date="1496827855751" expanded="true" signature="9531:9598" ph="SELECT SUM(p... cart" />
+            <marker date="1496827855751" expanded="true" signature="10212:10326" ph="UPDATE drug_... " />
+            <marker date="1496827855751" expanded="true" signature="10734:11671" ph="INSERT INTO sales... " />
+            <marker date="1496827855751" expanded="true" signature="12667:12715" ph="SELECT t.* F... patients" />
+            <marker date="1496827855751" expanded="true" signature="13602:13725" ph="SELECT t.id clinical_notes" />
+            <marker date="1496827855751" expanded="true" signature="14249:14460" ph="SELECT SUM(t... sales" />
+            <marker date="1496827855751" expanded="true" signature="15091:15404" ph="SELECT SUM(c... clinical_tests" />
+            <marker date="1496827855751" expanded="true" signature="17243:17295" ph="UPDATE patie... " />
+            <marker date="1496827855751" expanded="true" signature="17976:19020" ph="INSERT INTO sales_receipts... " />
+            <marker date="1496827855751" expanded="true" signature="19868:20177" ph="SELECT ct.te... clinical_tests" />
+            <marker date="1496827855751" expanded="true" signature="20972:21325" ph="SELECT DISTI... drug_inventory" />
+            <marker date="1496827855751" expanded="true" signature="22816:23134" ph="SELECT DISTI... drug_inventory" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6829">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#19#101#0#PHP" expanded="true" />
+            <element signature="e#135#175#0#PHP" expanded="true" />
+            <marker date="1496826135607" expanded="true" signature="756:2010" ph="INSERT INTO users... " />
+            <marker date="1496826135607" expanded="true" signature="3083:3786" ph="UPDATE users... " />
+            <marker date="1496826135607" expanded="true" signature="4597:4627" ph="DELETE FROM " />
+            <marker date="1496826135607" expanded="true" signature="5005:5022" ph="DELETE FROM " />
+            <marker date="1496826135607" expanded="true" signature="5359:5397" ph="SELECT t.* F... users" />
+            <marker date="1496826135607" expanded="true" signature="5826:5864" ph="SELECT t.* F... users" />
+            <marker date="1496826135607" expanded="true" signature="6358:6389" ph="SELECT t.* F... users" />
+            <marker date="1496826135607" expanded="true" signature="7376:8630" ph="INSERT INTO users... " />
+            <marker date="1496826135607" expanded="true" signature="9703:10406" ph="UPDATE users... " />
+            <marker date="1496826135607" expanded="true" signature="11217:11247" ph="DELETE FROM " />
+            <marker date="1496826135607" expanded="true" signature="11625:11642" ph="DELETE FROM " />
+            <marker date="1496826135607" expanded="true" signature="11979:12017" ph="SELECT t.* F... users" />
+            <marker date="1496826135607" expanded="true" signature="12446:12484" ph="SELECT t.* F... users" />
+            <marker date="1496826135607" expanded="true" signature="12978:13009" ph="SELECT t.* F... users" />
           </folding>
         </state>
       </provider>
