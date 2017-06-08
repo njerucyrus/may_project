@@ -393,11 +393,13 @@ class SalesController implements SalesInterface
             return null;
         }
     }
-    public static function testCost($patientId){
+
+    public static function testCost($patientId)
+    {
         $db = new DB();
         $conn = $db->connect();
-        try{
-            $stmt = $conn->prepare("SELECT SUM(ct.cost) as testCost FROM clinical_tests ct , patient_clinical_tests ppt
+        try {
+            $stmt = $conn->prepare("SELECT SUM(ct.cost) AS testCost FROM clinical_tests ct , patient_clinical_tests ppt
                                     INNER JOIN clinical_tests ctl ON ctl.id = ppt.testId WHERE ppt.testId=ct.id
                                     AND ppt.isPerformed=1 AND date(ppt.updatedAt) =CURDATE() AND patientId=:patientId");
 
@@ -408,7 +410,7 @@ class SalesController implements SalesInterface
                 $testCost = (float)$row['testCost'];
             }
             return $testCost;
-        }catch (\PDOException $exception) {
+        } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return 0;
         }
@@ -506,10 +508,11 @@ class SalesController implements SalesInterface
 
 
     // receipt details info
-    public static function getTestDetails($patientId){
+    public static function getTestDetails($patientId)
+    {
         $db = new DB();
         $conn = $db->connect();
-        try{
+        try {
             $stmt = $conn->prepare("SELECT ct.testName, ct.cost FROM clinical_tests ct , patient_clinical_tests ppt
                                     INNER JOIN clinical_tests ctl ON ctl.id = ppt.testId WHERE ppt.testId=ct.id
                                     AND ppt.isPerformed=1 AND date(ppt.updatedAt) =CURDATE() AND patientId=:patientId");
@@ -517,27 +520,28 @@ class SalesController implements SalesInterface
             $stmt->bindParam(":patientId", $patientId);
             if ($stmt->execute() && $stmt->rowCount() > 0) {
                 $details = array();
-                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
                     $details[] = array(
-                        "testName"=>$row['testName'],
-                        "cost"=>$row['cost']
+                        "testName" => $row['testName'],
+                        "cost" => $row['cost']
                     );
                 }
                 return $details;
-            }else{
+            } else {
                 return [];
             }
 
-        }catch (\PDOException $exception) {
+        } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return [];
         }
     }
 
-    public static function getDrugDetails($patientId, $receiptNo){
+    public static function getDrugDetails($patientId, $receiptNo)
+    {
         $db = new DB();
         $conn = $db->connect();
-        try{
+        try {
             $stmt = $conn->prepare("SELECT DISTINCT t.productName, s.qty, s.price FROM drug_inventory t, sales s
                                     INNER JOIN drug_inventory dl ON dl.id=s.inventoryId WHERE dl.id=s.inventoryId
                                     AND s.patientId=:patientId AND DATE(dl.datePurchased)=CURDATE() AND
@@ -545,17 +549,17 @@ class SalesController implements SalesInterface
             $stmt->bindParam(":patientId", $patientId);
             $stmt->bindParam(":receiptNo", $receiptNo);
             $details = array();
-            if($stmt->execute() && $stmt->rowCount() > 0){
-                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+            if ($stmt->execute() && $stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
                     $details[] = array(
-                        "productName"=>$row['productName'],
-                        "qty"=>$row['qty'],
-                        "price"=>$row['price']
+                        "productName" => $row['productName'],
+                        "qty" => $row['qty'],
+                        "price" => $row['price']
                     );
                 }
             }
             return $details;
-        }catch (\PDOException $e){
+        } catch (\PDOException $e) {
             echo $e->getMessage();
             return [];
         }
@@ -568,34 +572,125 @@ class SalesController implements SalesInterface
      * @return array
      *
      */
-    public static function getCheckoutDetails($patientId, $receiptNo){
+    public static function getCheckoutDetails($patientId, $receiptNo)
+    {
         $regFee = self::getPatientBill($patientId, $receiptNo);
         $checkoutDetails = array(
-            "drugs"=>self::getDrugDetails($patientId, $receiptNo),
-            "tests"=>self::getTestDetails($patientId),
-            "regFee"=>isset($regFee['regFee']) ? $regFee['regFee']: 0,
-            "consultationFee"=>self::getPatientBill($patientId, $receiptNo)['consultationFee'],
-            "totalCost"=>self::getPatientBill($patientId, $receiptNo)['totalCost']
+            "drugs" => self::getDrugDetails($patientId, $receiptNo),
+            "tests" => self::getTestDetails($patientId),
+            "regFee" => isset($regFee['regFee']) ? $regFee['regFee'] : 0,
+            "consultationFee" => self::getPatientBill($patientId, $receiptNo)['consultationFee'],
+            "totalCost" => self::getPatientBill($patientId, $receiptNo)['totalCost']
         );
         return $checkoutDetails;
     }
 
 
-
-    public static function showSales(){
+    public static function showSales()
+    {
         $db = new DB();
         $conn = $db->connect();
-        try{
+        try {
             $stmt = $conn->prepare("SELECT DISTINCT t.productName, s.receiptNo, s.price , s.qty ,s.datePurchased
                                     FROM drug_inventory t, sales s
                                     INNER JOIN drug_inventory dr ON s.inventoryId = dr.id
                                     WHERE s.inventoryId = dr.id ORDER BY s.receiptNo ");
-            return $stmt->execute() && $stmt->rowCount()>0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) :[];
-        } catch (\PDOException $exception){
+            return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC) : [];
+        } catch (\PDOException $exception) {
             echo $exception->getMessage();
             return [];
         }
     }
 
+    public static function todayLabTestEarning()
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT SUM(ct.cost) AS testCost FROM clinical_tests ct , patient_clinical_tests ppt
+                                    INNER JOIN clinical_tests ctl ON ctl.id = ppt.testId WHERE ppt.testId=ct.id
+                                    AND ppt.isPerformed=1 AND date(ppt.updatedAt)=CURDATE()");
+            $testCost = 0;
+            if ($stmt->execute() && $stmt->rowCount() == 1) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                $testCost = (float)$row['testCost'];
+            }
+            return $testCost;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return 0;
+        }
+    }
+
+    public static function todayDrugSales()
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT SUM(t.price) AS totalPrice FROM sales t
+                                    WHERE date(t.datePurchased)=CURDATE()");
+            $total = 0;
+            if ($stmt->execute() && $stmt->rowCount() == 1) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                $total = (float)$row['totalPrice'];
+            }
+            return $total;
+        } catch (\PDOException $exception) {
+            echo $exception->getMessage();
+            return 0;
+        }
+    }
+
+    public static function todayRegFee()
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT SUM(t.regFee) AS total FROM sales_receipts t WHERE date(t.datePaid)=CURDATE()");
+            $total = 0;
+            if ($stmt->execute() && $stmt->rowCount() == 1) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                $total = (float)$row['total'];
+            }
+            return $total;
+        } catch (\PDOException $e) {
+            print $e->getMessage();
+            return 0;
+        }
+    }
+
+    public static function todayConsultationFee()
+    {
+        $db = new DB();
+        $conn = $db->connect();
+        try {
+            $stmt = $conn->prepare("SELECT SUM(t.consultationFee) AS total FROM sales_receipts t WHERE date(t.datePaid)=CURDATE()");
+            $total = 0;
+            if ($stmt->execute() && $stmt->rowCount() == 1) {
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+                $total = (float)$row['total'];
+            }
+            return $total;
+        } catch (\PDOException $e) {
+            print $e->getMessage();
+            return 0;
+        }
+    }
+
+    public static function todaySales()
+    {
+        $drugs = self::todayDrugSales();
+        $reg = self::todayRegFee();
+        $consul = self::todayConsultationFee();
+        $test = self::todayLabTestEarning();
+        $aggr = (float)($drugs + $reg + $consul + $test);
+        return [
+            "drugSales" => $drugs,
+            "regFeeTotal" => $reg,
+            "consultationTotal" => $consul,
+            "labTestTotal" => $test,
+            "totalSales" => $aggr
+        ];
+    }
 
 }
