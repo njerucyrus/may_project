@@ -115,6 +115,7 @@ class PatientVisitController implements PatientVisitInterface
         $db = new DB();
         $conn = $db->connect();
         try {
+
             $stmt = $conn->prepare("UPDATE patient_visits SET `status`='left' WHERE patientId=:patientId AND date(visitDate)=CURDATE()
                                     ;UPDATE patients SET inQueue=0 WHERE id=:patientId");
             $stmt->bindParam(":patientId", $patientId);

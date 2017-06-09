@@ -292,6 +292,24 @@ class PatientController implements PatientInterface
         }
     }
 
+    public static function searchNotInQueue($text){
+        $db = new DB();
+        $conn = $db->connect();
+        try{
+           $stmt = $conn->prepare("SELECT * FROM patients WHERE inQueue=0 AND surName LIKE '%{$text}%'
+                                  OR patientNo LIKE '%{$text}%' OR phoneNumber LIKE '%{$text}%' OR 
+                                  idNo  LIKE '%{$text}%' OR location LIKE '%{$text}%' ");
+           $results = [];
+           if($stmt->execute() && $stmt->rowCount()){
+               $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+           }
+           return $results;
+        } catch (\PDOException $e){
+            print $e->getMessage();
+            return [];
+        }
+    }
+
     public static function getPatientId($patientNo)
     {
         $db = new DB();
