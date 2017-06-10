@@ -40,7 +40,7 @@
 
                     <div id="results">
                         <div class=" table-responsive container-fluid">
-                            <table class="table table-bordered table-striped" id="resultsTable">
+                            <table class="table table-bordered table-striped">
                                 <thead>
                                 <th>Patient Number</th>
                                 <th>Name</th>
@@ -48,7 +48,7 @@
                                 <td>Age</td>
                                 <td>Action</td>
                                 </thead>
-                                <tbody>
+                                <tbody id="resultsTable">
 
                                 </tbody>
                             </table>
@@ -85,13 +85,28 @@ function search() {
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8;',
                 success: function (response) {
-                    console.log(response);
+                    //console.log(response);
                     if(response.statusCode == 200){
                         var data = response['data'];
+                        var row = '';
                         for(var i=0; i<data.length; i++){
-                            console.log(data[i]);
+                           // console.log(data[i]['patientNo']);
+                            row +='<tr>' +
+                                '<td>'+data[i]['patientNo']+'</td>'+
+                                '<td>'+data[i]['surName']+'</td>'+
+                                '<td>'+data[i]['location']+'</td>'+
+                                '<td>'+data[i]['age']+'</td>'+
+                                '<td><button class="btn btn-primary btn-blue">Add To VisitList</button></td>'+
+                                '</tr>';
                         }
+
+                        $('#results').show();
+                        $('#resultsTable').html(row);
+                        console.log(row);
+                    } else{
+                        $('#results').hide();
                     }
+
 
                 },
                 error: function (e) {
