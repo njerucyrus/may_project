@@ -56,42 +56,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SalesController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/SalesController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14406">
-              <caret line="693" column="5" lean-forward="false" selection-start-line="693" selection-start-column="5" selection-end-line="693" selection-end-column="5" />
-              <folding>
-                <marker date="1496947910581" expanded="true" signature="732:1905" ph="INSERT INTO sales... " />
-                <marker date="1496947910581" expanded="true" signature="2896:3486" ph="UPDATE sales... " />
-                <marker date="1496947910581" expanded="true" signature="4299:4329" ph="DELETE FROM " />
-                <marker date="1496947910581" expanded="true" signature="4709:4747" ph="SELECT t.* F... sales" />
-                <marker date="1496947910581" expanded="true" signature="5178:5216" ph="SELECT t.* F... sales" />
-                <marker date="1496947910581" expanded="true" signature="5717:5748" ph="SELECT t.* F... sales" />
-                <marker date="1496947910581" expanded="true" signature="6877:7856" ph="INSERT INTO cart... " />
-                <marker date="1496947910581" expanded="true" signature="8472:8711" ph="SELECT d.pro... drug_inventory" />
-                <marker date="1496947910581" expanded="true" signature="9108:9137" ph="DELETE FROM " />
-                <marker date="1496947910581" expanded="true" signature="9531:9598" ph="SELECT SUM(p... cart" />
-                <marker date="1496947910581" expanded="true" signature="10212:10326" ph="UPDATE drug_... " />
-                <marker date="1496947910581" expanded="true" signature="10734:11671" ph="INSERT INTO sales... " />
-                <marker date="1496947910581" expanded="true" signature="12667:12715" ph="SELECT t.* F... patients" />
-                <marker date="1496947910581" expanded="true" signature="13602:13725" ph="SELECT t.id clinical_notes" />
-                <marker date="1496947910581" expanded="true" signature="14249:14460" ph="SELECT SUM(t... sales" />
-                <marker date="1496947910581" expanded="true" signature="15098:15411" ph="SELECT SUM(c... clinical_tests" />
-                <marker date="1496947910581" expanded="true" signature="17251:17303" ph="UPDATE patie... " />
-                <marker date="1496947910581" expanded="true" signature="17984:19028" ph="INSERT INTO sales_receipts... " />
-                <marker date="1496947910581" expanded="true" signature="19882:20191" ph="SELECT ct.te... clinical_tests" />
-                <marker date="1496947910581" expanded="true" signature="21000:21353" ph="SELECT DISTI... drug_inventory" />
-                <marker date="1496947910581" expanded="true" signature="22876:23194" ph="SELECT DISTI... drug_inventory" />
-                <marker date="1496947910581" expanded="true" signature="23592:23879" ph="SELECT SUM(c... clinical_tests" />
-                <marker date="1496947910581" expanded="true" signature="24408:24528" ph="SELECT SUM(t... sales" />
-                <marker date="1496947910581" expanded="true" signature="25047:25131" ph="SELECT SUM(t... sales_receipts" />
-                <marker date="1496947910581" expanded="true" signature="25639:25732" ph="SELECT SUM(t... sales_receipts" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="consultation.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/consultation.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -108,8 +72,8 @@
       <file leaf-file-name="patient_visit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/patient_visit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="62" lean-forward="false" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
+            <state relative-caret-position="-247">
+              <caret line="182" column="0" lean-forward="true" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
               <folding>
                 <marker date="1496918468886" expanded="true" signature="12301:12308" ph="×" />
                 <marker date="1496918468886" expanded="true" signature="13939:13946" ph="×" />
@@ -118,13 +82,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="patient_visit_endpoint.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/patient_visit_endpoint.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-163">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#6#90#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="new_patient_visit.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/new_patient_visit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="106" column="44" lean-forward="false" selection-start-line="106" selection-start-column="44" selection-end-line="106" selection-end-column="44" />
+            <state relative-caret-position="358">
+              <caret line="121" column="44" lean-forward="true" selection-start-line="121" selection-start-column="44" selection-end-line="121" selection-end-column="44" />
               <folding>
                 <element signature="e#6#88#0#PHP" expanded="true" />
+                <marker date="1497129760862" expanded="true" signature="6554:6561" ph="×" />
               </folding>
             </state>
           </provider>
@@ -145,8 +122,8 @@
       <file leaf-file-name="new_patient_visit_endpoint.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/new_patient_visit_endpoint.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="11" column="85" lean-forward="false" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
+            <state relative-caret-position="21">
+              <caret line="11" column="68" lean-forward="false" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -189,28 +166,29 @@
       <file leaf-file-name="PatientController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/PatientController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+            <state relative-caret-position="-1448">
+              <caret line="261" column="22" lean-forward="true" selection-start-line="261" selection-start-column="22" selection-end-line="261" selection-end-column="22" />
               <folding>
-                <element signature="e#6#89#0#PHP" expanded="false" />
-                <marker date="1496988418145" expanded="true" signature="1036:3048" ph="INSERT INTO patients... " />
-                <marker date="1496988418145" expanded="true" signature="4051:5168" ph="INSERT INTO patients... " />
-                <marker date="1496988418145" expanded="true" signature="6607:7606" ph="UPDATE patie... " />
-                <marker date="1496988418145" expanded="true" signature="8651:8684" ph="DELETE FROM " />
-                <marker date="1496988418145" expanded="true" signature="9064:9084" ph="DELETE FROM " />
-                <marker date="1496988418145" expanded="true" signature="9421:9456" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="9887:9922" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="10425:10455" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="10847:10889" ph="UPDATE patie... " />
-                <marker date="1496988418145" expanded="true" signature="11309:11347" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="11740:11796" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="11740:11805" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="11740:11903" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="11740:11947" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="11740:11976" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="11740:11993" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="12458:12507" ph="SELECT * FRO... patients" />
-                <marker date="1496988418145" expanded="true" signature="12934:13210" ph="SELECT DISTI... patients" />
+                <element signature="e#124#167#0#PHP" expanded="true" />
+                <marker date="1497127390350" expanded="true" signature="1036:3048" ph="INSERT INTO patients... " />
+                <marker date="1497127390350" expanded="true" signature="4051:5168" ph="INSERT INTO patients... " />
+                <marker date="1497127390350" expanded="true" signature="6607:7606" ph="UPDATE patie... " />
+                <marker date="1497127390350" expanded="true" signature="8651:8684" ph="DELETE FROM " />
+                <marker date="1497127390350" expanded="true" signature="9064:9084" ph="DELETE FROM " />
+                <marker date="1497127390350" expanded="true" signature="9421:9456" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="9887:9922" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="10425:10455" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="10847:10889" ph="UPDATE patie... " />
+                <marker date="1497127390350" expanded="true" signature="11309:11347" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="11740:11796" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="11740:11805" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="11740:11903" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="11740:11947" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="11740:11976" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="11740:11993" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="11740:12002" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="12466:12515" ph="SELECT * FRO... patients" />
+                <marker date="1497127390350" expanded="true" signature="12942:13218" ph="SELECT DISTI... patients" />
               </folding>
             </state>
           </provider>
@@ -298,9 +276,9 @@
         <option value="$PROJECT_DIR$/src/Hudutech/Controller/ProductInventoryController.php" />
         <option value="$PROJECT_DIR$/src/Hudutech/Controller/SalesController.php" />
         <option value="$PROJECT_DIR$/src/Hudutech/Controller/PatientVisitController.php" />
-        <option value="$PROJECT_DIR$/src/Hudutech/Controller/PatientController.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/7168beee-f994-41c6-916f-55e569d82c36/console.sql" />
         <option value="$PROJECT_DIR$/views/new_patient_visit_endpoint.php" />
+        <option value="$PROJECT_DIR$/src/Hudutech/Controller/PatientController.php" />
         <option value="$PROJECT_DIR$/views/new_patient_visit.php" />
       </list>
     </option>
@@ -486,12 +464,12 @@
       <workItem from="1496918711250" duration="155000" />
       <workItem from="1496943812094" duration="3367000" />
       <workItem from="1496983410105" duration="11784000" />
-      <workItem from="1497124788782" duration="1887000" />
+      <workItem from="1497124788782" duration="5031000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="253310000" />
+    <option name="totallyTimeSpent" value="256454000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -506,13 +484,13 @@
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.042959426" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2935561" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.4972156" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34775642" sideWeight="0.21002387" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21002387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21002387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32852563" sideWeight="0.7048528" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17628205" sideWeight="0.7899761" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11057692" sideWeight="0.7899761" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -566,13 +544,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../referral/vendor/composer/autoload_classmap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-59">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/24d6c2b/7a6e7260-1b0f-4536-b46a-1e358b6ed127/referral_db.referral_tree" />
     <entry file="file://$PROJECT_DIR$/../referral/src/App/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -713,6 +684,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-676">
           <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -728,6 +700,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -832,17 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/patient_visit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="62" lean-forward="false" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
-          <folding>
-            <marker date="1496918468886" expanded="true" signature="12301:12308" ph="×" />
-            <marker date="1496918468886" expanded="true" signature="13939:13946" ph="×" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Hudutech/DBManager/ComplexQuery.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
@@ -883,34 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/PatientController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding>
-            <element signature="e#6#89#0#PHP" expanded="false" />
-            <marker date="1496988418145" expanded="true" signature="1036:3048" ph="INSERT INTO patients... " />
-            <marker date="1496988418145" expanded="true" signature="4051:5168" ph="INSERT INTO patients... " />
-            <marker date="1496988418145" expanded="true" signature="6607:7606" ph="UPDATE patie... " />
-            <marker date="1496988418145" expanded="true" signature="8651:8684" ph="DELETE FROM " />
-            <marker date="1496988418145" expanded="true" signature="9064:9084" ph="DELETE FROM " />
-            <marker date="1496988418145" expanded="true" signature="9421:9456" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="9887:9922" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="10425:10455" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="10847:10889" ph="UPDATE patie... " />
-            <marker date="1496988418145" expanded="true" signature="11309:11347" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="11740:11796" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="11740:11805" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="11740:11903" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="11740:11947" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="11740:11976" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="11740:11993" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="12458:12507" ph="SELECT * FRO... patients" />
-            <marker date="1496988418145" expanded="true" signature="12934:13210" ph="SELECT DISTI... patients" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7168beee-f994-41c6-916f-55e569d82c36/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -928,20 +862,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hudutech/Controller/PatientController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1448">
+          <caret line="261" column="22" lean-forward="true" selection-start-line="261" selection-start-column="22" selection-end-line="261" selection-end-column="22" />
+          <folding>
+            <element signature="e#124#167#0#PHP" expanded="true" />
+            <marker date="1497127390350" expanded="true" signature="1036:3048" ph="INSERT INTO patients... " />
+            <marker date="1497127390350" expanded="true" signature="4051:5168" ph="INSERT INTO patients... " />
+            <marker date="1497127390350" expanded="true" signature="6607:7606" ph="UPDATE patie... " />
+            <marker date="1497127390350" expanded="true" signature="8651:8684" ph="DELETE FROM " />
+            <marker date="1497127390350" expanded="true" signature="9064:9084" ph="DELETE FROM " />
+            <marker date="1497127390350" expanded="true" signature="9421:9456" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="9887:9922" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="10425:10455" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="10847:10889" ph="UPDATE patie... " />
+            <marker date="1497127390350" expanded="true" signature="11309:11347" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="11740:11796" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="11740:11805" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="11740:11903" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="11740:11947" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="11740:11976" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="11740:11993" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="11740:12002" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="12466:12515" ph="SELECT * FRO... patients" />
+            <marker date="1497127390350" expanded="true" signature="12942:13218" ph="SELECT DISTI... patients" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/new_patient_visit_endpoint.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="11" column="85" lean-forward="false" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
+        <state relative-caret-position="21">
+          <caret line="11" column="68" lean-forward="false" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/patient_visit_endpoint.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-163">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/patient_visit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-247">
+          <caret line="182" column="0" lean-forward="true" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+          <folding>
+            <marker date="1496918468886" expanded="true" signature="12301:12308" ph="×" />
+            <marker date="1496918468886" expanded="true" signature="13939:13946" ph="×" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/new_patient_visit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="106" column="44" lean-forward="false" selection-start-line="106" selection-start-column="44" selection-end-line="106" selection-end-column="44" />
+        <state relative-caret-position="358">
+          <caret line="121" column="44" lean-forward="true" selection-start-line="121" selection-start-column="44" selection-end-line="121" selection-end-column="44" />
           <folding>
             <element signature="e#6#88#0#PHP" expanded="true" />
+            <marker date="1497129760862" expanded="true" signature="6554:6561" ph="×" />
           </folding>
         </state>
       </provider>

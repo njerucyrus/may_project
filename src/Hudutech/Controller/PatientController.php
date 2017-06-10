@@ -298,7 +298,7 @@ class PatientController implements PatientInterface
         try{
            $stmt = $conn->prepare("SELECT * FROM patients WHERE inQueue=0 AND surName LIKE '%{$text}%'
                                   OR patientNo LIKE '%{$text}%' OR phoneNumber LIKE '%{$text}%' OR 
-                                  idNo  LIKE '%{$text}%' OR location LIKE '%{$text}%' ");
+                                  idNo  LIKE '%{$text}%' OR location LIKE '%{$text}%' LIMIT 25");
            $results = [];
            if($stmt->execute() && $stmt->rowCount()){
                $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);

@@ -31,7 +31,7 @@
                                         <input type="text" class="form-control"
                                                placeholder="Search Patient by name, patient number, location, id number or phone number..."
                                                style="height: 45px;border: #1dcaff; border-style:solid; font-size: 16px;"
-                                       id="searchText" >
+                                               id="searchText">
                                     </form>
                                 </fieldset>
                             </div>
@@ -60,63 +60,117 @@
     </div>
 </div>
 
+<!-- Modal 4 (Confirm)-->
+<div class="modal fade" id="confirm-addVisit" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Confirm Action</h4>
+                <div id="confirmFeedback">
+
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <p style="font-size: 16px;"> Click Continue to add the patient to visit list.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id='btn-confirmAdd' class="btn btn-info">Continue</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end-->
+
 <?php include "footer_views.php"; ?>
 <script src="../public/assets/js/jquery-1.11.3.min.js"></script>
 <script src="../public/assets/js/bootstrap.min.js"></script>
 <script src="../public/assets/js/paginator/jquery.paginate.min.js"></script>
 <script>
     $(document).ready(function (e) {
-      e.preventDefault;
-      $('#results').hide();
-      search()
+        e.preventDefault;
+        $('#results').hide();
+        search()
     });
 </script>
 <script>
-function search() {
-    $('#searchText').on('keyup', function () {
+    function search() {
+        $('#searchText').on('keyup', function (e) {
+            e.preventDefault;
+            var text = $(this).val();
+            var url = 'new_patient_visit_endpoint.php?q=' + text;
+            $.ajax(
+                {
+                    type: 'GET',
+                    url: url,
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8;',
+                    success: function (response) {
+                        //console.log(response);
+                        if (response.statusCode == 200) {
+                            var data = response['data'];
+                            var row = '';
+                            for (var i = 0; i < data.length; i++) {
+                                row += '<tr>' +
+                                    '<td>' + data[i]['patientNo'] + '</td>' +
+                                    '<td>' + data[i]['surName'] + '</td>' +
+                                    '<td>' + data[i]['location'] + '</td>' +
+                                    '<td>' + data[i]['age'] + '</td>' +
+                                    '<td><button class="btn btn-primary btn-blue btn-block" onclick="addToVisitList('+data[i]['id']+')">Add To VisitList</button></td>' +
+                                    '</tr>';
+                            }
 
-
-        var text =$(this).val();
-        var url = 'new_patient_visit_endpoint.php?q='+text;
-        $.ajax(
-            {
-                type: 'GET',
-                url: url,
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8;',
-                success: function (response) {
-                    //console.log(response);
-                    if(response.statusCode == 200){
-                        var data = response['data'];
-                        var row = '';
-                        for(var i=0; i<data.length; i++){
-                           // console.log(data[i]['patientNo']);
-                            row +='<tr>' +
-                                '<td>'+data[i]['patientNo']+'</td>'+
-                                '<td>'+data[i]['surName']+'</td>'+
-                                '<td>'+data[i]['location']+'</td>'+
-                                '<td>'+data[i]['age']+'</td>'+
-                                '<td><button class="btn btn-primary btn-blue">Add To VisitList</button></td>'+
-                                '</tr>';
+                            $('#results').show();
+                            $('#resultsTable').html(row);
+                        } else {
+                            $('#results').hide();
                         }
 
-                        $('#results').show();
-                        $('#resultsTable').html(row);
-                        console.log(row);
-                    } else{
-                        $('#results').hide();
+
+                    },
+                    error: function (e) {
+                        console.log("error", e);
                     }
-
-
-                },
-                error: function (e) {
-                    console.log("error", e);
                 }
-            }
-        )
-    })
+            )
+        })
+    }
 
-}
+    function addToVisitList(id) {
+        $('#confirm-addVisit').modal('show');
+        $('#btn-confirmAdd').on('click', function () {
+            var url = 'patient_visit_endpoint.php';
+            $.ajax(
+                {
+                    type: 'POST',
+                    url: url,
+                    data: JSON.stringify({'id': id}),
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        if (response.statusCode == 200) {
+                            console.log(response);
+                            $('#confirmFeedback').removeClass('alert alert-danger')
+                                .addClass('alert alert-success')
+                                .text(response.message);
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1000);
+                        }
+                        if (response.statusCode == 500) {
+                            $('#confirmFeedback').removeClass('alert alert-success')
+                                .html('<div class="alert alert-danger alert-dismissable">' +
+                                    '<a href="#" class="close"  data-dismiss="alert" aria-label="close">&times;</a>' +
+                                    '<strong>Error! </strong> ' + response.message + '</div>')
+
+                        }
+                    }
+                }
+            )
+        })
+    }
 </script>
 </body>
 </html>
