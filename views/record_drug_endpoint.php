@@ -13,10 +13,6 @@ if($requestMethod=='POST') {
 
     if (!empty($data)) {
 
-
-
-
-
         if (!empty($data['productName']) && !empty($data['qtyReceived'])) {
             $drugs = new \Hudutech\Entity\DrugInventory();
             $drugs->setBatchNo($data['batchNo']);

@@ -273,9 +273,6 @@ $counter = 1;
                                                 <td><?php echo $drug['doseQty'] ?></td>
                                                 <td><?php echo $drug['dosePrice'] ?></td>
                                                 <td><?php echo $drug['qtyInStock'] ?></td>
-
-
-
                                             </tr>
                                         <?php endforeach; ?>
 

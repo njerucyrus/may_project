@@ -177,7 +177,7 @@ class DrugInventoryController implements DrugInventoryInterface
         $conn = $db->connect();
 
         try{
-            $stmt = $conn->prepare("SELECT t.* FROM drug_inventory t WHERE 1");
+            $stmt = $conn->prepare("SELECT t.* FROM drug_inventory t WHERE t.qtyInStock > 0 ORDER BY t.qtyInStock ASC");
             $stmt->bindParam(":id", $id);
             return $stmt->execute() && $stmt->rowCount() > 0 ? $stmt->fetchAll(\PDO::FETCH_ASSOC): [];
         } catch (\PDOException $exception) {

@@ -42,7 +42,7 @@
 <style>
     th, td, label, thead ,li, input {
         color: #000000;
-        font-size: 16px;
+        font-size: 12px;
     }
 </style>
 
