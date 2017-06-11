@@ -11,6 +11,7 @@
 <html>
 <head>
     <?php include 'head_views.php' ?>
+    <title>Add Patient To Doctors Visit List</title>
 </head>
 <body class="page-body skin-facebook">
 <div class="page-container">
@@ -40,13 +41,15 @@
 
                     <div id="results">
                         <div class=" table-responsive container-fluid">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-striped">
                                 <thead>
-                                <th>Patient Number</th>
-                                <th>Name</th>
-                                <td>Location</td>
-                                <td>Age</td>
-                                <td>Action</td>
+                                <tr class="bg-primary">
+                                    <th>Patient Number</th>
+                                    <th>Name</th>
+                                    <th>Location</th>
+                                    <th>Age</th>
+                                    <th style="margin-left: 50px;">Action</th>
+                                </tr>
                                 </thead>
                                 <tbody id="resultsTable">
 
@@ -118,7 +121,7 @@
                                     '<td>' + data[i]['surName'] + '</td>' +
                                     '<td>' + data[i]['location'] + '</td>' +
                                     '<td>' + data[i]['age'] + '</td>' +
-                                    '<td><button class="btn btn-primary btn-blue btn-block" onclick="addToVisitList('+data[i]['id']+')">Add To VisitList</button></td>' +
+                                    '<td><button class="btn btn-primary btn-blue pull-right" onclick="addToVisitList(' + data[i]['id'] + ')">Add To VisitList</button></td>' +
                                     '</tr>';
                             }
 

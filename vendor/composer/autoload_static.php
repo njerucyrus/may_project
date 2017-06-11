@@ -20,6 +20,16 @@ class ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'J' => 
+        array (
+            'JasonGrimes' => 
+            array (
+                0 => __DIR__ . '/..' . '/jasongrimes/paginator/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Hudutech\\AppInterface\\ChargeInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/ChargeInterface.php',
         'Hudutech\\AppInterface\\ClinicalNoteInterface' => __DIR__ . '/../..' . '/src/Hudutech/AppInterface/ClinicalNoteInterface.php',
@@ -58,6 +68,7 @@ class ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331
         'Hudutech\\Entity\\Sales' => __DIR__ . '/../..' . '/src/Hudutech/Entity/Sales.php',
         'Hudutech\\Entity\\User' => __DIR__ . '/../..' . '/src/Hudutech/Entity/User.php',
         'Hudutech\\Security\\Encryption' => __DIR__ . '/../..' . '/src/Hudutech/Security/Encryption.php',
+        'JasonGrimes\\Paginator' => __DIR__ . '/..' . '/jasongrimes/paginator/src/JasonGrimes/Paginator.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -65,6 +76,7 @@ class ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit25298c762e41fca61dcbec1f8a9e5331::$classMap;
 
         }, null, ClassLoader::class);

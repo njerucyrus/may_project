@@ -43,4 +43,5 @@ return array(
     'Hudutech\\Entity\\Sales' => $baseDir . '/src/Hudutech/Entity/Sales.php',
     'Hudutech\\Entity\\User' => $baseDir . '/src/Hudutech/Entity/User.php',
     'Hudutech\\Security\\Encryption' => $baseDir . '/src/Hudutech/Security/Encryption.php',
+    'JasonGrimes\\Paginator' => $vendorDir . '/jasongrimes/paginator/src/JasonGrimes/Paginator.php',
 );

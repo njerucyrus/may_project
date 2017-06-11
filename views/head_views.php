@@ -15,10 +15,6 @@
     <meta name="author" content="" />
 
     <link rel="icon" href="../public/assets/images/favicon.ico">
-
-    <title>I Clinic</title>
-
-
     <link rel="stylesheet" href="../public/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="../public/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="../public/assets/css/font-icons/entypo/css/entypo.css">
@@ -46,6 +42,7 @@
 <style>
     th, td, label, thead ,li, input {
         color: #000000;
+        font-size: 16px;
     }
 </style>
 
